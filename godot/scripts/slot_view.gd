@@ -44,7 +44,7 @@ func _draw() -> void:
 		# полоска с количеством патронов как в Rust
 		var t: String = str(item.get("ammo", 0))
 		draw_string(f, Vector2(6, size.y - 6), t, HORIZONTAL_ALIGNMENT_LEFT, -1, fs, Color(1, 1, 1, 0.95))
-	else:
+	elif item.get("amount", 1) > 1:
 		var t := "x%d" % item.amount
 		var w := f.get_string_size(t, HORIZONTAL_ALIGNMENT_LEFT, -1, fs).x
 		draw_string(f, Vector2(size.x - w - 6, size.y - 6), t, HORIZONTAL_ALIGNMENT_LEFT, -1, fs, Color(1, 1, 1, 0.95))

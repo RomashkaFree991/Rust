@@ -29,6 +29,9 @@ var impacts_wood: Array = []
 var step_player: AudioStreamPlayer
 var hole_tex: Texture2D
 var holes: Array = []
+var body: Character               # своя модель (видна от 3-го лица, тень — всегда)
+var third_person := false
+var cam_dist := 0.0
 
 func _ready() -> void:
 	var col := CollisionShape3D.new()
@@ -70,6 +73,12 @@ func _ready() -> void:
 	viewmodel.cam = vm_cam
 	vm_cam.add_child(viewmodel)
 	viewmodel.fired.connect(_on_fired)
+	viewmodel.player = self
+
+	body = Character.new()
+	body.rotation_degrees.y = 180.0   # модель смотрит в +Z, игрок — в -Z
+	add_child(body)
+	body.set_layers(1, GeometryInstance3D.SHADOW_CASTING_SETTING_SHADOWS_ONLY)
 
 	step_player = AudioStreamPlayer.new(); step_player.volume_db = -8.0; add_child(step_player)
 	for i in range(1, 5):
@@ -86,6 +95,30 @@ func _ready() -> void:
 	gt.fill_from = Vector2(0.5, 0.5); gt.fill_to = Vector2(1.0, 0.5)
 	gt.width = 64; gt.height = 64
 	hole_tex = gt
+
+func equip_item(it) -> void:
+	if it == null:
+		viewmodel.equip({})
+		body.set_weapon("")
+	else:
+		viewmodel.equip(it)
+		body.set_weapon(it.id)
+
+func apply_attire(ids: Array) -> void:
+	body.set_attire(ids)
+	var arms := []
+	for id in ids:
+		var a: String = Items.get_def(id).get("arms", "")
+		if a != "":
+			arms.append(a)
+	viewmodel.apply_arms(arms)
+
+func set_third_person(on: bool) -> void:
+	third_person = on
+	vm_container.visible = not on
+	body.set_layers(1, GeometryInstance3D.SHADOW_CASTING_SETTING_ON if on else GeometryInstance3D.SHADOW_CASTING_SETTING_SHADOWS_ONLY)
+	if on:
+		viewmodel.aiming = false
 
 func add_look(delta_deg: Vector2) -> void:
 	look_accum += delta_deg
@@ -128,13 +161,62 @@ func jump() -> void:
 		velocity.y = JUMP_VELOCITY
 
 func _process(delta: float) -> void:
+	# камера от 3-го лица: за правым плечом, не проходит сквозь объекты
+	var want := 2.6 if third_person else 0.0
+	if third_person:
+		var from := head.global_position
+		var back := head.global_basis * Vector3(0.7, 0.25, want)
+		var q := PhysicsRayQueryParameters3D.create(from, from + back)
+		q.exclude = [get_rid()]
+		q.collision_mask = 1
+		var h := get_world_3d().direct_space_state.intersect_ray(q)
+		if not h.is_empty():
+			want = max(0.3, (h.position - from).length() - 0.2) / back.length() * want
+	cam_dist = lerp(cam_dist, want, clamp(delta * 10.0, 0.0, 1.0))
+	var k := cam_dist / 2.6
+	cam.position = Vector3(0.7 * k, 0.25 * k, cam_dist)
 	vm_cam.global_transform = cam.global_transform
+	body.aim_pitch = pitch
+	body.move_speed = clamp(Vector2(velocity.x, velocity.z).length() / WALK_SPEED, 0.0, 1.0) if is_on_floor() else 0.3
 	var target_fov := base_fov * (0.82 if viewmodel.aiming else 1.0)
 	cam.fov = lerp(cam.fov, target_fov, clamp(delta * 10.0, 0.0, 1.0))
 	var hspeed := Vector2(velocity.x, velocity.z).length() / WALK_SPEED
 	viewmodel.process_weapon(delta, inv, hspeed if is_on_floor() else 0.2, look_frame / max(delta, 0.001) * 0.016)
 
+## Удар в ближнем бою: что перед нами на расстоянии rng
+func melee_check(rng: float) -> Dictionary:
+	var from := head.global_position
+	var dir := -head.global_basis.z
+	var q := PhysicsRayQueryParameters3D.create(from, from + dir * rng)
+	q.exclude = [get_rid()]
+	q.collision_mask = 3
+	return get_world_3d().direct_space_state.intersect_ray(q)
+
+func melee_apply(hit: Dictionary, def: Dictionary) -> void:
+	var dir := -head.global_basis.z
+	_apply_hit(hit, dir, def.damage, true)
+
+func _apply_hit(hit: Dictionary, dir: Vector3, damage: float, melee: bool) -> void:
+	var col: Object = hit.collider
+	if col is Node and (col as Node).has_meta("bot"):
+		var bot = (col as Node).get_meta("bot")
+		var res: Dictionary = bot.take_hit((col as Node).get_meta("zone"), damage, hit.position, dir, melee)
+		if hud and not res.is_empty():
+			hud.show_hitmarker(res.headshot, res.killed)
+		return
+	var is_wood: bool = col is Node and (col as Node).is_in_group("target")
+	_spawn_impact(hit.position, hit.normal, col, is_wood)
+	if col is RigidBody3D:
+		(col as RigidBody3D).apply_impulse(dir * damage * (0.12 if melee else 0.06), hit.position - (col as RigidBody3D).global_position)
+	if is_wood and hud:
+		hud.show_hitmarker(false, false)
+
 func _on_fired(def: Dictionary) -> void:
+	if def.get("type") == "melee":
+		body.melee_swing = 1.0
+		return
+	if third_person:
+		body.muzzle_flash()
 	# отдача
 	var k: Vector2 = def.kick
 	var ads_mul := 0.6 if viewmodel.aiming else 1.0
@@ -152,18 +234,11 @@ func _on_fired(def: Dictionary) -> void:
 	var from := cam.global_position
 	var q := PhysicsRayQueryParameters3D.create(from, from + dir * 300.0)
 	q.exclude = [get_rid()]
+	q.collision_mask = 3
 	var hit := get_world_3d().direct_space_state.intersect_ray(q)
 	if hit.is_empty():
 		return
-	var col: Object = hit.collider
-	var is_wood: bool = col is Node and (col as Node).is_in_group("target")
-	_spawn_impact(hit.position, hit.normal, col, is_wood)
-	if col is RigidBody3D:
-		(col as RigidBody3D).apply_impulse(dir * def.damage * 0.06, hit.position - (col as RigidBody3D).global_position)
-	if is_wood and hud:
-		hud.show_hitmarker()
-		if col.has_method("damage"):
-			col.damage(def.damage)
+	_apply_hit(hit, dir, def.damage, false)
 
 func _spawn_impact(pos: Vector3, normal: Vector3, col: Object, wood: bool) -> void:
 	# звук

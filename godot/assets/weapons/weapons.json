@@ -77,6 +77,291 @@
    ]
   }
  },
+ "lr300": {
+  "seqs": {
+   "fire": {
+    "anim": "fire",
+    "frames": 26,
+    "fps": 40.0,
+    "activity": "ACT_VM_PRIMARYATTACK",
+    "events": []
+   },
+   "fire_ads": {
+    "anim": "fire_ads",
+    "frames": 21,
+    "fps": 40.0,
+    "activity": "ACT_VM_PRIMARYATTACK_1",
+    "events": []
+   },
+   "reload": {
+    "anim": "reload",
+    "frames": 241,
+    "fps": 60.0,
+    "activity": "ACT_VM_RELOAD",
+    "events": [
+     {
+      "t": 0.567,
+      "sounds": [
+       "res://assets/sounds/lr300-remove-mag.mp3"
+      ]
+     },
+     {
+      "t": 1.467,
+      "sounds": [
+       "res://assets/sounds/lr300-grab-mag.mp3"
+      ]
+     },
+     {
+      "t": 2.367,
+      "sounds": [
+       "res://assets/sounds/lr300-insert-mag.mp3"
+      ]
+     },
+     {
+      "t": 3.233,
+      "sounds": [
+       "res://assets/sounds/lr300-charging-handle-shut.mp3"
+      ]
+     }
+    ]
+   },
+   "draw": {
+    "anim": "draw",
+    "frames": 121,
+    "fps": 60.0,
+    "activity": "ACT_VM_DRAW",
+    "events": [
+     {
+      "t": 0.033,
+      "sounds": [
+       "res://assets/sounds/lr300-deploy-001.mp3"
+      ]
+     },
+     {
+      "t": 0.517,
+      "sounds": [
+       "res://assets/sounds/lr300-charging-handle-back.mp3"
+      ]
+     },
+     {
+      "t": 1.0,
+      "sounds": [
+       "res://assets/sounds/lr300-charging-handle-shut.mp3"
+      ]
+     }
+    ]
+   }
+  },
+  "sounds": {
+   "lr300-attack": [
+    "res://assets/sounds/lr300-attack-1.mp3",
+    "res://assets/sounds/lr300-attack-2.mp3",
+    "res://assets/sounds/lr300-attack-3.mp3"
+   ],
+   "lr300-dryfire": [
+    "res://assets/sounds/lr300-dryfire.mp3"
+   ]
+  }
+ },
+ "m249": {
+  "seqs": {
+   "fire": {
+    "anim": "fire",
+    "frames": 35,
+    "fps": 50.0,
+    "activity": "ACT_VM_PRIMARYATTACK",
+    "events": []
+   },
+   "fire_ads": {
+    "anim": "fire_ads",
+    "frames": 35,
+    "fps": 50.0,
+    "activity": "ACT_VM_PRIMARYATTACK_1",
+    "events": []
+   },
+   "reload": {
+    "anim": "reload",
+    "frames": 442,
+    "fps": 58.0,
+    "activity": "ACT_VM_RELOAD",
+    "events": [
+     {
+      "t": 0.655,
+      "sounds": [
+       "res://assets/sounds/topcover_open.mp3"
+      ]
+     },
+     {
+      "t": 1.724,
+      "sounds": [
+       "res://assets/sounds/ammobox_remove.mp3"
+      ]
+     },
+     {
+      "t": 3.103,
+      "sounds": [
+       "res://assets/sounds/chainbelt-2.mp3"
+      ]
+     },
+     {
+      "t": 3.328,
+      "sounds": [
+       "res://assets/sounds/ammobox_insert.mp3"
+      ]
+     },
+     {
+      "t": 4.138,
+      "sounds": [
+       "res://assets/sounds/place_bullets.mp3"
+      ]
+     },
+     {
+      "t": 5.172,
+      "sounds": [
+       "res://assets/sounds/topcover_close.mp3"
+      ]
+     },
+     {
+      "t": 6.448,
+      "sounds": [
+       "res://assets/sounds/bolt_back.mp3"
+      ]
+     },
+     {
+      "t": 6.793,
+      "sounds": [
+       "res://assets/sounds/bolt_forward.mp3"
+      ]
+     }
+    ]
+   },
+   "draw": {
+    "anim": "draw",
+    "frames": 140,
+    "fps": 60.0,
+    "activity": "ACT_VM_DRAW",
+    "events": [
+     {
+      "t": 0.017,
+      "sounds": [
+       "res://assets/sounds/deploy.mp3",
+       "res://assets/sounds/deploy.mp3"
+      ]
+     }
+    ]
+   }
+  },
+  "sounds": {
+   "m249-attack": [
+    "res://assets/sounds/m249-attack-1.mp3",
+    "res://assets/sounds/m249-attack-2.mp3",
+    "res://assets/sounds/m249-attack-3.mp3"
+   ]
+  }
+ },
+ "mp5": {
+  "seqs": {
+   "fire": {
+    "anim": "fire",
+    "frames": 21,
+    "fps": 35.0,
+    "activity": "ACT_VM_PRIMARYATTACK",
+    "events": []
+   },
+   "fire_ads": {
+    "anim": "fire_ads",
+    "frames": 21,
+    "fps": 35.0,
+    "activity": "ACT_VM_PRIMARYATTACK_1",
+    "events": []
+   },
+   "reload": {
+    "anim": "reload",
+    "frames": 243,
+    "fps": 57.0,
+    "activity": "ACT_VM_RELOAD",
+    "events": [
+     {
+      "t": 0.439,
+      "sounds": [
+       "res://assets/sounds/mp5-bolt-back.mp3"
+      ]
+     },
+     {
+      "t": 1.175,
+      "sounds": [
+       "res://assets/sounds/mp5-clip-out.mp3"
+      ]
+     },
+     {
+      "t": 2.351,
+      "sounds": [
+       "res://assets/sounds/mp5-clip-in.mp3"
+      ]
+     },
+     {
+      "t": 3.421,
+      "sounds": [
+       "res://assets/sounds/mp5-bolt-slap.mp3"
+      ]
+     }
+    ]
+   },
+   "draw": {
+    "anim": "draw",
+    "frames": 71,
+    "fps": 55.0,
+    "activity": "ACT_VM_DRAW",
+    "events": [
+     {
+      "t": 0.018,
+      "sounds": [
+       "res://assets/sounds/mp5-deploy.mp3"
+      ]
+     },
+     {
+      "t": 0.4,
+      "sounds": [
+       "res://assets/sounds/mp5-fire-select.mp3"
+      ]
+     }
+    ]
+   },
+   "draw2": {
+    "anim": "draw2",
+    "frames": 96,
+    "fps": 55.0,
+    "activity": "ACT_VM_DRAW",
+    "events": [
+     {
+      "t": 0.018,
+      "sounds": [
+       "res://assets/sounds/mp5-deploy.mp3"
+      ]
+     },
+     {
+      "t": 0.364,
+      "sounds": [
+       "res://assets/sounds/mp5-bolt-back.mp3"
+      ]
+     },
+     {
+      "t": 0.909,
+      "sounds": [
+       "res://assets/sounds/mp5-bolt-shut.mp3"
+      ]
+     }
+    ]
+   }
+  },
+  "sounds": {
+   "mp5-attack": [
+    "res://assets/sounds/mp5-attack-1.mp3",
+    "res://assets/sounds/mp5-attack-2.mp3",
+    "res://assets/sounds/mp5-attack-3.mp3"
+   ]
+  }
+ },
  "thompson": {
   "seqs": {
    "fire": {
@@ -151,6 +436,304 @@
     "res://assets/sounds/thompson-attack-1.mp3",
     "res://assets/sounds/thompson-attack-2.mp3",
     "res://assets/sounds/thompson-attack-3.mp3"
+   ]
+  }
+ },
+ "customsmg": {
+  "seqs": {
+   "fire1": {
+    "anim": "fire1",
+    "frames": 31,
+    "fps": 30.0,
+    "activity": "ACT_VM_PRIMARYATTACK",
+    "events": []
+   },
+   "fire2": {
+    "anim": "fire2",
+    "frames": 31,
+    "fps": 30.0,
+    "activity": "ACT_VM_PRIMARYATTACK",
+    "events": []
+   },
+   "fire3": {
+    "anim": "fire3",
+    "frames": 31,
+    "fps": 30.0,
+    "activity": "ACT_VM_PRIMARYATTACK",
+    "events": []
+   },
+   "fire_ads": {
+    "anim": "fire_ads",
+    "frames": 21,
+    "fps": 30.0,
+    "activity": "ACT_VM_PRIMARYATTACK_1",
+    "events": []
+   },
+   "reload": {
+    "anim": "reload",
+    "frames": 132,
+    "fps": 31.0,
+    "activity": "ACT_VM_RELOAD",
+    "events": [
+     {
+      "t": 0.032,
+      "sounds": [
+       "res://assets/sounds/reload_start.mp3"
+      ]
+     },
+     {
+      "t": 0.645,
+      "sounds": [
+       "res://assets/sounds/clip_out.mp3"
+      ]
+     },
+     {
+      "t": 1.903,
+      "sounds": [
+       "res://assets/sounds/clip_in.mp3"
+      ]
+     },
+     {
+      "t": 3.065,
+      "sounds": [
+       "res://assets/sounds/bolt_back.mp3"
+      ]
+     },
+     {
+      "t": 3.452,
+      "sounds": [
+       "res://assets/sounds/bolt_shut.mp3"
+      ]
+     }
+    ]
+   },
+   "draw": {
+    "anim": "draw",
+    "frames": 51,
+    "fps": 30.0,
+    "activity": "ACT_VM_DRAW",
+    "events": [
+     {
+      "t": 0.0,
+      "sounds": [
+       "res://assets/sounds/deploy.mp3",
+       "res://assets/sounds/deploy.mp3"
+      ]
+     },
+     {
+      "t": 0.367,
+      "sounds": [
+       "res://assets/sounds/bolt_back.mp3"
+      ]
+     },
+     {
+      "t": 0.633,
+      "sounds": [
+       "res://assets/sounds/bolt_shut.mp3"
+      ]
+     }
+    ]
+   }
+  },
+  "sounds": {
+   "smg-attack": [
+    "res://assets/sounds/smg-attack-1.mp3",
+    "res://assets/sounds/smg-attack-2.mp3",
+    "res://assets/sounds/smg-attack-3.mp3"
+   ]
+  }
+ },
+ "sar": {
+  "seqs": {
+   "fire": {
+    "anim": "fire",
+    "frames": 104,
+    "fps": 60.0,
+    "activity": "ACT_VM_PRIMARYATTACK",
+    "events": []
+   },
+   "fire_ads": {
+    "anim": "fire_ads",
+    "frames": 104,
+    "fps": 60.0,
+    "activity": "ACT_VM_PRIMARYATTACK_1",
+    "events": []
+   },
+   "reload": {
+    "anim": "reload",
+    "frames": 305,
+    "fps": 64.0,
+    "activity": "ACT_VM_RELOAD",
+    "events": [
+     {
+      "t": 0.359,
+      "sounds": [
+       "res://assets/sounds/sar_clip_out.mp3"
+      ]
+     },
+     {
+      "t": 1.5,
+      "sounds": [
+       "res://assets/sounds/sar_clip_in.mp3"
+      ]
+     },
+     {
+      "t": 1.75,
+      "sounds": [
+       "res://assets/sounds/sar_clip_slap.mp3"
+      ]
+     },
+     {
+      "t": 2.672,
+      "sounds": [
+       "res://assets/sounds/sar_bolt_back.mp3"
+      ]
+     },
+     {
+      "t": 3.234,
+      "sounds": [
+       "res://assets/sounds/sar_bolt_forward.mp3"
+      ]
+     }
+    ]
+   },
+   "draw": {
+    "anim": "draw",
+    "frames": 118,
+    "fps": 60.0,
+    "activity": "ACT_VM_DRAW",
+    "events": [
+     {
+      "t": 0.017,
+      "sounds": [
+       "res://assets/sounds/sar-deploy.mp3"
+      ]
+     }
+    ]
+   }
+  },
+  "sounds": {
+   "semi-auto-rifle-attack": [
+    "res://assets/sounds/semi-auto-rifle-attack-1.mp3",
+    "res://assets/sounds/semi-auto-rifle-attack-2.mp3",
+    "res://assets/sounds/semi-auto-rifle-attack-3.mp3"
+   ]
+  }
+ },
+ "m92": {
+  "seqs": {
+   "fire": {
+    "anim": "fire",
+    "frames": 21,
+    "fps": 35.0,
+    "activity": "ACT_VM_PRIMARYATTACK",
+    "events": []
+   },
+   "fire_last": {
+    "anim": "fire_last",
+    "frames": 21,
+    "fps": 35.0,
+    "activity": "ACT_VM_PRIMARYATTACK_EMPTY",
+    "events": []
+   },
+   "fire_ads": {
+    "anim": "fire_ads",
+    "frames": 21,
+    "fps": 35.0,
+    "activity": "ACT_VM_PRIMARYATTACK_1",
+    "events": []
+   },
+   "fire_last_ads": {
+    "anim": "fire_last_ads",
+    "frames": 21,
+    "fps": 35.0,
+    "activity": "ACT_VM_PRIMARYATTACK_EMPTY_1",
+    "events": []
+   },
+   "reload": {
+    "anim": "reload",
+    "frames": 104,
+    "fps": 45.0,
+    "activity": "ACT_VM_RELOAD",
+    "events": [
+     {
+      "t": 0.378,
+      "sounds": [
+       "res://assets/sounds/m92-clip-out-001.mp3"
+      ]
+     },
+     {
+      "t": 1.444,
+      "sounds": [
+       "res://assets/sounds/m92-clip-in-001.mp3"
+      ]
+     }
+    ]
+   },
+   "reload_empty": {
+    "anim": "reload_empty",
+    "frames": 152,
+    "fps": 60.0,
+    "activity": "ACT_VM_RELOAD_EMPTY",
+    "events": [
+     {
+      "t": 0.283,
+      "sounds": [
+       "res://assets/sounds/m92-clip-out-001.mp3"
+      ]
+     },
+     {
+      "t": 1.083,
+      "sounds": [
+       "res://assets/sounds/m92-clip-in-001.mp3"
+      ]
+     },
+     {
+      "t": 1.65,
+      "sounds": [
+       "res://assets/sounds/m92-slide-shut-001.mp3"
+      ]
+     }
+    ]
+   },
+   "draw": {
+    "anim": "draw",
+    "frames": 46,
+    "fps": 55.0,
+    "activity": "ACT_VM_DRAW",
+    "events": [
+     {
+      "t": 0.018,
+      "sounds": [
+       "res://assets/sounds/m92-deploy.mp3"
+      ]
+     },
+     {
+      "t": 0.436,
+      "sounds": [
+       "res://assets/sounds/m92-safety-off.mp3"
+      ]
+     }
+    ]
+   },
+   "draw_empty": {
+    "anim": "draw_empty",
+    "frames": 46,
+    "fps": 55.0,
+    "activity": "ACT_VM_DRAW_EMPTY",
+    "events": [
+     {
+      "t": 0.018,
+      "sounds": [
+       "res://assets/sounds/m92-deploy.mp3"
+      ]
+     }
+    ]
+   }
+  },
+  "sounds": {
+   "m92-attack": [
+    "res://assets/sounds/m92-attack.mp3"
    ]
   }
  },
@@ -232,6 +815,250 @@
    ],
    "python-dryfire": [
     "res://assets/sounds/python-dryfire.mp3"
+   ]
+  }
+ },
+ "revolver": {
+  "seqs": {
+   "fire": {
+    "anim": "fire",
+    "frames": 16,
+    "fps": 30.0,
+    "activity": "ACT_VM_PRIMARYATTACK",
+    "events": []
+   },
+   "fire_ads": {
+    "anim": "fire_ads",
+    "frames": 16,
+    "fps": 30.0,
+    "activity": "ACT_VM_PRIMARYATTACK_1",
+    "events": []
+   },
+   "dryfire": {
+    "anim": "dryfire",
+    "frames": 16,
+    "fps": 30.0,
+    "activity": "ACT_VM_DRYFIRE",
+    "events": []
+   },
+   "reload": {
+    "anim": "reload",
+    "frames": 113,
+    "fps": 32.0,
+    "activity": "ACT_VM_RELOAD",
+    "events": [
+     {
+      "t": 0.5,
+      "sounds": [
+       "res://assets/sounds/revolver-open-cylinder.mp3"
+      ]
+     },
+     {
+      "t": 1.25,
+      "sounds": [
+       "res://assets/sounds/revolver-eject-shells.mp3"
+      ]
+     },
+     {
+      "t": 1.75,
+      "sounds": [
+       "res://assets/sounds/revolver-insert-shells.mp3"
+      ]
+     },
+     {
+      "t": 2.563,
+      "sounds": [
+       "res://assets/sounds/revolver-shut-cylinder.mp3"
+      ]
+     }
+    ]
+   },
+   "draw": {
+    "anim": "draw",
+    "frames": 44,
+    "fps": 60.0,
+    "activity": "ACT_VM_DRAW",
+    "events": [
+     {
+      "t": 0.017,
+      "sounds": [
+       "res://assets/sounds/revolver-deploy.mp3"
+      ]
+     }
+    ]
+   }
+  },
+  "sounds": {
+   "revolver-attack": [
+    "res://assets/sounds/revolver-attack-1.mp3",
+    "res://assets/sounds/revolver-attack-2.mp3",
+    "res://assets/sounds/revolver-attack-3.mp3"
+   ],
+   "revolver-dryfire": [
+    "res://assets/sounds/revolver-dryfire.mp3"
+   ]
+  }
+ },
+ "combatknife": {
+  "seqs": {
+   "draw": {
+    "anim": "draw",
+    "frames": 58,
+    "fps": 30.0,
+    "activity": "ACT_VM_DRAW",
+    "events": [
+     {
+      "t": 0.0,
+      "sounds": [
+       "res://assets/sounds/bone-knife-deploy.mp3"
+      ]
+     }
+    ]
+   },
+   "slash1": {
+    "anim": "slash1",
+    "frames": 50,
+    "fps": 24.0,
+    "activity": "ACT_VM_SWINGMISS",
+    "events": []
+   },
+   "slash2": {
+    "anim": "slash2",
+    "frames": 48,
+    "fps": 24.0,
+    "activity": "ACT_VM_SWINGMISS",
+    "events": []
+   },
+   "slash1_hit": {
+    "anim": "slash1_hit",
+    "frames": 46,
+    "fps": 24.0,
+    "activity": "ACT_VM_SWINGHIT",
+    "events": []
+   },
+   "slash2_hit": {
+    "anim": "slash2_hit",
+    "frames": 46,
+    "fps": 24.0,
+    "activity": "ACT_VM_SWINGHIT",
+    "events": []
+   },
+   "throw": {
+    "anim": "throw",
+    "frames": 24,
+    "fps": 24.0,
+    "activity": "ACT_VM_PULLPIN",
+    "events": []
+   },
+   "throw_cancel": {
+    "anim": "throw_cancel",
+    "frames": 13,
+    "fps": 24.0,
+    "activity": "ACT_VM_SECONDARYATTACK",
+    "events": []
+   },
+   "throw_out": {
+    "anim": "throw_out",
+    "frames": 14,
+    "fps": 24.0,
+    "activity": "ACT_VM_THROW",
+    "events": []
+   },
+   "throw_hold": {
+    "anim": "throw_hold",
+    "frames": 35,
+    "fps": 24.0,
+    "activity": "ACT_VM_SECONDARYATTACK_1",
+    "events": []
+   },
+   "idle": {
+    "anim": "idle",
+    "frames": 31,
+    "fps": 10.0,
+    "activity": "ACT_VM_IDLE",
+    "events": []
+   }
+  },
+  "sounds": {
+   "bone-knife-attack": [
+    "res://assets/sounds/bone-knife-attack.mp3"
+   ],
+   "bone-knife-strike": [
+    "res://assets/sounds/bone-knife-strike.mp3"
+   ],
+   "bone-knife-strike-soft": [
+    "res://assets/sounds/bone-knife-strike-soft.mp3"
+   ]
+  }
+ },
+ "rock": {
+  "seqs": {
+   "draw": {
+    "anim": "draw",
+    "frames": 67,
+    "fps": 48.0,
+    "activity": "ACT_VM_DRAW",
+    "events": [
+     {
+      "t": 0.021,
+      "sounds": [
+       "res://assets/sounds/rock-deploy.mp3"
+      ]
+     }
+    ]
+   },
+   "slash": {
+    "anim": "slash",
+    "frames": 75,
+    "fps": 48.0,
+    "activity": "ACT_VM_SWINGMISS",
+    "events": []
+   },
+   "slash_hit": {
+    "anim": "slash_hit",
+    "frames": 48,
+    "fps": 48.0,
+    "activity": "ACT_VM_SWINGHIT",
+    "events": []
+   },
+   "throw": {
+    "anim": "throw",
+    "frames": 28,
+    "fps": 48.0,
+    "activity": "ACT_VM_PULLPIN",
+    "events": []
+   },
+   "throw_cancel": {
+    "anim": "throw_cancel",
+    "frames": 36,
+    "fps": 48.0,
+    "activity": "ACT_VM_SECONDARYATTACK",
+    "events": []
+   },
+   "throw_out": {
+    "anim": "throw_out",
+    "frames": 22,
+    "fps": 48.0,
+    "activity": "ACT_VM_THROW",
+    "events": []
+   },
+   "throw_hold": {
+    "anim": "throw_hold",
+    "frames": 31,
+    "fps": 10.0,
+    "activity": "",
+    "events": []
+   }
+  },
+  "sounds": {
+   "rock-attack": [
+    "res://assets/sounds/rock-attack.mp3"
+   ],
+   "rock-strike": [
+    "res://assets/sounds/rock-strike-1.mp3",
+    "res://assets/sounds/rock-strike-2.mp3",
+    "res://assets/sounds/rock-strike-3.mp3",
+    "res://assets/sounds/rock-strike-4.mp3"
    ]
   }
  }

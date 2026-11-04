@@ -26,7 +26,23 @@ func _ready() -> void:
 	player.hud = hud
 	hud.bind(player, inv)
 	inv.setup_default()
+	player.apply_attire(inv.worn())
 	hud._set_active(0)
+	_spawn_bots()
+
+func _spawn_bots() -> void:
+	var defs := [
+		{"name": "Бот Вася", "pos": Vector3(-3.5, 0, -7), "attire": ["heavy_plate_helmet", "roadsign_jacket", "pants_hide", "shoes_boots", "tactical_gloves"], "weapon": "ak47u"},
+		{"name": "Бот Петя", "pos": Vector3(3.5, 0, -11), "attire": ["hat_cap", "bandana", "jacket", "heavy_plate_legs", "shoes_boots"], "weapon": "python"},
+	]
+	for d in defs:
+		var b := Bot.new()
+		b.bot_name = d.name
+		b.attire = d.attire
+		b.weapon = d.weapon
+		b.target = player
+		add_child(b)
+		b.position = d.pos
 
 func _build_environment() -> void:
 	var we := WorldEnvironment.new()
@@ -121,7 +137,7 @@ func _build_targets() -> void:
 	var rng := RandomNumberGenerator.new()
 	rng.seed = 1337
 	# линии мишеней на разных дистанциях
-	for row in [{"z": -5.0, "n": 3}, {"z": -15.0, "n": 4}, {"z": -28.0, "n": 5}]:
+	for row in [{"z": -15.0, "n": 4}, {"z": -28.0, "n": 5}]:
 		for i in row.n:
 			var x: float = (i - (row.n - 1) * 0.5) * 3.2
 			var use_barrel: bool = (i % 2 == 1)
