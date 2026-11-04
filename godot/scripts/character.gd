@@ -57,6 +57,8 @@ func _build() -> void:
 		var i := sk.find_bone(B + n)
 		idx[n] = i
 		rest[n] = sk.get_bone_global_rest(i)
+	# базовое бельё (как у голого персонажа в Rust)
+	_add_attire_meshes("underwear_pants", "res://assets/player/underwear_pants.gltf")
 	_set_body_visible()
 	set_process(true)
 
@@ -94,6 +96,8 @@ func set_layers(mask: int, cast: int) -> void:
 func set_attire(ids: Array) -> void:
 	_build()
 	for id in attire_meshes.keys():
+		if id == "underwear_pants":
+			continue
 		if not id in ids:
 			for m in attire_meshes[id]:
 				m.queue_free()
@@ -104,22 +108,25 @@ func set_attire(ids: Array) -> void:
 		var d := Items.get_def(id)
 		if d.is_empty():
 			continue
-		var inst: Node3D = _load(d.scene).instantiate()
-		var cs: Skeleton3D = inst.find_child("Skeleton3D", true, false)
-		var list := []
-		for m in cs.get_children():
-			if m is MeshInstance3D:
-				cs.remove_child(m)
-				m.owner = null
-				sk.add_child(m)
-				m.skeleton = NodePath("..")
-				m.layers = layer_mask
-				m.cast_shadow = cast_mode
-				_fix_mat(m, false)
-				list.append(m)
-		inst.free()
-		attire_meshes[id] = list
+		_add_attire_meshes(id, d.scene)
 	_set_body_visible(ids)
+
+func _add_attire_meshes(id: String, path: String) -> void:
+	var inst: Node3D = _load(path).instantiate()
+	var cs: Skeleton3D = inst.find_child("Skeleton3D", true, false)
+	var list := []
+	for m in cs.get_children():
+		if m is MeshInstance3D:
+			cs.remove_child(m)
+			m.owner = null
+			sk.add_child(m)
+			m.skeleton = NodePath("..")
+			m.layers = layer_mask
+			m.cast_shadow = cast_mode
+			_fix_mat(m, false)
+			list.append(m)
+	inst.free()
+	attire_meshes[id] = list
 
 func _set_body_visible(ids: Array = []) -> void:
 	var hide := {}
@@ -139,7 +146,11 @@ func _set_body_visible(ids: Array = []) -> void:
 		elif n.begins_with("Legs_01"): v = show.has("Legs_01")
 		elif n.begins_with("Feet_00"): v = not hide.has("Feet")
 		elif n.begins_with("hairs_male_hairstyle_01"): v = not hide.has("hair")
+		elif n.begins_with("hairs_male_facial_hair"): v = not hide.has("beard")
 		m.visible = v
+	if attire_meshes.has("underwear_pants"):
+		for m in attire_meshes["underwear_pants"]:
+			m.visible = not hide.has("Legs")
 
 ## Оружие в руке (модель w_*)
 func set_weapon(id: String) -> void:
@@ -263,13 +274,19 @@ func _pose() -> void:
 	_rot_rest("L_Calf", Basis(R, deg_to_rad(sw + kl)))
 	_rot_rest("R_Foot", Basis(R, deg_to_rad(-sw + kr - 5)))
 	_rot_rest("L_Foot", Basis(R, deg_to_rad(sw + kl - 5)))
-	# корпус: наклон по прицелу + дыхание
+	# корпус: наклон по прицелу, разворот вполоборота с оружием (как в Rust), дыхание
 	var p: float = clamp(aim_pitch, -60, 60)
-	var lean := Basis(R, deg_to_rad(-p * 0.25 + b * 0.8 + 3.0 * move_speed))
-	_rot_rest("Spine2", lean)
-	_rot_rest("Spine4", Basis(R, deg_to_rad(-p * 0.5 + b * 1.0 + 3.0 * move_speed)))
-	_rot_rest("Neck1", Basis(R, deg_to_rad(-p * 0.6)))
-	_rot_rest("Head1", Basis(R, deg_to_rad(-p * 0.85)))
+	var armed := (hold == "rifle" or hold == "pistol") and not weapon_geo.is_empty()
+	var twist := 0.0
+	if armed:
+		twist = -28.0 if hold == "rifle" else -12.0
+	var U := Vector3.UP
+	_rot_rest("Spine2", Basis(U, deg_to_rad(twist * 0.45)) * Basis(R, deg_to_rad(-p * 0.25 + b * 0.8 + 3.0 * move_speed)))
+	_rot_rest("Spine4", Basis(U, deg_to_rad(twist)) * Basis(R, deg_to_rad(-p * 0.5 + b * 1.0 + 3.0 * move_speed)))
+	var head_down := 9.0 if hold == "rifle" else (5.0 if hold == "pistol" else 0.0)
+	var head_roll := 9.0 if hold == "rifle" else 0.0
+	_rot_rest("Neck1", Basis(U, deg_to_rad(twist * 0.5)) * Basis(R, deg_to_rad(-p * 0.6 + head_down * 0.5)))
+	_rot_rest("Head1", Basis(Vector3.FORWARD, deg_to_rad(-head_roll)) * Basis(R, deg_to_rad(-p * 0.85 + head_down)))
 	if look_target != null:
 		var hp := sk.global_transform * _g("Head1").origin
 		var to: Vector3 = (sk.global_transform.affine_inverse() * (look_target as Vector3)) - (sk.global_transform.affine_inverse() * hp)
@@ -277,51 +294,72 @@ func _pose() -> void:
 		var cur := _g("Head1")
 		_set_g("Head1", Transform3D(Basis(Vector3.UP, yaw) * cur.basis, cur.origin))
 
-	var aim := Basis(R, deg_to_rad(-p))   # поворот направления вперёд (+Z) по тангажу
+	var aim := Basis(R, deg_to_rad(-p))   # направление вперёд (+Z) с учётом тангажа
 	var chest := _g("Spine4").origin
-	if (hold == "rifle" or hold == "pistol") and not weapon_geo.is_empty():
+	if armed:
 		var g := weapon_geo
 		var bm := Basis((g.up as Vector3).cross(g.fwd), g.up, g.fwd)        # оси модели оружия
-		var bt := aim * Basis(Vector3.RIGHT, Vector3.UP, Vector3.BACK)      # цель: ствол вперёд (+Z), верх вверх
+		var bt := aim * Basis(Vector3.RIGHT, Vector3.UP, Vector3.BACK)      # ствол вперёд (+Z), верх вверх
 		var wbasis := bt * bm.inverse()
 		var wroot: Transform3D
 		var sh := _g("R_UpperArm").origin
 		if hold == "rifle":
-			# приклад у правого плеча
-			var butt_pos := sh + aim * Vector3(0.05, 0.0 + b * 0.003, 0.06 - recoil * 0.05)
+			# приклад в правое плечо, оружие на уровне глаз
+			var butt_pos := sh + aim * Vector3(0.075, 0.055 + b * 0.003, 0.02 - recoil * 0.05)
 			wroot = Transform3D(wbasis, butt_pos - wbasis * (g.butt as Vector3))
 		else:
-			var grip_pos := chest + aim * Vector3(-0.03, 0.06 + b * 0.003, 0.4 - recoil * 0.06)
+			var grip_pos := chest + aim * Vector3(-0.035, 0.13 + b * 0.003, 0.4 - recoil * 0.06)
 			wroot = Transform3D(wbasis, grip_pos - wbasis * (g.hand as Vector3))
 		var hand_pos: Vector3 = wroot * (g.hand as Vector3)
-		_ik("R_UpperArm", "R_Forearm", "R_Hand", hand_pos, aim * Vector3(-0.6, -1.0, -0.3), (wroot * weapon_hand_rest).basis)
+		var rpole := aim * (Vector3(-1.0, -0.15, -0.35) if hold == "rifle" else Vector3(-0.7, -0.6, -0.2))
+		_ik("R_UpperArm", "R_Forearm", "R_Hand", hand_pos, rpole, (wroot * weapon_hand_rest).basis)
 		var fore_pt: Vector3
 		if hold == "rifle":
-			fore_pt = wroot * ((g.hand as Vector3).lerp(g.tip, 0.5) - (g.up as Vector3) * 0.02)
+			fore_pt = wroot * ((g.hand as Vector3).lerp(g.tip, 0.5) - (g.up as Vector3) * 0.025)
 		else:
-			fore_pt = hand_pos + aim * Vector3(0.03, -0.03, -0.01)
-		_ik("L_UpperArm", "L_Forearm", "L_Hand", fore_pt, aim * Vector3(0.7, -1.0, -0.2))
+			fore_pt = hand_pos + aim * Vector3(0.035, -0.03, -0.005)
+		var lpole := aim * (Vector3(0.3, -1.0, 0.05) if hold == "rifle" else Vector3(0.7, -0.6, -0.2))
+		# левая кисть ладонью вверх под цевьём
+		_ik("L_UpperArm", "L_Forearm", "L_Hand", fore_pt, lpole)
+		var lh := _g("L_Hand")
+		var palm_q := Quaternion(lh.basis.x.normalized(), (fore_pt + aim * Vector3(0.0, 0.0, 0.08) - lh.origin).normalized())
+		_set_g("L_Hand", Transform3D(Basis(palm_q) * lh.basis, lh.origin))
+		_curl("R", 62.0, 40.0)
+		_curl("L", 55.0 if hold == "rifle" else 40.0, 35.0)
 		if weapon_node:
 			weapon_node.transform = model.transform * wroot
 	elif hold == "melee":
 		var s := melee_swing
 		var swing_ang := sin(s * PI) * 80.0
 		var hp := chest + Vector3(-0.22, -0.18 + sin(s * PI) * 0.25, 0.22 + sin(s * PI) * 0.15)
-		var hb := Basis(R, deg_to_rad(-60 + swing_ang)) * Basis(Vector3(-1, 0, 0), Vector3(0, 1, 0), Vector3(0, 0, -1))
 		_ik("R_UpperArm", "R_Forearm", "R_Hand", hp, Vector3(-0.5, -1, -0.4))
 		var hand_xf := Transform3D(_g("R_Hand").basis, _g("R_Hand").origin)
 		_relax_arm("L", b)
+		_curl("R", 65.0, 25.0)
+		_curl("L", 18.0, 5.0)
 		if weapon_node:
 			weapon_node.transform = model.transform * (hand_xf * weapon_hand_rest.affine_inverse())
 	else:
 		_relax_arm("R", b)
 		_relax_arm("L", b)
+		_curl("R", 18.0, 5.0)
+		_curl("L", 18.0, 5.0)
+
+## Согнуть пальцы (ось сгиба у костей ValveBiped — -Z, у большого пальца — -Y)
+func _curl(side: String, ang: float, thumb: float) -> void:
+	for fi in range(0, 5):
+		for seg in ["", "1", "2"]:
+			var bi := sk.find_bone("%s%s_Finger%d%s" % [B, side, fi, seg])
+			if bi < 0:
+				continue
+			var a := thumb if fi == 0 else ang * (0.75 if seg == "" else 1.0)
+			sk.set_bone_pose_rotation(bi, sk.get_bone_rest(bi).basis.get_rotation_quaternion() * Quaternion(Vector3(0, 0, -1) if fi != 0 else Vector3(0, -1, 0), deg_to_rad(a)))
 
 func _relax_arm(side: String, b: float) -> void:
 	var sgn := 1.0 if side == "L" else -1.0
 	var sh := _g(side + "_UpperArm").origin
-	var target := sh + Vector3(0.06 * sgn, -0.5 + b * 0.004, 0.04 + sin(walk_phase) * 0.12 * move_speed * -sgn)
-	_ik(side + "_UpperArm", side + "_Forearm", side + "_Hand", target, Vector3(0.2 * sgn, 0, -1))
+	var target := sh + Vector3(0.07 * sgn, -0.41 + b * 0.004, 0.03 + sin(walk_phase) * 0.12 * move_speed * -sgn)
+	_ik(side + "_UpperArm", side + "_Forearm", side + "_Hand", target, Vector3(0.25 * sgn, 0, -1))
 
 ## Вспышка выстрела на конце ствола (вид от 3-го лица)
 var _flash: MeshInstance3D

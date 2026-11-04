@@ -81,8 +81,8 @@ static func _static_init() -> void:
 	_att("tactical_gloves", "Tactical Gloves", "attire_tactical.gloves", "hands", [], "TacticalGloves_vm", 0.05, 0.05, "Тактические перчатки.")
 	_att("hat_cap", "Baseball Cap", "attire_hat.cap", "head", ["hair"], "", 0.05, 0.05, "Кепка.")
 	_att("heavy_plate_helmet", "Heavy Plate Helmet", "attire_heavy.plate.helmet", "head", ["hair"], "", 0.4, 0.4, "Тяжёлый шлем. Отлично держит выстрел в голову.")
-	_att("metal_mask", "Metal Facemask", "attire_metal.facemask", "face", [], "", 0.5, 0.5, "Металлическая маска.")
-	_att("bandana", "Bandana Mask", "attire_mask.bandana", "face", [], "", 0.05, 0.05, "Бандана.")
+	_att("metal_mask", "Metal Facemask", "attire_metal.facemask", "face", ["beard"], "", 0.5, 0.5, "Металлическая маска.")
+	_att("bandana", "Bandana Mask", "attire_mask.bandana", "face", ["beard"], "", 0.05, 0.05, "Бандана.")
 
 static func _att(id: String, name: String, icon: String, slot: String, hide: Array, arms: String, proj: float, melee: float, desc: String) -> void:
 	DB[id] = {"type": "attire", "name": name, "desc": desc, "icon": "res://assets/icons/%s.png" % icon,

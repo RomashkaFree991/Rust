@@ -25,7 +25,7 @@ def fix(n):
     for b in pbones:
         if b.endswith(n.split('.')[-1]) and n.split('.')[-1].startswith('Bip01'): return b
     return None
-KEEP = ('Head.Male.Light01','Torso.00','Torso.01','Hands.00','Legs.00','Legs.01','Underwear_Legs','Feet.00','hairs/male_hairstyle_01_LOD0.smd','MaleLight_reference')
+KEEP = ('hairs/male_facial_hair_style_1_LOD0_light01','Head.Male.Light01','Torso.00','Torso.01','Hands.00','Legs.00','Legs.01','Underwear_Legs','Feet.00','hairs/male_hairstyle_01_LOD0.smd','MaleLight_reference')
 if not attire:
     for o in P:
         if o.type=='MESH' and not o.name.startswith(KEEP): bpy.data.objects.remove(o, do_unlink=True)
