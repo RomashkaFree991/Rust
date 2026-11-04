@@ -1,0 +1,19 @@
+"SpriteCard"
+{
+	$basetexture "particle/rust/rust_big_explosion"
+	$ADDSELF 1.0
+	$BLENDFRAMES 1
+	$OVERBRIGHTFACTOR 2.75
+
+	$MINSIZE .0125
+	$MAXSIZE 10.6
+
+	$minfadesize 0
+	$maxfadesize 1
+
+	$STARTFADESIZE .45
+	$ENDFADESIZE .575
+	//$DEPTHBLEND 0
+	$DEPTHBLENDSCALE "7"
+	$Additive 1
+}

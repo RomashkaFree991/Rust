@@ -1,0 +1,11 @@
+"VertexLitGeneric"
+{
+   "$basetexture"   "models/darky_m/rust_weapons/eoka/rock_colour"
+   "$bumpmap"       "models/darky_m/rust_weapons/eoka/rock_normals"
+
+
+"$rimlight" "1"
+"$rimlightexponent" "26"
+"$rimlightboost" "0.2"
+"$selfillum" "1"
+}

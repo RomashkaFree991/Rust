@@ -1,0 +1,5 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/darky_m/rust_weapons/mods/reddotsight_albedo"
+	"$bumpmap" "models/darky_m/rust_weapons/mods/reddotsight_normal"
+}
