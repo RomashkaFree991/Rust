@@ -7,13 +7,23 @@
 | [2782092042](https://steamcommunity.com/sharedfiles/filedetails/?id=2782092042) | [TFA] Rust Melee (Throwable!) | 349 |
 | [2529785777](https://steamcommunity.com/sharedfiles/filedetails/?id=2529785777) | [TFA][AT] Rust Firearms | 782 |
 | [2529802557](https://steamcommunity.com/sharedfiles/filedetails/?id=2529802557) | [TFA][AT] Rust Explosives | 252 |
+| [2395395483](https://steamcommunity.com/sharedfiles/filedetails/?id=2395395483) | Rust Hazmat Suit PM/Ragdoll — обычный хазмат | 24 |
+| [2743974910](https://steamcommunity.com/sharedfiles/filedetails/?id=2743974910) | Rust Arctic Suit PM/Ragdoll — арктический хазмат | 34 |
+| [2659607667](https://steamcommunity.com/sharedfiles/filedetails/?id=2659607667) | Rust Nomad Suit PM/Ragdoll — костюм кочевника | 27 |
+| [2659610837](https://steamcommunity.com/sharedfiles/filedetails/?id=2659610837) | Rust Spacesuit PM/Ragdoll — скафандр | 21 |
+| [2467846835](https://steamcommunity.com/sharedfiles/filedetails/?id=2467846835) | Rust Scientist Nextbot/PM/Ragdoll — учёный (+ NPC) | 44 |
+| [2815506728](https://steamcommunity.com/sharedfiles/filedetails/?id=2815506728) | Rust c_hands — обычные руки персонажа | 23 |
 
-Для работы в игре нужен [TFA Base](https://steamcommunity.com/sharedfiles/filedetails/?id=415143062).
+Для оружия в игре нужен [TFA Base](https://steamcommunity.com/sharedfiles/filedetails/?id=415143062).
 Все права на модели, текстуры и звуки принадлежат их авторам (оригинальные ресурсы — Facepunch Studios / Rust, порт — автор аддонов в Workshop).
 
 ## Структура
 
 ```
+characters/models/<персонаж>/     модели игрока (playermodel/ragdoll): hazmat, arctic_hazmat, nomad, spacesuit, scientist
+characters/arms/<персонаж>/       руки от первого лица для каждого костюма + human (обычные руки)
+textures/characters/<персонаж>/   текстуры костюмов (archazmat = арктический хазмат, chands = руки)
+sounds/scientist/                 голос учёного
 animations/viewmodels/<оружие>/   c_*.mdl (+.vvd/.vtx) — модели от первого лица, в них зашиты все анимации
 models/weapons/<оружие>/          w_*.mdl — модели в мире (в руках у игрока / на земле), с LOD и .phy
 models/attachments/<модуль>/      модули: прицелы, глушитель, фонарик, лазер, дульные насадки
