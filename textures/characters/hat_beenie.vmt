@@ -1,0 +1,9 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/grust/vanguard/attire/hat_beenie_diff"
+	"$bumpmap" "models/grust/vanguard/attire/hat_beenie_nrm"
+
+	"$halflambert" "1"
+
+	"$color2" "{63 59 51}"
+}

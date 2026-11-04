@@ -1,0 +1,21 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/grust/vanguard/attire/egg_suit_painted_diff"
+	"$bumpmap" "models/grust/vanguard/attire/egg_suit_painted_nrm"
+
+	"$envmap" "env_cubemap"
+	"$envmaptint" "[ 0.0125 0.0125 0.0125 ]"
+	"$normalmapalphaenvmapmask" "1"
+
+	"$ambientocclusion" "1"
+	"$ambientoccltexture" "models/grust/vanguard/attire/egg_suit_painted_ao"
+
+	"$halflambert" "1"
+
+	"$phong" "1"
+	"$phongexponent" "10"
+	"$phongboost" "0.75"
+	"$phongfresnelranges" "[1 8 4]"
+	"$phongtint" "[0.9 0.9 1]" 
+	"$phongalbedotint" "1"
+}

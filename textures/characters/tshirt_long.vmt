@@ -1,0 +1,16 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/grust/vanguard/attire/tshirt_long_diff"
+	"$bumpmap" "models/grust/vanguard/attire/tshirt_long_nrm"
+
+	"$color2" "{42 95 129}"
+
+	"$halflambert" "1"
+
+	"$phong" "1"
+	"$phongexponent" "100"
+	"$phongboost" "0.025"
+	"$phongfresnelranges" "[1 8 4]"
+	"$phongtint" "[0.9 0.9 1]" 
+	"$phongalbedotint" "1"
+}

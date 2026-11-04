@@ -1,0 +1,9 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/grust/vanguard/heavyscientist-helmet_diff"
+
+	"$ambientocclusion" "1"
+	"$ambientoccltexture" "models/grust/vanguard/heavyscientist-helmet_ao"
+
+	"$halflambert" "1"
+}

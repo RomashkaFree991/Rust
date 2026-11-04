@@ -1,0 +1,7 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/grust/vanguard/attire/tshirt_long_diff"
+	"$bumpmap" "models/grust/vanguard/attire/tshirt_long_nrm"
+
+	"$color2" "{60 60 60}"
+}

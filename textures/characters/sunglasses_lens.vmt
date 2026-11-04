@@ -1,0 +1,19 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/zohart/attire/sunglasses_lens_diff"
+	"$bumpmap" "models/zohart/attire/sunglasses_lens_nrm"
+
+	"$ambientocclusion" "1"
+	"$ambientoccltexture" "models/zohart/attire/sunglasses_lens_ao"
+
+	"$halflambert" "1"
+	"$translucent" "1"
+	"$color2" "{60 60 60}"
+
+	"$phong" "1"
+	"$phongexponent" "100"
+	"$phongboost" "1"
+	"$phongfresnelranges" "[1 8 4]"
+	"$phongtint" "[0.9 0.9 1]"
+	"$phongalbedotint" "1"
+}

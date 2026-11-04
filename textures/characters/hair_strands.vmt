@@ -1,0 +1,7 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/grust/vanguard/hair_strands"
+	"$nocull" 1
+	$alphatest                   1
+	$alphatestreference    0.2
+}

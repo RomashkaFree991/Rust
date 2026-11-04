@@ -1,0 +1,13 @@
+"VertexLitGeneric"
+{
+   "$basetexture"   "models/grust/vanguard/viewmodelarms_black_diffuse"
+   "$bumpmap" "models/grust/vanguard/viewmodelarms_normals"
+"$normalmapalphaenvmapmask" "1"
+"$envmaptint" "[ 10.1 10.1 10.2 ]"
+
+
+"$phongalbedotint" "1"
+"$halflambert" "1"
+
+
+}

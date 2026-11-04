@@ -1,0 +1,23 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/grust/vanguard/attire/mask_bandana_diff"
+	"$bumpmap" "models/grust/vanguard/attire/mask_bandana_nrm"
+
+	"$color2" "{113 50 41}"
+
+	"$envmap" "env_cubemap"
+	"$envmaptint" "[ 0.005 0.005 0.005 ]"
+	"$normalmapalphaenvmapmask" "1"
+
+	"$ambientocclusion" "1"
+	"$ambientoccltexture" "models/grust/vanguard/attire/mask_bandana_ao"
+
+	"$halflambert" "1"
+
+	"$phong" "1"
+	"$phongexponent" "10"
+	"$phongboost" "0.0125"
+	"$phongfresnelranges" "[1 8 4]"
+	"$phongtint" "[0.9 0.9 1]" 
+	"$phongalbedotint" "1"
+}

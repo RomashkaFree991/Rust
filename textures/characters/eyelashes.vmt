@@ -1,0 +1,7 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/grust/vanguard/eyelashes"
+	"$nocull" "1"
+	"$translucent" "1"
+	"$color2" "{60 60 60}"
+}

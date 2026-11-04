@@ -1,0 +1,23 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/grust/vanguard/attire/grass_skirt_opaque_diff"
+	"$bumpmap" "models/grust/vanguard/attire/grass_skirt_opaque_nrm"
+
+	"$envmap" "env_cubemap"
+	"$envmaptint" "[ 0.0125 0.0125 0.0125 ]"
+	"$normalmapalphaenvmapmask" "1"
+
+	"$ambientocclusion" "1"
+	"$ambientoccltexture" "models/grust/vanguard/attire/grass_skirt_opaque_ao"
+
+	"$halflambert" "1"
+
+	"$phong" "1"
+	"$phongexponent" "10"
+	"$phongboost" "0.2"
+	"$phongfresnelranges" "[1 8 4]"
+	"$phongtint" "[0.9 0.9 1]" 
+	"$phongalbedotint" "1"
+
+	"$alphatest" "1"
+}
