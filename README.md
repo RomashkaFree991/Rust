@@ -1,59 +1,75 @@
-# Rust — оружие для Garry's Mod (ресурсы, разложенные по типам)
+# Rust для Garry's Mod: персонажи, одежда, оружие, анимации, текстуры, звуки, скрипты
 
-Содержимое трёх аддонов Steam Workshop (Garry's Mod, база TFA), распакованное из `.gma` и разложенное по категориям.
+Содержимое аддонов Steam Workshop (Garry's Mod), распакованное из `.gma` и разложенное по типам.
+Основа — игровой режим **gRust** и контент-паки **GRust Server Content** (zohart), плюс паки оружия и костюмов от Darky.
 
-| Workshop ID | Аддон | Файлов |
+| Workshop ID | Аддон | Что даёт |
 |---|---|---|
-| [2782092042](https://steamcommunity.com/sharedfiles/filedetails/?id=2782092042) | [TFA] Rust Melee (Throwable!) | 349 |
-| [2529785777](https://steamcommunity.com/sharedfiles/filedetails/?id=2529785777) | [TFA][AT] Rust Firearms | 782 |
-| [2529802557](https://steamcommunity.com/sharedfiles/filedetails/?id=2529802557) | [TFA][AT] Rust Explosives | 252 |
-| [2395395483](https://steamcommunity.com/sharedfiles/filedetails/?id=2395395483) | Rust Hazmat Suit PM/Ragdoll — обычный хазмат | 24 |
-| [2743974910](https://steamcommunity.com/sharedfiles/filedetails/?id=2743974910) | Rust Arctic Suit PM/Ragdoll — арктический хазмат | 34 |
-| [2659607667](https://steamcommunity.com/sharedfiles/filedetails/?id=2659607667) | Rust Nomad Suit PM/Ragdoll — костюм кочевника | 27 |
-| [2659610837](https://steamcommunity.com/sharedfiles/filedetails/?id=2659610837) | Rust Spacesuit PM/Ragdoll — скафандр | 21 |
-| [2467846835](https://steamcommunity.com/sharedfiles/filedetails/?id=2467846835) | Rust Scientist Nextbot/PM/Ragdoll — учёный (+ NPC) | 44 |
-| [2815506728](https://steamcommunity.com/sharedfiles/filedetails/?id=2815506728) | Rust c_hands — обычные руки персонажа | 23 |
+| [3636622724](https://steamcommunity.com/sharedfiles/filedetails/?id=3636622724) | gRust — Rust in Garry's Mod | код режима, оружие, инструменты, постройки, окружение, звуки |
+| [3188160030](https://steamcommunity.com/sharedfiles/filedetails/?id=3188160030) | [GRust] Server Content — Models | базовый персонаж, ~70 предметов одежды и брони, постройки, лут |
+| [3188161638](https://steamcommunity.com/sharedfiles/filedetails/?id=3188161638) | [GRust] Server Content — Materials | текстуры одежды и мира, иконки, UI |
+| [3188165440](https://steamcommunity.com/sharedfiles/filedetails/?id=3188165440) | [GRust] Server Content — Sounds | звуки игрока, интерфейса, построек, оружия |
+| [2529785777](https://steamcommunity.com/sharedfiles/filedetails/?id=2529785777) | [TFA][AT] Rust Firearms | огнестрел (TFA) |
+| [2529802557](https://steamcommunity.com/sharedfiles/filedetails/?id=2529802557) | [TFA][AT] Rust Explosives | взрывчатка (TFA) |
+| [2782092042](https://steamcommunity.com/sharedfiles/filedetails/?id=2782092042) | [TFA] Rust Melee (Throwable!) | ближний бой, луки (TFA) |
+| [2395395483](https://steamcommunity.com/sharedfiles/filedetails/?id=2395395483) | Rust Hazmat Suit PM | хазмат |
+| [2743974910](https://steamcommunity.com/sharedfiles/filedetails/?id=2743974910) | Rust Arctic Suit PM | арктический хазмат |
+| [2659607667](https://steamcommunity.com/sharedfiles/filedetails/?id=2659607667) | Rust Nomad Suit PM | костюм кочевника |
+| [2659610837](https://steamcommunity.com/sharedfiles/filedetails/?id=2659610837) | Rust Spacesuit PM | скафандр |
+| [2467846835](https://steamcommunity.com/sharedfiles/filedetails/?id=2467846835) | Rust Scientist Nextbot/PM | учёный + NPC |
+| [2815506728](https://steamcommunity.com/sharedfiles/filedetails/?id=2815506728) | Rust c_hands | руки |
 
-Для оружия в игре нужен [TFA Base](https://steamcommunity.com/sharedfiles/filedetails/?id=415143062).
-Все права на модели, текстуры и звуки принадлежат их авторам (оригинальные ресурсы — Facepunch Studios / Rust, порт — автор аддонов в Workshop).
+Все права на ресурсы принадлежат их авторам (оригинал — Facepunch Studios / Rust; порты — авторы аддонов).
+Автор GRust Server Content указывает, что часть предметов разрешено использовать только в режиме GRust.
 
 ## Структура
 
 ```
-characters/models/<персонаж>/     модели игрока (playermodel/ragdoll): hazmat, arctic_hazmat, nomad, spacesuit, scientist
-characters/arms/<персонаж>/       руки от первого лица для каждого костюма + human (обычные руки)
-textures/characters/<персонаж>/   текстуры костюмов (archazmat = арктический хазмат, chands = руки)
-sounds/scientist/                 голос учёного
-animations/viewmodels/<оружие>/   c_*.mdl (+.vvd/.vtx) — модели от первого лица, в них зашиты все анимации
-models/weapons/<оружие>/          w_*.mdl — модели в мире (в руках у игрока / на земле), с LOD и .phy
-models/attachments/<модуль>/      модули: прицелы, глушитель, фонарик, лазер, дульные насадки
-models/ammo/<снаряд>/             стрелы, ракеты, гильзы, гранаты подствольника
-textures/weapons/<оружие>/        .vtf (albedo / normal / specular / AO) + .vmt
-sounds/weapons/                   звуки стрельбы, перезарядки, ударов, бросков
-sounds/distant/                   дальние звуки выстрелов и взрывов
-sounds/loops/                     зацикленные .wav (горение, полёт стрелы, двигатель ракеты)
-particles/                        эффекты взрывов/огня (.pcf) и их текстуры
-icons/spawnmenu|hud|attachments/  иконки для меню спавна, HUD и модулей
-lua/                              код оружия, сущностей и модулей (TFA)
-manifest.csv                      соответствие: путь в репозитории → исходный путь в аддоне → ID пака
-tools/                            скрипты распаковки, сортировки и обратной сборки
+characters/models/<персонаж>/    модели игрока: rust_model (обычный голый персонаж), hazmat, hazmat_grust,
+                                 arctic_hazmat, nomad, spacesuit, scientist, scientist_grust, heavy_scientist,
+                                 jump_suit, ninja_hood, gingerbread
+characters/clothing/<предмет>/   одежда и броня (~70): головные уборы, маски, куртки, штаны, обувь, перчатки,
+                                 костяная/деревянная/металлическая/дорожная броня, тяжёлая броня, водолазное снаряжение,
+                                 рюкзаки, костюмы (кролик, курица, лошадь, пасхальный, призрак) и т.д.
+characters/arms/<что>/           руки от первого лица для костюмов и одежды (c_arms_human — обычные)
+animations/viewmodels/<оружие>/  модели от первого лица c_* — внутри них все анимации (оружие и инструменты)
+models/weapons/<оружие>/         модели оружия в мире (w_*)
+models/attachments/<модуль>/     прицелы, глушители, фонарик, лазер и т.д.
+models/ammo/<снаряд>/            стрелы, ракеты, гильзы, патроны
+models/world/...                 постройки, деплоиблы, лут, ящики, деревья, руда, транспорт, окружение
+textures/characters/             текстуры персонажей и одежды (кожа, лицо, глаза, все предметы одежды)
+textures/weapons/                текстуры оружия
+textures/world/                  текстуры построек и окружения
+textures/effects/                декали, оверлеи, спрайты, эффекты
+icons/                           иконки предметов, инвентаря, HUD, UI
+sounds/                          звуки по категориям: player, weapons, footsteps, building, ui, vehicles, music...
+particles/                       эффекты (.pcf) и их текстуры
+scripts/gamemodes/rust/          код игрового режима gRust (Lua)
+scripts/lua/                     код оружия TFA, персонажей и NPC
+ui/fonts/                        шрифты интерфейса
+manifest.csv                     путь в репозитории → исходный путь в игре → ID пака
+tools/                           скрипты: распаковка .gma, сортировка, обратная сборка
 ```
 
-> В движке Source анимации не хранятся отдельными файлами — они скомпилированы внутрь `.mdl`.
-> Поэтому в `animations/` лежат viewmodel‑модели (`c_*`), содержащие анимации от первого лица.
-> Извлечь их в `.smd` можно декомпилятором Crowbar.
+> В движке Source анимации не хранятся отдельно — они скомпилированы внутрь `.mdl`.
+> Анимации от первого лица — в `animations/viewmodels`, анимации тела игрока — внутри моделей персонажей.
+> Вытащить их в `.smd` можно декомпилятором Crowbar.
 
-## Как собрать обратно в аддон
+## Как собрать обратно
 
-Файлы разложены не по путям движка, поэтому напрямую в `garrysmod/addons` их класть нельзя. Соберите:
+Разложенные файлы не лежат по путям движка, поэтому соберите их:
 
 ```bash
-python3 tools/build_addon.py "<путь к GarrysMod>/garrysmod/addons/rust_weapons"
+python3 tools/build_addon.py "<путь к GarrysMod>/garrysmod/addons/rust_content"
 ```
 
-Скрипт восстановит исходную структуру (`models/`, `materials/`, `sound/`, `particles/`, `lua/`) по `manifest.csv`.
+Скрипт восстановит исходную структуру (`models/`, `materials/`, `sound/`, `particles/`, `resource/`, `lua/`, `gamemodes/rust/`) по `manifest.csv`.
 
 ## Совпадающие файлы
 
-Часть файлов с одинаковым путём есть сразу в нескольких паках (`fire_arrow`, общие звуки вроде `deploy.mp3`, дальние звуки взрывов).
-Оставлена версия из более нового пака (порядок: Firearms → Explosives → Melee) — так же, как это происходит в игре при установке всех трёх.
+Многие файлы (оружие Darky, хазмат, учёный) есть сразу в нескольких паках. Оставлена версия из более позднего пака
+в порядке: паки Darky → gRust → GRust Server Content. Так же происходит в игре, когда установлено всё сразу.
+Если разные исходные файлы попадали в одно место, второй лежит в подпапке `grust/` или `zohart/`.
+
+Не включён пак **[GRust] Server Content — Skins** (3188167084, ~775 МБ): это скины от мастерской Rust,
+и их разрешено использовать только в режиме GRust.

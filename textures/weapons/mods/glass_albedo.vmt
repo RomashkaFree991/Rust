@@ -1,6 +1,0 @@
-"VertexlitGeneric"
-{
-	"$basetexture" "models/darky_m/rust_weapons/mods/glass_albedo"
-	"$alphatest" 1
-	"$translucent" 1
-}

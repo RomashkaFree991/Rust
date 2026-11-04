@@ -1,0 +1,9 @@
+"rust"
+{
+    "base"          "base"
+    "title"         "gRust"
+    "maps"          "^rust_"
+    "category"      "pvp"
+    "menusystem"    "1"
+    "workshopid"    "3636622724"
+}
