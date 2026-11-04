@@ -1,0 +1,6 @@
+"VertexLitGeneric"
+{
+   "$basetexture"   "models/darky_m/rust_weapons/melee/stone_hatchet_diffuse"
+   "$bumpmap"       "models/darky_m/rust_weapons/melee/stone_hatchet_normal"
+$alphatest 1
+}

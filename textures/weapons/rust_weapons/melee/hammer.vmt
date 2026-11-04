@@ -1,0 +1,5 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/darky_m/rust_weapons/melee/Hammer_Colour"
+	"$bumpmap" "models/darky_m/rust_weapons/melee/Hammer_Nomals"
+}

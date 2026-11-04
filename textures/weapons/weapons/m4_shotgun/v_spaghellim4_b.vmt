@@ -1,0 +1,21 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/grust/vanguard/weapons/m4_shotgun/v_spaghellim4_b_diff"
+	"$bumpmap" "models/grust/vanguard/weapons/m4_shotgun/v_spaghellim4_b_nrm"
+
+	"$envmap" "env_cubemap"
+	"$envmaptint" "[ 0.005 0.005 0.005 ]"
+	"$normalmapalphaenvmapmask" "1"
+
+	"$ambientocclusion" "1"
+	"$ambientoccltexture" "models/grust/vanguard/weapons/m4_shotgun/v_spaghellim4_b_ao"
+
+	"$halflambert" "1"
+
+	"$phong" "1"
+	"$phongexponent" "30"
+	"$phongboost" "0.1"
+	"$phongfresnelranges" "[1 8 4]"
+	"$phongtint" "[0.9 0.9 1]" 
+	"$phongalbedotint" "1"
+}

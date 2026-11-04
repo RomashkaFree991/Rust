@@ -1,0 +1,11 @@
+"LightmappedGeneric"
+{
+	"$basetexture" "decals/blunt_wood_diff"
+
+	"$translucent" "1"
+
+	"$decal" "1"
+	"$decalscale" "0.025"
+
+	"$modelmaterial" "decals/blunt_wood_model"
+}

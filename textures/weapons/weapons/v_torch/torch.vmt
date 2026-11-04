@@ -1,0 +1,19 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/weapons/v_torch/torch_diff"
+	"$bumpmap" "models/weapons/v_torch/torch_nrm"
+
+	"$envmap" "env_cubemap"
+	"$envmaptint" "[ 0.0125 0.0125 0.0125 ]"
+	"$normalmapalphaenvmapmask" "1"
+
+	"$halflambert" "1"
+	"$alphatest" "1"
+
+	"$phong" "1"
+	"$phongexponent" "10"
+	"$phongboost" "0.1"
+	"$phongfresnelranges" "[1 8 4]"
+	"$phongtint" "[0.9 0.9 1]" 
+	"$phongalbedotint" "1"
+}

@@ -1,0 +1,8 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/darky_m/rust_weapons/mods/lens_albedo"
+	"$bumpmap" "models/darky_m/rust_weapons/mods/muzzleboost_normal"
+	"$detail" "models/darky_m/rust_weapons/mods/lens_emmisive"
+	"$alphatest" 1
+	"$translucent" 1
+}

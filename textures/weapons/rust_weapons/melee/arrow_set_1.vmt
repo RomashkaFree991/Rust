@@ -1,0 +1,19 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/darky_m/rust_weapons/melee/arrow_set_1_albedo"
+	"$bumpmap" "models/darky_m/rust_weapons/melee/arrow_set_1_normals"
+"$normalmapalphaenvmapmask" "1"
+"$envmaptint" "[ 0.1 0.1 0.2 ]"
+
+"$phong"     "1"
+"$phongexponent"  "30"
+"$phongboost"   "0.1"
+"$phongfresnelranges"   "[1 9 3]"
+"$phongtint"                   "[0.7 0.9 1]" 
+"$phongalbedotint" "1"
+
+"$rimlight" "1"
+"$rimlightexponent" "26"
+"$rimlightboost" "0.1"
+
+}

@@ -1,0 +1,5 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/darky_m/rust_weapons/melee/jackhammer"
+	"$bumpmap" "models/darky_m/rust_weapons/melee/jackhammer_nrm"
+}
