@@ -1,0 +1,8 @@
+"Patch"
+{
+	include "materials/models/zohart/loot/patrol_helicopter_int.vmt"
+	insert
+	{
+		"$color2" "{10 10 10}"
+	}
+}

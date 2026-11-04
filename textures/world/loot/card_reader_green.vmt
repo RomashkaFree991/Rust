@@ -1,0 +1,9 @@
+"Patch"
+{
+	include "materials/models/zohart/loot/card_reader.vmt"
+	insert
+	{
+		"$EmissiveBlendEnabled" "1"
+		"$EmissiveBlendTint" "[0.1 1.25 0.1]"
+	}
+}

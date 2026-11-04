@@ -1,0 +1,6 @@
+"VertexLitGeneric"
+{
+ 	"$basetexture"   "models/zohart/vehicles/main_rotor_blur"
+	"$translucent" "1"
+
+}

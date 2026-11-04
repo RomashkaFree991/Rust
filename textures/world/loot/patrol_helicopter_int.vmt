@@ -1,0 +1,20 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/zohart/loot/patrol_helicopter_int_diff"
+	"$bumpmap" "models/zohart/loot/patrol_helicopter_int_nrm"
+
+	"$color2" "{90 90 90}"
+
+	"$envmap" "env_cubemap"
+	"$envmaptint" "[ 0.01 0.01 0.01 ]"
+	"$normalmapalphaenvmapmask" "1"
+
+	"$halflambert" "1"
+
+	"$phong" "1"
+	"$phongexponent" "40"
+	"$phongboost" "0.1"
+	"$phongfresnelranges" "[1 8 4]"
+	"$phongtint" "[0.9 0.9 1]" 
+	"$phongalbedotint" "1"
+}

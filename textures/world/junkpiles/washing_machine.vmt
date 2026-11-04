@@ -1,0 +1,21 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/zohart/junkpiles/washing_machine_diff"
+	"$bumpmap" "models/zohart/junkpiles/washing_machine_nrm"
+
+	"$envmap" "env_cubemap"
+	"$envmaptint" "[ 0.15 0.15 0.15 ]"
+	"$normalmapalphaenvmapmask" "1"
+
+	"$ambientocclusion" "1"
+	"$ambientoccltexture" "models/zohart/junkpiles/washing_machine_ao"
+
+	"$halflambert" "1"
+
+	"$phong" "1"
+	"$phongexponent" "100"
+	"$phongboost" "1"
+	"$phongfresnelranges" "[1 8 4]"
+	"$phongtint" "[0.9 0.9 1]" 
+	"$phongalbedotint" "1"
+}

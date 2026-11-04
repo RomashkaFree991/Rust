@@ -1,0 +1,5 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/electricity/ceiling_light_diff"
+	"$bumpmap" "models/electricity/ceiling_light_nrm"
+}

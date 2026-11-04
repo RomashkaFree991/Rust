@@ -1,0 +1,5 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/zohart/loot/ch47_glass_diff"
+	"$translucent" "1"
+}

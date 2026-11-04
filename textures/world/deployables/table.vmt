@@ -1,0 +1,21 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/zohart/deployables/table_diff"
+	"$bumpmap" "models/zohart/deployables/table_nrm"
+
+	"$envmap" "env_cubemap"
+	"$envmaptint" "[ 0.0125 0.0125 0.0125 ]"
+	"$normalmapalphaenvmapmask" "1"
+
+	"$ambientocclusion" "1"
+	"$ambientoccltexture" "models/zohart/deployables/table_ao"
+
+	"$halflambert" "1"
+
+	"$phong" "1"
+	"$phongexponent" "30"
+	"$phongboost" "0.05"
+	"$phongfresnelranges" "[1 8 4]"
+	"$phongtint" "[0.9 0.9 1]" 
+	"$phongalbedotint" "1"
+}

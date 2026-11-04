@@ -1,0 +1,27 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/zohart/loot/fusebox_diff"
+	"$bumpmap" "models/zohart/loot/fusebox_nrm"
+
+	"$envmap" "env_cubemap"
+	"$envmaptint" "[ 0.02 0.02 0.02 ]"
+	"$normalmapalphaenvmapmask" "1"
+
+	"$EmissiveBlendEnabled" "1"
+	"$EmissiveBlendStrength" "1"
+	"$EmissiveBlendTexture" "vgui/white"
+	"$EmissiveBlendBaseTexture" "models/zohart/loot/fusebox_emission"
+	"$EmissiveBlendTint" "[1 1 1]"
+
+	"$ambientocclusion" "1"
+	"$ambientoccltexture" "models/zohart/loot/fusebox_ao"
+
+	"$halflambert" "1"
+
+	"$phong" "1"
+	"$phongexponent" "40"
+	"$phongboost" "0.2"
+	"$phongfresnelranges" "[1 8 4]"
+	"$phongtint" "[0.9 0.9 1]" 
+	"$phongalbedotint" "1"
+}

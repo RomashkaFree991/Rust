@@ -1,0 +1,14 @@
+"Refract"
+{
+ 	"$model" 1
+	"$nowritez" 1
+ 	"$refractamount" "3"
+	"$REFRACTTINT" "{250 250 250}"
+ 	"$normalmap" "models/shadertest/shieldnoise0_normal"
+ 	"$surfaceprop" "water"
+	"$bumpframe" "0"
+	"$envmap" "env_cubemap"
+	"$envmaptint" "{60 60 60}"
+
+	"$REFRACTTINTTEXTURE" "models/zohart/deployables/paddling_pool_water"
+}

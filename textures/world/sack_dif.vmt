@@ -1,0 +1,6 @@
+"VertexlitGeneric"
+{
+	$basetexture "models/darky_m/rust/BurlapSackColor"
+	$bumpmap "models/darky_m/rust/BurlapSackNormal"
+	$nodecal "1"	
+}

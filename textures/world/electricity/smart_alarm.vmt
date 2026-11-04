@@ -1,0 +1,13 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/electricity/smart_alarm_diff"
+	"$bumpmap" "models/electricity/smart_alarm_nrm"
+
+	"$phong" "1"
+	"$phongboost" "1"
+	"$phongexponent" "1"
+
+	"$phongfresnelranges" "[0.1 0.1 0.1]"
+
+	"$alphatest" "1"
+}

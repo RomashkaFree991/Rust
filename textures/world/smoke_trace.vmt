@@ -1,0 +1,6 @@
+"UnLitGeneric"
+{
+	"$basetexture"   "models/darky_m/rust/smoke_trace"
+	"$model" "1"
+	"$additive" "1"
+}

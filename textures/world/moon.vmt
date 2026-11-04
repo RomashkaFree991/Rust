@@ -1,0 +1,6 @@
+"UnlitGeneric"
+{
+	"$basetexture" "models/zohart/moon"
+	"$translucent" "1"
+	"$color" "{120 110 120}"
+}

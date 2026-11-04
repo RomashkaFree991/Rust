@@ -1,0 +1,11 @@
+"Patch"
+{
+	include "materials/models/zohart/loot/security_door.vmt"
+	insert
+	{
+		"$basetexture" "models/zohart/loot/security_door_translucent"
+		"$envmaptint" "[ 0.05 0.05 0.05 ]"
+		"$translucent" "1"
+		"$phongboost" "0.75"
+	}
+}

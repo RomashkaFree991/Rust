@@ -1,0 +1,7 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/zohart/structures/building_parts_atlas_diff"
+	"$bumpmap" "models/zohart/structures/building_parts_atlas_nrm"
+
+	"$halflambert" "1"
+}

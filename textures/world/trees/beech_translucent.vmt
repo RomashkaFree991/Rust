@@ -1,0 +1,10 @@
+"Patch"
+{
+	include "materials/models/zohart/trees/beech.vmt"
+	insert
+	{
+		"$alphatest" "1"
+		"$alphatestreference" "0.4"
+		"$nocull" "1"
+	}
+}

@@ -1,0 +1,6 @@
+"VertexLitGeneric"
+{
+ 	"$basetexture"   "models/darky_m&bypolat/rust/minicopter/blurred_main_rotor"
+	"$translucent" "1"
+
+}

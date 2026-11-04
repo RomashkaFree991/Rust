@@ -1,0 +1,7 @@
+"VertexLitGeneric"
+{
+    "$basetexture" "models/zohart/tools/electric_cable"
+    "$bumpmap" "models/zohart/tools/electric_cable_normal"
+			"$halflambert" "1"
+			"$ambientocclusion" "1"
+}

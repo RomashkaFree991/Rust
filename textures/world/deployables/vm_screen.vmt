@@ -1,0 +1,7 @@
+"VertexLitGeneric"
+		{
+			"$basetexture" "models/zohart/deployables/vm_screen"
+			"$bumpmap" "models/zohart/deployables/vm_screen_normal"
+			"$alphatest" "1"
+			"$allowalphatocoverage" "1"
+		}

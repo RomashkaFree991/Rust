@@ -1,0 +1,7 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/zohart/loot/patrol_helicopter_glass_diff"
+
+	"$translucent" "1"
+	"$nocull" "1"
+}

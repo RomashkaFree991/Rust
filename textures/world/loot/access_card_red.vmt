@@ -1,0 +1,9 @@
+"Patch"
+{
+	include "materials/models/zohart/loot/access_card.vmt"
+	insert
+	{
+		"$blendtintbybasealpha" "1"
+		"$color2" "{255 90 90}"
+	}
+}

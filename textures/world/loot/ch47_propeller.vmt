@@ -1,0 +1,25 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/zohart/loot/ch47_propeller_diff"
+	"$translucent" "1"
+	"$halflambert" "1"
+
+	"$basetexturetransformcenter"      "[0.5078125 0.509765625]"
+	"$basetexturetransformrotation"    "0"
+
+	"Proxies"
+	{
+		"LinearRamp"
+		{
+			"rate" "2000"
+			"initialValue" "0"
+			"resultVar" "$basetexturetransformrotation"
+		}
+		"TextureTransform"
+		{
+			"centerVar"     "$basetexturetransformcenter"
+			"rotateVar"     "$basetexturetransformrotation"
+			"resultVar"     "$basetexturetransform"
+		}
+	}
+}

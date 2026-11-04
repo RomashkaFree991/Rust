@@ -1,0 +1,7 @@
+"VertexLitGeneric"
+{
+    "$basetexture" "models/zohart/tools/hammer"
+    "$bumpmap" "models/zohart/tools/hammer_normal"
+			"$halflambert" "1"
+			"$ambientocclusion" "1"
+}

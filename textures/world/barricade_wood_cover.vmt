@@ -1,0 +1,18 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/darky_m/rust/Barricade_Wood_Cover_diff"
+	"$bumpmap" "models/darky_m/rust/Barricade_Wood_Cover_norm"
+	"$envmap" "env_cubemap"
+	"$normalmapalphaenvmapmask" "1"
+    "$envmaptint"				  "[0.01 0.01 0.010]"
+    "$envmapcontrast"             "1"
+
+
+	"$surfaceprop" "wood"
+	"$multipass" 0
+
+	"$phong" "1"
+	"$phongexponent" "1"
+	"$phongboost" "1"
+	"$phongfresnelranges"	"[0.4 0.9 2.6]"
+}

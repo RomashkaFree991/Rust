@@ -1,0 +1,16 @@
+"VertexLitGeneric"
+{
+ 	"$basetexture" "models/zohart/structures/ghost"
+	"$bumpmap"    "models/zohart/structures/ghost_normal"
+	
+	"$translucent" "1"
+	"$phong" "0"
+	"$phongboost" "2"
+	"$phongexponent" "2"
+
+	"$phongfresnelranges" "[0.01 0.35 3.0]"
+	"$alpha" "0.5"
+
+	"$halflambert" "1"
+	"$ambientocclusion" "1"
+}

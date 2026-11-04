@@ -1,0 +1,10 @@
+"Patch"
+{
+	include "materials/models/zohart/trees/palm.vmt"
+	insert
+	{
+		"$alphatest" "1"
+		"$nocull" "1"
+	}
+}
+

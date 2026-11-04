@@ -1,0 +1,18 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/zohart/loot/access_card_diff"
+	"$bumpmap" "models/zohart/loot/access_card_nrm"
+
+	"$envmap" "env_cubemap"
+	"$envmaptint" "[ 0.0125 0.0125 0.0125 ]"
+	"$normalmapalphaenvmapmask" "1"
+
+	"$halflambert" "1"
+
+	"$phong" "1"
+	"$phongexponent" "100"
+	"$phongboost" "0.25"
+	"$phongfresnelranges" "[1 8 4]"
+	"$phongtint" "[0.9 0.9 1]" 
+	"$phongalbedotint" "1"
+}

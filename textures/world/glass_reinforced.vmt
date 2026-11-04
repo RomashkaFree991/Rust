@@ -1,0 +1,18 @@
+"VertexLitGeneric"
+{
+   "$basetexture"   "models/darky_m/rust/glass_reinforced_diff"
+   "$bumpmap"      "models/darky_m/rust/glass_reinforced_nrm"
+"$normalmapalphaenvmapmask" "1"
+"$envmaptint" "[ 0.1 0.1 0.2 ]"
+
+"$phong"     "1"
+"$phongexponent"  "50"
+"$phongboost"   "0.1"
+"$phongfresnelranges"   "[1 9 3]"
+"$phongtint"                   "[0.7 0.9 1]" 
+"$phongalbedotint" "1"
+//"$halflambert" "1"
+$translucent 1
+$surfaceprop glass
+
+}

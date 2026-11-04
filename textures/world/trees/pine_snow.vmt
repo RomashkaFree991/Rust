@@ -1,0 +1,10 @@
+"Patch"
+{
+	include "materials/models/zohart/trees/pine.vmt"
+	insert
+	{
+		"$basetexture" "models/zohart/trees/pine_snow_diff"
+	}
+}
+
+

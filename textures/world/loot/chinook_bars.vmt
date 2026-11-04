@@ -1,0 +1,16 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/zohart/loot/chinook_bars_diff"
+	"$bumpmap" "models/zohart/loot/chinook_bars_nrm"
+
+	"$halflambert" "1"
+	"$translucent" "1"
+	"$nocull" "1"
+
+	"$phong" "1"
+	"$phongexponent" "10"
+	"$phongboost" "1"
+	"$phongfresnelranges" "[1 8 4]"
+	"$phongtint" "[0.9 0.9 1]" 
+	"$phongalbedotint" "1"
+}

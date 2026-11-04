@@ -1,0 +1,5 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/zohart/trees/cactus_translucent"
+	"$translucent" "1"
+}

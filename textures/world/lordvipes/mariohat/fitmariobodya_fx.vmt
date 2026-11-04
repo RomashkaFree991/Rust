@@ -1,0 +1,9 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/lordvipes/mariohat/FitMario_BodyA"
+
+ 	"$phong" "1"
+	"$phongexponent" "2"
+	"$phongboost"	".22"
+	"$phongfresnelranges"	"[1 1 1]"
+}

@@ -1,0 +1,7 @@
+"VertexLitGeneric"
+{
+    "$basetexture" "models/zohart/tools/keycard"
+    "$bumpmap" "models/zohart/tools/keycard_normal"
+			"$halflambert" "1"
+			"$ambientocclusion" "1"
+}

@@ -1,0 +1,22 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/zohart/deployables/beach_chair_transparent_diff"
+	"$bumpmap" "models/zohart/deployables/beach_chair_transparent_nrm"
+
+	"$envmap" "env_cubemap"
+	"$envmaptint" "[ 0.015 0.015 0.015 ]"
+	"$normalmapalphaenvmapmask" "1"
+
+	"$ambientocclusion" "1"
+	"$ambientoccltexture" "models/zohart/deployables/beach_chair_transparent_ao"
+
+	"$halflambert" "1"
+	"$alphatest" "1"
+
+	"$phong" "1"
+	"$phongexponent" "10"
+	"$phongboost" "0.1"
+	"$phongfresnelranges" "[1 8 4]"
+	"$phongtint" "[0.9 0.9 1]"
+	"$phongalbedotint" "1"
+}

@@ -1,0 +1,12 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/darky_m/rust_building/build_ghost_disallow"
+	"$bumpmap"    "models/darky_m/rust_building/build_ghost_nm"
+
+	"$translucent" "1"
+	"$phong" "1"
+	"$phongboost" "2"
+	"$phongexponent" "2"
+
+	"$phongfresnelranges" "[0.01 0.35 3.0]"
+}

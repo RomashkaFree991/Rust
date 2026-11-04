@@ -1,0 +1,7 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/storage/stash/albedo"
+	"$bumpmap" "models/storage/stash/normal"
+    "$ambientocclusion" "models/storage/stash/ao"
+    "$envmapmask" "models/storage/stash/specular"
+}

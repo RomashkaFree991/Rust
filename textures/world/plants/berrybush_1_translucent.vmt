@@ -1,0 +1,7 @@
+"Patch"
+{
+	include "materials\models\zohart\plants\berrybush_translucent.vmt"
+	insert {
+		"$detailtint" "{122 151 208}"
+	}
+}

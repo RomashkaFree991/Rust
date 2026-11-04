@@ -1,0 +1,6 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/zohart/junkpiles/terrain_snow"
+			"$halflambert" "1"
+			"$ambientocclusion" "1"
+}
