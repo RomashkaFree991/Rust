@@ -1,0 +1,238 @@
+{
+ "ak47u": {
+  "seqs": {
+   "fire1": {
+    "anim": "fire1",
+    "frames": 39,
+    "fps": 45.0,
+    "activity": "ACT_VM_PRIMARYATTACK",
+    "events": []
+   },
+   "fire2": {
+    "anim": "fire2",
+    "frames": 39,
+    "fps": 45.0,
+    "activity": "ACT_VM_PRIMARYATTACK",
+    "events": []
+   },
+   "fire_ads": {
+    "anim": "fire_ads",
+    "frames": 39,
+    "fps": 45.0,
+    "activity": "ACT_VM_PRIMARYATTACK_1",
+    "events": []
+   },
+   "reload": {
+    "anim": "reload",
+    "frames": 277,
+    "fps": 62.0,
+    "activity": "ACT_VM_RELOAD",
+    "events": [
+     {
+      "t": 0.452,
+      "sounds": [
+       "res://assets/sounds/ak74u-reload-start.mp3"
+      ]
+     },
+     {
+      "t": 1.774,
+      "sounds": [
+       "res://assets/sounds/ak74u-insert-magazine.mp3"
+      ]
+     },
+     {
+      "t": 3.065,
+      "sounds": [
+       "res://assets/sounds/ak74u-bolt-action.mp3"
+      ]
+     }
+    ]
+   },
+   "draw": {
+    "anim": "draw",
+    "frames": 83,
+    "fps": 60.0,
+    "activity": "ACT_VM_DRAW",
+    "events": [
+     {
+      "t": 0.017,
+      "sounds": [
+       "res://assets/sounds/ak74u-deploy.mp3"
+      ]
+     },
+     {
+      "t": 0.4,
+      "sounds": [
+       "res://assets/sounds/ak74u-bolt-action.mp3"
+      ]
+     }
+    ]
+   }
+  },
+  "sounds": {
+   "ak74u-attack": [
+    "res://assets/sounds/ak74u-attack-1.mp3",
+    "res://assets/sounds/ak74u-attack-2.mp3",
+    "res://assets/sounds/ak74u-attack-3.mp3"
+   ]
+  }
+ },
+ "thompson": {
+  "seqs": {
+   "fire": {
+    "anim": "fire",
+    "frames": 33,
+    "fps": 45.0,
+    "activity": "ACT_VM_PRIMARYATTACK",
+    "events": []
+   },
+   "fire_ads": {
+    "anim": "fire_ads",
+    "frames": 33,
+    "fps": 45.0,
+    "activity": "ACT_VM_PRIMARYATTACK_1",
+    "events": []
+   },
+   "reload": {
+    "anim": "reload",
+    "frames": 237,
+    "fps": 52.0,
+    "activity": "ACT_VM_RELOAD",
+    "events": [
+     {
+      "t": 0.058,
+      "sounds": [
+       "res://assets/sounds/rifle_jingle-2.mp3"
+      ]
+     },
+     {
+      "t": 0.327,
+      "sounds": [
+       "res://assets/sounds/thompson-remove-clip.mp3"
+      ]
+     },
+     {
+      "t": 1.923,
+      "sounds": [
+       "res://assets/sounds/thompson-insert-clip.mp3"
+      ]
+     },
+     {
+      "t": 3.173,
+      "sounds": [
+       "res://assets/sounds/thompson-bolt-action.mp3"
+      ]
+     }
+    ]
+   },
+   "draw": {
+    "anim": "draw",
+    "frames": 89,
+    "fps": 60.0,
+    "activity": "ACT_VM_DRAW",
+    "events": [
+     {
+      "t": 0.017,
+      "sounds": [
+       "res://assets/sounds/thompson-deploy.mp3"
+      ]
+     },
+     {
+      "t": 0.517,
+      "sounds": [
+       "res://assets/sounds/thompson-safety-off.mp3"
+      ]
+     }
+    ]
+   }
+  },
+  "sounds": {
+   "thompson-attack": [
+    "res://assets/sounds/thompson-attack-1.mp3",
+    "res://assets/sounds/thompson-attack-2.mp3",
+    "res://assets/sounds/thompson-attack-3.mp3"
+   ]
+  }
+ },
+ "python": {
+  "seqs": {
+   "fire": {
+    "anim": "fire",
+    "frames": 21,
+    "fps": 30.0,
+    "activity": "ACT_VM_PRIMARYATTACK",
+    "events": []
+   },
+   "fire_ads": {
+    "anim": "fire_ads",
+    "frames": 21,
+    "fps": 30.0,
+    "activity": "ACT_VM_PRIMARYATTACK_1",
+    "events": []
+   },
+   "dryfire": {
+    "anim": "dryfire",
+    "frames": 21,
+    "fps": 30.0,
+    "activity": "ACT_VM_DRYFIRE",
+    "events": []
+   },
+   "reload": {
+    "anim": "reload",
+    "frames": 234,
+    "fps": 61.0,
+    "activity": "ACT_VM_RELOAD",
+    "events": [
+     {
+      "t": 0.361,
+      "sounds": [
+       "res://assets/sounds/python-open-cylinder.mp3"
+      ]
+     },
+     {
+      "t": 1.016,
+      "sounds": [
+       "res://assets/sounds/python-eject-shells-002.mp3"
+      ]
+     },
+     {
+      "t": 2.377,
+      "sounds": [
+       "res://assets/sounds/python-insert-shells.mp3"
+      ]
+     },
+     {
+      "t": 3.016,
+      "sounds": [
+       "res://assets/sounds/python-close-cylinder.mp3"
+      ]
+     }
+    ]
+   },
+   "draw": {
+    "anim": "draw",
+    "frames": 74,
+    "fps": 60.0,
+    "activity": "ACT_VM_DRAW",
+    "events": [
+     {
+      "t": 0.017,
+      "sounds": [
+       "res://assets/sounds/python-deploy.mp3"
+      ]
+     }
+    ]
+   }
+  },
+  "sounds": {
+   "python-attack": [
+    "res://assets/sounds/python-attack-1.mp3",
+    "res://assets/sounds/python-attack-2.mp3",
+    "res://assets/sounds/python-attack-3.mp3"
+   ],
+   "python-dryfire": [
+    "res://assets/sounds/python-dryfire.mp3"
+   ]
+  }
+ }
+}
