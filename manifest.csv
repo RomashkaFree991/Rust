@@ -632,12 +632,12 @@ path,original_path,workshop_id
 "characters/models/hazmat/hazmat.phy","models/player/darky_m/rust/hazmat.phy",2395395483
 "characters/models/hazmat/hazmat.sw.vtx","models/player/darky_m/rust/hazmat.sw.vtx",2395395483
 "characters/models/hazmat/hazmat.vvd","models/player/darky_m/rust/hazmat.vvd",2395395483
-"characters/models/hazmat_grust/hazmat_grust.dx80.vtx","models/player/darky_m/rust/hazmat_grust.dx80.vtx",3188160030
-"characters/models/hazmat_grust/hazmat_grust.dx90.vtx","models/player/darky_m/rust/hazmat_grust.dx90.vtx",3188160030
-"characters/models/hazmat_grust/hazmat_grust.mdl","models/player/darky_m/rust/hazmat_grust.mdl",3188160030
-"characters/models/hazmat_grust/hazmat_grust.phy","models/player/darky_m/rust/hazmat_grust.phy",3188160030
-"characters/models/hazmat_grust/hazmat_grust.sw.vtx","models/player/darky_m/rust/hazmat_grust.sw.vtx",3188160030
-"characters/models/hazmat_grust/hazmat_grust.vvd","models/player/darky_m/rust/hazmat_grust.vvd",3188160030
+"characters/models/hazmat_v2/hazmat_v2.dx80.vtx","models/player/darky_m/rust/hazmat_grust.dx80.vtx",3188160030
+"characters/models/hazmat_v2/hazmat_v2.dx90.vtx","models/player/darky_m/rust/hazmat_grust.dx90.vtx",3188160030
+"characters/models/hazmat_v2/hazmat_v2.mdl","models/player/darky_m/rust/hazmat_grust.mdl",3188160030
+"characters/models/hazmat_v2/hazmat_v2.phy","models/player/darky_m/rust/hazmat_grust.phy",3188160030
+"characters/models/hazmat_v2/hazmat_v2.sw.vtx","models/player/darky_m/rust/hazmat_grust.sw.vtx",3188160030
+"characters/models/hazmat_v2/hazmat_v2.vvd","models/player/darky_m/rust/hazmat_grust.vvd",3188160030
 "characters/models/heavy_scientist/heavy_scientist.dx80.vtx","models/grust/vanguard/heavy_scientist.dx80.vtx",3188160030
 "characters/models/heavy_scientist/heavy_scientist.dx90.vtx","models/grust/vanguard/heavy_scientist.dx90.vtx",3188160030
 "characters/models/heavy_scientist/heavy_scientist.mdl","models/grust/vanguard/heavy_scientist.mdl",3188160030
@@ -670,12 +670,12 @@ path,original_path,workshop_id
 "characters/models/scientist/scientist.phy","models/player/darky_m/rust/scientist.phy",3636622724
 "characters/models/scientist/scientist.sw.vtx","models/player/darky_m/rust/scientist.sw.vtx",3636622724
 "characters/models/scientist/scientist.vvd","models/player/darky_m/rust/scientist.vvd",3636622724
-"characters/models/scientist_grust/scientist_grust.dx80.vtx","models/player/darky_m/rust/scientist_grust.dx80.vtx",3188160030
-"characters/models/scientist_grust/scientist_grust.dx90.vtx","models/player/darky_m/rust/scientist_grust.dx90.vtx",3188160030
-"characters/models/scientist_grust/scientist_grust.mdl","models/player/darky_m/rust/scientist_grust.mdl",3188160030
-"characters/models/scientist_grust/scientist_grust.phy","models/player/darky_m/rust/scientist_grust.phy",3188160030
-"characters/models/scientist_grust/scientist_grust.sw.vtx","models/player/darky_m/rust/scientist_grust.sw.vtx",3188160030
-"characters/models/scientist_grust/scientist_grust.vvd","models/player/darky_m/rust/scientist_grust.vvd",3188160030
+"characters/models/scientist_v2/scientist_v2.dx80.vtx","models/player/darky_m/rust/scientist_grust.dx80.vtx",3188160030
+"characters/models/scientist_v2/scientist_v2.dx90.vtx","models/player/darky_m/rust/scientist_grust.dx90.vtx",3188160030
+"characters/models/scientist_v2/scientist_v2.mdl","models/player/darky_m/rust/scientist_grust.mdl",3188160030
+"characters/models/scientist_v2/scientist_v2.phy","models/player/darky_m/rust/scientist_grust.phy",3188160030
+"characters/models/scientist_v2/scientist_v2.sw.vtx","models/player/darky_m/rust/scientist_grust.sw.vtx",3188160030
+"characters/models/scientist_v2/scientist_v2.vvd","models/player/darky_m/rust/scientist_grust.vvd",3188160030
 "characters/models/spacesuit/spacesuit.dx80.vtx","models/player/darky_m/rust/spacesuit.dx80.vtx",2659610837
 "characters/models/spacesuit/spacesuit.dx90.vtx","models/player/darky_m/rust/spacesuit.dx90.vtx",2659610837
 "characters/models/spacesuit/spacesuit.mdl","models/player/darky_m/rust/spacesuit.mdl",2659610837
@@ -1077,8 +1077,6 @@ path,original_path,workshop_id
 "icons/ui/compass_mask.png","materials/ui/compass_mask.png",3636622724
 "icons/ui/compass_strip.png","materials/ui/compass_strip.png",3636622724
 "icons/ui/grain.png","materials/ui/grain.png",3636622724
-"icons/ui/grust_logo.png","materials/ui/zohart/grust_logo.png",3188161638
-"icons/ui/grustplus_logo.png","materials/ui/zohart/grustplus_logo.png",3188161638
 "icons/ui/icons/add.png","materials/ui/zohart/icons/add.png",3188161638
 "icons/ui/icons/alert_edit.png","materials/ui/zohart/icons/alert_edit.png",3188161638
 "icons/ui/icons/ammo/ammo.grenadelauncher.buckshot.png","materials/ui/zohart/icons/ammo/ammo.grenadelauncher.buckshot.png",3188161638
@@ -1466,17 +1464,17 @@ path,original_path,workshop_id
 "icons/ui/images/bloodsplat3.png","materials/ui/zohart/images/bloodsplat3.png",3188161638
 "icons/ui/images/bloodsplat4.png","materials/ui/zohart/images/bloodsplat4.png",3188161638
 "icons/ui/images/center.png","materials/ui/zohart/images/center.png",3188161638
-"icons/ui/images/grustplus/error.png","materials/ui/zohart/images/grustplus/error.png",3188161638
-"icons/ui/images/grustplus/ok.png","materials/ui/zohart/images/grustplus/ok.png",3188161638
-"icons/ui/images/grustplus/step1.png","materials/ui/zohart/images/grustplus/step1.png",3188161638
-"icons/ui/images/grustplus/step2.png","materials/ui/zohart/images/grustplus/step2.png",3188161638
-"icons/ui/images/grustplus/step3.png","materials/ui/zohart/images/grustplus/step3.png",3188161638
 "icons/ui/images/hit_bl.png","materials/ui/zohart/images/hit_bl.png",3188161638
 "icons/ui/images/hit_br.png","materials/ui/zohart/images/hit_br.png",3188161638
 "icons/ui/images/hit_tl.png","materials/ui/zohart/images/hit_tl.png",3188161638
 "icons/ui/images/hit_tr.png","materials/ui/zohart/images/hit_tr.png",3188161638
 "icons/ui/images/map.png","materials/ui/zohart/images/map.png",3188161638
 "icons/ui/images/map_underground.png","materials/ui/zohart/images/map_underground.png",3188161638
+"icons/ui/images/plus/error.png","materials/ui/zohart/images/grustplus/error.png",3188161638
+"icons/ui/images/plus/ok.png","materials/ui/zohart/images/grustplus/ok.png",3188161638
+"icons/ui/images/plus/step1.png","materials/ui/zohart/images/grustplus/step1.png",3188161638
+"icons/ui/images/plus/step2.png","materials/ui/zohart/images/grustplus/step2.png",3188161638
+"icons/ui/images/plus/step3.png","materials/ui/zohart/images/grustplus/step3.png",3188161638
 "icons/ui/images/reticle_b.png","materials/ui/zohart/images/reticle_b.png",3188161638
 "icons/ui/images/reticle_l.png","materials/ui/zohart/images/reticle_l.png",3188161638
 "icons/ui/images/reticle_r.png","materials/ui/zohart/images/reticle_r.png",3188161638
@@ -1824,6 +1822,7 @@ path,original_path,workshop_id
 "icons/ui/items/workbench3.png","materials/ui/zohart/items/workbench3.png",3188161638
 "icons/ui/items/yellow.berry.png","materials/ui/zohart/items/yellow.berry.png",3188161638
 "icons/ui/logo_name.png","materials/ui/zohart/logo_name.png",3188161638
+"icons/ui/main_logo.png","materials/ui/zohart/grust_logo.png",3188161638
 "icons/ui/map.png","materials/ui/map.png",3636622724
 "icons/ui/overlays/bg_linear.png","materials/ui/zohart/overlays/bg_linear.png",3188161638
 "icons/ui/overlays/bg_linear_ltr.png","materials/ui/zohart/overlays/bg_linear_ltr.png",3188161638
@@ -1845,6 +1844,7 @@ path,original_path,workshop_id
 "icons/ui/overlays/poisoned.png","materials/ui/zohart/overlays/poisoned.png",3188161638
 "icons/ui/overlays/unavailable_slot.png","materials/ui/zohart/overlays/unavailable_slot.png",3188161638
 "icons/ui/overlays/vignette.png","materials/ui/zohart/overlays/vignette.png",3188161638
+"icons/ui/plus_logo.png","materials/ui/zohart/grustplus_logo.png",3188161638
 "icons/ui/tile_grid.png","materials/ui/tile_grid.png",3636622724
 "icons/ui/vending_machine_screen.png","materials/ui/vending_machine_screen.png",3636622724
 "icons/ui/zohart_logo.png","materials/ui/zohart/zohart_logo.png",3188161638
@@ -5725,7 +5725,7 @@ path,original_path,workshop_id
 "models/world/worldmodels/wood.sw.vtx","models/darky_m/rust/worldmodels/wood.sw.vtx",3636622724
 "models/world/worldmodels/wood.vvd","models/darky_m/rust/worldmodels/wood.vvd",3636622724
 "particles/csgo_fx.pcf","particles/csgo_fx.pcf",3188161638
-"particles/grust_particle.pcf","particles/grust_particle.pcf",3636622724
+"particles/main_particle.pcf","particles/grust_particle.pcf",3636622724
 "particles/rust.pcf","particles/rust.pcf",3636622724
 "particles/rust_zohart.pcf","particles/rust_zohart.pcf",3188161638
 "particles/textures/anim_vapor.vmt","materials/particles/anim_vapor.vmt",3188161638
@@ -5962,6 +5962,7 @@ path,original_path,workshop_id
 "scripts/gamemodes/rust/entities/weapons/rust_wiretool/init.lua","gamemodes/rust/entities/weapons/rust_wiretool/init.lua",3636622724
 "scripts/gamemodes/rust/entities/weapons/rust_wiretool/shared.lua","gamemodes/rust/entities/weapons/rust_wiretool/shared.lua",3636622724
 "scripts/gamemodes/rust/entities/weapons/rust_woodenspear.lua","gamemodes/rust/entities/weapons/rust_woodenspear.lua",3636622724
+"scripts/gamemodes/rust/gamemode.fgd","gamemodes/rust/grust.fgd",3636622724
 "scripts/gamemodes/rust/gamemode/cl_init.lua","gamemodes/rust/gamemode/cl_init.lua",3636622724
 "scripts/gamemodes/rust/gamemode/core/ammo/ammo_sv.lua","gamemodes/rust/gamemode/core/ammo/ammo_sv.lua",3636622724
 "scripts/gamemodes/rust/gamemode/core/ammo/projectile_sh.lua","gamemodes/rust/gamemode/core/ammo/projectile_sh.lua",3636622724
@@ -6113,7 +6114,6 @@ path,original_path,workshop_id
 "scripts/gamemodes/rust/gamemode/libs/vector_sh.lua","gamemodes/rust/gamemode/libs/vector_sh.lua",3636622724
 "scripts/gamemodes/rust/gamemode/libs/xml_sh.lua","gamemodes/rust/gamemode/libs/xml_sh.lua",3636622724
 "scripts/gamemodes/rust/gamemode/shared.lua","gamemodes/rust/gamemode/shared.lua",3636622724
-"scripts/gamemodes/rust/grust.fgd","gamemodes/rust/grust.fgd",3636622724
 "scripts/gamemodes/rust/icon24.png","gamemodes/rust/icon24.png",3636622724
 "scripts/gamemodes/rust/logo.png","gamemodes/rust/logo.png",3636622724
 "scripts/gamemodes/rust/rust.txt","gamemodes/rust/rust.txt",3636622724
@@ -10696,24 +10696,24 @@ path,original_path,workshop_id
 "textures/world/minicopter/fuelgauge.vmt","materials/models/darky_m&bypolat/rust/minicopter/fuelgauge.vmt",3636622724
 "textures/world/minicopter/fuelgauge_albedo.vtf","materials/models/darky_m&bypolat/rust/minicopter/fuelgauge_albedo.vtf",3636622724
 "textures/world/minicopter/glass.vtf","materials/models/darky_m&bypolat/rust/minicopter/glass.vtf",3636622724
-"textures/world/minicopter/grust/blurred_main_rotor.vtf","materials/models/darky_m/rust/minicopter/blurred_main_rotor.vtf",3636622724
-"textures/world/minicopter/grust/blurred_rear_rotor.vtf","materials/models/darky_m/rust/minicopter/blurred_rear_rotor.vtf",3636622724
-"textures/world/minicopter/grust/fuelgauge glass.vmt","materials/models/darky_m/rust/minicopter/fuelgauge glass.vmt",3636622724
-"textures/world/minicopter/grust/fuelgauge.vmt","materials/models/darky_m/rust/minicopter/fuelgauge.vmt",3636622724
-"textures/world/minicopter/grust/fuelgauge_albedo.vtf","materials/models/darky_m/rust/minicopter/fuelgauge_albedo.vtf",3636622724
-"textures/world/minicopter/grust/glass.vtf","materials/models/darky_m/rust/minicopter/glass.vtf",3636622724
-"textures/world/minicopter/grust/main_rotor_blur.vmt","materials/models/darky_m/rust/minicopter/main_rotor_blur.vmt",3636622724
-"textures/world/minicopter/grust/minicopterprt1_albedo.vtf","materials/models/darky_m/rust/minicopter/minicopterprt1_albedo.vtf",3636622724
-"textures/world/minicopter/grust/minicopterprt2_albedo.vtf","materials/models/darky_m/rust/minicopter/minicopterprt2_albedo.vtf",3636622724
-"textures/world/minicopter/grust/minicoptor prt 1.vmt","materials/models/darky_m/rust/minicopter/minicoptor prt 1.vmt",3636622724
-"textures/world/minicopter/grust/minicoptor prt 2.vmt","materials/models/darky_m/rust/minicopter/minicoptor prt 2.vmt",3636622724
-"textures/world/minicopter/grust/rear_rotor_blur.vmt","materials/models/darky_m/rust/minicopter/rear_rotor_blur.vmt",3636622724
 "textures/world/minicopter/main_rotor_blur.vmt","materials/models/darky_m&bypolat/rust/minicopter/main_rotor_blur.vmt",3636622724
 "textures/world/minicopter/minicopterprt1_albedo.vtf","materials/models/darky_m&bypolat/rust/minicopter/minicopterprt1_albedo.vtf",3636622724
 "textures/world/minicopter/minicopterprt2_albedo.vtf","materials/models/darky_m&bypolat/rust/minicopter/minicopterprt2_albedo.vtf",3636622724
 "textures/world/minicopter/minicoptor prt 1.vmt","materials/models/darky_m&bypolat/rust/minicopter/minicoptor prt 1.vmt",3636622724
 "textures/world/minicopter/minicoptor prt 2.vmt","materials/models/darky_m&bypolat/rust/minicopter/minicoptor prt 2.vmt",3636622724
 "textures/world/minicopter/rear_rotor_blur.vmt","materials/models/darky_m&bypolat/rust/minicopter/rear_rotor_blur.vmt",3636622724
+"textures/world/minicopter/v2/blurred_main_rotor.vtf","materials/models/darky_m/rust/minicopter/blurred_main_rotor.vtf",3636622724
+"textures/world/minicopter/v2/blurred_rear_rotor.vtf","materials/models/darky_m/rust/minicopter/blurred_rear_rotor.vtf",3636622724
+"textures/world/minicopter/v2/fuelgauge glass.vmt","materials/models/darky_m/rust/minicopter/fuelgauge glass.vmt",3636622724
+"textures/world/minicopter/v2/fuelgauge.vmt","materials/models/darky_m/rust/minicopter/fuelgauge.vmt",3636622724
+"textures/world/minicopter/v2/fuelgauge_albedo.vtf","materials/models/darky_m/rust/minicopter/fuelgauge_albedo.vtf",3636622724
+"textures/world/minicopter/v2/glass.vtf","materials/models/darky_m/rust/minicopter/glass.vtf",3636622724
+"textures/world/minicopter/v2/main_rotor_blur.vmt","materials/models/darky_m/rust/minicopter/main_rotor_blur.vmt",3636622724
+"textures/world/minicopter/v2/minicopterprt1_albedo.vtf","materials/models/darky_m/rust/minicopter/minicopterprt1_albedo.vtf",3636622724
+"textures/world/minicopter/v2/minicopterprt2_albedo.vtf","materials/models/darky_m/rust/minicopter/minicopterprt2_albedo.vtf",3636622724
+"textures/world/minicopter/v2/minicoptor prt 1.vmt","materials/models/darky_m/rust/minicopter/minicoptor prt 1.vmt",3636622724
+"textures/world/minicopter/v2/minicoptor prt 2.vmt","materials/models/darky_m/rust/minicopter/minicoptor prt 2.vmt",3636622724
+"textures/world/minicopter/v2/rear_rotor_blur.vmt","materials/models/darky_m/rust/minicopter/rear_rotor_blur.vmt",3636622724
 "textures/world/misc/death_bag.vmt","materials/models/misc/death_bag.vmt",3636622724
 "textures/world/misc/death_bag.vtf","materials/models/misc/death_bag.vtf",3636622724
 "textures/world/misc/death_bag_normal.vtf","materials/models/misc/death_bag_normal.vtf",3636622724
@@ -11073,11 +11073,11 @@ path,original_path,workshop_id
 "textures/world/worldmodels/wirespindle_normals.vtf","materials/models/darky_m/rust/worldmodels/wirespindle_normals.vtf",3636622724
 "textures/world/yellow_barrel.vmt","materials/models/darky_m/rust/yellow_barrel.vmt",3636622724
 "textures/world/yellow_barrel.vtf","materials/models/darky_m/rust/yellow_barrel.vtf",3636622724
-"ui/fonts/grust-roboto-bold.ttf","resource/fonts/grust-roboto-bold.ttf",3188161638
-"ui/fonts/grust-roboto-regular.ttf","resource/fonts/grust-roboto-regular.ttf",3188161638
-"ui/fonts/grust-roboto.ttf","resource/fonts/grust-roboto.ttf",3188161638
 "ui/fonts/permanentmarker-regular.ttf","resource/fonts/permanentmarker-regular.ttf",3188161638
 "ui/fonts/pressstart2p-regular.ttf","resource/fonts/pressstart2p-regular.ttf",3188161638
+"ui/fonts/roboto-bold.ttf","resource/fonts/grust-roboto-bold.ttf",3188161638
+"ui/fonts/roboto-regular.ttf","resource/fonts/grust-roboto-regular.ttf",3188161638
+"ui/fonts/roboto.ttf","resource/fonts/grust-roboto.ttf",3188161638
 "ui/fonts/robotocondensed-bold.ttf","resource/fonts/robotocondensed-bold.ttf",3636622724
 "ui/fonts/robotocondensed.ttf","resource/fonts/robotocondensed.ttf",3636622724
 "ui/fonts/robotomono-bold.ttf","resource/fonts/robotomono-bold.ttf",3636622724
