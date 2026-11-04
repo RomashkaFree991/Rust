@@ -1,0 +1,20 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/environment/static/wooden_crate_diff"
+	"$translucent" "1"
+	"$bumpmap" "models/environment/static/wooden_crate_nrm"
+	$blendtintbybasealpha 1
+	"$envmap" "env_cubemap"
+	"$normalmapalphaenvmapmask" "1"
+    "$envmaptint"				  "[0.01 0.01 0.010]"
+    "$envmapcontrast"             "1"
+
+
+	"$surfaceprop" "wood"
+	"$multipass" 0
+
+	"$phong" "1"
+	"$phongexponent" "1"
+	"$phongboost" "1"
+	"$phongfresnelranges"	"[0. 0.9 1.6]"
+}

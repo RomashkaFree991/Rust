@@ -1,0 +1,5 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/deployable/concretebarricade/barricade_diff"
+	"$bumpmap" "models/deployable/concretebarricade/barricade_nrm"
+}

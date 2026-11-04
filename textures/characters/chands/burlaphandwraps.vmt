@@ -1,0 +1,6 @@
+"VertexLitGeneric"
+{
+   "$basetexture"   "models/darky_m/rust/chands/BurlapHandWraps_Albedo"
+   "$bumpmap"       "models/darky_m/rust/chands/BurlapHandWraps_Normal"
+$translucent 1
+}

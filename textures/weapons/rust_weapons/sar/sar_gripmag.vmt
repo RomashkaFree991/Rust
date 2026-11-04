@@ -1,0 +1,22 @@
+"VertexLitGeneric"
+{
+   "$basetexture"   "models/darky_m/rust_weapons/sar/sar_gripmag_albedo"
+   "$bumpmap"       "models/darky_m/rust_weapons/sar/sar_gripmag_normals"
+	
+	"$envmap" "env_cubemap"
+	"$normalmapalphaenvmapmask"   "1"
+    "$envmaptint"				  "[0.010 0.010 0.010]"
+    "$envmapcontrast"             "1"
+
+
+	"$surfaceprop" "metal"
+	"$multipass" 0
+
+	"$phong" "1"
+	"$phongexponent" "10"
+	"$phongboost" "0.1"
+	"$phongfresnelranges"	"[0.1 0.1 0.6]"
+	"$phongalbedotint" "1"
+	"$silleum" "0"
+
+}

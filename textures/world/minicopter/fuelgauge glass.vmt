@@ -1,0 +1,13 @@
+//Fixed ByPoLaT
+"VertexlitGeneric"
+{
+   "$basetexture"   "models/darky_m&bypolat/rust/minicopter/glass"
+	"$nodecal" "1"
+	"$translucent" 1
+	"$additive" 1
+
+	"$envmap" "env_cubemap"
+	"$envmaptint" "[0.3 0.3 0.35]"
+	"$envmapfresnel" "0.1"
+	"$phongfresnelranges" "[0.01 0.05 0.20]"
+}

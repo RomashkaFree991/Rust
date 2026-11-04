@@ -1,0 +1,21 @@
+"VertexLitGeneric"
+{
+   "$basetexture"   "models/darky_m/rust/hazmat/MakeshiftHazmat_Head_Diffuse"
+   "$bumpmap"      "models/darky_m/rust/hazmat/Head_Normal"
+	
+	"$envmap" "env_cubemap"
+	"$normalmapalphaenvmapmask"   "1"
+    "$envmaptint"				  "[0.020 0.020 0.020]"
+    "$envmapcontrast"             "0"
+
+
+	"$surfaceprop" "metal"
+	"$multipass" 0
+
+	"$phong" "1"
+	"$phongexponent" "15"
+	"$phongboost" "1.5"
+	"$phongfresnelranges"	"[0.4 0.9 2.6]"
+
+
+}

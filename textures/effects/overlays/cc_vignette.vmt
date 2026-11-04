@@ -1,0 +1,6 @@
+Modulate
+{
+	$basetexture	"overlays/cc_vignette"
+	$MOD2X			0
+	$translucent	1
+}

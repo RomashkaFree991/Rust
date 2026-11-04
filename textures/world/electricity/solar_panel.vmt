@@ -1,0 +1,5 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/electricity/solar_panel_diff"
+	"$bumpmap" "models/electricity/solar_panel_nrm"
+}

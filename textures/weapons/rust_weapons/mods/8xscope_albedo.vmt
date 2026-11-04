@@ -1,0 +1,15 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/darky_m/rust_weapons/mods/8xscope_albedo"
+	"$bumpmap" "models/darky_m/rust_weapons/mods/8xscope_normal"
+	"$envmap" "env_cubemap"
+	"$normalmapalphaenvmapmask"   "1"
+ 	"$envmaptint"				  "[0.020 0.010 0.020]"
+   	"$envmapcontrast"             "1"
+
+
+	"$surfaceprop" "metal"
+	"$multipass" 0
+
+
+}

@@ -1,0 +1,5 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/darky_m/rust_weapons/mods/muzzleboost_diffuse"
+	"$bumpmap" "models/darky_m/rust_weapons/mods/muzzleboost_normal"
+}

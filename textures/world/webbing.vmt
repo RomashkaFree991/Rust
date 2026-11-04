@@ -1,0 +1,7 @@
+"VertexLitGeneric"
+{
+   "$basetexture"   "models/darky_m/rust/webbing_albedo"
+   "$bumpmap"       "models/darky_m/rust/webbing_normals"
+   "$alphatest" "1"
+
+}

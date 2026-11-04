@@ -1,0 +1,6 @@
+"VertexLitGeneric"
+{
+   "$basetexture"   "models/darky_m&bypolat/rust/minicopter/FuelGauge_albedo"
+   //"$bumpmap"       "models/darky_m&bypolat/rust/minicopter/MinicopterPRT1_albedo"
+
+}

@@ -1,0 +1,5 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/electricity/switch_diff"
+	"$bumpmap" "models/electricity/switch_nrm"
+}

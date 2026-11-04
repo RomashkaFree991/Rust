@@ -1,0 +1,29 @@
+"UnlitGeneric"
+{
+	"$basetexture" "sprites/flare_ore"
+    "$nocull" 1
+    "$additive" 1
+	"$angle" 0
+	"$translate" "[0.0 0.0]"
+	"$center" "[0.5 0.5]"
+	"$scale" "[1 1]"
+	$color "[2 1 0.5]"
+
+	proxies
+	{
+		LinearRamp
+		{
+			rate	-50
+			initialValue	0
+			resultvar	"$angle"
+		}
+		TextureTransform
+		{
+			"translateVar" "$translate"
+			"scaleVar" "$scale"
+			"rotateVar" "$angle"
+			"centerVar" "$center"
+			"resultVar" "$basetexturetransform"
+		}
+	}
+}

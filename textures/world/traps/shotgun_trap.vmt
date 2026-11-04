@@ -1,0 +1,10 @@
+"VertexlitGeneric"
+{
+	"$basetexture" 	"models/traps/shotgun_trap"
+
+	"$phong" "1"
+	"$phongboost" "0.25"
+	"$phongexponent" "0.1"
+
+	"$phongfresnelranges" "[0.05 0.1 0.1]"
+}

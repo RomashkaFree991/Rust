@@ -1,0 +1,19 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/darky_m/rust/casino_spinner_wheel_diff"
+	"$bumpmap" "models/darky_m/rust/casino_spinner_wheel_nrm"
+	"$envmap" "env_cubemap"
+	"$normalmapalphaenvmapmask" "1"
+    "$envmaptint"				  "[0.01 0.01 0.010]"
+    "$envmapcontrast"             "1"
+
+
+	"$surfaceprop" "metal"
+	"$multipass" 0
+
+	"$phong" "1"
+	"$phongexponent" "4"
+	"$phongboost" "0.75"
+	"$phongfresnelranges"	"[0.2 0.3 0.6]"
+
+}
