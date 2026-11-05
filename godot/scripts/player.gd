@@ -74,6 +74,7 @@ func _ready() -> void:
 	vm_cam.add_child(viewmodel)
 	viewmodel.fired.connect(_on_fired)
 	viewmodel.player = self
+	viewmodel.reload_started.connect(func(): body.play_reload())
 
 	body = Character.new()
 	body.rotation_degrees.y = 180.0   # модель смотрит в +Z, игрок — в -Z
@@ -177,11 +178,21 @@ func _process(delta: float) -> void:
 	cam.position = Vector3(0.7 * k, 0.25 * k, cam_dist)
 	vm_cam.global_transform = cam.global_transform
 	body.aim_pitch = pitch
-	body.move_speed = clamp(Vector2(velocity.x, velocity.z).length() / WALK_SPEED, 0.0, 1.0) if is_on_floor() else 0.3
+	body.move_speed = clamp(Vector2(velocity.x, velocity.z).length() / WALK_SPEED * 0.75, 0.0, 1.0)
+	body.in_air = not is_on_floor() and velocity.y > -20.0 and abs(velocity.y) > 1.0
 	var target_fov := base_fov * (0.82 if viewmodel.aiming else 1.0)
 	cam.fov = lerp(cam.fov, target_fov, clamp(delta * 10.0, 0.0, 1.0))
 	var hspeed := Vector2(velocity.x, velocity.z).length() / WALK_SPEED
 	viewmodel.process_weapon(delta, inv, hspeed if is_on_floor() else 0.2, look_frame / max(delta, 0.001) * 0.016)
+
+## Смотрим ли на ящик (как подсказка «OPEN» в Rust)
+func looking_at_chest() -> bool:
+	var from := cam.global_position
+	var dir := -cam.global_basis.z
+	var q := PhysicsRayQueryParameters3D.create(from, from + dir * (2.6 + cam_dist))
+	q.exclude = [get_rid()]
+	var h := get_world_3d().direct_space_state.intersect_ray(q)
+	return not h.is_empty() and h.collider is Node and (h.collider as Node).is_in_group("chest")
 
 ## Удар в ближнем бою: что перед нами на расстоянии rng
 func melee_check(rng: float) -> Dictionary:
@@ -213,8 +224,9 @@ func _apply_hit(hit: Dictionary, dir: Vector3, damage: float, melee: bool) -> vo
 
 func _on_fired(def: Dictionary) -> void:
 	if def.get("type") == "melee":
-		body.melee_swing = 1.0
+		body.play_melee()
 		return
+	body.play_shoot()
 	if third_person:
 		body.muzzle_flash()
 	# отдача

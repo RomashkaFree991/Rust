@@ -8,9 +8,11 @@ signal attire_changed
 const HOTBAR := 6
 const MAIN := 24
 const WEAR := 7
+const LOOT := 48                     # большой деревянный ящик
 const MAIN_START := HOTBAR
 const WEAR_START := HOTBAR + MAIN
-const SIZE := HOTBAR + MAIN + WEAR
+const LOOT_START := HOTBAR + MAIN + WEAR
+const SIZE := LOOT_START + LOOT
 
 var slots: Array = []
 
@@ -44,8 +46,44 @@ func setup_default() -> void:
 	for id in ["jacket", "pants_hide", "shoes_boots", "hat_cap", "tactical_gloves"]:
 		slots[w] = {"id": id, "amount": 1}
 		w += 1
+	# ящик: всё оружие и вся одежда
+	var k := LOOT_START
+	for id in Items.DB:
+		var d: Dictionary = Items.DB[id]
+		if k >= SIZE:
+			break
+		if d.type == "weapon" or d.type == "melee":
+			slots[k] = _w(id, d.get("clip", 0)); k += 1
+	for id in Items.DB:
+		if k >= SIZE:
+			break
+		if Items.DB[id].type == "attire":
+			slots[k] = {"id": id, "amount": 1}; k += 1
+	for a in ["ammo.rifle", "ammo.pistol"]:
+		if k < SIZE:
+			slots[k] = {"id": a, "amount": 128}; k += 1
 	changed.emit()
 	attire_changed.emit()
+
+static func is_loot_slot(i: int) -> bool:
+	return i >= LOOT_START
+
+## Быстро переложить (двойной тап при открытом ящике): ящик <-> рюкзак/пояс
+func quick_move(i: int) -> bool:
+	if slots[i] == null:
+		return false
+	var rng: Array = range(MAIN_START, WEAR_START) + range(0, HOTBAR) if is_loot_slot(i) else range(LOOT_START, SIZE)
+	# сначала объединить стак
+	for k in rng:
+		var o = slots[k]
+		if o != null and o.id == slots[i].id and Items.get_def(o.id).get("type") == "ammo" and o.amount < Items.get_def(o.id).get("stack", 128):
+			move(i, k)
+			if slots[i] == null:
+				return true
+	for k in rng:
+		if slots[k] == null:
+			return move(i, k)
+	return false
 
 func get_item(i: int):
 	if i < 0 or i >= SIZE:
@@ -53,7 +91,7 @@ func get_item(i: int):
 	return slots[i]
 
 static func is_wear_slot(i: int) -> bool:
-	return i >= WEAR_START
+	return i >= WEAR_START and i < LOOT_START
 
 ## Можно ли положить предмет it в ячейку i (с учётом обмена из from)
 func can_place(it, i: int, from: int) -> bool:
@@ -65,7 +103,7 @@ func can_place(it, i: int, from: int) -> bool:
 	if d.get("type") != "attire":
 		return false
 	# одна вещь каждой категории
-	for k in range(WEAR_START, SIZE):
+	for k in range(WEAR_START, LOOT_START):
 		if k == i or k == from:
 			continue
 		var o = slots[k]
@@ -110,17 +148,17 @@ func quick_toggle_wear(i: int) -> bool:
 		return false
 	# заменить вещь той же категории или занять пустую ячейку
 	var d := Items.get_def(it.id)
-	for k in range(WEAR_START, SIZE):
+	for k in range(WEAR_START, LOOT_START):
 		if slots[k] != null and Items.get_def(slots[k].id).slot == d.slot:
 			return move(i, k)
-	for k in range(WEAR_START, SIZE):
+	for k in range(WEAR_START, LOOT_START):
 		if slots[k] == null:
 			return move(i, k)
 	return false
 
 func worn() -> Array:
 	var res := []
-	for k in range(WEAR_START, SIZE):
+	for k in range(WEAR_START, LOOT_START):
 		if slots[k] != null:
 			res.append(slots[k].id)
 	return res
@@ -133,7 +171,8 @@ func protection() -> float:
 
 func count(id: String) -> int:
 	var n := 0
-	for it in slots:
+	for k in WEAR_START:
+		var it = slots[k]
 		if it != null and it.id == id:
 			n += it.amount
 	return n

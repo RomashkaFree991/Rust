@@ -6,6 +6,7 @@ class_name ViewModel
 signal fired(def: Dictionary)
 signal ammo_changed
 signal reloaded
+signal reload_started
 
 const VM_LAYER := 2
 const INSPECT_PIVOT := Vector3(0.08, -0.08, -0.32)
@@ -271,6 +272,7 @@ func reload(inv: Inventory) -> void:
 	_play_seq(rseq)
 	state = "reload"
 	state_len = _seq_len(rseq)
+	reload_started.emit()
 	reload_pending = 1
 
 ## Осмотр: плавно поднять оружие и повернуть сначала одной, потом другой стороной,

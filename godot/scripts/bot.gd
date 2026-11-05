@@ -170,7 +170,9 @@ func take_hit(zone: String, base_damage: float, pos: Vector3, dir: Vector3, mele
 	var died := hp <= 0.0
 	if died:
 		_die(dir)
-	elif randf() < 0.35:
+	else:
+		ch.play_hit()
+	if not died and randf() < 0.35:
 		_play3d(snd_pain[randi() % snd_pain.size()], global_position + Vector3(0, 1.6, 0))
 	_update_label()
 	return {"damage": dmg, "zone": zone, "killed": died, "headshot": head}
@@ -198,17 +200,10 @@ func _die(dir: Vector3) -> void:
 	_play3d(snd_death[randi() % snd_death.size()], global_position + Vector3(0, 1.6, 0), 3.0)
 	for b in bodies.values():
 		b.collision_layer = 0
-	# упасть назад (от направления выстрела)
-	var fall_axis := Vector3(dir.z, 0, -dir.x).normalized()
-	if fall_axis.length() < 0.1:
-		fall_axis = Vector3.RIGHT
+	# анимация смерти, через 4 секунды встать
 	var start := transform
 	var t := create_tween()
-	t.tween_method(func(u: float):
-		var e := u * u
-		transform = Transform3D(Basis(fall_axis, deg_to_rad(88.0) * e) * start.basis, start.origin + Vector3(0, 0.12 * e, 0)),
-		0.0, 1.0, 0.55)
-	t.tween_interval(3.5)
+	t.tween_interval(4.0)
 	t.tween_callback(_respawn.bind(start))
 	killed.emit(self)
 

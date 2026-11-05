@@ -1,8 +1,10 @@
 extends Node3D
 class_name Character
 ## Модель игрока Rust (rust_model) с одеждой, оружием в руке и процедурной анимацией.
-## Анимаций тела в репозитории нет (GMod берёт их из стандартного m_anm.mdl), поэтому
-## стойка, ходьба, прицеливание и падение сделаны процедурно: IK рук + качание ног.
+## Анимации тела — CC0-библиотеки Quaternius (Universal Animation Library 1 и 2), перенесённые
+## на скелет ValveBiped (tools/godot_conversion/retarget.py) и смешиваемые в AnimationTree.
+## Готовых анимаций с автоматом в свободном доступе нет: тело играет стойку с пистолетом,
+## а кисти к автомату прижимаются IK поверх анимации (RifleHands).
 
 const SCALE := 1.22
 const B := "ValveBiped.Bip01_"
@@ -19,11 +21,13 @@ static var _geo_cache := {}
 var hold := ""                 # rifle / pistol / melee / ""
 
 var aim_pitch := 0.0           # градусы, + вверх
-var move_speed := 0.0          # 0..1
-var walk_phase := 0.0
-var breathe := 0.0
-var melee_swing := 0.0         # 0..1 анимация удара
+var move_speed := 0.0          # 0..1 (1 — спринт)
+var in_air := false
 var recoil := 0.0
+var anim_player: AnimationPlayer
+var tree: AnimationTree
+var hands: SkeletonModifier3D
+static var _anim_lib: AnimationLibrary
 var look_target = null         # Vector3 в глобальных координатах (поворот головы)
 var dead := false
 var layer_mask := 1
@@ -57,6 +61,7 @@ func _build() -> void:
 		var i := sk.find_bone(B + n)
 		idx[n] = i
 		rest[n] = sk.get_bone_global_rest(i)
+	_setup_anim()
 	# базовое бельё (как у голого персонажа в Rust)
 	_add_attire_meshes("underwear_pants", "res://assets/player/underwear_pants.gltf")
 	_set_body_visible()
@@ -209,27 +214,129 @@ func _weapon_geo(key: String, n: Node3D) -> Dictionary:
 func _process(delta: float) -> void:
 	if sk == null:
 		return
-	breathe += delta
-	if move_speed > 0.05:
-		walk_phase += delta * (5.0 + 4.0 * move_speed)
 	recoil = move_toward(recoil, 0.0, delta * 6.0)
-	if melee_swing > 0.0:
-		melee_swing = max(0.0, melee_swing - delta * 2.2)
-	_pose()
+	if tree:
+		tree.set("parameters/loco/blend_position", clamp(move_speed, 0.0, 1.0))
+		tree.set("parameters/aim/blend_position", clamp(aim_pitch / 60.0, -1.0, 1.0))
+		var armed := 1.0 if hold != "" else 0.0
+		var cur: float = tree.get("parameters/armed/blend_amount")
+		tree.set("parameters/armed/blend_amount", move_toward(cur, armed, delta * 5.0))
+		tree.set("parameters/upper_kind/transition_request", "melee" if hold == "melee" else "gun")
+		var st := "dead" if dead else ("air" if in_air else "ground")
+		if tree.get("parameters/state/current_state") != st:
+			tree.set("parameters/state/transition_request", st)
 	_update_flash(delta)
 
-# ---------- процедурная поза ----------
+# ---------- анимации ----------
+
+const UPPER := ["Spine2", "Spine4", "Neck1", "Head1", "R_Clavicle", "R_UpperArm", "R_Forearm", "R_Hand",
+	"L_Clavicle", "L_UpperArm", "L_Forearm", "L_Hand"]
+
+func _setup_anim() -> void:
+	if _anim_lib == null:
+		var src: Node = load("res://assets/player/anims.glb").instantiate()
+		var ap: AnimationPlayer = src.find_child("AnimationPlayer", true, false)
+		_anim_lib = ap.get_animation_library("")
+		for n in ["Death01", "Pistol_Shoot", "Pistol_Reload", "Sword_Attack", "Hit_Chest", "Hit_Head", "Chest_Open", "Jump_Start", "Jump_Land", "Punch_Jab", "Interact"]:
+			if _anim_lib.has_animation(n):
+				_anim_lib.get_animation(n).loop_mode = Animation.LOOP_NONE
+		src.free()
+	anim_player = AnimationPlayer.new()
+	model.add_child(anim_player)
+	anim_player.root_node = NodePath("..")
+	anim_player.add_animation_library("", _anim_lib)
+	var bt := AnimationNodeBlendTree.new()
+	var loco := AnimationNodeBlendSpace1D.new()
+	for pt in [["Idle", 0.0], ["Walk", 0.4], ["Jog_Fwd", 0.75], ["Sprint", 1.0]]:
+		var a := AnimationNodeAnimation.new(); a.animation = pt[0]
+		loco.add_blend_point(a, pt[1], -1, pt[0])
+	loco.min_space = 0.0
+	loco.max_space = 1.0
+	bt.add_node("loco", loco, Vector2(0, 0))
+	var aim := AnimationNodeBlendSpace1D.new()
+	for pt in [["Pistol_Aim_Down", -1.0], ["Pistol_Aim_Neutral", 0.0], ["Pistol_Aim_Up", 1.0]]:
+		var a := AnimationNodeAnimation.new(); a.animation = pt[0]
+		aim.add_blend_point(a, pt[1], -1, pt[0])
+	bt.add_node("aim", aim, Vector2(0, 200))
+	var sword := AnimationNodeAnimation.new(); sword.animation = "Sword_Idle"
+	bt.add_node("sword", sword, Vector2(0, 300))
+	var kind := AnimationNodeTransition.new()
+	kind.add_input("gun"); kind.add_input("melee")
+	kind.xfade_time = 0.2
+	bt.add_node("upper_kind", kind, Vector2(200, 250))
+	bt.connect_node("upper_kind", 0, "aim")
+	bt.connect_node("upper_kind", 1, "sword")
+	var armed := AnimationNodeBlend2.new()
+	_filter_upper(armed)
+	bt.add_node("armed", armed, Vector2(400, 100))
+	bt.connect_node("armed", 0, "loco")
+	bt.connect_node("armed", 1, "upper_kind")
+	var last := "armed"
+	var y := 400
+	for os in [["shoot", "Pistol_Shoot"], ["reload", "Pistol_Reload"], ["melee", "Sword_Attack"], ["hit", "Hit_Chest"], ["use", "Chest_Open"]]:
+		var one := AnimationNodeOneShot.new()
+		one.fadein_time = 0.08
+		one.fadeout_time = 0.2
+		if os[0] != "use":
+			_filter_upper(one)
+		var a := AnimationNodeAnimation.new(); a.animation = os[1]
+		bt.add_node(os[1], a, Vector2(400, y))
+		bt.add_node(os[0], one, Vector2(600, y))
+		bt.connect_node(os[0], 0, last)
+		bt.connect_node(os[0], 1, os[1])
+		last = os[0]
+		y += 100
+	var air := AnimationNodeAnimation.new(); air.animation = "Jump"
+	bt.add_node("air_anim", air, Vector2(600, 1000))
+	var death := AnimationNodeAnimation.new(); death.animation = "Death01"
+	bt.add_node("death_anim", death, Vector2(600, 1100))
+	var state := AnimationNodeTransition.new()
+	state.add_input("ground"); state.add_input("air"); state.add_input("dead")
+	state.xfade_time = 0.15
+	bt.add_node("state", state, Vector2(800, 600))
+	bt.connect_node("state", 0, last)
+	bt.connect_node("state", 1, "air_anim")
+	bt.connect_node("state", 2, "death_anim")
+	bt.connect_node("output", 0, "state")
+	tree = AnimationTree.new()
+	tree.tree_root = bt
+	model.add_child(tree)
+	tree.root_node = NodePath("..")
+	tree.anim_player = tree.get_path_to(anim_player)
+	tree.active = true
+	hands = preload("res://scripts/rifle_hands.gd").new()
+	hands.character = self
+	sk.add_child(hands)
+
+func _filter_upper(n: AnimationNode) -> void:
+	n.filter_enabled = true
+	for b in UPPER:
+		n.set_filter_path(NodePath("rust_model_ARM/Skeleton3D:" + B + b), true)
+	for side in ["L", "R"]:
+		for fi in 5:
+			for seg in ["", "1", "2"]:
+				n.set_filter_path(NodePath("rust_model_ARM/Skeleton3D:%s%s_Finger%d%s" % [B, side, fi, seg]), true)
+
+func _fire_oneshot(n: String) -> void:
+	if tree:
+		tree.set("parameters/%s/request" % n, AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+
+func play_shoot() -> void:
+	recoil = 1.0
+	_fire_oneshot("shoot")
+
+func play_reload() -> void: _fire_oneshot("reload")
+func play_melee() -> void: _fire_oneshot("melee")
+func play_hit() -> void: _fire_oneshot("hit")
+func play_use() -> void: _fire_oneshot("use")
+
+# ---------- руки на автомате (после анимации) ----------
 
 func _g(n: String) -> Transform3D:
 	return sk.get_bone_global_pose(idx[n])
 
 func _set_g(n: String, t: Transform3D) -> void:
 	sk.set_bone_global_pose(idx[n], t)
-
-## Повернуть кость (в пространстве скелета) на rot относительно её rest-ориентации, оставив позицию
-func _rot_rest(n: String, rot: Basis) -> void:
-	var cur := _g(n)
-	_set_g(n, Transform3D(rot * rest[n].basis, cur.origin))
 
 func _aim_x(n: String, dir: Vector3) -> void:
 	var cur := _g(n)
@@ -258,108 +365,35 @@ func _ik(upper: String, fore: String, hand: String, target: Vector3, pole: Vecto
 		var hc := _g(hand)
 		_set_g(hand, Transform3D(hand_basis, hc.origin))
 
-func _pose() -> void:
-	if dead:
-		return   # оставить последнюю позу (падение делает Bot)
-	sk.reset_bone_poses()
-	var b := sin(breathe * 1.6)
-	# ноги: шаг
-	var sw := sin(walk_phase) * 32.0 * move_speed
-	var R := Vector3.RIGHT
-	_rot_rest("R_Thigh", Basis(R, deg_to_rad(-sw)))
-	_rot_rest("L_Thigh", Basis(R, deg_to_rad(sw)))
-	var kr: float = max(0.0, -sin(walk_phase - 0.6)) * 45.0 * move_speed
-	var kl: float = max(0.0, sin(walk_phase - 0.6)) * 45.0 * move_speed
-	_rot_rest("R_Calf", Basis(R, deg_to_rad(-sw + kr)))
-	_rot_rest("L_Calf", Basis(R, deg_to_rad(sw + kl)))
-	_rot_rest("R_Foot", Basis(R, deg_to_rad(-sw + kr - 5)))
-	_rot_rest("L_Foot", Basis(R, deg_to_rad(sw + kl - 5)))
-	# корпус: наклон по прицелу, разворот вполоборота с оружием (как в Rust), дыхание
-	var p: float = clamp(aim_pitch, -60, 60)
-	var armed := (hold == "rifle" or hold == "pistol") and not weapon_geo.is_empty()
-	var twist := 0.0
-	if armed:
-		twist = -28.0 if hold == "rifle" else -12.0
-	var U := Vector3.UP
-	_rot_rest("Spine2", Basis(U, deg_to_rad(twist * 0.45)) * Basis(R, deg_to_rad(-p * 0.25 + b * 0.8 + 3.0 * move_speed)))
-	_rot_rest("Spine4", Basis(U, deg_to_rad(twist)) * Basis(R, deg_to_rad(-p * 0.5 + b * 1.0 + 3.0 * move_speed)))
-	var head_down := 9.0 if hold == "rifle" else (5.0 if hold == "pistol" else 0.0)
-	var head_roll := 9.0 if hold == "rifle" else 0.0
-	_rot_rest("Neck1", Basis(U, deg_to_rad(twist * 0.5)) * Basis(R, deg_to_rad(-p * 0.6 + head_down * 0.5)))
-	_rot_rest("Head1", Basis(Vector3.FORWARD, deg_to_rad(-head_roll)) * Basis(R, deg_to_rad(-p * 0.85 + head_down)))
-	if look_target != null:
+## Вызывается RifleHands после AnimationTree: оружие в руке и поворот головы к цели
+func post_animation() -> void:
+	if look_target != null and not dead:
 		var hp := sk.global_transform * _g("Head1").origin
 		var to: Vector3 = (sk.global_transform.affine_inverse() * (look_target as Vector3)) - (sk.global_transform.affine_inverse() * hp)
 		var yaw: float = clamp(atan2(to.x, to.z), -1.0, 1.0)
 		var cur := _g("Head1")
 		_set_g("Head1", Transform3D(Basis(Vector3.UP, yaw) * cur.basis, cur.origin))
-
-	var aim := Basis(R, deg_to_rad(-p))   # направление вперёд (+Z) с учётом тангажа
-	var chest := _g("Spine4").origin
-	if armed:
+	if weapon_node == null:
+		return
+	if hold == "rifle" and not weapon_geo.is_empty() and not dead:
+		var p: float = clamp(aim_pitch, -60, 60)
+		var aim := Basis(Vector3.RIGHT, deg_to_rad(-p))
 		var g := weapon_geo
-		var bm := Basis((g.up as Vector3).cross(g.fwd), g.up, g.fwd)        # оси модели оружия
-		var bt := aim * Basis(Vector3.RIGHT, Vector3.UP, Vector3.BACK)      # ствол вперёд (+Z), верх вверх
+		var bm := Basis((g.up as Vector3).cross(g.fwd), g.up, g.fwd)
+		var bt := aim * Basis(Vector3.RIGHT, Vector3.UP, Vector3.BACK)
 		var wbasis := bt * bm.inverse()
-		var wroot: Transform3D
 		var sh := _g("R_UpperArm").origin
-		if hold == "rifle":
-			# приклад в правое плечо, оружие на уровне глаз
-			var butt_pos := sh + aim * Vector3(0.075, 0.055 + b * 0.003, 0.02 - recoil * 0.05)
-			wroot = Transform3D(wbasis, butt_pos - wbasis * (g.butt as Vector3))
-		else:
-			var grip_pos := chest + aim * Vector3(-0.035, 0.13 + b * 0.003, 0.4 - recoil * 0.06)
-			wroot = Transform3D(wbasis, grip_pos - wbasis * (g.hand as Vector3))
+		var butt_pos := sh + aim * Vector3(0.075, 0.055, 0.02 - recoil * 0.05)
+		var wroot := Transform3D(wbasis, butt_pos - wbasis * (g.butt as Vector3))
 		var hand_pos: Vector3 = wroot * (g.hand as Vector3)
-		var rpole := aim * (Vector3(-1.0, -0.15, -0.35) if hold == "rifle" else Vector3(-0.7, -0.6, -0.2))
-		_ik("R_UpperArm", "R_Forearm", "R_Hand", hand_pos, rpole, (wroot * weapon_hand_rest).basis)
-		var fore_pt: Vector3
-		if hold == "rifle":
-			fore_pt = wroot * ((g.hand as Vector3).lerp(g.tip, 0.5) - (g.up as Vector3) * 0.025)
-		else:
-			fore_pt = hand_pos + aim * Vector3(0.035, -0.03, -0.005)
-		var lpole := aim * (Vector3(0.3, -1.0, 0.05) if hold == "rifle" else Vector3(0.7, -0.6, -0.2))
-		# левая кисть ладонью вверх под цевьём
-		_ik("L_UpperArm", "L_Forearm", "L_Hand", fore_pt, lpole)
-		var lh := _g("L_Hand")
-		var palm_q := Quaternion(lh.basis.x.normalized(), (fore_pt + aim * Vector3(0.0, 0.0, 0.08) - lh.origin).normalized())
-		_set_g("L_Hand", Transform3D(Basis(palm_q) * lh.basis, lh.origin))
-		_curl("R", 62.0, 40.0)
-		_curl("L", 55.0 if hold == "rifle" else 40.0, 35.0)
-		if weapon_node:
-			weapon_node.transform = model.transform * wroot
-	elif hold == "melee":
-		var s := melee_swing
-		var swing_ang := sin(s * PI) * 80.0
-		var hp := chest + Vector3(-0.22, -0.18 + sin(s * PI) * 0.25, 0.22 + sin(s * PI) * 0.15)
-		_ik("R_UpperArm", "R_Forearm", "R_Hand", hp, Vector3(-0.5, -1, -0.4))
-		var hand_xf := Transform3D(_g("R_Hand").basis, _g("R_Hand").origin)
-		_relax_arm("L", b)
-		_curl("R", 65.0, 25.0)
-		_curl("L", 18.0, 5.0)
-		if weapon_node:
-			weapon_node.transform = model.transform * (hand_xf * weapon_hand_rest.affine_inverse())
+		_ik("R_UpperArm", "R_Forearm", "R_Hand", hand_pos, aim * Vector3(-1.0, -0.15, -0.35), (wroot * weapon_hand_rest).basis)
+		var fore_pt: Vector3 = wroot * ((g.hand as Vector3).lerp(g.tip, 0.5) - (g.up as Vector3) * 0.025)
+		_ik("L_UpperArm", "L_Forearm", "L_Hand", fore_pt, aim * Vector3(0.3, -1.0, 0.05))
+		weapon_node.transform = model.transform * wroot
 	else:
-		_relax_arm("R", b)
-		_relax_arm("L", b)
-		_curl("R", 18.0, 5.0)
-		_curl("L", 18.0, 5.0)
-
-## Согнуть пальцы (ось сгиба у костей ValveBiped — -Z, у большого пальца — -Y)
-func _curl(side: String, ang: float, thumb: float) -> void:
-	for fi in range(0, 5):
-		for seg in ["", "1", "2"]:
-			var bi := sk.find_bone("%s%s_Finger%d%s" % [B, side, fi, seg])
-			if bi < 0:
-				continue
-			var a := thumb if fi == 0 else ang * (0.75 if seg == "" else 1.0)
-			sk.set_bone_pose_rotation(bi, sk.get_bone_rest(bi).basis.get_rotation_quaternion() * Quaternion(Vector3(0, 0, -1) if fi != 0 else Vector3(0, -1, 0), deg_to_rad(a)))
-
-func _relax_arm(side: String, b: float) -> void:
-	var sgn := 1.0 if side == "L" else -1.0
-	var sh := _g(side + "_UpperArm").origin
-	var target := sh + Vector3(0.07 * sgn, -0.41 + b * 0.004, 0.03 + sin(walk_phase) * 0.12 * move_speed * -sgn)
-	_ik(side + "_UpperArm", side + "_Forearm", side + "_Hand", target, Vector3(0.25 * sgn, 0, -1))
+		# пистолет / нож / камень — в правой кисти, как bonemerge в GMod
+		var hand := _g("R_Hand")
+		weapon_node.transform = model.transform * (hand * weapon_hand_rest.affine_inverse())
 
 ## Вспышка выстрела на конце ствола (вид от 3-го лица)
 var _flash: MeshInstance3D

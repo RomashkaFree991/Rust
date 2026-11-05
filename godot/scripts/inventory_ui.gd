@@ -6,11 +6,11 @@ class_name InventoryUI
 ## Управление: перетащить предмет пальцем; или тап по предмету, затем тап по ячейке;
 ## двойной тап по одежде — надеть/снять.
 
-const S := 66.0           # ячейка рюкзака/пояса
-const AS := 60.0          # ячейка одежды
+const S := 58.0           # ячейка рюкзака/пояса/ящика
+const AS := 52.0          # ячейка одежды
 const G := 5.0
 const BG := Color(37 / 255.0, 36 / 255.0, 31 / 255.0, 0.93)
-const TEXT := Color(0.85, 0.82, 0.76)
+const TEXT := Color(231 / 255.0, 219 / 255.0, 210 / 255.0)   # gRust.Colors.Text
 
 var inv: Inventory
 var hud
@@ -38,6 +38,9 @@ var dragging := false
 var rot_idx := -1
 var close_rect := Rect2()
 var overlay: Control
+var looting := false
+var loot_title := "LARGE WOOD BOX"
+var snd_move: Dictionary = {}
 
 func setup(p_inv: Inventory, p_hud) -> void:
 	inv = p_inv
@@ -125,7 +128,7 @@ func setup(p_inv: Inventory, p_hud) -> void:
 	hint = _label(17)
 	hint.autowrap_mode = TextServer.AUTOWRAP_WORD
 	hint.modulate = Color(1, 1, 1, 0.7)
-	hint.text = "Перетащите предмет пальцем или нажмите на предмет, затем на ячейку.\n\nДвойной тап по одежде — надеть / снять.\n\nКрутите персонажа пальцем."
+	hint.text = "Перетащите предмет пальцем или нажмите на предмет, затем на ячейку.\n\nДвойной тап по одежде — надеть / снять.\nПри открытом ящике двойной тап — переложить в ящик / из ящика.\n\nКрутите персонажа пальцем."
 
 	for i in Inventory.SIZE:
 		var s := SlotView.new()
@@ -140,6 +143,8 @@ func setup(p_inv: Inventory, p_hud) -> void:
 	overlay.set_anchors_preset(Control.PRESET_FULL_RECT)
 	add_child(overlay)
 	overlay.draw.connect(_draw_overlay)
+	for k in ["gun", "cloth", "metal", "stone"]:
+		snd_move[k] = load("res://assets/sounds/drop_%s_1.wav" % k)
 	inv.changed.connect(refresh)
 	inv.attire_changed.connect(_on_attire)
 	_on_attire()
@@ -156,10 +161,13 @@ func layout(vs: Vector2) -> void:
 	size = vs
 	var mid_w := 6 * S + 5 * G
 	var left_w := 7 * AS + 6 * G
-	var gap := 34.0
-	var x0: float = max(16.0, (vs.x - (left_w + gap + mid_w)) * 0.5 - 60.0)
+	var gap := 24.0
+	var right_w := mid_w
+	var total := left_w + gap + mid_w + gap + right_w
+	var x0: float = max(12.0, (vs.x - total) * 0.5)
 	var xm := x0 + left_w + gap
-	var belt_y := vs.y - S - 14.0
+	var xr := xm + mid_w + gap
+	var belt_y := vs.y - S - 12.0
 	for i in Inventory.HOTBAR:
 		_place(i, Vector2(xm + i * (S + G), belt_y), S)
 	var gy := belt_y - 16.0 - (4 * S + 3 * G)
@@ -168,23 +176,46 @@ func layout(vs: Vector2) -> void:
 	var ay := belt_y + S - AS
 	for i in Inventory.WEAR:
 		_place(Inventory.WEAR_START + i, Vector2(x0 + i * (AS + G), ay), AS)
-	# подпись "ИНВЕНТАРЬ" рисуется в _draw
-	item_title.position = Vector2(xm, 14)
+	# ящик: 6 x 8 справа, низ по уровню пояса
+	var ly := belt_y + S - (8 * S + 7 * G)
+	for i in Inventory.LOOT:
+		_place(Inventory.LOOT_START + i, Vector2(xr + (i % 6) * (S + G), ly + (i / 6) * (S + G)), S)
+		slots[Inventory.LOOT_START + i].visible = looting
+	item_title.position = Vector2(xm, 10)
 	item_title.size = Vector2(mid_w, 40)
-	item_info.position = Vector2(xm, 58)
-	item_info.size = Vector2(mid_w, gy - 58 - 44)
-	preview_rect = Rect2(x0, 14, left_w, ay - 24)
+	item_info.position = Vector2(xm, 54)
+	item_info.size = Vector2(mid_w, gy - 54 - 44)
+	preview_rect = Rect2(x0, 10, left_w, ay - 34)
 	preview_container.position = preview_rect.position
 	preview_container.size = preview_rect.size
-	stats_box.position = Vector2(x0 + left_w - 120, 70)
-	stats_box.size = Vector2(110, 300)
-	var hx := xm + mid_w + 30
-	hint.position = Vector2(hx, 70)
-	hint.size = Vector2(max(120.0, vs.x - hx - 20), 300)
-	close_rect = Rect2(vs.x - 84, 14, 64, 64)
-	info_bg.position = item_info.position - Vector2(8, 52)
-	info_bg.size = Vector2(item_info.size.x + 16, item_info.size.y + 56)
+	stats_box.position = Vector2(x0 + left_w - 110, 66)
+	stats_box.size = Vector2(100, 300)
+	hint.position = Vector2(xr, 70)
+	hint.size = Vector2(max(120.0, vs.x - xr - 20), 300)
+	hint.visible = not looting
+	close_rect = Rect2(vs.x - 76, 10, 60, 60)
+	info_bg.position = item_info.position - Vector2(8, 48)
+	info_bg.size = Vector2(item_info.size.x + 16, item_info.size.y + 52)
 	_redraw()
+
+func set_looting(on: bool) -> void:
+	looting = on
+	sel = -1
+	layout(size)
+	refresh()
+
+func _play_move(i: int) -> void:
+	var it = inv.get_item(i)
+	if it == null:
+		return
+	var t: String = Items.get_def(it.id).get("type", "")
+	var k := "cloth" if t == "attire" else ("gun" if t == "weapon" else ("stone" if t == "melee" else "metal"))
+	var p := AudioStreamPlayer.new()
+	p.stream = snd_move[k]
+	p.volume_db = -6.0
+	add_child(p)
+	p.play()
+	p.finished.connect(p.queue_free)
 
 func _place(i: int, p: Vector2, sz: float) -> void:
 	slots[i].position = p
@@ -259,7 +290,10 @@ func _draw_overlay() -> void:
 	o.draw_string(f, Vector2(mid_x + 2, slots[Inventory.MAIN_START].position.y - 10), "ИНВЕНТАРЬ", HORIZONTAL_ALIGNMENT_LEFT, -1, 30, TEXT)
 	var ax: float = slots[Inventory.WEAR_START].position.x
 	o.draw_string(f, Vector2(ax + 2, slots[Inventory.WEAR_START].position.y - 10), "ОДЕЖДА", HORIZONTAL_ALIGNMENT_LEFT, -1, 22, Color(TEXT, 0.7))
-	o.draw_string(f, Vector2(preview_rect.end.x - 118, preview_rect.position.y + 40), "PLAYER", HORIZONTAL_ALIGNMENT_LEFT, -1, 34, TEXT)
+	o.draw_string(f, Vector2(preview_rect.end.x - 110, preview_rect.position.y + 40), "PLAYER", HORIZONTAL_ALIGNMENT_LEFT, -1, 34, TEXT)
+	if looting:
+		var lp: Vector2 = slots[Inventory.LOOT_START].position
+		o.draw_string(f, Vector2(lp.x + 2, lp.y - 10), loot_title, HORIZONTAL_ALIGNMENT_LEFT, -1, 30, TEXT)
 	# панель информации
 	# закрыть
 	o.draw_rect(close_rect, Color(0.6, 0.2, 0.15, 0.7))
@@ -279,7 +313,7 @@ func _redraw() -> void:
 
 func _slot_at(p: Vector2) -> int:
 	for s in slots:
-		if s.get_global_rect().has_point(p):
+		if s.visible and s.get_global_rect().has_point(p):
 			return s.index
 	return -1
 
@@ -337,7 +371,10 @@ func touch_up(idx: int, p: Vector2) -> void:
 	if from == last_tap_slot and now - last_tap_time < 0.35 and inv.get_item(from) != null:
 		last_tap_slot = -1
 		sel = -1
-		if not inv.quick_toggle_wear(from) and from < Inventory.HOTBAR:
+		_play_move(from)
+		if looting:
+			inv.quick_move(from)
+		elif not inv.quick_toggle_wear(from) and from < Inventory.HOTBAR:
 			hud.tap_hotbar_from_inventory(from)
 		refresh()
 		return
@@ -349,6 +386,7 @@ func touch_up(idx: int, p: Vector2) -> void:
 	elif sel == from:
 		sel = -1
 	else:
-		inv.move(sel, from)
+		if inv.move(sel, from):
+			_play_move(from)
 		sel = -1
 	refresh()

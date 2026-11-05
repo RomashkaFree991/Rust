@@ -6,6 +6,16 @@ const SLOT := 86.0
 const GAP := 6.0
 const LOOK_SENS := 0.16          # градусов на пиксель
 const JOY_RADIUS := 95.0
+# полоски состояния как в gRust (hud_cl.lua): еда, вода, здоровье
+const BAR_W := 250.0
+const BAR_H := 34.0
+const BAR_SP := 4.0
+const BAR_PAD := 4.0
+const BARS := [
+	["hunger", Color(198 / 255.0, 110 / 255.0, 47 / 255.0, 175 / 255.0), "calories", 500.0],
+	["cup_water", Color(69 / 255.0, 149 / 255.0, 205 / 255.0), "hydration", 250.0],
+	["health", Color(140 / 255.0, 186 / 255.0, 59 / 255.0, 150 / 255.0), "health", 100.0],
+]
 
 var player: Player
 var inv: Inventory
@@ -40,6 +50,14 @@ var hit_head := false
 var kill_label: Label
 var kill_t := 0.0
 var kills := 0
+var btn_open: TouchButton
+var looking_chest := false
+var calories := 412.0
+var hydration := 186.0
+var health := 100.0
+var bar_icons := {}
+var snd_open: AudioStream
+var snd_close: AudioStream
 
 func _ready() -> void:
 	set_anchors_preset(Control.PRESET_FULL_RECT)
@@ -54,9 +72,17 @@ func _ready() -> void:
 	btn_jump = _mk_btn(ic.call("upgrade"), "ПРЫЖОК", 46.0)
 	btn_view = _mk_btn(ic.call("rotate"), "3 ЛИЦО", 40.0)
 	btn_inv = _mk_btn(ic.call("backpack"), "", 40.0)
+	btn_open = _mk_btn(ic.call("open"), "ОТКРЫТЬ", 48.0)
+	btn_open.accent = Color(0.35, 0.5, 0.2)
+	btn_open.visible = false
+	btn_open.pressed.connect(func(): open_loot())
+	for k in ["hunger", "cup_water", "health"]:
+		bar_icons[k] = ic.call(k)
+	snd_open = load("res://assets/sounds/box_open.wav")
+	snd_close = load("res://assets/sounds/box_close.wav")
 	btn_aim.accent = Color(0.2, 0.5, 0.8)
 	btn_view.accent = Color(0.2, 0.5, 0.8)
-	game_buttons = [btn_fire, btn_fire_l, btn_aim, btn_reload, btn_inspect, btn_jump, btn_view]
+	game_buttons = [btn_fire, btn_fire_l, btn_aim, btn_reload, btn_inspect, btn_jump, btn_view, btn_open]
 
 	btn_fire.pressed.connect(func(): player.viewmodel.set_trigger(true))
 	btn_fire.released.connect(func(): _fire_released())
@@ -152,9 +178,11 @@ func _layout() -> void:
 	for i in hot_slots.size():
 		hot_slots[i].position = Vector2(x0 + i * (SLOT + GAP), y0)
 	_place(btn_inv, Vector2(x0 - 58, y0 + SLOT * 0.5))
-	ammo_label.position = Vector2(w - 260 - m, h - 70)
+	var bars_top := h - 14.0 - 3 * (BAR_H + BAR_SP)
+	ammo_label.position = Vector2(w - 250 - m, bars_top - 50)
 	ammo_label.size = Vector2(200, 46)
-	ammo_icon.position = Vector2(w - 54 - m, h - 68)
+	ammo_icon.position = Vector2(w - 48 - m, bars_top - 48)
+	_place(btn_open, Vector2(w * 0.5, h * 0.66))
 	toast.position = Vector2(0, h * 0.62)
 	toast.size = Vector2(w, 40)
 	kill_label.position = Vector2(0, h * 0.3)
@@ -273,6 +301,10 @@ func _process(delta: float) -> void:
 		kill_label.modulate.a = clamp(kill_t, 0.0, 1.0)
 	if hit_t > 0.0:
 		hit_t -= delta
+	calories = max(0.0, calories - delta * 0.12)
+	hydration = max(0.0, hydration - delta * 0.18)
+	looking_chest = player.looking_at_chest()
+	btn_open.visible = looking_chest and not inv_open
 	queue_redraw()
 	_refresh_ammo()
 
@@ -298,6 +330,7 @@ func _draw() -> void:
 		var r := 1.3 if hit_head else 1.0
 		for s in [Vector2(1, 1), Vector2(-1, 1), Vector2(1, -1), Vector2(-1, -1)]:
 			draw_line(c + s * 7.0 * r, c + s * 17.0 * r, col, 3.0, true)
+	_draw_bars(vs)
 	# джойстик
 	if joy_idx != -1:
 		draw_circle(joy_center, JOY_RADIUS, Color(0, 0, 0, 0.28))
@@ -312,10 +345,47 @@ func _draw() -> void:
 		draw_arc(hint, JOY_RADIUS, 0, TAU, 64, Color(1, 1, 1, 0.18), 2.0, true)
 		draw_circle(hint, 42.0, Color(1, 1, 1, 0.22))
 
-func toggle_inventory() -> void:
+func _draw_bars(vs: Vector2) -> void:
+	var f := get_theme_default_font()
+	for i in BARS.size():
+		var d: Array = BARS[i]
+		var x := vs.x - 14.0 - BAR_W
+		var y := vs.y - 14.0 - (BAR_H + BAR_SP) * (i + 1) + BAR_SP
+		SlotView.draw_panel(self, Rect2(x, y, BAR_W, BAR_H), Color(106 / 255.0, 104 / 255.0, 94 / 255.0, 75 / 255.0))
+		var ip := 6.0
+		var isz := BAR_H - ip * 2.0
+		draw_texture_rect(bar_icons[d[0]], Rect2(x + ip + 1, y + ip + 1, isz, isz), false, Color(0, 0, 0, 100 / 255.0))
+		draw_texture_rect(bar_icons[d[0]], Rect2(x + ip, y + ip, isz, isz), false, Color(190 / 255.0, 180 / 255.0, 170 / 255.0, 150 / 255.0))
+		var v: float = get(d[2])
+		var frac: float = clamp(v / d[3], 0.0, 1.0)
+		var bx := x + BAR_H - 2.0
+		SlotView.draw_panel(self, Rect2(bx, y + BAR_PAD, (BAR_W - BAR_H - BAR_PAD) * frac, BAR_H - BAR_PAD * 2.0), d[1])
+		var t := str(int(ceil(v)))
+		draw_string(f, Vector2(bx + 10 + 1, y + BAR_H * 0.5 + 8 + 1), t, HORIZONTAL_ALIGNMENT_LEFT, -1, 22, Color(0, 0, 0, 0.4))
+		draw_string(f, Vector2(bx + 10, y + BAR_H * 0.5 + 8), t, HORIZONTAL_ALIGNMENT_LEFT, -1, 22, Color(231 / 255.0, 219 / 255.0, 210 / 255.0, 215 / 255.0))
+
+func open_loot() -> void:
+	if inv_open:
+		return
+	_play(snd_open)
+	player.body.play_use()
+	toggle_inventory(true)
+
+func _play(st: AudioStream) -> void:
+	var p := AudioStreamPlayer.new()
+	p.stream = st
+	add_child(p)
+	p.play()
+	p.finished.connect(p.queue_free)
+
+func toggle_inventory(loot := false) -> void:
+	if inv_open and inv_ui.looting:
+		_play(snd_close)
 	inv_open = not inv_open
 	inv_ui.visible = inv_open
 	inv_ui.sel = -1
+	inv_ui.set_looting(inv_open and loot)
+	btn_inv.visible = not inv_open
 	for b in game_buttons:
 		b.visible = not inv_open
 		if b.held:

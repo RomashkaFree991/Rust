@@ -83,6 +83,32 @@ static func _static_init() -> void:
 	_att("heavy_plate_helmet", "Heavy Plate Helmet", "attire_heavy.plate.helmet", "head", ["hair"], "", 0.4, 0.4, "Тяжёлый шлем. Отлично держит выстрел в голову.")
 	_att("metal_mask", "Metal Facemask", "attire_metal.facemask", "face", ["beard"], "", 0.5, 0.5, "Металлическая маска.")
 	_att("bandana", "Bandana Mask", "attire_mask.bandana", "face", ["beard"], "", 0.05, 0.05, "Бандана.")
+	_att("burlap_shirt", "Burlap Shirt", "attire_burlap.shirt", "torso", ["Torso"], "", 0.03, 0.03, "Рубаха из мешковины.")
+	_att("tshirt", "T-Shirt", "attire_tshirt", "torso", [], "", 0.03, 0.03, "Футболка.")
+	_att("tanktop", "Tank Top", "attire_shirt.tanktop", "torso", [], "", 0.02, 0.02, "Майка.")
+	_att("wood_armour_jacket", "Wood Chestplate", "attire_wood.armor.jacket", "chest", [], "", 0.15, 0.2, "Деревянный нагрудник.")
+	_att("hide_vest", "Hide Vest", "attire_attire.hide.vest", "chest", [], "", 0.08, 0.08, "Жилет из шкуры.")
+	_att("jacket_snow", "Snow Jacket", "attire_jacket_snow", "torso", [], "", 0.12, 0.12, "Зимняя куртка.")
+	_att("poncho", "Hide Poncho", "attire_attire.hide.poncho", "chest", [], "", 0.06, 0.06, "Пончо из шкуры.")
+	_att("burlap_trousers", "Burlap Trousers", "attire_burlap.trousers", "legs", ["Legs"], "", 0.03, 0.03, "Штаны из мешковины.")
+	_att("shorts", "Shorts", "attire_pants.shorts", "legs", ["Legs"], "", 0.02, 0.02, "Шорты.")
+	DB["shorts"]["show"] = ["Legs_01"]
+	_att("wood_armor_pants", "Wood Armor Pants", "attire_wood.armor.pants", "kneepads", [], "", 0.12, 0.15, "Деревянные наколенники.")
+	_att("roadsign_kilt", "Road Sign Kilt", "attire_roadsign.kilt", "kilt", [], "", 0.15, 0.15, "Килт из дорожных знаков.")
+	_att("burlap_shoes", "Burlap Shoes", "attire_burlap.shoes", "feet", ["Feet"], "", 0.03, 0.03, "Обмотки из мешковины.")
+	_att("boots_hide", "Hide Boots", "attire_attire.hide.boots", "feet", ["Feet"], "", 0.06, 0.06, "Сапоги из шкуры.")
+	_att("burlap_gloves", "Leather Gloves", "attire_burlap.gloves", "hands", [], "BurlapGloves_vm", 0.03, 0.03, "Перчатки.")
+	_att("roadsign_gloves", "Roadsign Gloves", "attire_roadsign.gloves", "hands", [], "RoadsignGloves_vm", 0.06, 0.06, "Перчатки из дорожных знаков.")
+	_att("riot_helmet", "Riot Helmet", "attire_riot.helmet", "head", ["hair"], "", 0.25, 0.25, "Шлем ОМОНа.")
+	_att("bucket_helmet", "Bucket Helmet", "attire_bucket.helmet", "head", ["hair"], "", 0.12, 0.12, "Шлем-ведро.")
+	_att("wooden_helmet", "Wood Armor Helmet", "attire_wood.armor.helmet", "head", ["hair"], "", 0.15, 0.15, "Деревянный шлем.")
+	_att("hat_boonie", "Boonie Hat", "attire_hat.boonie", "head", ["hair"], "", 0.05, 0.05, "Панама.")
+	_att("beenie_hat", "Beenie Hat", "attire_hat.beenie", "head", ["hair"], "", 0.03, 0.03, "Шапка.")
+	_att("hat_wolf", "Wolf Headdress", "attire_hat.wolf", "head", ["hair"], "", 0.1, 0.1, "Голова волка.")
+	_att("balaclava", "Balaclava", "attire_mask.balaclava", "face", ["beard", "hair"], "", 0.05, 0.05, "Балаклава.")
+	_att("sunglasses", "Sunglasses", "attire_sunglasses", "eyes", [], "", 0.0, 0.0, "Солнечные очки.")
+	DB["box.wooden.large"] = {"type": "deployable", "name": "Large Wood Box", "desc": "Большой деревянный ящик на 48 ячеек.",
+		"icon": "res://assets/icons/attire_box.wooden.large.png", "stack": 1}
 
 static func _att(id: String, name: String, icon: String, slot: String, hide: Array, arms: String, proj: float, melee: float, desc: String) -> void:
 	DB[id] = {"type": "attire", "name": name, "desc": desc, "icon": "res://assets/icons/%s.png" % icon,

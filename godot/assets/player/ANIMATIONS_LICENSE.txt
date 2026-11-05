@@ -1,0 +1,6 @@
+Анимации тела (anims.glb) — Quaternius, Universal Animation Library (Standard) и
+Universal Animation Library 2 (Standard), лицензия CC0 1.0 Universal (public domain).
+https://quaternius.com/packs/universalanimationlibrary.html
+https://opengameart.org/content/universal-animation-library
+https://opengameart.org/content/universal-animation-library-2
+Перенесены на скелет ValveBiped скриптом tools/godot_conversion/retarget.py.

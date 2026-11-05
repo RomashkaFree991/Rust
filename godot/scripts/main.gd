@@ -29,6 +29,22 @@ func _ready() -> void:
 	player.apply_attire(inv.worn())
 	hud._set_active(0)
 	_spawn_bots()
+	_spawn_chest()
+
+func _spawn_chest() -> void:
+	var body := StaticBody3D.new()
+	body.add_to_group("chest")
+	var m: Node3D = load("res://assets/props/large_wooden_box.gltf").instantiate()
+	var ab := _mesh_aabb(load("res://assets/props/large_wooden_box.gltf").instantiate())
+	body.add_child(m)
+	var c := CollisionShape3D.new()
+	var b := BoxShape3D.new(); b.size = ab.size
+	c.shape = b
+	c.position = ab.get_center()
+	body.add_child(c)
+	add_child(body)
+	body.position = Vector3(2.2, 0.0, 9.0)
+	body.rotation_degrees.y = -70.0
 
 func _spawn_bots() -> void:
 	var defs := [
