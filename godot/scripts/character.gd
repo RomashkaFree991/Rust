@@ -23,11 +23,16 @@ var hold := ""                 # rifle / pistol / melee / ""
 var aim_pitch := 0.0           # градусы, + вверх
 var move_speed := 0.0          # 0..1 (1 — спринт)
 var in_air := false
+var wounded := false
+var dead_lying := false        # умер после ранения — лежит
+var move_local := Vector2.ZERO  # направление движения: x — вправо, y — вперёд
+var body_yaw := 0.0             # поворот ног к направлению движения (рад)
 var recoil := 0.0
 var anim_player: AnimationPlayer
 var tree: AnimationTree
 var hands: SkeletonModifier3D
 static var _anim_lib: AnimationLibrary
+static var _tints: Dictionary = {}
 var look_target = null         # Vector3 в глобальных координатах (поворот головы)
 var dead := false
 var layer_mask := 1
@@ -48,6 +53,8 @@ func _ready() -> void:
 func _build() -> void:
 	if model:
 		return
+	if _tints.is_empty():
+		_tints = JSON.parse_string(FileAccess.get_file_as_string("res://assets/player/tints.json"))
 	model = _load("res://assets/player/player.gltf").instantiate()
 	model.scale = Vector3.ONE * SCALE
 	add_child(model)
@@ -75,8 +82,11 @@ func _fix_mat(m: MeshInstance3D, skin: bool) -> void:
 			nm.metallic = 0.0
 			nm.roughness = 0.8
 			nm.normal_scale = 0.6
-			if skin and String(nm.resource_name).to_lower().contains("body") or String(nm.resource_name).to_lower().contains("face"):
-				nm.albedo_color = Color(0.93, 0.76, 0.64)
+			# оттенок материала из VMT ($color2 / $color), как в Source
+			var key := String(nm.resource_name).to_lower().get_slice(".", 0)
+			if _tints.has(key):
+				var t: Array = _tints[key]
+				nm.albedo_color = Color(min(t[0] * 1.5, 1.0), min(t[1] * 1.5, 1.0), min(t[2] * 1.5, 1.0))
 			if String(nm.resource_name).to_lower().contains("hair") or String(nm.resource_name).to_lower().contains("eyelash"):
 				nm.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA_SCISSOR
 				nm.alpha_scissor_threshold = 0.4
@@ -141,6 +151,7 @@ func _set_body_visible(ids: Array = []) -> void:
 			hide[h] = true
 		for h in Items.get_def(id).get("show", []):
 			show[h] = true
+	var all := hide.has("all")
 	for n in body_meshes:
 		var m: MeshInstance3D = body_meshes[n]
 		var v := false
@@ -149,13 +160,14 @@ func _set_body_visible(ids: Array = []) -> void:
 		elif n.begins_with("Hands_00"): v = true
 		elif n.begins_with("Underwear_Legs"): v = not hide.has("Legs")
 		elif n.begins_with("Legs_01"): v = show.has("Legs_01")
+		elif n.begins_with("Torso_01"): v = show.has("Torso_01")
 		elif n.begins_with("Feet_00"): v = not hide.has("Feet")
 		elif n.begins_with("hairs_male_hairstyle_01"): v = not hide.has("hair")
 		elif n.begins_with("hairs_male_facial_hair"): v = not hide.has("beard")
-		m.visible = v
+		m.visible = v and not all
 	if attire_meshes.has("underwear_pants"):
 		for m in attire_meshes["underwear_pants"]:
-			m.visible = not hide.has("Legs")
+			m.visible = not hide.has("Legs") and not all
 
 ## Оружие в руке (модель w_*)
 func set_weapon(id: String) -> void:
@@ -217,12 +229,30 @@ func _process(delta: float) -> void:
 	recoil = move_toward(recoil, 0.0, delta * 6.0)
 	if tree:
 		tree.set("parameters/loco/blend_position", clamp(move_speed, 0.0, 1.0))
+		# ходьба вбок/назад: ноги поворачиваются к направлению движения, назад — анимация задом наперёд
+		var want := 0.0
+		var back := false
+		if move_speed > 0.08 and move_local.length() > 0.2:
+			var ang := atan2(move_local.x, move_local.y)
+			if abs(ang) > deg_to_rad(105.0):
+				back = true
+				ang = ang - signf(ang) * PI
+			want = ang
+		body_yaw = lerp_angle(body_yaw, want, clamp(delta * 8.0, 0.0, 1.0))
+		model.rotation.y = -body_yaw
+		tree.set("parameters/loco_ts/scale", -1.0 if back else 1.0)
 		tree.set("parameters/aim/blend_position", clamp(aim_pitch / 60.0, -1.0, 1.0))
 		var armed := 1.0 if hold != "" else 0.0
 		var cur: float = tree.get("parameters/armed/blend_amount")
 		tree.set("parameters/armed/blend_amount", move_toward(cur, armed, delta * 5.0))
 		tree.set("parameters/upper_kind/transition_request", "melee" if hold == "melee" else "gun")
-		var st := "dead" if dead else ("air" if in_air else "ground")
+		var st := "ground"
+		if dead:
+			st = "lying" if dead_lying else "dead"
+		elif wounded:
+			st = "wounded"
+		elif in_air:
+			st = "air"
 		if tree.get("parameters/state/current_state") != st:
 			tree.set("parameters/state/transition_request", st)
 	_update_flash(delta)
@@ -237,6 +267,8 @@ func _setup_anim() -> void:
 		var src: Node = load("res://assets/player/anims.glb").instantiate()
 		var ap: AnimationPlayer = src.find_child("AnimationPlayer", true, false)
 		_anim_lib = ap.get_animation_library("")
+		if _anim_lib.has_animation("Native_wounded"):
+			_anim_lib.get_animation("Native_wounded").loop_mode = Animation.LOOP_LINEAR
 		for n in ["Death01", "Pistol_Shoot", "Pistol_Reload", "Sword_Attack", "Hit_Chest", "Hit_Head", "Chest_Open", "Jump_Start", "Jump_Land", "Punch_Jab", "Interact"]:
 			if _anim_lib.has_animation(n):
 				_anim_lib.get_animation(n).loop_mode = Animation.LOOP_NONE
@@ -253,6 +285,9 @@ func _setup_anim() -> void:
 	loco.min_space = 0.0
 	loco.max_space = 1.0
 	bt.add_node("loco", loco, Vector2(0, 0))
+	var lts := AnimationNodeTimeScale.new()
+	bt.add_node("loco_ts", lts, Vector2(150, 0))
+	bt.connect_node("loco_ts", 0, "loco")
 	var aim := AnimationNodeBlendSpace1D.new()
 	for pt in [["Pistol_Aim_Down", -1.0], ["Pistol_Aim_Neutral", 0.0], ["Pistol_Aim_Up", 1.0]]:
 		var a := AnimationNodeAnimation.new(); a.animation = pt[0]
@@ -269,7 +304,7 @@ func _setup_anim() -> void:
 	var armed := AnimationNodeBlend2.new()
 	_filter_upper(armed)
 	bt.add_node("armed", armed, Vector2(400, 100))
-	bt.connect_node("armed", 0, "loco")
+	bt.connect_node("armed", 0, "loco_ts")
 	bt.connect_node("armed", 1, "upper_kind")
 	var last := "armed"
 	var y := 400
@@ -290,13 +325,22 @@ func _setup_anim() -> void:
 	bt.add_node("air_anim", air, Vector2(600, 1000))
 	var death := AnimationNodeAnimation.new(); death.animation = "Death01"
 	bt.add_node("death_anim", death, Vector2(600, 1100))
+	var wnd := AnimationNodeAnimation.new(); wnd.animation = "Native_wounded"
+	bt.add_node("wounded_anim", wnd, Vector2(600, 1200))
+	var wts := AnimationNodeTimeScale.new()
+	bt.add_node("wounded_ts", wts, Vector2(700, 1200))
+	bt.connect_node("wounded_ts", 0, "wounded_anim")
 	var state := AnimationNodeTransition.new()
-	state.add_input("ground"); state.add_input("air"); state.add_input("dead")
+	state.add_input("ground"); state.add_input("air"); state.add_input("dead"); state.add_input("wounded"); state.add_input("lying")
+	var lying := AnimationNodeAnimation.new(); lying.animation = "Native_sleep"
+	bt.add_node("lying_anim", lying, Vector2(600, 1300))
 	state.xfade_time = 0.15
 	bt.add_node("state", state, Vector2(800, 600))
 	bt.connect_node("state", 0, last)
 	bt.connect_node("state", 1, "air_anim")
 	bt.connect_node("state", 2, "death_anim")
+	bt.connect_node("state", 3, "wounded_ts")
+	bt.connect_node("state", 4, "lying_anim")
 	bt.connect_node("output", 0, "state")
 	tree = AnimationTree.new()
 	tree.tree_root = bt
@@ -304,6 +348,7 @@ func _setup_anim() -> void:
 	tree.root_node = NodePath("..")
 	tree.anim_player = tree.get_path_to(anim_player)
 	tree.active = true
+	tree.set("parameters/wounded_ts/scale", 15.0 / 24.0)   # нативная анимация модели 15 к/с
 	hands = preload("res://scripts/rifle_hands.gd").new()
 	hands.character = self
 	sk.add_child(hands)
@@ -373,11 +418,20 @@ func post_animation() -> void:
 		var yaw: float = clamp(atan2(to.x, to.z), -1.0, 1.0)
 		var cur := _g("Head1")
 		_set_g("Head1", Transform3D(Basis(Vector3.UP, yaw) * cur.basis, cur.origin))
+	# корпус смотрит в прицел, даже если ноги развернуты к направлению движения
+	if abs(body_yaw) > 0.01 and not dead and not wounded:
+		for pr in [["Spine2", 0.45], ["Spine4", 0.55]]:
+			var cur := _g(pr[0])
+			_set_g(pr[0], Transform3D(Basis(Vector3.UP, body_yaw * pr[1]) * cur.basis, cur.origin))
 	if weapon_node == null:
+		return
+	if wounded:
+		var hand0 := _g("R_Hand")
+		weapon_node.transform = model.transform * (hand0 * weapon_hand_rest.affine_inverse())
 		return
 	if hold == "rifle" and not weapon_geo.is_empty() and not dead:
 		var p: float = clamp(aim_pitch, -60, 60)
-		var aim := Basis(Vector3.RIGHT, deg_to_rad(-p))
+		var aim := Basis(Vector3.UP, body_yaw) * Basis(Vector3.RIGHT, deg_to_rad(-p))
 		var g := weapon_geo
 		var bm := Basis((g.up as Vector3).cross(g.fwd), g.up, g.fwd)
 		var bt := aim * Basis(Vector3.RIGHT, Vector3.UP, Vector3.BACK)

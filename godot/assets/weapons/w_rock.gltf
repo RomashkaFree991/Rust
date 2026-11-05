@@ -100,13 +100,13 @@
 	"images":[
 		{
 			"mimeType":"image/png",
-			"name":"rock_normals",
-			"uri":"tex/rock_normals.png"
+			"name":"rock2_rock_normals",
+			"uri":"tex/rock2_rock_normals.png"
 		},
 		{
 			"mimeType":"image/png",
-			"name":"rock_colour",
-			"uri":"tex/rock_colour.png"
+			"name":"rock2_rock_colour",
+			"uri":"tex/rock2_rock_colour.png"
 		}
 	],
 	"skins":[

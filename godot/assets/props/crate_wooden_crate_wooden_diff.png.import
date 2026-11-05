@@ -3,9 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://flfc5ugcd08v"
-path="res://.godot/imported/crate_wooden_crate_wooden_diff.png-adfa8c469a5f12b79d8b439ecc01b7d8.ctex"
+path.s3tc="res://.godot/imported/crate_wooden_crate_wooden_diff.png-adfa8c469a5f12b79d8b439ecc01b7d8.s3tc.ctex"
+path.etc2="res://.godot/imported/crate_wooden_crate_wooden_diff.png-adfa8c469a5f12b79d8b439ecc01b7d8.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 generator_parameters={
 "md5": "e96bbdff860dedfa9251dca336fc14f8"
@@ -14,11 +16,11 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/props/crate_wooden_crate_wooden_diff.png"
-dest_files=["res://.godot/imported/crate_wooden_crate_wooden_diff.png-adfa8c469a5f12b79d8b439ecc01b7d8.ctex"]
+dest_files=["res://.godot/imported/crate_wooden_crate_wooden_diff.png-adfa8c469a5f12b79d8b439ecc01b7d8.s3tc.ctex", "res://.godot/imported/crate_wooden_crate_wooden_diff.png-adfa8c469a5f12b79d8b439ecc01b7d8.etc2.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -40,4 +42,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=1024
-detect_3d/compress_to=1
+detect_3d/compress_to=0

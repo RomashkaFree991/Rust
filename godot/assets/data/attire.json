@@ -1,0 +1,981 @@
+{
+ "jacket": {
+  "name": "Jacket",
+  "icon": "res://assets/icons/items/attire_jacket.png",
+  "slot": "torso",
+  "hide": [],
+  "show": [],
+  "arms": "",
+  "prot": 0.15,
+  "melee_prot": 0.15,
+  "desc": "Куртка.",
+  "scene": "res://assets/player/jacket.gltf"
+ },
+ "tshirt_long": {
+  "name": "Longsleeve T-Shirt",
+  "icon": "res://assets/icons/items/attire_tshirt.long.png",
+  "slot": "torso",
+  "hide": [
+   "Torso"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0.05,
+  "melee_prot": 0.05,
+  "desc": "Лонгслив.",
+  "scene": "res://assets/player/tshirt_long.gltf"
+ },
+ "tshirt": {
+  "name": "T-Shirt",
+  "icon": "res://assets/icons/items/attire_tshirt.png",
+  "slot": "torso",
+  "hide": [
+   "Torso"
+  ],
+  "show": [
+   "Torso_01"
+  ],
+  "arms": "",
+  "prot": 0.03,
+  "melee_prot": 0.03,
+  "desc": "Футболка.",
+  "scene": "res://assets/player/tshirt.gltf"
+ },
+ "tanktop": {
+  "name": "Tank Top",
+  "icon": "res://assets/icons/items/attire_shirt.tanktop.png",
+  "slot": "torso",
+  "hide": [
+   "Torso"
+  ],
+  "show": [
+   "Torso_01"
+  ],
+  "arms": "",
+  "prot": 0.02,
+  "melee_prot": 0.02,
+  "desc": "Майка.",
+  "scene": "res://assets/player/tanktop.gltf"
+ },
+ "burlap_shirt": {
+  "name": "Burlap Shirt",
+  "icon": "res://assets/icons/items/attire_burlap.shirt.png",
+  "slot": "torso",
+  "hide": [
+   "Torso"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0.03,
+  "melee_prot": 0.03,
+  "desc": "Рубаха из мешковины.",
+  "scene": "res://assets/player/burlap_shirt.gltf"
+ },
+ "jacket_snow": {
+  "name": "Snow Jacket",
+  "icon": "res://assets/icons/items/attire_jacket_snow.png",
+  "slot": "torso",
+  "hide": [
+   "Torso"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0.12,
+  "melee_prot": 0.12,
+  "desc": "Зимняя куртка.",
+  "scene": "res://assets/player/jacket_snow.gltf"
+ },
+ "player_urban_torso": {
+  "name": "Urban Jacket",
+  "icon": "res://assets/icons/items/attire_jacket.png",
+  "slot": "torso",
+  "hide": [
+   "Torso"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0.1,
+  "melee_prot": 0.1,
+  "desc": "Городская куртка.",
+  "scene": "res://assets/player/player_urban_torso.gltf"
+ },
+ "roadsign_jacket": {
+  "name": "Road Sign Jacket",
+  "icon": "res://assets/icons/items/attire_roadsign.jacket.png",
+  "slot": "chest",
+  "hide": [],
+  "show": [],
+  "arms": "",
+  "prot": 0.2,
+  "melee_prot": 0.2,
+  "desc": "Броня из дорожных знаков.",
+  "scene": "res://assets/player/roadsign_jacket.gltf"
+ },
+ "heavy_plate_jacket": {
+  "name": "Heavy Plate Jacket",
+  "icon": "res://assets/icons/items/attire_heavy.plate.jacket.png",
+  "slot": "chest",
+  "hide": [
+   "Torso"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0.25,
+  "melee_prot": 0.25,
+  "desc": "Тяжёлая броня.",
+  "scene": "res://assets/player/heavy_plate_jacket.gltf"
+ },
+ "metal_plate_torso": {
+  "name": "Metal Chest Plate",
+  "icon": "res://assets/icons/items/attire_metal.plate.torso.png",
+  "slot": "chest",
+  "hide": [],
+  "show": [],
+  "arms": "",
+  "prot": 0.25,
+  "melee_prot": 0.25,
+  "desc": "Металлический нагрудник.",
+  "scene": "res://assets/player/metal_plate_torso.gltf"
+ },
+ "wood_armour_jacket": {
+  "name": "Wood Chestplate",
+  "icon": "res://assets/icons/items/attire_wood.armor.jacket.png",
+  "slot": "chest",
+  "hide": [],
+  "show": [],
+  "arms": "",
+  "prot": 0.15,
+  "melee_prot": 0.2,
+  "desc": "Деревянный нагрудник.",
+  "scene": "res://assets/player/wood_armour_jacket.gltf"
+ },
+ "bone_armour": {
+  "name": "Bone Armor",
+  "icon": "res://assets/icons/items/attire_bone.armor.suit.png",
+  "slot": "chest",
+  "hide": [],
+  "show": [],
+  "arms": "",
+  "prot": 0.15,
+  "melee_prot": 0.2,
+  "desc": "Броня из костей.",
+  "scene": "res://assets/player/bone_armour.gltf"
+ },
+ "hide_vest": {
+  "name": "Hide Vest",
+  "icon": "res://assets/icons/items/attire_attire.hide.vest.png",
+  "slot": "chest",
+  "hide": [],
+  "show": [],
+  "arms": "",
+  "prot": 0.08,
+  "melee_prot": 0.08,
+  "desc": "Жилет из шкуры.",
+  "scene": "res://assets/player/hide_vest.gltf"
+ },
+ "poncho": {
+  "name": "Hide Poncho",
+  "icon": "res://assets/icons/items/attire_attire.hide.poncho.png",
+  "slot": "chest",
+  "hide": [],
+  "show": [],
+  "arms": "",
+  "prot": 0.06,
+  "melee_prot": 0.06,
+  "desc": "Пончо.",
+  "scene": "res://assets/player/poncho.gltf"
+ },
+ "pants_hide": {
+  "name": "Hide Pants",
+  "icon": "res://assets/icons/items/attire_attire.hide.pants.png",
+  "slot": "legs",
+  "hide": [
+   "Legs"
+  ],
+  "show": [
+   "Legs_01"
+  ],
+  "arms": "",
+  "prot": 0.1,
+  "melee_prot": 0.1,
+  "desc": "Штаны из шкуры.",
+  "scene": "res://assets/player/pants_hide.gltf"
+ },
+ "burlap_trousers": {
+  "name": "Burlap Trousers",
+  "icon": "res://assets/icons/items/attire_burlap.trousers.png",
+  "slot": "legs",
+  "hide": [
+   "Legs"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0.03,
+  "melee_prot": 0.03,
+  "desc": "Штаны из мешковины.",
+  "scene": "res://assets/player/burlap_trousers.gltf"
+ },
+ "shorts": {
+  "name": "Shorts",
+  "icon": "res://assets/icons/items/attire_pants.shorts.png",
+  "slot": "legs",
+  "hide": [
+   "Legs"
+  ],
+  "show": [
+   "Legs_01"
+  ],
+  "arms": "",
+  "prot": 0.02,
+  "melee_prot": 0.02,
+  "desc": "Шорты.",
+  "scene": "res://assets/player/shorts.gltf"
+ },
+ "player_urban_legs": {
+  "name": "Urban Pants",
+  "icon": "res://assets/icons/items/attire_pants.png",
+  "slot": "legs",
+  "hide": [
+   "Legs"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0.08,
+  "melee_prot": 0.08,
+  "desc": "Штаны.",
+  "scene": "res://assets/player/player_urban_legs.gltf"
+ },
+ "heavy_plate_legs": {
+  "name": "Heavy Plate Pants",
+  "icon": "res://assets/icons/items/attire_heavy.plate.pants.png",
+  "slot": "legs",
+  "hide": [
+   "Legs"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0.25,
+  "melee_prot": 0.25,
+  "desc": "Тяжёлые штаны.",
+  "scene": "res://assets/player/heavy_plate_legs.gltf"
+ },
+ "maleunderwear_coconut": {
+  "name": "Coconut Underwear",
+  "icon": "res://assets/icons/items/attire_pants.shorts.png",
+  "slot": "underwear",
+  "hide": [],
+  "show": [],
+  "arms": "",
+  "prot": 0,
+  "melee_prot": 0,
+  "desc": "Кокосовое бельё.",
+  "scene": "res://assets/player/maleunderwear_coconut.gltf"
+ },
+ "wood_armor_pants": {
+  "name": "Wood Armor Pants",
+  "icon": "res://assets/icons/items/attire_wood.armor.pants.png",
+  "slot": "kneepads",
+  "hide": [],
+  "show": [],
+  "arms": "",
+  "prot": 0.12,
+  "melee_prot": 0.15,
+  "desc": "Наколенники.",
+  "scene": "res://assets/player/wood_armor_pants.gltf"
+ },
+ "roadsign_kilt": {
+  "name": "Road Sign Kilt",
+  "icon": "res://assets/icons/items/attire_roadsign.kilt.png",
+  "slot": "kilt",
+  "hide": [],
+  "show": [],
+  "arms": "",
+  "prot": 0.15,
+  "melee_prot": 0.15,
+  "desc": "Килт.",
+  "scene": "res://assets/player/roadsign_kilt.gltf"
+ },
+ "shoes_boots": {
+  "name": "Boots",
+  "icon": "res://assets/icons/items/attire_shoes.boots.png",
+  "slot": "feet",
+  "hide": [
+   "Feet"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0.1,
+  "melee_prot": 0.1,
+  "desc": "Ботинки.",
+  "scene": "res://assets/player/shoes_boots.gltf"
+ },
+ "boots_hide": {
+  "name": "Hide Boots",
+  "icon": "res://assets/icons/items/attire_attire.hide.boots.png",
+  "slot": "feet",
+  "hide": [
+   "Feet"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0.06,
+  "melee_prot": 0.06,
+  "desc": "Сапоги из шкуры.",
+  "scene": "res://assets/player/boots_hide.gltf"
+ },
+ "burlap_shoes": {
+  "name": "Burlap Shoes",
+  "icon": "res://assets/icons/items/attire_burlap.shoes.png",
+  "slot": "feet",
+  "hide": [
+   "Feet"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0.03,
+  "melee_prot": 0.03,
+  "desc": "Обмотки.",
+  "scene": "res://assets/player/burlap_shoes.gltf"
+ },
+ "divingflippers": {
+  "name": "Diving Fins",
+  "icon": "res://assets/icons/items/attire_diving.fins.png",
+  "slot": "feet",
+  "hide": [
+   "Feet"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0,
+  "melee_prot": 0,
+  "desc": "Ласты.",
+  "scene": "res://assets/player/divingflippers.gltf"
+ },
+ "tactical_gloves": {
+  "name": "Tactical Gloves",
+  "icon": "res://assets/icons/items/attire_tactical.gloves.png",
+  "slot": "hands",
+  "hide": [],
+  "show": [],
+  "arms": "TacticalGloves_vm",
+  "prot": 0.05,
+  "melee_prot": 0.05,
+  "desc": "Тактические перчатки.",
+  "scene": "res://assets/player/tactical_gloves.gltf"
+ },
+ "burlap_gloves": {
+  "name": "Leather Gloves",
+  "icon": "res://assets/icons/items/attire_burlap.gloves.png",
+  "slot": "hands",
+  "hide": [],
+  "show": [],
+  "arms": "BurlapGloves_vm",
+  "prot": 0.03,
+  "melee_prot": 0.03,
+  "desc": "Перчатки.",
+  "scene": "res://assets/player/burlap_gloves.gltf"
+ },
+ "roadsign_gloves": {
+  "name": "Roadsign Gloves",
+  "icon": "res://assets/icons/items/attire_roadsign.gloves.png",
+  "slot": "hands",
+  "hide": [],
+  "show": [],
+  "arms": "RoadsignGloves_vm",
+  "prot": 0.06,
+  "melee_prot": 0.06,
+  "desc": "Перчатки из знаков.",
+  "scene": "res://assets/player/roadsign_gloves.gltf"
+ },
+ "hat_cap": {
+  "name": "Baseball Cap",
+  "icon": "res://assets/icons/items/attire_hat.cap.png",
+  "slot": "head",
+  "hide": [
+   "hair"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0.05,
+  "melee_prot": 0.05,
+  "desc": "Кепка.",
+  "scene": "res://assets/player/hat_cap.gltf"
+ },
+ "heavy_plate_helmet": {
+  "name": "Heavy Plate Helmet",
+  "icon": "res://assets/icons/items/attire_heavy.plate.helmet.png",
+  "slot": "head",
+  "hide": [
+   "hair"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0.4,
+  "melee_prot": 0.4,
+  "desc": "Тяжёлый шлем.",
+  "scene": "res://assets/player/heavy_plate_helmet.gltf"
+ },
+ "riot_helmet": {
+  "name": "Riot Helmet",
+  "icon": "res://assets/icons/items/attire_riot.helmet.png",
+  "slot": "head",
+  "hide": [
+   "hair"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0.25,
+  "melee_prot": 0.25,
+  "desc": "Шлем ОМОНа.",
+  "scene": "res://assets/player/riot_helmet.gltf"
+ },
+ "bucket_helmet": {
+  "name": "Bucket Helmet",
+  "icon": "res://assets/icons/items/attire_bucket.helmet.png",
+  "slot": "head",
+  "hide": [
+   "hair"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0.12,
+  "melee_prot": 0.12,
+  "desc": "Шлем-ведро.",
+  "scene": "res://assets/player/bucket_helmet.gltf"
+ },
+ "wooden_helmet": {
+  "name": "Wood Armor Helmet",
+  "icon": "res://assets/icons/items/attire_wood.armor.helmet.png",
+  "slot": "head",
+  "hide": [
+   "hair"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0.15,
+  "melee_prot": 0.15,
+  "desc": "Деревянный шлем.",
+  "scene": "res://assets/player/wooden_helmet.gltf"
+ },
+ "roadsign_helmet": {
+  "name": "Road Sign Helmet",
+  "icon": "res://assets/icons/items/attire_roadsigns.png",
+  "slot": "head",
+  "hide": [
+   "hair"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0.2,
+  "melee_prot": 0.2,
+  "desc": "Шлем из знаков.",
+  "scene": "res://assets/player/roadsign_helmet.gltf"
+ },
+ "hat_boonie": {
+  "name": "Boonie Hat",
+  "icon": "res://assets/icons/items/attire_hat.boonie.png",
+  "slot": "head",
+  "hide": [
+   "hair"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0.05,
+  "melee_prot": 0.05,
+  "desc": "Панама.",
+  "scene": "res://assets/player/hat_boonie.gltf"
+ },
+ "beenie_hat": {
+  "name": "Beenie Hat",
+  "icon": "res://assets/icons/items/attire_hat.beenie.png",
+  "slot": "head",
+  "hide": [
+   "hair"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0.03,
+  "melee_prot": 0.03,
+  "desc": "Шапка.",
+  "scene": "res://assets/player/beenie_hat.gltf"
+ },
+ "hat_wolf": {
+  "name": "Wolf Headdress",
+  "icon": "res://assets/icons/items/attire_hat.wolf.png",
+  "slot": "head",
+  "hide": [
+   "hair"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0.1,
+  "melee_prot": 0.1,
+  "desc": "Голова волка.",
+  "scene": "res://assets/player/hat_wolf.gltf"
+ },
+ "candlehat": {
+  "name": "Candle Hat",
+  "icon": "res://assets/icons/items/attire_hat.candle.png",
+  "slot": "head",
+  "hide": [
+   "hair"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0.05,
+  "melee_prot": 0.05,
+  "desc": "Шляпа со свечой.",
+  "scene": "res://assets/player/candlehat.gltf"
+ },
+ "minerhat": {
+  "name": "Miners Hat",
+  "icon": "res://assets/icons/items/attire_hat.miner.png",
+  "slot": "head",
+  "hide": [
+   "hair"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0.05,
+  "melee_prot": 0.05,
+  "desc": "Шахтёрская каска.",
+  "scene": "res://assets/player/minerhat.gltf"
+ },
+ "hat_burlap_wrap": {
+  "name": "Burlap Headwrap",
+  "icon": "res://assets/icons/items/attire_burlap.headwrap.png",
+  "slot": "head",
+  "hide": [
+   "hair"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0.05,
+  "melee_prot": 0.05,
+  "desc": "Повязка.",
+  "scene": "res://assets/player/hat_burlap_wrap.gltf"
+ },
+ "nest_hat": {
+  "name": "Nest Hat",
+  "icon": "res://assets/icons/items/attire_attire.nesthat.png",
+  "slot": "head",
+  "hide": [
+   "hair"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0.02,
+  "melee_prot": 0.02,
+  "desc": "Шапка-гнездо.",
+  "scene": "res://assets/player/nest_hat.gltf"
+ },
+ "party_hat": {
+  "name": "Party Hat",
+  "icon": "res://assets/icons/items/attire_partyhat.png",
+  "slot": "head",
+  "hide": [],
+  "show": [],
+  "arms": "",
+  "prot": 0,
+  "melee_prot": 0,
+  "desc": "Праздничный колпак.",
+  "scene": "res://assets/player/party_hat.gltf"
+ },
+ "bunnyears": {
+  "name": "Bunny Ears",
+  "icon": "res://assets/icons/items/attire_attire.bunnyears.png",
+  "slot": "head",
+  "hide": [],
+  "show": [],
+  "arms": "",
+  "prot": 0,
+  "melee_prot": 0,
+  "desc": "Уши кролика.",
+  "scene": "res://assets/player/bunnyears.gltf"
+ },
+ "metal_mask": {
+  "name": "Metal Facemask",
+  "icon": "res://assets/icons/items/attire_metal.facemask.png",
+  "slot": "face",
+  "hide": [
+   "beard"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0.5,
+  "melee_prot": 0.5,
+  "desc": "Металлическая маска.",
+  "scene": "res://assets/player/metal_mask.gltf"
+ },
+ "bandana": {
+  "name": "Bandana Mask",
+  "icon": "res://assets/icons/items/attire_mask.bandana.png",
+  "slot": "face",
+  "hide": [
+   "beard"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0.05,
+  "melee_prot": 0.05,
+  "desc": "Бандана.",
+  "scene": "res://assets/player/bandana.gltf"
+ },
+ "balaclava": {
+  "name": "Balaclava",
+  "icon": "res://assets/icons/items/attire_mask.balaclava.png",
+  "slot": "face",
+  "hide": [
+   "beard",
+   "hair"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0.05,
+  "melee_prot": 0.05,
+  "desc": "Балаклава.",
+  "scene": "res://assets/player/balaclava.gltf"
+ },
+ "deer_skull_mask": {
+  "name": "Deer Skull Mask",
+  "icon": "res://assets/icons/items/attire_deer.skull.mask.png",
+  "slot": "face",
+  "hide": [
+   "beard"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0.1,
+  "melee_prot": 0.1,
+  "desc": "Маска из черепа оленя.",
+  "scene": "res://assets/player/deer_skull_mask.gltf"
+ },
+ "sunglasses": {
+  "name": "Sunglasses",
+  "icon": "res://assets/icons/items/attire_sunglasses.png",
+  "slot": "eyes",
+  "hide": [],
+  "show": [],
+  "arms": "",
+  "prot": 0,
+  "melee_prot": 0,
+  "desc": "Очки.",
+  "scene": "res://assets/player/sunglasses.gltf"
+ },
+ "divinggoggles": {
+  "name": "Diving Mask",
+  "icon": "res://assets/icons/items/attire_diving.mask.png",
+  "slot": "eyes",
+  "hide": [],
+  "show": [],
+  "arms": "",
+  "prot": 0,
+  "melee_prot": 0,
+  "desc": "Маска для ныряния.",
+  "scene": "res://assets/player/divinggoggles.gltf"
+ },
+ "night_vision_goggles": {
+  "name": "Night Vision Goggles",
+  "icon": "res://assets/icons/items/attire_nightvisiongoggles.png",
+  "slot": "eyes",
+  "hide": [],
+  "show": [],
+  "arms": "",
+  "prot": 0,
+  "melee_prot": 0,
+  "desc": "ПНВ.",
+  "scene": "res://assets/player/night_vision_goggles.gltf"
+ },
+ "small_backpack": {
+  "name": "Small Backpack",
+  "icon": "res://assets/icons/items/attire_smallbackpack.png",
+  "slot": "back",
+  "hide": [],
+  "show": [],
+  "arms": "",
+  "prot": 0,
+  "melee_prot": 0,
+  "desc": "Маленький рюкзак.",
+  "scene": "res://assets/player/small_backpack.gltf"
+ },
+ "large_backpack": {
+  "name": "Large Backpack",
+  "icon": "res://assets/icons/items/attire_largebackpack.png",
+  "slot": "back",
+  "hide": [],
+  "show": [],
+  "arms": "",
+  "prot": 0,
+  "melee_prot": 0,
+  "desc": "Большой рюкзак.",
+  "scene": "res://assets/player/large_backpack.gltf"
+ },
+ "divingtank": {
+  "name": "Diving Tank",
+  "icon": "res://assets/icons/items/attire_diving.tank.png",
+  "slot": "back",
+  "hide": [],
+  "show": [],
+  "arms": "",
+  "prot": 0,
+  "melee_prot": 0,
+  "desc": "Акваланг.",
+  "scene": "res://assets/player/divingtank.gltf"
+ },
+ "wetsuit": {
+  "name": "Wetsuit",
+  "icon": "res://assets/icons/items/attire_diving.wetsuit.png",
+  "slot": "suit",
+  "hide": [
+   "Torso",
+   "Legs"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0.05,
+  "melee_prot": 0.05,
+  "desc": "Гидрокостюм.",
+  "scene": "res://assets/player/wetsuit.gltf"
+ },
+ "ghost_sheet": {
+  "name": "Ghost Costume",
+  "icon": "res://assets/icons/items/attire_ghostsheet.png",
+  "slot": "suit",
+  "hide": [],
+  "show": [],
+  "arms": "",
+  "prot": 0,
+  "melee_prot": 0,
+  "desc": "Костюм привидения.",
+  "scene": "res://assets/player/ghost_sheet.gltf"
+ },
+ "bunnycostume": {
+  "name": "Bunny Onesie",
+  "icon": "res://assets/icons/items/attire_bunny.suit.png",
+  "slot": "suit",
+  "hide": [
+   "Torso",
+   "Legs"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0.05,
+  "melee_prot": 0.05,
+  "desc": "Кролик.",
+  "scene": "res://assets/player/bunnycostume.gltf"
+ },
+ "easter_onesie": {
+  "name": "Easter Onesie",
+  "icon": "res://assets/icons/items/attire_attire.bunny.onesie.png",
+  "slot": "suit",
+  "hide": [
+   "Torso",
+   "Legs"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0.05,
+  "melee_prot": 0.05,
+  "desc": "Пасхальный кролик.",
+  "scene": "res://assets/player/easter_onesie.gltf"
+ },
+ "chickencostume": {
+  "name": "Chicken Costume",
+  "icon": "res://assets/icons/items/attire_chicken.costume.png",
+  "slot": "suit",
+  "hide": [
+   "Torso",
+   "Legs"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0.05,
+  "melee_prot": 0.05,
+  "desc": "Костюм курицы.",
+  "scene": "res://assets/player/chickencostume.gltf"
+ },
+ "egg_suit": {
+  "name": "Egg Suit",
+  "icon": "res://assets/icons/items/attire_attire.egg.suit.png",
+  "slot": "suit",
+  "hide": [
+   "Torso",
+   "Legs"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0.05,
+  "melee_prot": 0.05,
+  "desc": "Костюм яйца.",
+  "scene": "res://assets/player/egg_suit.gltf"
+ },
+ "horse_costume": {
+  "name": "Horse Costume",
+  "icon": "res://assets/icons/items/attire_horse.costume.png",
+  "slot": "suit",
+  "hide": [
+   "Torso",
+   "Legs"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0.05,
+  "melee_prot": 0.05,
+  "desc": "Костюм лошади.",
+  "scene": "res://assets/player/horse_costume.gltf"
+ },
+ "suit_hazmat": {
+  "name": "Hazmat Suit",
+  "icon": "res://assets/icons/items/attire_hazmatsuit.png",
+  "slot": "full",
+  "hide": [
+   "all"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0.3,
+  "melee_prot": 0.3,
+  "desc": "Химзащита.",
+  "scene": "res://assets/player/suit_hazmat.gltf"
+ },
+ "suit_hazmat_v2": {
+  "name": "Hazmat Suit (new)",
+  "icon": "res://assets/icons/items/attire_hazmatsuit.png",
+  "slot": "full",
+  "hide": [
+   "all"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0.3,
+  "melee_prot": 0.3,
+  "desc": "Химзащита.",
+  "scene": "res://assets/player/suit_hazmat_v2.gltf"
+ },
+ "suit_arctic_hazmat": {
+  "name": "Arctic Suit",
+  "icon": "res://assets/icons/items/attire_hazmatsuit.arcticsuit.png",
+  "slot": "full",
+  "hide": [
+   "all"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0.3,
+  "melee_prot": 0.3,
+  "desc": "Арктический костюм.",
+  "scene": "res://assets/player/suit_arctic_hazmat.gltf"
+ },
+ "suit_nomad": {
+  "name": "Nomad Suit",
+  "icon": "res://assets/icons/items/attire_hazmatsuit.nomadsuit.png",
+  "slot": "full",
+  "hide": [
+   "all"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0.3,
+  "melee_prot": 0.3,
+  "desc": "Костюм кочевника.",
+  "scene": "res://assets/player/suit_nomad.gltf"
+ },
+ "suit_spacesuit": {
+  "name": "Space Suit",
+  "icon": "res://assets/icons/items/attire_hazmatsuit.spacesuit.png",
+  "slot": "full",
+  "hide": [
+   "all"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0.3,
+  "melee_prot": 0.3,
+  "desc": "Скафандр.",
+  "scene": "res://assets/player/suit_spacesuit.gltf"
+ },
+ "suit_scientist": {
+  "name": "Scientist Suit",
+  "icon": "res://assets/icons/items/attire_scientist.png",
+  "slot": "full",
+  "hide": [
+   "all"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0.3,
+  "melee_prot": 0.3,
+  "desc": "Костюм учёного.",
+  "scene": "res://assets/player/suit_scientist.gltf"
+ },
+ "suit_scientist_v2": {
+  "name": "Scientist Suit (new)",
+  "icon": "res://assets/icons/items/attire_scientist.png",
+  "slot": "full",
+  "hide": [
+   "all"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0.3,
+  "melee_prot": 0.3,
+  "desc": "Костюм учёного.",
+  "scene": "res://assets/player/suit_scientist_v2.gltf"
+ },
+ "suit_heavy_scientist": {
+  "name": "Heavy Scientist Suit",
+  "icon": "res://assets/icons/items/attire_scientist.png",
+  "slot": "full",
+  "hide": [
+   "all"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0.5,
+  "melee_prot": 0.5,
+  "desc": "Тяжёлый учёный.",
+  "scene": "res://assets/player/suit_heavy_scientist.gltf"
+ },
+ "suit_jump_suit": {
+  "name": "Jumpsuit",
+  "icon": "res://assets/icons/items/attire_hazmatsuit.png",
+  "slot": "full",
+  "hide": [
+   "all"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0.1,
+  "melee_prot": 0.1,
+  "desc": "Комбинезон.",
+  "scene": "res://assets/player/suit_jump_suit.gltf"
+ },
+ "suit_ninja_hood": {
+  "name": "Ninja Suit",
+  "icon": "res://assets/icons/items/attire_attire.ninja.suit.png",
+  "slot": "full",
+  "hide": [
+   "all"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0.1,
+  "melee_prot": 0.1,
+  "desc": "Костюм ниндзя.",
+  "scene": "res://assets/player/suit_ninja_hood.gltf"
+ },
+ "suit_gingerbread": {
+  "name": "Gingerbread Suit",
+  "icon": "res://assets/icons/items/attire_gingerbreadsuit.png",
+  "slot": "full",
+  "hide": [
+   "all"
+  ],
+  "show": [],
+  "arms": "",
+  "prot": 0.1,
+  "melee_prot": 0.1,
+  "desc": "Пряничный человечек.",
+  "scene": "res://assets/player/suit_gingerbread.gltf"
+ }
+}

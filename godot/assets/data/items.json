@@ -1,0 +1,5382 @@
+{
+ "order": [
+  "pistol_bullet",
+  "hv_pistol_ammo",
+  "incendiary_pistol_bullet",
+  "556_rifle_ammo",
+  "explosive_556_rifle_ammo",
+  "hv_556_rifle_ammo",
+  "incendiary_556_rifle_ammo",
+  "arrow",
+  "nailgun_nails",
+  "handmade_shell",
+  "rocket",
+  "high_velocity_rocket",
+  "40mm_he_grenade",
+  "40mm_shotgun_round",
+  "holosight",
+  "simple_handmade_sight",
+  "silencer",
+  "weapon_flashlight",
+  "8x_zoom_scope",
+  "16x_zoom_scope",
+  "weapon_lasersight",
+  "muzzle_brake",
+  "muzzle_boost",
+  "hazmat_suit",
+  "scientist_suit",
+  "hemp_hat",
+  "coffee_can_helmet",
+  "boonie_hat",
+  "metal_chest_plate",
+  "metal_spring",
+  "semi_automatic_body",
+  "road_signs",
+  "sheet_metal",
+  "metal_pipe",
+  "electric_fuse",
+  "gears",
+  "metal_blade",
+  "rifle_body",
+  "smg_body",
+  "apple",
+  "can_of_beans",
+  "can_of_tuna",
+  "chocolate_bar",
+  "granola_bar",
+  "pickles",
+  "tool_cupboard",
+  "wooden_door",
+  "sheet_metal_door",
+  "armored_door",
+  "furnace",
+  "key_lock",
+  "code_lock",
+  "small_oil_refinery",
+  "large_wood_box",
+  "wood_storage_box",
+  "wood_double_door",
+  "sheet_metal_double_door",
+  "armored_double_door",
+  "stone_barricade",
+  "wooden_barricade_cover",
+  "repair_bench",
+  "research_table",
+  "sleeping_bag",
+  "bed",
+  "wooden_window_bars",
+  "strengthened_glass_window",
+  "reinforced_glass_window",
+  "workbench_level_1",
+  "workbench_level_2",
+  "workbench_level_3",
+  "chair",
+  "vending_machine",
+  "auto_turret",
+  "metal_horizontal_embrasure",
+  "metal_vertical_embrasure",
+  "metal_shop_front",
+  "homemade_landmine",
+  "garage_door",
+  "test_generator",
+  "small_rechargeable_battery",
+  "switch",
+  "large_solar_panel",
+  "timed_explosive_charge",
+  "satchel_charge",
+  "beancan_grenade",
+  "f1_grenade",
+  "bandage",
+  "medical_syringe",
+  "large_medkit",
+  "empty_can_of_beans",
+  "empty_tuna_can",
+  "supply_signal",
+  "wood",
+  "stones",
+  "metal_ore",
+  "hq_metal_ore",
+  "sulfur_ore",
+  "metal_fragments",
+  "hq_metal",
+  "scrap",
+  "crude_oil",
+  "low_grade_fuel",
+  "animal_fat",
+  "cloth",
+  "charcoal",
+  "bone_fragments",
+  "gun_powder",
+  "sulfur",
+  "explosives",
+  "tech_trash",
+  "rope",
+  "sewing_kit",
+  "tarp",
+  "leather",
+  "cctv_camera",
+  "targeting_computer",
+  "rock",
+  "stone_hatchet",
+  "stone_pickaxe",
+  "building_plan",
+  "hammer",
+  "hatchet",
+  "pickaxe",
+  "wire_tool",
+  "green_keycard",
+  "blue_keycard",
+  "red_keycard",
+  "salvaged_cleaver",
+  "salvaged_sword",
+  "bone_club",
+  "wooden_spear",
+  "stone_spear",
+  "assault_rifle",
+  "m39_rifle",
+  "m92_pistol",
+  "m249",
+  "mp5a4",
+  "nailgun",
+  "python_revolver",
+  "revolver",
+  "semi_automatic_pistol",
+  "semi_automatic_rifle",
+  "custom_smg",
+  "thompson",
+  "lr300_assault_rifle",
+  "crossbow",
+  "hunting_bow",
+  "bolt_action_rifle",
+  "waterpipe_shotgun",
+  "rocket_launcher",
+  "double_barrel_shotgun",
+  "pump_shotgun",
+  "spas_12_shotgun",
+  "combat_knife",
+  "grenade_launcher",
+  "l96_rifle",
+  "eoka_pistol",
+  "compound_bow",
+  "longsword",
+  "mace",
+  "machete",
+  "pitchfork",
+  "bone_knife"
+ ],
+ "items": {
+  "pistol_bullet": {
+   "name": "Pistol Bullet",
+   "desc": "Standard ammunition for pistols and submachine guns.",
+   "icon": "res://assets/icons/items/pistol_bullet.png",
+   "stack": 128,
+   "category": "Ammo",
+   "recipe": [
+    [
+     "metal_fragments",
+     10
+    ],
+    [
+     "gun_powder",
+     5
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 4,
+   "craft_time": 1.0,
+   "tier": 1,
+   "material": "Metal",
+   "type": "ammo"
+  },
+  "hv_pistol_ammo": {
+   "name": "HV Pistol Ammo",
+   "desc": "The high velocity pistol ammo is used by pistols and submachine guns. Its notable differences from regular pistol ammo include faster bullet travel and increased crafting cost.",
+   "icon": "res://assets/icons/items/hv_pistol_ammo.png",
+   "stack": 128,
+   "category": "Ammo",
+   "recipe": [
+    [
+     "metal_fragments",
+     10
+    ],
+    [
+     "gun_powder",
+     20
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 3,
+   "craft_time": 1.0,
+   "tier": 2,
+   "material": "Metal",
+   "type": "ammo"
+  },
+  "incendiary_pistol_bullet": {
+   "name": "Incendiary Pistol Bullet",
+   "desc": "Slower, slightly more effective pistol bullet that also deals fire damage. Useful against Heavy Plate armor.",
+   "icon": "res://assets/icons/items/incendiary_pistol_ammo.png",
+   "stack": 128,
+   "category": "Ammo",
+   "recipe": [
+    [
+     "metal_fragments",
+     10
+    ],
+    [
+     "gun_powder",
+     20
+    ],
+    [
+     "sulfur",
+     5
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 3,
+   "craft_time": 1.0,
+   "tier": 2,
+   "material": "Metal",
+   "type": "ammo"
+  },
+  "556_rifle_ammo": {
+   "name": "5.56 Rifle Ammo",
+   "desc": "Standard high powered ammunition, used by any rifle in the game currently. Offers superior damage, range, accuracy, damage drop off and air resistance from the Pistol Bullet.",
+   "icon": "res://assets/icons/items/rifle_ammo.png",
+   "stack": 128,
+   "category": "Ammo",
+   "recipe": [
+    [
+     "metal_fragments",
+     10
+    ],
+    [
+     "gun_powder",
+     5
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 3,
+   "craft_time": 1.0,
+   "tier": 2,
+   "material": "Metal",
+   "type": "ammo"
+  },
+  "explosive_556_rifle_ammo": {
+   "name": "Explosive 5.56 Rifle Ammo",
+   "desc": "A variant of the standard 5.56 rifle ammunition. The Explosive 5.56 round deals a small amount of additional explosion damage to a player upon direct impact as well as damaging nearby structures or players. The round is effective against low-tier structures such as Wood walls and Sheet Metal doors.",
+   "icon": "res://assets/icons/items/explosive_rifle_ammo.png",
+   "stack": 128,
+   "category": "Ammo",
+   "recipe": [
+    [
+     "metal_fragments",
+     10
+    ],
+    [
+     "gun_powder",
+     20
+    ],
+    [
+     "sulfur",
+     10
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 2,
+   "craft_time": 3.0,
+   "tier": 3,
+   "material": "Metal",
+   "type": "ammo"
+  },
+  "hv_556_rifle_ammo": {
+   "name": "HV 5.56 Rifle Ammo",
+   "desc": "A variant of the standard 5.56 rifle ammunition. The High Velocity (HV) 5.56 round will travel faster than the standard round at a more expensive crafting cost. The round experiences little bullet drop. This type of ammo is best used with Bolt Action Rifle and L96 Rifle.",
+   "icon": "res://assets/icons/items/hv_rifle_ammo.png",
+   "stack": 128,
+   "category": "Ammo",
+   "recipe": [
+    [
+     "metal_fragments",
+     10
+    ],
+    [
+     "gun_powder",
+     20
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 2,
+   "craft_time": 3.0,
+   "tier": 3,
+   "material": "Metal",
+   "type": "ammo"
+  },
+  "incendiary_556_rifle_ammo": {
+   "name": "Incendiary 5.56 Rifle Ammo",
+   "desc": "A variant of the standard 5.56 rifle ammunition. The 5.56 Incendiary round will ignite on impact dealing both bullet and fire damage to a player. The round is however subject to increased bullet drop.",
+   "icon": "res://assets/icons/items/incendiary_rifle_ammo.png",
+   "stack": 128,
+   "category": "Ammo",
+   "recipe": [
+    [
+     "metal_fragments",
+     10
+    ],
+    [
+     "gun_powder",
+     20
+    ],
+    [
+     "sulfur",
+     5
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 2,
+   "craft_time": 3.0,
+   "tier": 3,
+   "material": "Metal",
+   "type": "ammo"
+  },
+  "arrow": {
+   "name": "Arrow",
+   "desc": "The Wooden Arrow is one of four ammo types for the crossbow and the bow. It has lower range and velocity than the High Velocity Arrow, but it does more damage compared to it.",
+   "icon": "res://assets/icons/items/arrow.png",
+   "stack": 64,
+   "category": "Ammo",
+   "recipe": [
+    [
+     "wood",
+     25
+    ],
+    [
+     "stones",
+     10
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 2,
+   "craft_time": 3.0,
+   "tier": 0,
+   "material": "Wood",
+   "type": "ammo"
+  },
+  "nailgun_nails": {
+   "name": "Nailgun Nails",
+   "desc": "Early game cheap and easy to acquire ammo for the Nailgun. Has a unique trajectory and velocity that is worse than regular arrows shot from a Hunting Bow, thus giving it a really small effective range. Work best up close and not beyond 10 meters.",
+   "icon": "res://assets/icons/items/nailgun_nails.png",
+   "stack": 64,
+   "category": "Ammo",
+   "recipe": [
+    [
+     "metal_fragments",
+     8
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 5,
+   "craft_time": 2.0,
+   "tier": 0,
+   "material": "Metal",
+   "type": "ammo"
+  },
+  "handmade_shell": {
+   "name": "Handmade Shell",
+   "desc": "The handmade shell is an early-game shotgun ammunition that fires a spread of 20 low-damage pellets. It's highly damaging in close quarters, but its lethality quickly drops off as range increases. In comparison to 12 gauge buckshot, the handmade shell has significantly more pellets, but less damage overall.",
+   "icon": "res://assets/icons/items/handmade_shell.png",
+   "stack": 64,
+   "category": "Ammo",
+   "recipe": [
+    [
+     "stones",
+     5
+    ],
+    [
+     "gun_powder",
+     5
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 2,
+   "craft_time": 2.0,
+   "tier": 0,
+   "material": "Metal",
+   "type": "ammo"
+  },
+  "rocket": {
+   "name": "Rocket",
+   "desc": "In Rust, rockets are the ammunition for rocket launchers, rockets will cause splash damage that can hit up to 4 walls at once. This type of ammunition is particularly effective against buildings. In terms of trajectory, rockets are launched forward with a considerable speed upon firing. However, the trajectory eventually falls off due to the in-game gravity effect. Rockets are currently one of the best tools for raiding and destroying buildings. Rockets are also deadly against players due to its high damage and range of splash damage.",
+   "icon": "res://assets/icons/items/rocket.png",
+   "stack": 3,
+   "category": "Ammo",
+   "recipe": [
+    [
+     "metal_pipe",
+     2
+    ],
+    [
+     "gun_powder",
+     150
+    ],
+    [
+     "explosives",
+     10
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 2,
+   "craft_time": 10.0,
+   "tier": 3,
+   "material": "Metal",
+   "type": "ammo"
+  },
+  "high_velocity_rocket": {
+   "name": "High Velocity Rocket",
+   "desc": "The High Velocity Rocket is essentially a rocket with much less damage than the standard rocket. However, it is also much cheaper, and as the name suggests it has a higher velocity than the standard rocket, so it could be useful for rocketing targets at extreme range. Because of its lower cost and damage, it is useful for situations where a full rocket would be overkill.",
+   "icon": "res://assets/icons/items/high_velocity_rocket.png",
+   "stack": 3,
+   "category": "Ammo",
+   "recipe": [
+    [
+     "metal_pipe",
+     1
+    ],
+    [
+     "gun_powder",
+     100
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 2,
+   "craft_time": 10.0,
+   "tier": 2,
+   "material": "Metal",
+   "type": "ammo"
+  },
+  "40mm_he_grenade": {
+   "name": "40mm HE Grenade",
+   "desc": "Ammunition for a 40mm Grenade Launcher.",
+   "icon": "res://assets/icons/items/40mm_he_grenade.png",
+   "stack": 2,
+   "category": "Ammo",
+   "recipe": [
+    [
+     "gun_powder",
+     20
+    ],
+    [
+     "metal_pipe",
+     1
+    ],
+    [
+     "explosives",
+     1
+    ]
+   ],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Metal",
+   "type": "ammo"
+  },
+  "40mm_shotgun_round": {
+   "name": "40mm Shotgun Round",
+   "desc": "The 40mm shotgun round is an ammunition type for the Multiple Grenade Launcher. It fires a wide spread of 12 pellets that can do a massive amount of damage at close range, being able to one-shot a fully geared player if all pellets connect.",
+   "icon": "res://assets/icons/items/40mm_shotgun_round.png",
+   "stack": 2,
+   "category": "Ammo",
+   "recipe": [
+    [
+     "gun_powder",
+     20
+    ],
+    [
+     "metal_pipe",
+     1
+    ],
+    [
+     "explosives",
+     1
+    ]
+   ],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Metal",
+   "type": "ammo"
+  },
+  "holosight": {
+   "name": "Holosight",
+   "desc": "The Holosight is a craftable alternative to standard weapon iron sights. Its reticle is a bright red holographic bullseye which also glows in the dark, making it the best scope for night-time combat. Thanks to its slight magnification, it can provide a greater degree of accuracy to any ranged weapon without sacrificing recoil control or close-quarter capabilities. It's especially useful if barrel attachments obscure the weapon's original sights, such as the Silencer.",
+   "icon": "res://assets/icons/items/holosight.png",
+   "stack": 1,
+   "category": "Attachments",
+   "recipe": [
+    [
+     "hq_metal",
+     12
+    ],
+    [
+     "tech_trash",
+     1
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 2,
+   "material": "Gun",
+   "type": "item"
+  },
+  "simple_handmade_sight": {
+   "name": "Simple Handmade Sight",
+   "desc": "The Simple Handmade Sight is a makeshift alternative to a weapon's iron sights. Its reticle is simply a single post that comes to a sharp point - not too dissimilar from the German #1 reticle. This scope is particularly useful for close engagements as it provides the widest field of view out of all the scopes, but it is usually not practical at longer distances due to its negative magnification making distant targets appear smaller. Alternatively, it can be used when the weapon's iron sights are obscured by barrel attachments such as the Silencer or by the lighting caused by Fire Arrows.",
+   "icon": "res://assets/icons/items/handmade_sight.png",
+   "stack": 1,
+   "category": "Attachments",
+   "recipe": [
+    [
+     "hq_metal",
+     6
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 1,
+   "material": "Gun",
+   "type": "item"
+  },
+  "silencer": {
+   "name": "Silencer",
+   "desc": "The Silencer is a barrel attachment known to reduce gunfire sounds. It also removes the muzzle flash, giving you a good advantage during night without being spotted. It is quite useful against unaware enemies, and can allow you to get in extra hits before being spotted. Although the disadvantages can make short range battles go wrong. It is a good option for Bolt Action Rifles and L96s as the Silencer completely hides the bullet tracers, making the enemies confused where it came from, though it will reduce the velocity of the gun, meaning that you will need to aim a bit higher than usual to hit your opponent.",
+   "icon": "res://assets/icons/items/silencer.png",
+   "stack": 1,
+   "category": "Attachments",
+   "recipe": [
+    [
+     "hq_metal",
+     5
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 1,
+   "material": "Gun",
+   "type": "item"
+  },
+  "weapon_flashlight": {
+   "name": "Weapon Flashlight",
+   "desc": "The Flashlight is a weapon attachment, able to be attached to eligible weapons. To use it, the user presses their attachment function key (default F), and a bright cone of light will emit from underneath the barrel of their weapon. Light is useful for being able to see in the dark or blinding other players if close enough.",
+   "icon": "res://assets/icons/items/weapon_flashlight.png",
+   "stack": 1,
+   "category": "Attachments",
+   "recipe": [
+    [
+     "hq_metal",
+     3
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 1,
+   "material": "Gun",
+   "type": "item"
+  },
+  "8x_zoom_scope": {
+   "name": "8x Zoom Scope",
+   "desc": "The 8x Zoom Scope is a hand-crafted telescopic sight. Its reticle is simply a thin cross. Its magnification allows for greater precision over long ranges and extending most weapon's range, but is not ideal for close quarter engagements.",
+   "icon": "res://assets/icons/items/8xscope.png",
+   "stack": 1,
+   "category": "Attachments",
+   "recipe": [
+    [
+     "hq_metal",
+     50
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 3,
+   "material": "Gun",
+   "type": "item"
+  },
+  "16x_zoom_scope": {
+   "name": "16x Zoom Scope",
+   "desc": "The 16x Zoom Scope is a military-grade telescopic sight. Its reticle is a thin cross with bullet-drop guides. Its extreme magnification allows for precise fire over extreme distances, but its narrow field of view makes it impractical for any close quarter engagements or full-auto fire. As it's susceptible to shaking, consider using a Weapon Lasersight or Tactical Gloves in addition to this scope.",
+   "icon": "res://assets/icons/items/16xscope.png",
+   "stack": 1,
+   "category": "Attachments",
+   "recipe": [
+    [
+     "hq_metal",
+     80
+    ]
+   ],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Gun",
+   "type": "item"
+  },
+  "weapon_lasersight": {
+   "name": "Weapon Lasersight",
+   "desc": "The Weapon Lasersight serves as a welcome attachment to any weapon, with its only hindrance being the rarity of tech trash, and the possibility of a player tracing the laser back to its user. The reduced hip spread and aim sway makes it useful for weapons at close and distant ranges alike.",
+   "icon": "res://assets/icons/items/weapon_lasersight.png",
+   "stack": 1,
+   "category": "Attachments",
+   "recipe": [
+    [
+     "hq_metal",
+     3
+    ],
+    [
+     "tech_trash",
+     1
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 3,
+   "material": "Gun",
+   "type": "item"
+  },
+  "muzzle_brake": {
+   "name": "Muzzle Brake",
+   "desc": "The Muzzle Brake is a barrel attachment used to reduce recoil with the cost of weapon damage. It is very effective for recoils that is hard to control, like the Assault Rifle. However, the Muzzle Brake will drastically decrease the velocity of the bullets, giving you a disadvantage for long range battles. It is recommended with full-auto weapons or semi-auto weapons.",
+   "icon": "res://assets/icons/items/muzzle_brake.png",
+   "stack": 1,
+   "category": "Attachments",
+   "recipe": [
+    [
+     "hq_metal",
+     8
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 2,
+   "material": "Gun",
+   "type": "item"
+  },
+  "muzzle_boost": {
+   "name": "Muzzle Boost",
+   "desc": "The Muzzle Boost provides a greater rate of fire (and negligible recoil reduction) at the cost of less damage and velocity. The effect is most pronounced in high rate of fire, low damage weapons, such as the Custom SMG and MP5A4.",
+   "icon": "res://assets/icons/items/muzzle_boost.png",
+   "stack": 1,
+   "category": "Attachments",
+   "recipe": [
+    [
+     "hq_metal",
+     10
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 2,
+   "material": "Gun",
+   "type": "item"
+  },
+  "hazmat_suit": {
+   "name": "Hazmat Suit",
+   "desc": "The Hazmat Suit allows the wearer to travel through rad-towns and other irradiated areas safely. While it doesn't provide full protection in certain places at monuments, such as the main building at Launch Site, or the cooling tower at the Nuclear Power Plant, it offers protection from radiation poisoning at almost every other monument on the map, making it useful for exploring. The suit itself is a bright yellow color, meaning it is easy to spot from a distance.",
+   "icon": "res://assets/icons/items/hazmat.png",
+   "stack": 1,
+   "category": "Clothing",
+   "recipe": [
+    [
+     "tarp",
+     5
+    ],
+    [
+     "sewing_kit",
+     2
+    ],
+    [
+     "hq_metal",
+     8
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 20.0,
+   "tier": 2,
+   "material": "Cloth",
+   "type": "attire_reg",
+   "attire": {
+    "type": "Full",
+    "model": "models/player/darky_m/rust/hazmat.mdl",
+    "projectile": 0.3,
+    "melee": 0.3,
+    "bite": 0.08,
+    "radiation": 0.5,
+    "cold": 0.08,
+    "explosive": 0.05
+   }
+  },
+  "scientist_suit": {
+   "name": "Scientist Suit",
+   "desc": "The Scientist Suit is worn by roaming scientists.",
+   "icon": "res://assets/icons/items/scientist.png",
+   "stack": 1,
+   "category": "Other",
+   "recipe": [],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Cloth",
+   "type": "attire_reg",
+   "attire": {
+    "type": "Full",
+    "model": "models/player/darky_m/rust/scientist.mdl",
+    "projectile": 0.3,
+    "melee": 0.3,
+    "bite": 0.8,
+    "radiation": 0.5,
+    "cold": 0.08,
+    "explosive": 0.05
+   }
+  },
+  "hemp_hat": {
+   "name": "Hemp Hat",
+   "desc": "A hemp hat.",
+   "icon": "res://assets/icons/items/hemp_hat.png",
+   "stack": 1,
+   "category": "Other",
+   "recipe": [],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Cloth",
+   "type": "attire_reg",
+   "attire": {
+    "type": "Head",
+    "model": "models/environment/plants/hemp.mdl",
+    "projectile": 0.05,
+    "melee": 0.0,
+    "bite": 0.0,
+    "radiation": 0.0,
+    "cold": 0.05,
+    "explosive": 0.0
+   }
+  },
+  "coffee_can_helmet": {
+   "name": "Coffee Can Helmet",
+   "desc": "The coffee can helmet is a face protector that is one tier below the metal facemask, it offers good protection against physical damage to the head and costs less to craft than its older and better brother, the metal facemask.",
+   "icon": "res://assets/icons/items/coffee_can_helmet.png",
+   "stack": 1,
+   "category": "Clothing",
+   "recipe": [
+    [
+     "cloth",
+     15
+    ],
+    [
+     "metal_fragments",
+     60
+    ],
+    [
+     "sewing_kit",
+     1
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 2,
+   "material": "Metal",
+   "type": "attire_reg",
+   "attire": {
+    "type": "Head",
+    "model": "models/attire/head/attire_coffeecanhelmet.mdl",
+    "projectile": 0.2,
+    "melee": 0.3,
+    "bite": 0.08,
+    "radiation": 0.05,
+    "cold": 0.0,
+    "explosive": 0.08
+   }
+  },
+  "boonie_hat": {
+   "name": "Boonie Hat",
+   "desc": "Equivalent stats and cost to burlap headwrap, but can be combined with the bandana.",
+   "icon": "res://assets/icons/items/boonie_hat.png",
+   "stack": 1,
+   "category": "Clothing",
+   "recipe": [
+    [
+     "cloth",
+     10
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 0,
+   "material": "Cloth",
+   "type": "attire_reg",
+   "attire": {
+    "type": "Head",
+    "model": "models/attire/head/boonie_hat.mdl",
+    "projectile": 0.15,
+    "melee": 0.15,
+    "bite": 0.03,
+    "radiation": 0.02,
+    "cold": 0.07,
+    "explosive": 0.0
+   }
+  },
+  "metal_chest_plate": {
+   "name": "Metal Chest Plate",
+   "desc": "The metal chest plate is a versatile end-game armor used most often when roaming and raiding. Though high quality metal is often stored in abundance due to its limited use, players should begin making room for the sewing kits as this period comes into the horizon.",
+   "icon": "res://assets/icons/items/metal_chest_plate.png",
+   "stack": 1,
+   "category": "Clothing",
+   "recipe": [
+    [
+     "leather",
+     50
+    ],
+    [
+     "hq_metal",
+     25
+    ],
+    [
+     "sewing_kit",
+     8
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 45.0,
+   "tier": 3,
+   "material": "Metal",
+   "type": "attire_reg",
+   "attire": {
+    "type": "Chest",
+    "model": "models/attire/body/attire_metalchestplate.mdl",
+    "projectile": 0.2,
+    "melee": 0.4,
+    "bite": 0.08,
+    "radiation": 0.05,
+    "cold": 0.0,
+    "explosive": 0.08
+   }
+  },
+  "metal_spring": {
+   "name": "Metal Spring",
+   "desc": "An uncommon component used for the construction of almost every gun. It may be found with moderate frequency from crates, and uncommonly from barrels. Generally speaking, guns of higher tiers will require more Metal Springs, while low tier guns (Semi Auto Pistol, Rifle) require only one.",
+   "icon": "res://assets/icons/items/metal_spring.png",
+   "stack": 20,
+   "category": "Components",
+   "recipe": [
+    [
+     "hq_metal",
+     2
+    ],
+    [
+     "scrap",
+     50
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 1.0,
+   "tier": 3,
+   "material": "Spring",
+   "type": "item"
+  },
+  "semi_automatic_body": {
+   "name": "Semi Automatic Body",
+   "desc": "Semi Automatic Bodies are components used in the crafting of Semi-Auto Pistols and Semi-Auto Rifles. They can be found quite commonly and can be recycled for a good profit.",
+   "icon": "res://assets/icons/items/semi_auto_body.png",
+   "stack": 10,
+   "category": "Components",
+   "recipe": [
+    [
+     "hq_metal",
+     4
+    ],
+    [
+     "metal_fragments",
+     150
+    ]
+   ],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Gun",
+   "type": "item"
+  },
+  "road_signs": {
+   "name": "Road Signs",
+   "desc": "Road signs are a component used in the crafting of the mid-tier armors Road Sign Jacket, and Road Sign Kilt, along with crafting the salvaged cleaver. Also good as a source of scrap throughout the game.",
+   "icon": "res://assets/icons/items/road_signs.png",
+   "stack": 20,
+   "category": "Other",
+   "recipe": [
+    [
+     "hq_metal",
+     2
+    ],
+    [
+     "scrap",
+     20
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 1.0,
+   "tier": 3,
+   "material": "Metal",
+   "type": "item"
+  },
+  "sheet_metal": {
+   "name": "Sheet Metal",
+   "desc": "An uncommon component that can be recycled into Metal Fragments and High Quality Metal, or used in the crafting of Heavy Plate armor pieces. It can be found in crates and barrels.",
+   "icon": "res://assets/icons/items/sheet_metal.png",
+   "stack": 20,
+   "category": "Components",
+   "recipe": [
+    [
+     "metal_fragments",
+     200
+    ],
+    [
+     "hq_metal",
+     2
+    ]
+   ],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Metal",
+   "type": "item"
+  },
+  "metal_pipe": {
+   "name": "Metal Pipe",
+   "desc": "Pipes are a relatively common component that are used for guns, salvaged tools, and rocket launchers and rockets. They can be somewhat abundant early game until you find the need to craft rockets, and then get consumed very quickly.",
+   "icon": "res://assets/icons/items/metal_pipe.png",
+   "stack": 20,
+   "category": "Components",
+   "recipe": [
+    [
+     "hq_metal",
+     2
+    ],
+    [
+     "scrap",
+     20
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 1.0,
+   "tier": 3,
+   "material": "Spring",
+   "type": "item"
+  },
+  "electric_fuse": {
+   "name": "Electric Fuse",
+   "desc": "The Electric Fuse is a required item for monument puzzle rooms. It must be placed in the fuse box in order to power the keycard lock. Recycling the electric fuse also gives some quick scrap.",
+   "icon": "res://assets/icons/items/electric_fuse.png",
+   "stack": 1,
+   "category": "Other",
+   "recipe": [],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Metal",
+   "type": "item"
+  },
+  "gears": {
+   "name": "Gears",
+   "desc": "Gears are used in the crafting of various desirable (building) supplies involved in base defense, such as traps, gates, and first and foremost armored & garage doors, which are significantly stronger than sheet metal doors. These are hard to come by in large quantities and are one of the more sought after items in the game.",
+   "icon": "res://assets/icons/items/gears.png",
+   "stack": 20,
+   "category": "Components",
+   "recipe": [
+    [
+     "metal_fragments",
+     25
+    ],
+    [
+     "scrap",
+     100
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 1.0,
+   "tier": 3,
+   "material": "Metal",
+   "type": "item"
+  },
+  "metal_blade": {
+   "name": "Metal Blade",
+   "desc": "Metal blades are common components that can be found in barrels near roads or at monuments. They are used to craft some tools and melee weapons. If you don't have any use for the items you can craft with these it would be wise to recycle them for two scrap.",
+   "icon": "res://assets/icons/items/metal_blade.png",
+   "stack": 20,
+   "category": "Components",
+   "recipe": [
+    [
+     "metal_fragments",
+     30
+    ],
+    [
+     "scrap",
+     10
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 1.0,
+   "tier": 2,
+   "material": "Metal",
+   "type": "item"
+  },
+  "rifle_body": {
+   "name": "Rifle Body",
+   "desc": "A rare component which is used for crafting late-game rifles. It can only be found in military and elite crates.",
+   "icon": "res://assets/icons/items/rifle_body.png",
+   "stack": 10,
+   "category": "Components",
+   "recipe": [
+    [
+     "hq_metal",
+     4
+    ]
+   ],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Gun",
+   "type": "item"
+  },
+  "smg_body": {
+   "name": "SMG Body",
+   "desc": "A rare component which is used for crafting submachine guns. It can only be found in military and elite crates.",
+   "icon": "res://assets/icons/items/smg_body.png",
+   "stack": 10,
+   "category": "Components",
+   "recipe": [
+    [
+     "hq_metal",
+     4
+    ]
+   ],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Gun",
+   "type": "item"
+  },
+  "apple": {
+   "name": "Apple",
+   "desc": "The apple is a food that gives the player food and water. Unlike most other foods the apple gives lots more hydration when consumed. Can be found in food crates and medical crates.",
+   "icon": "res://assets/icons/items/apple.png",
+   "stack": 10,
+   "category": "Other",
+   "recipe": [],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Wood",
+   "type": "food"
+  },
+  "can_of_beans": {
+   "name": "Can of Beans",
+   "desc": "Beans found as loot. Eating it provides a small boost to health, hunger, and thirst.",
+   "icon": "res://assets/icons/items/can_of_beans.png",
+   "stack": 10,
+   "category": "Other",
+   "recipe": [],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Metal",
+   "type": "food"
+  },
+  "can_of_tuna": {
+   "name": "Can of Tuna",
+   "desc": "Chunked tuna found as loot. Eating it provides a small boost to health, hunger, and thirst.",
+   "icon": "res://assets/icons/items/can_of_tuna.png",
+   "stack": 10,
+   "category": "Other",
+   "recipe": [],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Metal",
+   "type": "food"
+  },
+  "chocolate_bar": {
+   "name": "Chocolate Bar",
+   "desc": "Chocolate Bar found as loot. Eating it provides a small boost to health, hunger, and thirst.",
+   "icon": "res://assets/icons/items/chocolate_bar.png",
+   "stack": 10,
+   "category": "Other",
+   "recipe": [],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Paper",
+   "type": "food"
+  },
+  "granola_bar": {
+   "name": "Granola Bar",
+   "desc": "Granola Bar found as loot. Eating it provides a small boost to health, hunger, and thirst.",
+   "icon": "res://assets/icons/items/granola_bar.png",
+   "stack": 10,
+   "category": "Other",
+   "recipe": [],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Paper",
+   "type": "food"
+  },
+  "pickles": {
+   "name": "Pickles",
+   "desc": "Pickles are edible food. However, you have a chance of getting your hunger and hydration decreased (you'll hear a vomit sound). It is recommended you save up pickles to feed horses, use as a bait for fish traps or compost for fertilizers.",
+   "icon": "res://assets/icons/items/pickles.png",
+   "stack": 10,
+   "category": "Other",
+   "recipe": [],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Wood",
+   "type": "food"
+  },
+  "tool_cupboard": {
+   "name": "Tool Cupboard",
+   "desc": "The Tool Cupboard is essential for any base because it prevents people who are not authorized from upgrading building blocks and placing and picking up deployables within a 25-meter radius (around 9 foundation blocks) from the cupboard. If you press 'E' on the cupboard you can authorize yourself so you are able to build in this area. If you hold 'E' on the cupboard you can clear the list of players authorized including yourself. Any player authorized from the cupboard will not be targeted by any flame turrets or shotgun traps within the cupboard's radius. Tool Cupboards can be locked with Key and Code Locks in order to disallow players from authorizing themselves without a passcode.",
+   "icon": "res://assets/icons/items/tool_cupboard.png",
+   "stack": 1,
+   "category": "Construction",
+   "recipe": [
+    [
+     "wood",
+     1000
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 0,
+   "material": "Wood",
+   "type": "item"
+  },
+  "wooden_door": {
+   "name": "Wooden Door",
+   "desc": "The Wooden Door is an early game building item that is made from wood and cheap to produce. Being the cheapest of all the doors, it is often used alongside a Lock to quickly secure a base. Its vulnerability to fire and weak explosive resistance makes the door a temporary solution to securing your base. Due to its flaws it should quickly be upgraded to a higher tier door such as Sheet Metal. The Wooden Door can take two kinds of locks the basic Lock and the Code Lock. To pick up the door, remove any locks, hold down the E (USE) key and select 'Pickup'. Note: There is currently a bug where a door sometimes can not be picked up until any type of Lock has been placed and removed.",
+   "icon": "res://assets/icons/items/wooden_door.png",
+   "stack": 1,
+   "category": "Items",
+   "recipe": [
+    [
+     "wood",
+     300
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 0,
+   "material": "Wood",
+   "type": "item"
+  },
+  "sheet_metal_door": {
+   "name": "Sheet Metal Door",
+   "desc": "The Sheet Metal Door is the most common door found on bases due to its resistances to melee weapons and fire but relatively cheap cost to craft. Regardless, it is still relatively weak to explosives compared to its expensive indirect upgrade, the 'Armoured Door'.",
+   "icon": "res://assets/icons/items/metal_door.png",
+   "stack": 1,
+   "category": "Construction",
+   "recipe": [
+    [
+     "metal_fragments",
+     150
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 0,
+   "material": "Metal",
+   "type": "item"
+  },
+  "armored_door": {
+   "name": "Armored Door",
+   "desc": "The Armored Door is the highest tier door and is the best option for base defense. If the door is put on a weaker door frame, the door frame will be targeted instead of the door itself. The door has a working hatch which allows you to see outside of the door and can be shot through in both directions.",
+   "icon": "res://assets/icons/items/armored_door.png",
+   "stack": 1,
+   "category": "Construction",
+   "recipe": [
+    [
+     "hq_metal",
+     20
+    ],
+    [
+     "gears",
+     5
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 3,
+   "material": "Metal",
+   "type": "item"
+  },
+  "furnace": {
+   "name": "Furnace",
+   "desc": "The furnace is the cheapest item for smelting metal and sulfur ore.",
+   "icon": "res://assets/icons/items/furnace.png",
+   "stack": 1,
+   "category": "Items",
+   "recipe": [
+    [
+     "stones",
+     200
+    ],
+    [
+     "wood",
+     100
+    ],
+    [
+     "low_grade_fuel",
+     50
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 0,
+   "material": "Stone",
+   "type": "item"
+  },
+  "key_lock": {
+   "name": "Key Lock",
+   "desc": "Key locks are used to lock doors, hatches, storage boxes and tool cupboards. Once placed it should be locked by activating it and selecting \"Lock.\" For players other than the one who placed it to unlock it, they must have a key created by by the originating player. To remove a lock, unlock it and pick it up.",
+   "icon": "res://assets/icons/items/keylock.png",
+   "stack": 1,
+   "category": "Construction",
+   "recipe": [
+    [
+     "wood",
+     75
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 15.0,
+   "tier": 0,
+   "material": "Stone",
+   "type": "item"
+  },
+  "code_lock": {
+   "name": "Code Lock",
+   "desc": "The code lock is used to lock doors, hatches, and storage crates. Players may set a new four-digit PIN if the lock is unlocked. Once locked, an LED on the keypad will change to red, indicating its status. Other players may attempt to gain access to a locked item by typing in a PIN in the keypad. If they are correct, a short beep will emit from the lock, and the player will subsequently have permanent access to the locked item (assuming the code isn't changed). If the player guesses incorrectly, a failure beep will play alongside an electric arc animation on the keypad, and the player will take increasing increments of damage until they wait long enough or die. Guest codes may be set on unlocked locks (make sure it's locked after setting the code!), which allows other players access to the locked item without the ability to unlock, remove, or change the code. Unlocked Code Locks may be removed or have a new password set by any player.",
+   "icon": "res://assets/icons/items/keypad.png",
+   "stack": 1,
+   "category": "Construction",
+   "recipe": [
+    [
+     "metal_fragments",
+     100
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 0,
+   "material": "Metal",
+   "type": "item"
+  },
+  "small_oil_refinery": {
+   "name": "Small Oil Refinery",
+   "desc": "The Small Oil Refinery is used to refine low grade fuel from crude oil. Each crude oil produces 3 low grade fuel. The cost of the refinery is quite expensive but can prove to be worth its cost in the long run.",
+   "icon": "res://assets/icons/items/small_oil_refinery.png",
+   "stack": 1,
+   "category": "Items",
+   "recipe": [
+    [
+     "wood",
+     200
+    ],
+    [
+     "metal_fragments",
+     500
+    ],
+    [
+     "low_grade_fuel",
+     250
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 2,
+   "material": "Metal",
+   "type": "item"
+  },
+  "large_wood_box": {
+   "name": "Large Wood Box",
+   "desc": "A Large Wood Box is your most popular and conventional way to store your belongings. Each box has enough storage for 48x separate items/stacks of items. They can have both locks and code locks placed on them to keep unwanted players at bay for a brief period. If destroyed, they will destroy a portion of their contents as well. Boxes can be placed on shelves to save space.",
+   "icon": "res://assets/icons/items/large_wood_box.png",
+   "stack": 1,
+   "category": "Items",
+   "recipe": [
+    [
+     "wood",
+     250
+    ],
+    [
+     "metal_fragments",
+     50
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 0,
+   "material": "Wood",
+   "type": "item"
+  },
+  "wood_storage_box": {
+   "name": "Wood Storage Box",
+   "desc": "A Wood Storage Box is a small box with the ability to store a maximum of 18 separate items or stacks of items inside of it. These can often times be used as a more space efficient way to store your items than the Large Wood Box, but can prove difficult to keep sorted as not all of your items are in one container. They can have both locks and codelocks placed on them to keep unwanted newmans at bay for a brief period. If destroyed, they will destroy a portion of their contents as well. Boxes can be placed on shelves to save space.",
+   "icon": "res://assets/icons/items/wood_box.png",
+   "stack": 1,
+   "category": "Items",
+   "recipe": [
+    [
+     "wood",
+     100
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 15.0,
+   "tier": 0,
+   "material": "Wood",
+   "type": "item"
+  },
+  "wood_double_door": {
+   "name": "Wood Double Door",
+   "desc": "A Cheap door to secure your base. Its vulnerability to fire and weak explosive resistance makes the door a temporary solution to securing your base. Due to its flaws you should look at upgrading to a higher tier door such as Sheet Metal. The Wooden Door can take two kinds of locks the basic Key Lock and the Code Lock. To pick up the door, remove any locks and open, hold down the E (USE) key and select 'Pickup'.",
+   "icon": "res://assets/icons/items/wood_double_door.png",
+   "stack": 1,
+   "category": "Construction",
+   "recipe": [
+    [
+     "wood",
+     350
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 0,
+   "material": "Wood",
+   "type": "item"
+  },
+  "sheet_metal_double_door": {
+   "name": "Sheet Metal Double Door",
+   "desc": "It has the same health as a sheet metal door. It requires double the materials, but allows for more space within your base. Ideal for loot rooms and other cramped areas.",
+   "icon": "res://assets/icons/items/sheet_metal_double_door.png",
+   "stack": 1,
+   "category": "Construction",
+   "recipe": [
+    [
+     "metal_fragments",
+     200
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 0,
+   "material": "Metal",
+   "type": "item"
+  },
+  "armored_double_door": {
+   "name": "Armored Double Door",
+   "desc": "The armored double door is the highest tier double door and is the best for base defense. Because of its high durability, if the door is placed in a weak wall frame, raiders may target the wall frame instead of the door itself. The door has working hatches and these hatches allow you to see outside of the door and can be shot through in both directions.",
+   "icon": "res://assets/icons/items/armored_double_door.png",
+   "stack": 1,
+   "category": "Construction",
+   "recipe": [
+    [
+     "hq_metal",
+     25
+    ],
+    [
+     "gears",
+     5
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 2,
+   "material": "Metal",
+   "type": "item"
+  },
+  "stone_barricade": {
+   "name": "Stone Barricade",
+   "desc": "Perfect for cover when engaging in gun fights. Decays rapidly when placed outside of building privilege.",
+   "icon": "res://assets/icons/items/stone_barricade.png",
+   "stack": 1,
+   "category": "Construction",
+   "recipe": [
+    [
+     "stones",
+     100
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 0,
+   "material": "Wood",
+   "type": "item"
+  },
+  "wooden_barricade_cover": {
+   "name": "Wooden Barricade Cover",
+   "desc": "The Stone Barricade is a deployable building component. It is the cheapest, weakest and smallest of barricades. They are slightly less than the width of a foundation and slightly higher than a crouching player. Due to its low height, barricades are usually placed on higher ground than the opponent. Examples of usage include the top of a hill, roofs and towers. High External Walls take their intended use during combat.",
+   "icon": "res://assets/icons/items/wooden_barricade.png",
+   "stack": 1,
+   "category": "Construction",
+   "recipe": [
+    [
+     "wood",
+     250
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 0,
+   "material": "Wood",
+   "type": "item"
+  },
+  "repair_bench": {
+   "name": "Repair Bench",
+   "desc": "Repair benches offer a cost-effective way to repair once-broken items back to a usable state. Each repair costs half of the original cost of a new version of the item, and does not use components. Every time an item is repaired, it loses some of it's maximum durability. This is represented with a red portion on the durability bar of the item. The Repair Bench can currently change the skin of any item you have (granted it HAS varying skins) to any skin that you own in your steam inventory.",
+   "icon": "res://assets/icons/items/repair_bench.png",
+   "stack": 1,
+   "category": "Construction",
+   "recipe": [
+    [
+     "metal_fragments",
+     125
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 1,
+   "material": "Wood",
+   "type": "item"
+  },
+  "research_table": {
+   "name": "Research Table",
+   "desc": "The research table is a craftable deployable item that is used for researching obtained items for a price. This can be done by pressing the 'E' key, inserting your item and the required scrap metal to acquire a blueprint for use at the appropriate tier of workbench. (note: blueprint is guaranteed unlike previous versions of rust).",
+   "icon": "res://assets/icons/items/research_table.png",
+   "stack": 1,
+   "category": "Construction",
+   "recipe": [
+    [
+     "metal_fragments",
+     200
+    ],
+    [
+     "scrap",
+     20
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 0,
+   "material": "Wood",
+   "type": "item"
+  },
+  "sleeping_bag": {
+   "name": "Sleeping Bag",
+   "desc": "A sleeping bag is a critical part of playing gRust. When placed, this item offers a respawn point directly on top of it. It can be named, given to a friend, or even be picked up by it's owner by using the interact key on it. After death, a menu will appear displaying your sleeping bags and beds by name and you can select whichever one you need. After being used, or being placed, there is a 5-minute cooldown period before being able to spawn on it. When possible, you should upgrade your base's respawn point to a bed, which has a drastically shorter cooldown timer.",
+   "icon": "res://assets/icons/items/sleeping_bag.png",
+   "stack": 1,
+   "category": "Common",
+   "recipe": [
+    [
+     "cloth",
+     30
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 0,
+   "material": "Cloth",
+   "type": "item"
+  },
+  "bed": {
+   "name": "Bed",
+   "desc": "The bed can be used as a spawn point, just like the sleeping bag, but it has reduced cooldown use; instead of waiting 5 minutes like the Sleeping Bag, you just wait 2 minutes. You should have a bed if your base is upgraded and quite decent, because if you are getting raided and you have to respawn to defend your base, you cannot afford 5 minutes of respawn delay.",
+   "icon": "res://assets/icons/items/bed.png",
+   "stack": 1,
+   "category": "Common",
+   "recipe": [
+    [
+     "cloth",
+     60
+    ],
+    [
+     "metal_fragments",
+     100
+    ],
+    [
+     "sewing_kit",
+     2
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 1,
+   "material": "Cloth",
+   "type": "item"
+  },
+  "wooden_window_bars": {
+   "name": "Wooden Window Bars",
+   "desc": "The Wooden Window Bars are the lowest-tier window bars, provide little cover and deny entrance through windows. They are weaker over its reinforced and metal counterparts. Due to its weakness to fire damage and low health higher tier window bars are recommended.",
+   "icon": "res://assets/icons/items/wood_window_bars.png",
+   "stack": 1,
+   "category": "Construction",
+   "recipe": [
+    [
+     "wood",
+     50
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 0,
+   "material": "Wood",
+   "type": "item"
+  },
+  "strengthened_glass_window": {
+   "name": "Strengthened Glass Window",
+   "desc": "Bulleproof window glass, can block any incoming bullet projectile. Cannot block explosives.",
+   "icon": "res://assets/icons/items/strengthened_glass_window.png",
+   "stack": 1,
+   "category": "Construction",
+   "recipe": [
+    [
+     "metal_fragments",
+     50
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 2,
+   "material": "Metal",
+   "type": "item"
+  },
+  "reinforced_glass_window": {
+   "name": "Reinforced Glass Window",
+   "desc": "The Reinforced Glass Window is now the highest-tier glass window. It replaced the Strengthened glass Window's spot for the highest HP window, and you are now unable to shoot through it. This makes it vital for loot rooms and external TCs. Not very useful for information gathering, as the viewing area is quite small and obstructed by thick bars.",
+   "icon": "res://assets/icons/items/reinforced_glass_window.png",
+   "stack": 1,
+   "category": "Construction",
+   "recipe": [
+    [
+     "hq_metal",
+     4
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 3,
+   "material": "Metal",
+   "type": "item"
+  },
+  "workbench_level_1": {
+   "name": "Workbench Level 1",
+   "desc": "The tier 1 Work Bench acts as a gateway towards crafting early game gear, including salvaged weapons and armor. You can find them at the Scientist Outpost and the Bandit Camp monuments.",
+   "icon": "res://assets/icons/items/workbench_tier1.png",
+   "stack": 1,
+   "category": "Construction",
+   "recipe": [
+    [
+     "wood",
+     500
+    ],
+    [
+     "metal_fragments",
+     100
+    ],
+    [
+     "scrap",
+     50
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 0,
+   "material": "Wood",
+   "type": "item"
+  },
+  "workbench_level_2": {
+   "name": "Workbench Level 2",
+   "desc": "The tier 2 Work bench allows you to craft mid-game weapons, armor, and building parts while in the vicinity of the work bench. Uses the same amount of space like the Tier One Workbench",
+   "icon": "res://assets/icons/items/workbench_tier2.png",
+   "stack": 1,
+   "category": "Construction",
+   "recipe": [
+    [
+     "metal_fragments",
+     500
+    ],
+    [
+     "hq_metal",
+     2
+    ],
+    [
+     "scrap",
+     500
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 45.0,
+   "tier": 1,
+   "material": "Metal",
+   "type": "item"
+  },
+  "workbench_level_3": {
+   "name": "Workbench Level 3",
+   "desc": "The tier 3 Work Bench allows you to craft the highest tier of weapons, armor, and defenses.",
+   "icon": "res://assets/icons/items/workbench_tier3.png",
+   "stack": 1,
+   "category": "Construction",
+   "recipe": [
+    [
+     "metal_fragments",
+     1000
+    ],
+    [
+     "hq_metal",
+     100
+    ],
+    [
+     "scrap",
+     1250
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 45.0,
+   "tier": 2,
+   "material": "Metal",
+   "type": "item"
+  },
+  "chair": {
+   "name": "Chair",
+   "desc": "The chair is normally made for decorative purpose. But you can mount it to receive 100% comfort. Hover over it and press the E key to mount it and press the space bar to dismount it.",
+   "icon": "res://assets/icons/items/chair.png",
+   "stack": 1,
+   "category": "Items",
+   "recipe": [
+    [
+     "wood",
+     50
+    ],
+    [
+     "metal_fragments",
+     75
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 1,
+   "material": "Wood",
+   "type": "item"
+  },
+  "vending_machine": {
+   "name": "Vending Machine",
+   "desc": "The Vending Machine provides a safe way to make indirect trade with other players.",
+   "icon": "res://assets/icons/items/vending_machine.png",
+   "stack": 1,
+   "category": "Items",
+   "recipe": [
+    [
+     "hq_metal",
+     20
+    ],
+    [
+     "gears",
+     3
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 1,
+   "material": "Metal",
+   "type": "item"
+  },
+  "auto_turret": {
+   "name": "Auto Turret",
+   "desc": "The Auto Turret is a placed object used to detect enemies and shoot with its armed weapon. It detects enemies if the enemies were to reach its 180 degrees detection range or shoot the turret. The Auto Turret ignores the Tool Cupboard authorizations and only shoot people not in its authorize list so you and your team must authorize to it manually.",
+   "icon": "res://assets/icons/items/auto_turret.png",
+   "stack": 1,
+   "category": "Items",
+   "recipe": [
+    [
+     "hq_metal",
+     10
+    ],
+    [
+     "cctv_camera",
+     1
+    ],
+    [
+     "targeting_computer",
+     1
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 45.0,
+   "tier": 2,
+   "material": "Gun",
+   "type": "item"
+  },
+  "metal_horizontal_embrasure": {
+   "name": "Metal Horizontal Embrasure",
+   "desc": "Placed over a window it is used to reduce the size and grants the player more cover than the window. It is the counterpart to the Metal Vertical Embrasure providing more protection and the player's reducing vision from above and below the window.",
+   "icon": "res://assets/icons/items/metal_horizontal_embrasure.png",
+   "stack": 20,
+   "category": "Construction",
+   "recipe": [
+    [
+     "metal_fragments",
+     100
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 10.0,
+   "tier": 0,
+   "material": "Metal",
+   "type": "item"
+  },
+  "metal_vertical_embrasure": {
+   "name": "Metal Vertical Embrasure",
+   "desc": "Placed over a window it is used to reduce the size and grants the player more cover than the window. It is the counterpart to the Metal Horizontal Embrasure providing more protection and the player's reducing vision from the left and right sides of the window.",
+   "icon": "res://assets/icons/items/metal_vertical_embrasure.png",
+   "stack": 20,
+   "category": "Construction",
+   "recipe": [
+    [
+     "metal_fragments",
+     100
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 10.0,
+   "tier": 0,
+   "material": "Metal",
+   "type": "item"
+  },
+  "metal_shop_front": {
+   "name": "Metal Shop Front",
+   "desc": "The metal shop front is quite useful for trading. The vendor can stand safely behind it without worrying about getting shot, as the glass is bulletproof. When the player on the inside and the player on the outside have put in items to make the desired trade, they both have to accept the deal for the items to be transferred.",
+   "icon": "res://assets/icons/items/metal_shop_front.png",
+   "stack": 1,
+   "category": "Construction",
+   "recipe": [
+    [
+     "metal_fragments",
+     250
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 10.0,
+   "tier": 1,
+   "material": "Metal",
+   "type": "item"
+  },
+  "homemade_landmine": {
+   "name": "Homemade Landmine",
+   "desc": "A small explosive device which activates when a player steps off the pressure plate. The land mine can be deactivated by a friend by hold 'Use' button (default 'E') on it so that the player can step off safely.",
+   "icon": "res://assets/icons/items/homemade_landmine.png",
+   "stack": 5,
+   "category": "Traps",
+   "recipe": [
+    [
+     "metal_fragments",
+     50
+    ],
+    [
+     "gun_powder",
+     30
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 20.0,
+   "tier": 2,
+   "material": "Gun",
+   "type": "item"
+  },
+  "garage_door": {
+   "name": "Garage Door",
+   "desc": "The garage door is a form of lockable door which slides upward from the bottom when opened. It fits within a wall frame, like the double door, but opens much slower than any other type of door. It is, however, more durable than the sheet metal double door - making it an effective loot room door.",
+   "icon": "res://assets/icons/items/garage_door.png",
+   "stack": 1,
+   "category": "Construction",
+   "recipe": [
+    [
+     "metal_fragments",
+     300
+    ],
+    [
+     "gears",
+     2
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 2,
+   "material": "Gun",
+   "type": "item"
+  },
+  "test_generator": {
+   "name": "Test Generator",
+   "desc": "A test generator.",
+   "icon": "res://assets/icons/items/test_generator.png",
+   "stack": 1,
+   "category": "Electrical",
+   "recipe": [
+    [
+     "hq_metal",
+     26
+    ],
+    [
+     "gears",
+     4
+    ],
+    [
+     "metal_pipe",
+     2
+    ],
+    [
+     "fuse",
+     4
+    ]
+   ],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Metal",
+   "type": "item"
+  },
+  "small_rechargeable_battery": {
+   "name": "Small Rechargeable Battery",
+   "desc": "A small rechargable battery. Must have a minimum charge of 5 seconds to discharge. Can be wired in series. Charging rate is dependant on power in, with a maximum of 80% efficiency.",
+   "icon": "res://assets/icons/items/small_battery.png",
+   "stack": 1,
+   "category": "Electrical",
+   "recipe": [
+    [
+     "hq_metal",
+     5
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 1,
+   "material": "Metal",
+   "type": "item"
+  },
+  "switch": {
+   "name": "Switch",
+   "desc": "A simple electric switch.",
+   "icon": "res://assets/icons/items/switch.png",
+   "stack": 1,
+   "category": "Electrical",
+   "recipe": [
+    [
+     "metal_fragments",
+     100
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 1,
+   "material": "Metal",
+   "type": "item"
+  },
+  "large_solar_panel": {
+   "name": "Large Solar Panel",
+   "desc": "A solar panel which converts sunlight into energy. The amount of energy generated is dependent on the sun's intensity and angle to the panel.",
+   "icon": "res://assets/icons/items/solar_panel.png",
+   "stack": 1,
+   "category": "Electrical",
+   "recipe": [
+    [
+     "hq_metal",
+     5
+    ],
+    [
+     "tech_trash",
+     1
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 1,
+   "material": "Metal",
+   "type": "item"
+  },
+  "timed_explosive_charge": {
+   "name": "Timed Explosive Charge",
+   "desc": "The Timed Explosive Charge, mostly knowns as C4, is an item often used when raiding other players. Once thrown, the charge will stick to walls, floors, doors and deployable items. Once attached to a target, the timed explosives will automatically detonate in a dependable and quick manner (in comparison to it's unreliable counterpart, the Satchel Charge). However, it does damage only to the structure it's attached to. If attached to a door, for example, it would destroy it without damaging the door frame or nearby walls. This item deals the most damage out of all explosive devices, and is the most ideal/useful for evicting your neighbors. It's important to protect this item from your enemies, as it can prove fatal once it's in the wrong hands.",
+   "icon": "res://assets/icons/items/c4.png",
+   "stack": 10,
+   "category": "Tools",
+   "recipe": [
+    [
+     "explosives",
+     20
+    ],
+    [
+     "cloth",
+     5
+    ],
+    [
+     "tech_trash",
+     2
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 3,
+   "material": "Stone",
+   "type": "weapon",
+   "swep": "rust_c4",
+   "viewmodel": "models/weapons/darky_m/rust/c_c4.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_c4.mdl",
+   "kind": "throw",
+   "damage": 550.0,
+   "vm_fov": 50.0,
+   "range": 1.0,
+   "radius": 4.0,
+   "fuse": 10.0,
+   "scene": "res://assets/weapons/c4.gltf",
+   "vm_name": "c4",
+   "world": "res://assets/weapons/w_c4.gltf"
+  },
+  "satchel_charge": {
+   "name": "Satchel Charge",
+   "desc": "The Satchel Charge is a midgame raiding tool that can be used to destroy player-made buildings for the purpose of entering and looting another player's base. The Satchel charge becomes armed when placed, has a random time until detonation, and has a small chance to malfunction, requiring the user to pick up and rearm the Charge. Note that sometimes the charge will re-ignite when the dud is picked up, going off with a very short fuse!",
+   "icon": "res://assets/icons/items/satchel.png",
+   "stack": 10,
+   "category": "Tools",
+   "recipe": [
+    [
+     "beancan_grenade",
+     4
+    ],
+    [
+     "small_stash",
+     5
+    ],
+    [
+     "rope",
+     1
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 5.0,
+   "tier": 1,
+   "material": "Stone",
+   "type": "weapon",
+   "swep": "rust_satchel",
+   "viewmodel": "models/weapons/darky_m/rust/c_satchel.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_satchel.mdl",
+   "kind": "throw",
+   "damage": 175.0,
+   "vm_fov": 50.0,
+   "range": 1.0,
+   "radius": 4.0,
+   "fuse": 8.0,
+   "scene": "res://assets/weapons/satchel.gltf",
+   "vm_name": "satchel",
+   "world": "res://assets/weapons/w_satchel.gltf"
+  },
+  "beancan_grenade": {
+   "name": "Beancan Grenade",
+   "desc": "The Beancan Grenade is an early-game tool. They're used to craft Satchel Charges, but can be used by themselves in raiding. The Beancan Grenade has a random detonation period and can kill a player if it's within the range. The Beancan Grenade has a 15% chance to be a dud. However, Beancan Grenades have a 50% chance to explode when you attempt to pick them up again after a dud.",
+   "icon": "res://assets/icons/items/beancan.png",
+   "stack": 5,
+   "category": "Weapons",
+   "recipe": [
+    [
+     "gun_powder",
+     60
+    ],
+    [
+     "metal_fragments",
+     20
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 10.0,
+   "tier": 1,
+   "material": "Metal",
+   "type": "weapon",
+   "swep": "rust_beancan",
+   "viewmodel": "models/weapons/darky_m/rust/c_beancan.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_beancan.mdl",
+   "kind": "throw",
+   "damage": 80.0,
+   "vm_fov": 50.0,
+   "range": 1.0,
+   "radius": 4.5,
+   "fuse": 3.75,
+   "scene": "res://assets/weapons/beancan.gltf",
+   "vm_name": "beancan",
+   "world": "res://assets/weapons/w_beancan.gltf"
+  },
+  "f1_grenade": {
+   "name": "F1 Grenade",
+   "desc": "End game grenade often used in combat. Unlike the Beancan Grenade, the F1 Grenade is much more reliable as it does not dud or randomly explode.",
+   "icon": "res://assets/icons/items/f1_grenade.png",
+   "stack": 5,
+   "category": "Weapons",
+   "recipe": [
+    [
+     "gun_powder",
+     30
+    ],
+    [
+     "metal_fragments",
+     25
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 10.0,
+   "tier": 2,
+   "material": "Metal",
+   "type": "weapon",
+   "swep": "rust_f1grenade",
+   "viewmodel": "models/weapons/darky_m/rust/c_f1.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_f1.mdl",
+   "kind": "throw",
+   "damage": 95.0,
+   "vm_fov": 50.0,
+   "range": 1.0,
+   "radius": 6.0,
+   "fuse": 2.5,
+   "scene": "res://assets/weapons/f1.gltf",
+   "vm_name": "f1",
+   "world": "res://assets/weapons/w_f1.gltf"
+  },
+  "bandage": {
+   "name": "Bandage",
+   "desc": "Bandages are crafted medical supplies that stop bleeding and heal a small amount of health. It is common to chain-use bandages when the player has no access to other medical supplies, as hemp can be picked while running around the map and used for an easy health boost.",
+   "icon": "res://assets/icons/items/bandages.png",
+   "stack": 3,
+   "category": "Medical",
+   "recipe": [
+    [
+     "cloth",
+     4
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 5.0,
+   "tier": 0,
+   "material": "Cloth",
+   "type": "weapon",
+   "swep": "rust_bandage",
+   "viewmodel": "models/weapons/darky_m/c_bandages.mdl",
+   "worldmodel": "models/weapons/darky_m/w_bandages.mdl",
+   "kind": "medical",
+   "vm_fov": 64.0,
+   "range": 1.0,
+   "heal": 5.0,
+   "healing": 0.0,
+   "use_delay": 3.75,
+   "auto": false,
+   "scene": "res://assets/weapons/bandages.gltf",
+   "vm_name": "bandages",
+   "world": "res://assets/weapons/w_bandages.gltf"
+  },
+  "medical_syringe": {
+   "name": "Medical Syringe",
+   "desc": "The Medical Syringe is the best medical supply used for combat situations. It instant heals you a portion of your health and slowly heals the rest. It also reduces your radiation poisoning which is very useful while navigating the red puzzle building with high levels of radiation. As of July 2021, the Medical Syringe can be used to revive people in Wounded state. It revives faster than holding E on the wounded player, however this gives you a disadvantage to look around and spot enemies as you will cancel the heal animation.",
+   "icon": "res://assets/icons/items/syringe.png",
+   "stack": 2,
+   "category": "Medical",
+   "recipe": [
+    [
+     "cloth",
+     15
+    ],
+    [
+     "metal_fragments",
+     10
+    ],
+    [
+     "low_grade_fuel",
+     10
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 10.0,
+   "tier": 2,
+   "material": "Cloth",
+   "type": "weapon",
+   "swep": "rust_medicalsyringe",
+   "viewmodel": "models/weapons/darky_m/c_syringe_v2.mdl",
+   "worldmodel": "models/weapons/darky_m/w_syringe_v2.mdl",
+   "kind": "medical",
+   "vm_fov": 55.0,
+   "range": 1.0,
+   "heal": 15.0,
+   "healing": 20.0,
+   "use_delay": 2.75,
+   "auto": false,
+   "scene": "res://assets/weapons/syringe_v2.gltf",
+   "vm_name": "syringe_v2",
+   "world": "res://assets/weapons/w_syringe_v2.gltf"
+  },
+  "large_medkit": {
+   "name": "Large Medkit",
+   "desc": "The Large Medkit is medical supplies that stops bleeding when used, provides 10 instant health and heals to max health overtime. You can use the Large Medkit by pressing it on your Inventory and click the Use button or move it to your toolbar and press the slot key to use. It does not have an Use animation so bleeding can be stopped immediately. As of July 2021, the Large Medkit can revive you with a chance of 100% while in Wounded state, it must be placed in your toolbar to be consumed. Your revival chance also depends on your Hunger and Hydration status, if both are full, they will give a total of 40% chance to revive you.",
+   "icon": "res://assets/icons/items/large_medkit.png",
+   "stack": 1,
+   "category": "Medical",
+   "recipe": [
+    [
+     "medical_syringe",
+     2
+    ],
+    [
+     "low_grade_fuel",
+     10
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 15.0,
+   "tier": 2,
+   "material": "Cloth",
+   "type": "medical_item"
+  },
+  "empty_can_of_beans": {
+   "name": "Empty Can of Beans",
+   "desc": "An empty can of beans are what's left after eating a can of beans. They can be smelted in a campfire to give metal fragments.",
+   "icon": "res://assets/icons/items/empty_can_of_beans.png",
+   "stack": 10,
+   "category": "Other",
+   "recipe": [
+    [
+     "metal_fragments",
+     20
+    ]
+   ],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Metal",
+   "type": "item"
+  },
+  "empty_tuna_can": {
+   "name": "Empty Tuna Can",
+   "desc": "After consuming a tuna can, you'll be left with its empty remains. Empty tuna cans are used for either smelting them into a few Metal Fragments, or to make the Tuna Can Lamp.",
+   "icon": "res://assets/icons/items/empty_tuna_can.png",
+   "stack": 10,
+   "category": "Other",
+   "recipe": [
+    [
+     "metal_fragments",
+     16
+    ]
+   ],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Metal",
+   "type": "item"
+  },
+  "supply_signal": {
+   "name": "Supply Signal",
+   "desc": "A purple smoke grenade that calls in an airdrop somewhere in a small radius around it. Can be found rarely in Military and Elite Crates.",
+   "icon": "res://assets/icons/items/supply_signal.png",
+   "stack": 1,
+   "category": "Other",
+   "recipe": [],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Gun",
+   "type": "weapon",
+   "swep": "rust_supplysignal",
+   "viewmodel": "models/weapons/darky_m/rust/c_smokegrenade.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_smokegrenade.mdl",
+   "kind": "tool",
+   "vm_fov": 50.0,
+   "range": 1.0,
+   "scene": "res://assets/weapons/smokegrenade.gltf",
+   "vm_name": "smokegrenade",
+   "world": "res://assets/weapons/w_smokegrenade.gltf"
+  },
+  "wood": {
+   "name": "Wood",
+   "desc": "Wood. Collected from trees and used in many crafting recipes. It's also needed to cook in camp-fires.",
+   "icon": "res://assets/icons/items/wood.png",
+   "stack": 1000,
+   "category": "Resources",
+   "recipe": [],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Wood",
+   "type": "item"
+  },
+  "stones": {
+   "name": "Stones",
+   "desc": "Harvested from rocks using tools, basic building material.",
+   "icon": "res://assets/icons/items/stone.png",
+   "stack": 1000,
+   "category": "Resources",
+   "recipe": [],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Stone",
+   "type": "item"
+  },
+  "metal_ore": {
+   "name": "Metal Ore",
+   "desc": "Metal ore can be smelted into metal fragments through a furnace which is used to craft most of the tools, structures, items and weaponry throughout the game and is vital to have during most of the time being.",
+   "icon": "res://assets/icons/items/metal_ore.png",
+   "stack": 1000,
+   "category": "Resources",
+   "recipe": [],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Stone",
+   "type": "item"
+  },
+  "hq_metal_ore": {
+   "name": "High Quality Metal Ore",
+   "desc": "A rock containing High Quality Metal. Can be smelted in a furnace.",
+   "icon": "res://assets/icons/items/hqmetal_ore.png",
+   "stack": 1000,
+   "category": "Resources",
+   "recipe": [],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Stone",
+   "type": "item"
+  },
+  "sulfur_ore": {
+   "name": "Sulfur Ore",
+   "desc": "Sulfur ore is a resource found in Sulfur nodes. Smelting sulfur ore in any furnace will give sulfur, an ingredient in crafting gunpowder.",
+   "icon": "res://assets/icons/items/sulfur_ore.png",
+   "stack": 1000,
+   "category": "Resources",
+   "recipe": [],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Stone",
+   "type": "item"
+  },
+  "metal_fragments": {
+   "name": "Metal Fragments",
+   "desc": "Metal Fragments. Smelted from Metal Ore, used in lots of different crafting recipes.",
+   "icon": "res://assets/icons/items/metal_fragments.png",
+   "stack": 1000,
+   "category": "Resources",
+   "recipe": [],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Metal",
+   "type": "item"
+  },
+  "hq_metal": {
+   "name": "High Quality Metal",
+   "desc": "High Quality Metal is considered as a rare resource used for crafting metal items such as armor, doors, weapons and more. High Quality Metal is often used as the 'top-tier' when constructing or upgrading building blocks.",
+   "icon": "res://assets/icons/items/hqmetal.png",
+   "stack": 1000,
+   "category": "Resources",
+   "recipe": [],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Metal",
+   "type": "item"
+  },
+  "scrap": {
+   "name": "Scrap",
+   "desc": "Resource mainly used for researching items into blueprints at workbenches or going down the tech tree, which allows for targeting certain items you want to acquire. It's also a type of currency, used for trading various items at the Scientist Outpost and the Bandit Camp. As such, Scrap is very valuable and essential at any point in the game.",
+   "icon": "res://assets/icons/items/scrap.png",
+   "stack": 1000,
+   "category": "Resources",
+   "recipe": [],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Metal",
+   "type": "item"
+  },
+  "crude_oil": {
+   "name": "Crude Oil",
+   "desc": "Raw Oil out of the ground, must be refined in a refinery to be used. Can be found in barrels scattered across the map.",
+   "icon": "res://assets/icons/items/crude_oil.png",
+   "stack": 500,
+   "category": "Resources",
+   "recipe": [],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Stone",
+   "type": "item"
+  },
+  "low_grade_fuel": {
+   "name": "Low Grade Fuel",
+   "desc": "Low Grade Fuel is a resource made from Animal Fat and Cloth. It is required early game to make furnaces and mid game for Syringes. There are three ways to get this, hunting animals (or to a lesser effect, humans) and crafting it, refining crude oil at a monument or personal refinery, and finding it in oil barrels (or to a lesser effect in mine carts).",
+   "icon": "res://assets/icons/items/low_grade_fuel.png",
+   "stack": 500,
+   "category": "Resources",
+   "recipe": [
+    [
+     "animal_fat",
+     3
+    ],
+    [
+     "cloth",
+     1
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 4,
+   "craft_time": 5.0,
+   "tier": 0,
+   "material": "Cloth",
+   "type": "item"
+  },
+  "animal_fat": {
+   "name": "Animal Fat",
+   "desc": "Fat is a good package for biological energy, making it quite an effective fuel source. It can be taken from any animal, including humans.",
+   "icon": "res://assets/icons/items/animal_fat.png",
+   "stack": 1000,
+   "category": "Resources",
+   "recipe": [],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Wood",
+   "type": "item"
+  },
+  "cloth": {
+   "name": "Cloth",
+   "desc": "Cloth is a basic resource that has several means of being harvested. Most commonly it is farmed with hemp and hemp seeds, but can be gathered from animals and even cacti with the appropriate tools. It is used primarily for clothing, and the refining of low grade when combined with animal fat. To make cloth gathering a trivial task, the proper use of planters is recommended.",
+   "icon": "res://assets/icons/items/cloth.png",
+   "stack": 1000,
+   "category": "Resources",
+   "recipe": [],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Cloth",
+   "type": "item"
+  },
+  "charcoal": {
+   "name": "Charcoal",
+   "desc": "Charcoal is the byproduct of wood when used for smelting in a campfire or furnace. It is used in conjunction with sulfur to craft gunpowder, a key ingredient for ammunition and explosives. Though it may be tempting to throw charcoal away, large quantities will be required in later stages of the game. Keep it if you can.",
+   "icon": "res://assets/icons/items/charcoal.png",
+   "stack": 1000,
+   "category": "Resources",
+   "recipe": [],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Charcoal",
+   "type": "item"
+  },
+  "bone_fragments": {
+   "name": "Bone Fragments",
+   "desc": "Bone fragments are obtainable from any corpse and used in armor and tools.",
+   "icon": "res://assets/icons/items/bone_fragments.png",
+   "stack": 1000,
+   "category": "Resources",
+   "recipe": [],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Wood",
+   "type": "item"
+  },
+  "gun_powder": {
+   "name": "Gun Powder",
+   "desc": "Gunpowder is a resource created by combining smelted sulfur and charcoal. It is used for multiple things from rockets, grenades, ammunition, and even land mines. As this is used almost exclusively for PvP purposes, this is a much sought after resource and should be protected and seized at every opportunity.",
+   "icon": "res://assets/icons/items/gunpowder.png",
+   "stack": 1000,
+   "category": "Resources",
+   "recipe": [
+    [
+     "charcoal",
+     30
+    ],
+    [
+     "sulfur",
+     20
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 10,
+   "craft_time": 2.0,
+   "tier": 1,
+   "material": "Wood",
+   "type": "item"
+  },
+  "sulfur": {
+   "name": "Sulfur",
+   "desc": "One of the most valuable and sought after resources in rust, sulfur is useful to almost all players (with the exception of freshspawns) due to it being required to craft gunpowder, a resource necessary to create ammo as well as any explosive. It can be found in its ore form in sulfur nodes, identifiable by their distinct yellow colouring. This then needs to be smelted in a furnace in order to obtain its purified form seen here.",
+   "icon": "res://assets/icons/items/sulfur.png",
+   "stack": 1000,
+   "category": "Resources",
+   "recipe": [],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Wood",
+   "type": "item"
+  },
+  "explosives": {
+   "name": "Explosives",
+   "desc": "Explosives are used in more powerful raiding devices. They cannot be used on their own, only as an ingredient.",
+   "icon": "res://assets/icons/items/explosives.png",
+   "stack": 100,
+   "category": "Resources",
+   "recipe": [
+    [
+     "gun_powder",
+     50
+    ],
+    [
+     "low_grade_fuel",
+     3
+    ],
+    [
+     "sulfur",
+     10
+    ],
+    [
+     "metal_fragments",
+     10
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 5.0,
+   "tier": 3,
+   "material": "Wood",
+   "type": "item"
+  },
+  "tech_trash": {
+   "name": "Tech Trash",
+   "desc": "Tech Trash is an essential component in Timed Explosive Charges and weapon attachments. Tech Trash can be gained via military crates or the recycler.",
+   "icon": "res://assets/icons/items/tech_trash.png",
+   "stack": 50,
+   "category": "Resources",
+   "recipe": [
+    [
+     "hq_metal",
+     2
+    ]
+   ],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Wood",
+   "type": "item"
+  },
+  "rope": {
+   "name": "Rope",
+   "desc": "Rope is quite common component used in many items like wooden armor, satchel charges, ladders and shotgun traps. Because of that it remains relatively useful throughout the whole game. It can be often found in barrels alongside sewing kits which can be recycled for even more rope.",
+   "icon": "res://assets/icons/items/rope.png",
+   "stack": 50,
+   "category": "Resources",
+   "recipe": [
+    [
+     "cloth",
+     30
+    ]
+   ],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Cloth",
+   "type": "item"
+  },
+  "sewing_kit": {
+   "name": "Sewing Kit",
+   "desc": "Sewing Kits are highly valued by mid to high tier players for their use in both roadsign and metal Armour.",
+   "icon": "res://assets/icons/items/sewing_kit.png",
+   "stack": 50,
+   "category": "Resources",
+   "recipe": [
+    [
+     "cloth",
+     20
+    ],
+    [
+     "rope",
+     3
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 3,
+   "material": "Cloth",
+   "type": "item"
+  },
+  "tarp": {
+   "name": "Tarp",
+   "desc": "Tarps are used for the crafting of planter boxes, and water catchers. They can also be recycled for 50x cloth each. These are very common and can prove to be a good source of cloth.",
+   "icon": "res://assets/icons/items/tarp.png",
+   "stack": 20,
+   "category": "Resources",
+   "recipe": [
+    [
+     "cloth",
+     100
+    ]
+   ],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Cloth",
+   "type": "item"
+  },
+  "leather": {
+   "name": "Leather",
+   "desc": "One of the resources commonly acquired through harvesting most animals. It's necessary for the making of mid and end tier armors, needed by every Rust player. Acquired in abundance mainly through the harvesting of bears and wolves.",
+   "icon": "res://assets/icons/items/leather.png",
+   "stack": 1000,
+   "category": "Resources",
+   "recipe": [
+    [
+     "cloth",
+     5
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Cloth",
+   "type": "item"
+  },
+  "cctv_camera": {
+   "name": "CCTV Camera",
+   "desc": "A CCTV Camera can be placed down to capture video footage and sound when powered and paired with a Computer Station.",
+   "icon": "res://assets/icons/items/cctv_camera.png",
+   "stack": 64,
+   "category": "Resources",
+   "recipe": [
+    [
+     "tech_trash",
+     4
+    ],
+    [
+     "hq_metal",
+     4
+    ]
+   ],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Gun",
+   "type": "item"
+  },
+  "targeting_computer": {
+   "name": "Targeting Computer",
+   "desc": "Used for crafting auto turrets, or recycling a large amounts of scrap.",
+   "icon": "res://assets/icons/items/targeting_computer.png",
+   "stack": 64,
+   "category": "Resources",
+   "recipe": [
+    [
+     "tech_trash",
+     6
+    ],
+    [
+     "hq_metal",
+     2
+    ],
+    [
+     "metal_fragments",
+     100
+    ]
+   ],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Gun",
+   "type": "item"
+  },
+  "rock": {
+   "name": "Rock",
+   "desc": "A Rock. The most basic melee weapon and gathering tool.",
+   "icon": "res://assets/icons/items/rock.png",
+   "stack": 1,
+   "category": "Tools",
+   "recipe": [
+    [
+     "stones",
+     10
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 5.0,
+   "tier": 0,
+   "material": "Stone",
+   "type": "weapon",
+   "swep": "rust_rock",
+   "viewmodel": "models/weapons/darky_m/rust/c_rock2.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_rock.mdl",
+   "kind": "melee",
+   "damage": 10.0,
+   "vm_fov": 50.0,
+   "range": 1.3,
+   "swing_sound": "darky_rust.rock-attack",
+   "hit_sound": "darky_rust.rock-strike-1",
+   "attack_rate": 46.0,
+   "attack_delay": 0.485,
+   "auto": true,
+   "scene": "res://assets/weapons/rock2.gltf",
+   "vm_name": "rock2",
+   "world": "res://assets/weapons/w_rock.gltf"
+  },
+  "stone_hatchet": {
+   "name": "Stone Hatchet",
+   "desc": "The Stone Hatchet is a primitive, early game tool used for collecting wood and flesh. It is available to craft, costing only wood and stones. Players starting out may find great use of the Stone Hatchet along with the Stone Pickaxe to aid in their farming endeavors. Although it is much less efficient than the Hatchet or Salvaged Axe, it is still used commonly due to its low barrier of entry- not costing any processed materials which require a furnace.",
+   "icon": "res://assets/icons/items/stone_hatchet.png",
+   "stack": 1,
+   "category": "Tools",
+   "recipe": [
+    [
+     "wood",
+     200
+    ],
+    [
+     "stones",
+     100
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 15.0,
+   "tier": 0,
+   "material": "Stone",
+   "type": "weapon",
+   "swep": "rust_stonehatchet",
+   "viewmodel": "models/weapons/darky_m/rust/c_stone_hatchet.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_stone_hatchet.mdl",
+   "kind": "melee",
+   "damage": 15.0,
+   "vm_fov": 50.0,
+   "range": 1.5,
+   "swing_sound": "darky_rust.hatchet-attack",
+   "hit_sound": "darky_rust.hatchet-stone-strike",
+   "attack_rate": 67.0,
+   "attack_delay": 0.025,
+   "auto": true,
+   "scene": "res://assets/weapons/stone_hatchet.gltf",
+   "vm_name": "stone_hatchet",
+   "world": "res://assets/weapons/w_stone_hatchet.gltf"
+  },
+  "stone_pickaxe": {
+   "name": "Stone Pickaxe",
+   "desc": "Primitive tool used for harvesting Stone, Metal ore and Sulfur ore. Can also be used to harvest animals due to its relatively high harvest rate, and contrary to popular belief, it is more efficient than the stone hatchet.",
+   "icon": "res://assets/icons/items/stone_pickaxe.png",
+   "stack": 1,
+   "category": "Tools",
+   "recipe": [
+    [
+     "wood",
+     200
+    ],
+    [
+     "stones",
+     100
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 15.0,
+   "tier": 0,
+   "material": "Stone",
+   "type": "weapon",
+   "swep": "rust_stonepickaxe",
+   "viewmodel": "models/weapons/darky_m/rust/c_stone_pickaxe.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_stone_pickaxe.mdl",
+   "kind": "melee",
+   "damage": 17.0,
+   "vm_fov": 50.0,
+   "range": 1.5,
+   "swing_sound": "darky_rust.hatchet-attack",
+   "hit_sound": "darky_rust.hatchet-stone-strike",
+   "attack_rate": 67.0,
+   "attack_delay": 0.025,
+   "auto": true,
+   "scene": "res://assets/weapons/stone_pickaxe.gltf",
+   "vm_name": "stone_pickaxe",
+   "world": "res://assets/weapons/w_stone_pickaxe.gltf"
+  },
+  "building_plan": {
+   "name": "Building Plan",
+   "desc": "The Building Plan is used to create weak twig structures at the cost of a nominal amount of wood. These twigs may be upgraded with a Hammer if the player has the resources to do so. Players may not build in zones in which there is a tool cupboard that they are not authorized on. Additionally, players may not build in certain areas of the map (such as near a radtown). Otherwise, players may build anywhere of their choosing.",
+   "icon": "res://assets/icons/items/building_plan.png",
+   "stack": 1,
+   "category": "Construction",
+   "recipe": [
+    [
+     "wood",
+     20
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 15.0,
+   "tier": 0,
+   "material": "Paper",
+   "type": "weapon",
+   "swep": "rust_buildingplan",
+   "viewmodel": "",
+   "worldmodel": "models/weapons/darky_m/rust/w_buildingplan.mdl",
+   "kind": "tool",
+   "vm_fov": 50.0,
+   "range": 1.0,
+   "auto": false,
+   "world": "res://assets/weapons/w_buildingplan.gltf"
+  },
+  "hammer": {
+   "name": "Hammer",
+   "desc": "A tool used for rotating, repairing, and upgrading parts of structures. It can also be used to pick up certain deployable items.",
+   "icon": "res://assets/icons/items/hammer.png",
+   "stack": 1,
+   "category": "Construction",
+   "recipe": [
+    [
+     "wood",
+     100
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 15.0,
+   "tier": 0,
+   "material": "Wood",
+   "type": "weapon",
+   "swep": "rust_hammer",
+   "viewmodel": "models/weapons/darky_m/rust/c_hammer.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_hammer.mdl",
+   "kind": "tool",
+   "vm_fov": 50.0,
+   "range": 1.5,
+   "attack_delay": 0.35,
+   "scene": "res://assets/weapons/hammer.gltf",
+   "vm_name": "hammer",
+   "world": "res://assets/weapons/w_hammer.gltf"
+  },
+  "hatchet": {
+   "name": "Hatchet",
+   "desc": "An improved gathering rate is offset by a significantly longer gather speed, though it is nonetheless considered far superior to its stone counterpart. It is as efficient as the salvaged ice pick but just a bit slower.",
+   "icon": "res://assets/icons/items/hatchet.png",
+   "stack": 1,
+   "category": "Tools",
+   "recipe": [
+    [
+     "wood",
+     100
+    ],
+    [
+     "metal_fragments",
+     75
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 1,
+   "material": "Metal",
+   "type": "weapon",
+   "swep": "rust_hatchet",
+   "viewmodel": "models/weapons/darky_m/rust/c_iron_hatchet.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_iron_hatchet.mdl",
+   "kind": "melee",
+   "damage": 25.0,
+   "vm_fov": 50.0,
+   "range": 1.5,
+   "swing_sound": "darky_rust.hatchet-attack",
+   "hit_sound": "darky_rust.hatchet-strike",
+   "attack_rate": 67.0,
+   "attack_delay": 0.025,
+   "auto": true,
+   "scene": "res://assets/weapons/iron_hatchet.gltf",
+   "vm_name": "iron_hatchet",
+   "world": "res://assets/weapons/w_iron_hatchet.gltf"
+  },
+  "pickaxe": {
+   "name": "Pickaxe",
+   "desc": "This tool is a must-have for any gRust player. It is the most efficient tool when gathering wood and harvesting animals. Relatively cheap and durable, this tool should be what you aim for in the early stages of the game.",
+   "icon": "res://assets/icons/items/pickaxe.png",
+   "stack": 1,
+   "category": "Tools",
+   "recipe": [
+    [
+     "wood",
+     100
+    ],
+    [
+     "metal_fragments",
+     125
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 1,
+   "material": "Metal",
+   "type": "weapon",
+   "swep": "rust_pickaxe",
+   "viewmodel": "models/weapons/darky_m/rust/c_iron_pickaxe.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_iron_pickaxe.mdl",
+   "kind": "melee",
+   "damage": 30.0,
+   "vm_fov": 50.0,
+   "range": 1.5,
+   "swing_sound": "darky_rust.pickaxe-attack",
+   "hit_sound": "darky_rust.pickaxe-strike",
+   "attack_rate": 40.0,
+   "attack_delay": 0.39,
+   "auto": true,
+   "scene": "res://assets/weapons/iron_pickaxe.gltf",
+   "vm_name": "iron_pickaxe",
+   "world": "res://assets/weapons/w_iron_pickaxe.gltf"
+  },
+  "wire_tool": {
+   "name": "Wire Tool",
+   "desc": "A tool used to make connections between electrical objects. To use the Wire Tool, aim at an electrical object to highlight the available inputs and outputs (connections). Press the LMB to attach wires to these connections (wires can clip through any item). To disconnect a wired connection, highlight the connection and hold RMB. Wired connections can be disconnected with RMB while simultaneously holding a wire to then be connected. Electrical components will automatically grey out connections that cannot be paired based on their type (input vs output). Hold R to view wire color wheel.",
+   "icon": "res://assets/icons/items/wire_tool.png",
+   "stack": 1,
+   "category": "Tools",
+   "recipe": [
+    [
+     "hq_metal",
+     2
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 1.0,
+   "tier": 1,
+   "material": "Metal",
+   "type": "weapon",
+   "swep": "rust_wiretool",
+   "viewmodel": "",
+   "worldmodel": "",
+   "kind": "tool",
+   "vm_fov": 50.0,
+   "range": 1.0
+  },
+  "green_keycard": {
+   "name": "Green Keycard",
+   "desc": "The Green Keycard is a required object used to open doors with a glowing green keycard lock.",
+   "icon": "res://assets/icons/items/green_keycard.png",
+   "stack": 1,
+   "category": "Tools",
+   "recipe": [],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Metal",
+   "type": "weapon",
+   "swep": "rust_keycard",
+   "viewmodel": "models/weapons/darky_m/rust/c_keycard.mdl",
+   "worldmodel": "models/darky_m/rust/puzzle/access_card.mdl",
+   "kind": "tool",
+   "vm_fov": 50.0,
+   "range": 1.0,
+   "scene": "res://assets/weapons/keycard.gltf",
+   "vm_name": "keycard",
+   "world": "res://assets/weapons/access_card.gltf"
+  },
+  "blue_keycard": {
+   "name": "Blue Keycard",
+   "desc": "The Blue Keycard is a required object used to open doors with a glowing blue keycard lock.",
+   "icon": "res://assets/icons/items/blue_keycard.png",
+   "stack": 1,
+   "category": "Tools",
+   "recipe": [],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Metal",
+   "type": "weapon",
+   "swep": "rust_keycard",
+   "viewmodel": "models/weapons/darky_m/rust/c_keycard.mdl",
+   "worldmodel": "models/darky_m/rust/puzzle/access_card.mdl",
+   "kind": "tool",
+   "vm_fov": 50.0,
+   "range": 1.0,
+   "scene": "res://assets/weapons/keycard.gltf",
+   "vm_name": "keycard",
+   "world": "res://assets/weapons/access_card.gltf"
+  },
+  "red_keycard": {
+   "name": "Red Keycard",
+   "desc": "The Red Keycard is a required object used to open doors with a glowing red keycard lock.",
+   "icon": "res://assets/icons/items/red_keycard.png",
+   "stack": 1,
+   "category": "Tools",
+   "recipe": [],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Metal",
+   "type": "weapon",
+   "swep": "rust_keycard",
+   "viewmodel": "models/weapons/darky_m/rust/c_keycard.mdl",
+   "worldmodel": "models/darky_m/rust/puzzle/access_card.mdl",
+   "kind": "tool",
+   "vm_fov": 50.0,
+   "range": 1.0,
+   "scene": "res://assets/weapons/keycard.gltf",
+   "vm_name": "keycard",
+   "world": "res://assets/weapons/access_card.gltf"
+  },
+  "salvaged_cleaver": {
+   "name": "Salvaged Cleaver",
+   "desc": "A slow, but powerful melee weapon. This is decent for PVPing but it's main use comes at farming components. The salvaged cleaver is one of the few melee weapons capable of destroying any barrel in a single hit. It is also fairly cheap, this makes it an ideal weapon to use when farming large amounts of barrels, especially if they are spread out.",
+   "icon": "res://assets/icons/items/salvaged_cleaver.png",
+   "stack": 1,
+   "category": "Weapons",
+   "recipe": [
+    [
+     "metal_fragments",
+     50
+    ],
+    [
+     "road_signs",
+     1
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 1,
+   "material": "Gun",
+   "type": "weapon",
+   "swep": "rust_salvagedcleaver",
+   "viewmodel": "models/weapons/darky_m/rust/c_salvaged_Cleaver.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_salvaged_Cleaver.mdl",
+   "kind": "melee",
+   "damage": 60.0,
+   "vm_fov": 50.0,
+   "range": 1.3,
+   "swing_sound": "darky_rust.2handed-cleaver-attack",
+   "hit_sound": "darky_rust.2handed-cleaver-strike",
+   "attack_rate": 30.0,
+   "attack_delay": 0.5,
+   "auto": true,
+   "scene": "res://assets/weapons/salvaged_cleaver.gltf",
+   "vm_name": "salvaged_cleaver",
+   "world": "res://assets/weapons/w_salvaged_cleaver.gltf"
+  },
+  "salvaged_sword": {
+   "name": "Salvaged Sword",
+   "desc": "Usually considered as the 'best' melee weapon because of its ability to take out most targets with one blow to the head, the Salvaged Sword is a cheap and durable weapon that most keep as a backup plan in the event of a fight turning to close quarters.",
+   "icon": "res://assets/icons/items/salvaged_sword.png",
+   "stack": 1,
+   "category": "Weapons",
+   "recipe": [
+    [
+     "metal_fragments",
+     15
+    ],
+    [
+     "metal_blade",
+     1
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 1,
+   "material": "Gun",
+   "type": "weapon",
+   "swep": "rust_salvagedsword",
+   "viewmodel": "models/weapons/darky_m/rust/c_salvaged_sword.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_salvaged_sword.mdl",
+   "kind": "melee",
+   "damage": 30.0,
+   "vm_fov": 50.0,
+   "range": 1.3,
+   "swing_sound": "darky_rust.sword-attack",
+   "hit_sound": "darky_rust.sword-strike",
+   "attack_rate": 48.0,
+   "attack_delay": 0.2,
+   "auto": true,
+   "scene": "res://assets/weapons/salvaged_sword.gltf",
+   "vm_name": "salvaged_sword",
+   "world": "res://assets/weapons/w_salvaged_sword.gltf"
+  },
+  "bone_club": {
+   "name": "Bone Club",
+   "desc": "The Bone Club is a cheap, simple to craft melee weapon of the early game. Despite its shortcomings, the Bone Club serves as an upgrade to the Rock, being better at both harvesting resources and fighting.",
+   "icon": "res://assets/icons/items/bone_club.png",
+   "stack": 1,
+   "category": "Weapons",
+   "recipe": [
+    [
+     "bone_fragments",
+     20
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 10.0,
+   "tier": 0,
+   "material": "Gun",
+   "type": "weapon",
+   "swep": "rust_boneclub",
+   "viewmodel": "models/weapons/darky_m/rust/c_boneclub.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_boneclub.mdl",
+   "kind": "melee",
+   "damage": 12.0,
+   "vm_fov": 60.0,
+   "range": 1.5,
+   "swing_sound": "darky_rust.bone-club-attack",
+   "hit_sound": "darky_rust.bone-club-strike-1",
+   "attack_rate": 86.0,
+   "attack_delay": 0.25,
+   "auto": true,
+   "scene": "res://assets/weapons/boneclub.gltf",
+   "vm_name": "boneclub",
+   "world": "res://assets/weapons/w_boneclub.gltf"
+  },
+  "wooden_spear": {
+   "name": "Wooden Spear",
+   "desc": "The Wooden Spear will inflict damage and cause the 'Bleeding' effect on the target. The Wooden Spear is throwable. After being thrown it will become stuck in the place it had hit (in the target). You can pick it up by pressing the 'Use' button (default 'E'). Can be upgraded to Stone Spear.",
+   "icon": "res://assets/icons/items/wooden_spear.png",
+   "stack": 1,
+   "category": "Weapons",
+   "recipe": [
+    [
+     "wood",
+     300
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 0,
+   "material": "Gun",
+   "type": "weapon",
+   "swep": "rust_woodenspear",
+   "viewmodel": "models/weapons/darky_m/rust/c_wooden_spear.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_wooden_spear.mdl",
+   "kind": "melee",
+   "damage": 25.0,
+   "vm_fov": 50.0,
+   "range": 2.6,
+   "swing_sound": "darky_rust.spear-attack",
+   "hit_sound": "darky_rust.spear-strike",
+   "attack_rate": 40.0,
+   "attack_delay": 0.1,
+   "auto": true,
+   "scene": "res://assets/weapons/wooden_spear.gltf",
+   "vm_name": "wooden_spear",
+   "world": "res://assets/weapons/w_wooden_spear.gltf"
+  },
+  "stone_spear": {
+   "name": "Stone Spear",
+   "desc": "The Stone Spear is slightly more durable and does more damage than the Wooden Spear. The Stone Spear will cause critical bleeding (high percentage bleeding). The Stone Spear, like the Wooden Spear, is throwable. After being thrown it will become stuck in the place it had hit (even in the target). You can pick it up by pressing the Use button (default 'E').",
+   "icon": "res://assets/icons/items/stone_spear.png",
+   "stack": 1,
+   "category": "Weapons",
+   "recipe": [
+    [
+     "wooden_spear",
+     1
+    ],
+    [
+     "stones",
+     20
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 10.0,
+   "tier": 0,
+   "material": "Gun",
+   "type": "weapon",
+   "swep": "rust_stonespear",
+   "viewmodel": "models/weapons/darky_m/rust/c_stone_spear.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_stone_spear.mdl",
+   "kind": "melee",
+   "damage": 35.0,
+   "vm_fov": 50.0,
+   "range": 2.75,
+   "swing_sound": "darky_rust.spear-attack",
+   "hit_sound": "darky_rust.spear-strike",
+   "attack_rate": 40.0,
+   "attack_delay": 0.1,
+   "auto": true,
+   "scene": "res://assets/weapons/stone_spear.gltf",
+   "vm_name": "stone_spear",
+   "world": "res://assets/weapons/w_stone_spear.gltf"
+  },
+  "assault_rifle": {
+   "name": "Assault Rifle",
+   "desc": "The Assault Rifle is an accurate, powerful, and fully automatic rifle that fires 5.56 rifle rounds. It has a moderate rate of fire which allows for proficiency at close to medium range. Strong recoil makes it more difficult to fire in full-auto at long range, but experienced users may be able to control it more effectively. The Assault Rifle is generally used as an end-game multipurpose weapon, able to take fights at any range.",
+   "icon": "res://assets/icons/items/assault_rifle.png",
+   "stack": 1,
+   "category": "Weapons",
+   "recipe": [
+    [
+     "hq_metal",
+     50
+    ],
+    [
+     "wood",
+     200
+    ],
+    [
+     "rifle_body",
+     1
+    ],
+    [
+     "metal_spring",
+     4
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 3,
+   "material": "Gun",
+   "type": "weapon",
+   "swep": "rust_assaultrifle",
+   "viewmodel": "models/weapons/darky_m/rust/c_ak47u.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_ak47u.mdl",
+   "kind": "gun",
+   "damage": 50.0,
+   "rpm": 450.0,
+   "clip": 30.0,
+   "bullets": 1.0,
+   "cone": 0.2,
+   "ads": [
+    -6.115,
+    -6.896,
+    3.703
+   ],
+   "ads_fov": 52.5,
+   "vm_fov": 60.0,
+   "range": 4096.0,
+   "shoot_sound": "darky_rust.ak74u-attack",
+   "auto": true,
+   "recoil": [
+    [
+     -2.5531914893617,
+     3.0
+    ],
+    [
+     -3.4042553191489,
+     -1.25
+    ],
+    [
+     -2.9787234042553,
+     -1.0
+    ],
+    [
+     -2.3404255319149,
+     -1.75
+    ],
+    [
+     -2.7659574468085,
+     -1.25
+    ],
+    [
+     -2.5531914893617,
+     -1.5
+    ],
+    [
+     -2.1276595744681,
+     -2.75
+    ],
+    [
+     -2.7659574468085,
+     -1.25
+    ],
+    [
+     -2.3404255319149,
+     2.25
+    ],
+    [
+     -1.2765957446809,
+     3.5
+    ],
+    [
+     -1.063829787234,
+     3.25
+    ],
+    [
+     -0.85106382978723,
+     3.25
+    ],
+    [
+     -1.063829787234,
+     3.0
+    ],
+    [
+     -1.2765957446809,
+     2.75
+    ],
+    [
+     -2.1276595744681,
+     -1.25
+    ],
+    [
+     -1.2765957446809,
+     -2.75
+    ],
+    [
+     -0.63829787234043,
+     -3.0
+    ],
+    [
+     -0.42553191489362,
+     -2.75
+    ],
+    [
+     -0.42553191489362,
+     -3.0
+    ],
+    [
+     -0.63829787234043,
+     -2.75
+    ],
+    [
+     -0.63829787234043,
+     -3.0
+    ],
+    [
+     -0.42553191489362,
+     -3.0
+    ],
+    [
+     -0.42553191489362,
+     -3.25
+    ],
+    [
+     -1.2765957446809,
+     -2.5
+    ],
+    [
+     -2.5531914893617,
+     1.0
+    ],
+    [
+     -0.85106382978723,
+     2.75
+    ],
+    [
+     -0.63829787234043,
+     3.5
+    ],
+    [
+     -0.42553191489362,
+     3.75
+    ],
+    [
+     -0.21276595744681,
+     3.75
+    ],
+    [
+     -0.21276595744681,
+     3.5
+    ],
+    [
+     0.0,
+     -0.25
+    ]
+   ],
+   "ammo_types": [
+    "556_rifle_ammo",
+    "hv_556_rifle_ammo",
+    "incendiary_556_rifle_ammo",
+    "explosive_556_rifle_ammo"
+   ],
+   "scene": "res://assets/weapons/ak47u.gltf",
+   "vm_name": "ak47u",
+   "world": "res://assets/weapons/w_ak47u.gltf"
+  },
+  "m39_rifle": {
+   "name": "M39 Rifle",
+   "desc": "The M39 Rifle is the uncraftable military-grade equivalent to the Semi-Auto Rifle. Offers a higher magazine capacity, higher damage, and better accuracy. Its downsides are its slightly lower rate of fire and its rarity. It can cover a wider range of roles thanks to the superior stats it has.",
+   "icon": "res://assets/icons/items/m39.png",
+   "stack": 1,
+   "category": "Weapons",
+   "recipe": [
+    [
+     "metal_spring",
+     2
+    ],
+    [
+     "hq_metal",
+     50
+    ],
+    [
+     "rifle_body",
+     1
+    ]
+   ],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Gun",
+   "type": "weapon",
+   "swep": "rust_m39",
+   "viewmodel": "models/weapons/darky_m/rust/c_m39emr.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_m39.mdl",
+   "kind": "gun",
+   "damage": 35.0,
+   "rpm": 343.0,
+   "clip": 20.0,
+   "bullets": 1.0,
+   "cone": 0.1,
+   "ads": [
+    -3.94,
+    -3.47,
+    1.98
+   ],
+   "ads_fov": 65.0,
+   "vm_fov": 60.0,
+   "range": 4096.0,
+   "shoot_sound": "darky_rust.m39-attack",
+   "auto": false,
+   "recoil": [
+    [
+     -2.5,
+     0.0
+    ],
+    [
+     -8.0,
+     0.25
+    ],
+    [
+     -8.0,
+     0.0
+    ],
+    [
+     -8.0,
+     -0.25
+    ],
+    [
+     -8.0,
+     -0.25
+    ],
+    [
+     -8.0,
+     0.0
+    ]
+   ],
+   "ammo_types": [
+    "556_rifle_ammo",
+    "hv_556_rifle_ammo",
+    "incendiary_556_rifle_ammo",
+    "explosive_556_rifle_ammo"
+   ],
+   "scene": "res://assets/weapons/m39emr.gltf",
+   "vm_name": "m39emr",
+   "world": "res://assets/weapons/w_m39.gltf"
+  },
+  "m92_pistol": {
+   "name": "M92 Pistol",
+   "desc": "The M92 pistol is a powerful weapon with low recoil and high fire rate and damage. It can't be crafted by the player, rather it has to be found inside crates, or purchased from the Bandit Camp.",
+   "icon": "res://assets/icons/items/m92.png",
+   "stack": 1,
+   "category": "Weapons",
+   "recipe": [
+    [
+     "hq_metal",
+     16
+    ],
+    [
+     "semi_automatic_body",
+     1
+    ],
+    [
+     "metal_pipe",
+     1
+    ],
+    [
+     "metal_spring",
+     1
+    ]
+   ],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Gun",
+   "type": "weapon",
+   "swep": "rust_m92",
+   "viewmodel": "models/weapons/darky_m/rust/c_m92.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_m92.mdl",
+   "kind": "gun",
+   "damage": 45.0,
+   "rpm": 400.0,
+   "clip": 15.0,
+   "bullets": 1.0,
+   "cone": 1.0,
+   "ads": [
+    -3.711,
+    0.0,
+    1.799
+   ],
+   "ads_fov": 62.5,
+   "vm_fov": 60.0,
+   "range": 4096.0,
+   "shoot_sound": "darky_rust.m92-attack",
+   "auto": false,
+   "recoil": [],
+   "ammo_types": [
+    "pistol_bullet",
+    "hv_pistol_ammo",
+    "incendiary_pistol_bullet"
+   ],
+   "scene": "res://assets/weapons/m92.gltf",
+   "vm_name": "m92",
+   "world": "res://assets/weapons/w_m92.gltf"
+  },
+  "m249": {
+   "name": "M249",
+   "desc": "The M249 Light Machine Gun can only be found in Helicopter Crates and Bradley Crates. It has a magazine capacity of 100 5.56 bullets, the largest in the game. It does more damage than the Assault Rifle and has a slightly faster rate of fire while being way easier to control recoil-wise, allowing for very accurate and deadly bursts in long-range when coupled with a Holographic sight or an 8x scope.",
+   "icon": "res://assets/icons/items/m249.png",
+   "stack": 1,
+   "category": "Weapons",
+   "recipe": [
+    [
+     "hq_metal",
+     40
+    ],
+    [
+     "metal_spring",
+     6
+    ],
+    [
+     "gears",
+     6
+    ],
+    [
+     "rifle_body",
+     1
+    ]
+   ],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Gun",
+   "type": "weapon",
+   "swep": "rust_m249",
+   "viewmodel": "models/weapons/darky_m/rust/c_m249.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_m249.mdl",
+   "kind": "gun",
+   "damage": 65.0,
+   "rpm": 500.0,
+   "clip": 100.0,
+   "bullets": 1.0,
+   "cone": 0.2,
+   "ads": [
+    -3.631,
+    0.0,
+    3.359
+   ],
+   "ads_fov": 45.0,
+   "vm_fov": 60.0,
+   "range": 4096.0,
+   "shoot_sound": "darky_rust.m249-attack",
+   "auto": true,
+   "recoil": [
+    [
+     -6.0,
+     0.0
+    ],
+    [
+     -14.0,
+     0.25
+    ],
+    [
+     -14.0,
+     0.5
+    ],
+    [
+     -14.0,
+     0.75
+    ],
+    [
+     -14.0,
+     0.5
+    ],
+    [
+     -14.0,
+     0.25
+    ]
+   ],
+   "ammo_types": [
+    "556_rifle_ammo",
+    "hv_556_rifle_ammo",
+    "incendiary_556_rifle_ammo",
+    "explosive_556_rifle_ammo"
+   ],
+   "scene": "res://assets/weapons/m249.gltf",
+   "vm_name": "m249",
+   "world": "res://assets/weapons/w_m249.gltf"
+  },
+  "mp5a4": {
+   "name": "MP5A4",
+   "desc": "The MP5A4 is a craftable, military-grade 30-round submachine gun. Dealing moderate to low damage with low recoil which makes it extremely effective at close range. However, the MP5A4 has one of the widest spreads in the game, limiting its use to short range. Although, like the LR300, this can be countered with a lasersight, making it viable for medium-range combat. The MP5 is currently the only craftable military-grade weapon.",
+   "icon": "res://assets/icons/items/mp5.png",
+   "stack": 1,
+   "category": "Weapons",
+   "recipe": [
+    [
+     "hq_metal",
+     15
+    ],
+    [
+     "smg_body",
+     1
+    ],
+    [
+     "metal_spring",
+     2
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 3,
+   "material": "Gun",
+   "type": "weapon",
+   "swep": "rust_mp5",
+   "viewmodel": "models/weapons/darky_m/rust/c_mp5.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_mp5.mdl",
+   "kind": "gun",
+   "damage": 35.0,
+   "rpm": 600.0,
+   "clip": 30.0,
+   "bullets": 1.0,
+   "cone": 0.5,
+   "ads": [
+    -6.47,
+    0.0,
+    2.9
+   ],
+   "ads_fov": 40.0,
+   "vm_fov": 60.0,
+   "range": 4096.0,
+   "shoot_sound": "darky_rust.mp5-attack",
+   "auto": true,
+   "recoil": [
+    [
+     -2.5531914893617,
+     3.0
+    ],
+    [
+     -2.5531914893617,
+     1.25
+    ],
+    [
+     -3.6170212765957,
+     -1.75
+    ],
+    [
+     -2.9787234042553,
+     -0.0
+    ],
+    [
+     -2.5531914893617,
+     2.0
+    ],
+    [
+     -1.7021276595745,
+     2.75
+    ],
+    [
+     -0.63829787234043,
+     2.75
+    ],
+    [
+     -2.1276595744681,
+     1.75
+    ],
+    [
+     -1.7021276595745,
+     -1.0
+    ],
+    [
+     -0.21276595744681,
+     -2.0
+    ],
+    [
+     -0.42553191489362,
+     -2.0
+    ],
+    [
+     -0.42553191489362,
+     -2.0
+    ],
+    [
+     -0.85106382978723,
+     -1.25
+    ],
+    [
+     -1.2765957446809,
+     0.75
+    ],
+    [
+     -0.85106382978723,
+     2.25
+    ],
+    [
+     -0.21276595744681,
+     1.75
+    ],
+    [
+     -0.42553191489362,
+     1.5
+    ],
+    [
+     -0.21276595744681,
+     1.75
+    ],
+    [
+     -1.2765957446809,
+     0.75
+    ],
+    [
+     -0.85106382978723,
+     -1.5
+    ],
+    [
+     -0.42553191489362,
+     -1.75
+    ],
+    [
+     -0.21276595744681,
+     -1.5
+    ],
+    [
+     -0.42553191489362,
+     -1.5
+    ],
+    [
+     -0.21276595744681,
+     -1.5
+    ],
+    [
+     -0.85106382978723,
+     0.25
+    ],
+    [
+     -0.21276595744681,
+     1.75
+    ],
+    [
+     1.063829787234,
+     1.25
+    ],
+    [
+     -1.063829787234,
+     1.5
+    ],
+    [
+     0.0,
+     -2.5
+    ],
+    [
+     0.21276595744681,
+     -1.75
+    ],
+    [
+     0.42553191489362,
+     1.75
+    ]
+   ],
+   "ammo_types": [
+    "pistol_bullet",
+    "hv_pistol_ammo",
+    "incendiary_pistol_bullet"
+   ],
+   "scene": "res://assets/weapons/mp5.gltf",
+   "vm_name": "mp5",
+   "world": "res://assets/weapons/w_mp5.gltf"
+  },
+  "nailgun": {
+   "name": "Nailgun",
+   "desc": "A low powered low range early game weapon using nailgun nails as ammunition. The nailgun is easily accessible, very cheap and makes a good secondary weapon when in early game.",
+   "icon": "res://assets/icons/items/nailgun.png",
+   "stack": 1,
+   "category": "Weapons",
+   "recipe": [
+    [
+     "metal_fragments",
+     75
+    ],
+    [
+     "scrap",
+     15
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 1,
+   "material": "Gun",
+   "type": "weapon",
+   "swep": "rust_nailgun",
+   "viewmodel": "models/weapons/darky_m/rust/c_nailgun.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_nailgun.mdl",
+   "kind": "gun",
+   "damage": 18.0,
+   "rpm": 400.0,
+   "clip": 16.0,
+   "bullets": 1.0,
+   "cone": 0.75,
+   "ads": [
+    -4.441,
+    -7.068,
+    1.6
+   ],
+   "ads_fov": 61.0,
+   "vm_fov": 60.0,
+   "range": 4096.0,
+   "shoot_sound": "darky_rust.nailgun-attack",
+   "auto": false,
+   "recoil": [],
+   "ammo_types": [
+    "nailgun_nails"
+   ],
+   "scene": "res://assets/weapons/nailgun.gltf",
+   "vm_name": "nailgun",
+   "world": "res://assets/weapons/w_nailgun.gltf"
+  },
+  "python_revolver": {
+   "name": "Python Revolver",
+   "desc": "The Python deals a great amount of damage per shot, but it has only 6 bullets in one magazine. It is pretty useful for shorter - medium distances. If combined with something like a Thompson, or even a Nailgun, the Python is pretty useful.",
+   "icon": "res://assets/icons/items/python.png",
+   "stack": 1,
+   "category": "Weapons",
+   "recipe": [
+    [
+     "metal_pipe",
+     3
+    ],
+    [
+     "metal_spring",
+     1
+    ],
+    [
+     "hq_metal",
+     10
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 2,
+   "material": "Gun",
+   "type": "weapon",
+   "swep": "rust_python",
+   "viewmodel": "models/weapons/darky_m/rust/c_python.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_python.mdl",
+   "kind": "gun",
+   "damage": 55.0,
+   "rpm": 400.0,
+   "clip": 6.0,
+   "bullets": 1.0,
+   "cone": 0.5,
+   "ads": [
+    -4.385,
+    -5.453,
+    2.475
+   ],
+   "ads_fov": 70.0,
+   "vm_fov": 60.0,
+   "range": 4096.0,
+   "shoot_sound": "darky_rust.python-attack",
+   "auto": false,
+   "recoil": [],
+   "ammo_types": [
+    "pistol_bullet",
+    "hv_pistol_ammo",
+    "incendiary_pistol_bullet"
+   ],
+   "scene": "res://assets/weapons/python.gltf",
+   "vm_name": "python",
+   "world": "res://assets/weapons/w_python.gltf"
+  },
+  "revolver": {
+   "name": "Revolver",
+   "desc": "The Revolver is cheap, prime for early game use. Although inaccurate, the Revolver's quick rate of fire allows it hold its own against players at most stages. Being a revolver, it has a low capacity of just 8 shots, but it's still an upgrade from its 1- and 2- shot alternatives. Taking a Revolver to a fight against opponents with metal armor is quite risky, as such opponents will take many more shots than normal to take out (even more so considering the small capacity). It is best advised to only use the Revolver against opponents with similar armaments or as a sidearm to another weapon.",
+   "icon": "res://assets/icons/items/revolver.png",
+   "stack": 1,
+   "category": "Weapons",
+   "recipe": [
+    [
+     "metal_pipe",
+     1
+    ],
+    [
+     "cloth",
+     25
+    ],
+    [
+     "metal_fragments",
+     125
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 1,
+   "material": "Gun",
+   "type": "weapon",
+   "swep": "rust_revolver",
+   "viewmodel": "models/weapons/darky_m/rust/c_revolver.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_revolver.mdl",
+   "kind": "gun",
+   "damage": 35.0,
+   "rpm": 343.0,
+   "clip": 8.0,
+   "bullets": 1.0,
+   "cone": 0.75,
+   "ads": [
+    -3.32,
+    0.0,
+    0.839
+   ],
+   "ads_fov": 56.0,
+   "vm_fov": 60.0,
+   "range": 4096.0,
+   "shoot_sound": "darky_rust.revolver-attack",
+   "auto": false,
+   "recoil": [],
+   "ammo_types": [
+    "pistol_bullet",
+    "hv_pistol_ammo",
+    "incendiary_pistol_bullet"
+   ],
+   "scene": "res://assets/weapons/revolver.gltf",
+   "vm_name": "revolver",
+   "world": "res://assets/weapons/w_revolver.gltf"
+  },
+  "semi_automatic_pistol": {
+   "name": "Semi-Automatic Pistol",
+   "desc": "The semi-automatic pistol (commonly referred to as the 'P250' or 'P2') is a fast firing, medium damage weapon that has a moderate bullet velocity and steep damage drop-off. It is an extremely popular weapon due to it's effectiveness at short-medium distances and it's low cost. It can be easily used as a primary weapon or as a compliment to pretty much any other gun.",
+   "icon": "res://assets/icons/items/sap.png",
+   "stack": 1,
+   "category": "Weapons",
+   "recipe": [
+    [
+     "metal_pipe",
+     1
+    ],
+    [
+     "cloth",
+     25
+    ],
+    [
+     "metal_fragments",
+     125
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 1,
+   "material": "Gun",
+   "type": "weapon",
+   "swep": "rust_sap",
+   "viewmodel": "models/weapons/darky_m/rust/c_semi_auto_pistol.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_sap.mdl",
+   "kind": "gun",
+   "damage": 40.0,
+   "rpm": 400.0,
+   "clip": 10.0,
+   "bullets": 1.0,
+   "cone": 0.75,
+   "ads": [
+    -3.06,
+    0.0,
+    2.44
+   ],
+   "ads_fov": 50.0,
+   "vm_fov": 60.0,
+   "range": 4096.0,
+   "shoot_sound": "darky_rust.fire-alt",
+   "auto": false,
+   "recoil": [],
+   "ammo_types": [
+    "pistol_bullet",
+    "hv_pistol_ammo",
+    "incendiary_pistol_bullet"
+   ],
+   "scene": "res://assets/weapons/semi_auto_pistol.gltf",
+   "vm_name": "semi_auto_pistol",
+   "world": "res://assets/weapons/w_sap.gltf"
+  },
+  "semi_automatic_rifle": {
+   "name": "Semi-Automatic Rifle",
+   "desc": "The Semi-Automatic Rifle is a staple of low quality weapons due to its high cost-efficiency. With its medium-tier damage, comparatively low recoil and high accuracy, the Semi-Automatic Rifle is the jack of all trades, but master of none.",
+   "icon": "res://assets/icons/items/sar.png",
+   "stack": 1,
+   "category": "Weapons",
+   "recipe": [
+    [
+     "semi_automatic_body",
+     1
+    ],
+    [
+     "metal_spring",
+     1
+    ],
+    [
+     "metal_fragments",
+     450
+    ],
+    [
+     "hq_metal",
+     4
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 2,
+   "material": "Gun",
+   "type": "weapon",
+   "swep": "rust_sar",
+   "viewmodel": "models/weapons/darky_m/rust/c_sar.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_sar.mdl",
+   "kind": "gun",
+   "damage": 40.0,
+   "rpm": 400.0,
+   "clip": 16.0,
+   "bullets": 1.0,
+   "cone": 0.25,
+   "ads": [
+    -5.18,
+    -2.985,
+    2.519
+   ],
+   "ads_fov": 50.0,
+   "vm_fov": 60.0,
+   "range": 4096.0,
+   "shoot_sound": "darky_rust.sar-attack",
+   "auto": false,
+   "recoil": [
+    [
+     -2.5,
+     0.0
+    ],
+    [
+     -8.0,
+     0.25
+    ],
+    [
+     -8.0,
+     0.0
+    ],
+    [
+     -8.0,
+     -0.25
+    ],
+    [
+     -8.0,
+     -0.25
+    ],
+    [
+     -8.0,
+     0.0
+    ]
+   ],
+   "ammo_types": [
+    "556_rifle_ammo",
+    "hv_556_rifle_ammo",
+    "incendiary_556_rifle_ammo",
+    "explosive_556_rifle_ammo"
+   ],
+   "scene": "res://assets/weapons/sar.gltf",
+   "vm_name": "sar",
+   "world": "res://assets/weapons/w_sar.gltf"
+  },
+  "custom_smg": {
+   "name": "Custom SMG",
+   "desc": "The Custom SMG is a quick-firing, low damage submachine gun with moderate recoil. Its moderate spread and low bullet velocity limit the use of the weapon to close and possibly moderate ranges, but its maximum range can be extended through the use of attachments like the Silencer or Weapon Lasersight to increase accuracy. The Custom SMG is the least expensive submachine gun, and fires the quickest out of every weapon in the game. With no movement penalty, like other SMGs, this weapon is most effectively used while on the move.",
+   "icon": "res://assets/icons/items/custom_smg.png",
+   "stack": 1,
+   "category": "Weapons",
+   "recipe": [
+    [
+     "hq_metal",
+     8
+    ],
+    [
+     "smg_body",
+     1
+    ],
+    [
+     "metal_spring",
+     1
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 2,
+   "material": "Gun",
+   "type": "weapon",
+   "swep": "rust_smg",
+   "viewmodel": "models/weapons/darky_m/rust/c_customsmg.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_smg.mdl",
+   "kind": "gun",
+   "damage": 30.0,
+   "rpm": 600.0,
+   "clip": 24.0,
+   "bullets": 1.0,
+   "cone": 0.5,
+   "ads": [
+    -6.95,
+    0.0,
+    3.68
+   ],
+   "ads_fov": 45.0,
+   "vm_fov": 60.0,
+   "range": 4096.0,
+   "shoot_sound": "darky_rust.smg-attack",
+   "auto": true,
+   "recoil": [
+    [
+     -2.5531914893617,
+     -3.0
+    ],
+    [
+     -2.1276595744681,
+     1.0
+    ],
+    [
+     -2.3404255319149,
+     0.25
+    ],
+    [
+     -2.1276595744681,
+     -0.75
+    ],
+    [
+     -2.1276595744681,
+     -1.0
+    ],
+    [
+     -2.1276595744681,
+     -0.5
+    ],
+    [
+     -2.5531914893617,
+     -0.75
+    ],
+    [
+     -2.3404255319149,
+     -0.5
+    ],
+    [
+     -2.5531914893617,
+     -0.5
+    ],
+    [
+     -2.5531914893617,
+     0.25
+    ],
+    [
+     -2.3404255319149,
+     0.75
+    ],
+    [
+     -2.1276595744681,
+     1.5
+    ],
+    [
+     -2.1276595744681,
+     1.25
+    ],
+    [
+     -2.1276595744681,
+     1.25
+    ],
+    [
+     -2.3404255319149,
+     1.25
+    ],
+    [
+     -2.3404255319149,
+     0.0
+    ],
+    [
+     -2.1276595744681,
+     -1.0
+    ],
+    [
+     -2.1276595744681,
+     -1.5
+    ],
+    [
+     -1.9148936170213,
+     -1.5
+    ],
+    [
+     -1.9148936170213,
+     -2.25
+    ],
+    [
+     -2.1276595744681,
+     -2.25
+    ],
+    [
+     -1.9148936170213,
+     1.5
+    ],
+    [
+     -1.4893617021277,
+     1.75
+    ],
+    [
+     2.7659574468085,
+     0.5
+    ]
+   ],
+   "ammo_types": [
+    "pistol_bullet",
+    "hv_pistol_ammo",
+    "incendiary_pistol_bullet"
+   ],
+   "scene": "res://assets/weapons/customsmg.gltf",
+   "vm_name": "customsmg",
+   "world": "res://assets/weapons/w_smg.gltf"
+  },
+  "thompson": {
+   "name": "Thompson",
+   "desc": "The Thompson provides a mid-range alternative to other submachine guns while still offering close-range firepower. Its high accuracy and damage allow the user to take targets further away than other SMGs. With the recent QoL update, the Thompson can now take underbarrel attachments, such as the Flashlight and Laser, marginally buffing it in comparison to the other SMGs.",
+   "icon": "res://assets/icons/items/thompson.png",
+   "stack": 1,
+   "category": "Weapons",
+   "recipe": [
+    [
+     "hq_metal",
+     10
+    ],
+    [
+     "wood",
+     100
+    ],
+    [
+     "smg_body",
+     1
+    ],
+    [
+     "metal_spring",
+     1
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 2,
+   "material": "Gun",
+   "type": "weapon",
+   "swep": "rust_thompson",
+   "viewmodel": "models/weapons/darky_m/rust/c_thompson.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_thompson.mdl",
+   "kind": "gun",
+   "damage": 37.0,
+   "rpm": 462.0,
+   "clip": 20.0,
+   "bullets": 1.0,
+   "cone": 0.5,
+   "ads": [
+    -4.975,
+    -4.0,
+    3.05
+   ],
+   "ads_fov": 50.0,
+   "vm_fov": 60.0,
+   "range": 4096.0,
+   "shoot_sound": "darky_rust.thompson-attack",
+   "auto": true,
+   "recoil": [
+    [
+     -2.5531914893617,
+     3.0
+    ],
+    [
+     -3.6170212765957,
+     -1.25
+    ],
+    [
+     -3.8297872340426,
+     1.0
+    ],
+    [
+     -3.1914893617021,
+     2.5
+    ],
+    [
+     -2.7659574468085,
+     1.25
+    ],
+    [
+     -2.1276595744681,
+     2.75
+    ],
+    [
+     -3.4042553191489,
+     0.5
+    ],
+    [
+     -2.3404255319149,
+     -2.0
+    ],
+    [
+     -2.1276595744681,
+     -3.0
+    ],
+    [
+     -1.7021276595745,
+     -2.75
+    ],
+    [
+     -1.2765957446809,
+     -3.25
+    ],
+    [
+     -1.7021276595745,
+     -2.25
+    ],
+    [
+     -2.3404255319149,
+     -0.75
+    ],
+    [
+     -2.3404255319149,
+     0.5
+    ],
+    [
+     -1.063829787234,
+     2.25
+    ],
+    [
+     -1.7021276595745,
+     2.25
+    ],
+    [
+     -1.7021276595745,
+     2.5
+    ],
+    [
+     -0.85106382978723,
+     2.0
+    ],
+    [
+     -1.063829787234,
+     2.25
+    ],
+    [
+     -2.1276595744681,
+     -1.0
+    ]
+   ],
+   "ammo_types": [
+    "pistol_bullet",
+    "hv_pistol_ammo",
+    "incendiary_pistol_bullet"
+   ],
+   "scene": "res://assets/weapons/thompson.gltf",
+   "vm_name": "thompson",
+   "world": "res://assets/weapons/w_thompson.gltf"
+  },
+  "lr300_assault_rifle": {
+   "name": "LR-300 Assault Rifle",
+   "desc": "The LR-300 is a rare, military grade assault rifle. Dealing moderate-high damage combined with its low recoil and high ammo capacity render the LR-300 a weapon to be reckoned with. However, with its moderate rate of fire and relatively high spread, its use at long ranges may be of question. It was previously considered to be one of the rarest weapons in the game, now much more readily available due to it's availability at the Bandit Camp's Black Market merchant.",
+   "icon": "res://assets/icons/items/lr300.png",
+   "stack": 1,
+   "category": "Weapons",
+   "recipe": [
+    [
+     "hq_metal",
+     40
+    ],
+    [
+     "metal_spring",
+     2
+    ],
+    [
+     "rifle_body",
+     1
+    ]
+   ],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Gun",
+   "type": "weapon",
+   "swep": "rust_lr300",
+   "viewmodel": "models/weapons/darky_m/rust/c_lr300.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_lr300.mdl",
+   "kind": "gun",
+   "damage": 40.0,
+   "rpm": 500.0,
+   "clip": 30.0,
+   "bullets": 1.0,
+   "cone": 0.2,
+   "ads": [
+    -4.407,
+    0.0,
+    1.05
+   ],
+   "ads_fov": 40.0,
+   "vm_fov": 60.0,
+   "range": 4096.0,
+   "shoot_sound": "darky_rust.lr300-attack",
+   "auto": true,
+   "recoil": [
+    [
+     -2.5531914893617,
+     3.0
+    ],
+    [
+     -3.4042553191489,
+     -1.25
+    ],
+    [
+     -2.9787234042553,
+     -1.0
+    ],
+    [
+     -2.3404255319149,
+     -1.75
+    ],
+    [
+     -2.7659574468085,
+     -1.25
+    ],
+    [
+     -2.5531914893617,
+     -1.5
+    ],
+    [
+     -2.1276595744681,
+     -2.75
+    ],
+    [
+     -2.7659574468085,
+     -1.25
+    ],
+    [
+     -2.3404255319149,
+     2.25
+    ],
+    [
+     -1.2765957446809,
+     3.5
+    ],
+    [
+     -1.063829787234,
+     3.25
+    ],
+    [
+     -0.85106382978723,
+     3.25
+    ],
+    [
+     -1.063829787234,
+     3.0
+    ],
+    [
+     -1.2765957446809,
+     2.75
+    ],
+    [
+     -2.1276595744681,
+     -1.25
+    ],
+    [
+     -1.2765957446809,
+     -2.75
+    ],
+    [
+     -0.63829787234043,
+     -3.0
+    ],
+    [
+     -0.42553191489362,
+     -2.75
+    ],
+    [
+     -0.42553191489362,
+     -3.0
+    ],
+    [
+     -0.63829787234043,
+     -2.75
+    ],
+    [
+     -0.63829787234043,
+     -3.0
+    ],
+    [
+     -0.42553191489362,
+     -3.0
+    ],
+    [
+     -0.42553191489362,
+     -3.25
+    ],
+    [
+     -1.2765957446809,
+     -2.5
+    ],
+    [
+     -2.5531914893617,
+     1.0
+    ],
+    [
+     -0.85106382978723,
+     2.75
+    ],
+    [
+     -0.63829787234043,
+     3.5
+    ],
+    [
+     -0.42553191489362,
+     3.75
+    ],
+    [
+     -0.21276595744681,
+     3.75
+    ],
+    [
+     -0.21276595744681,
+     3.5
+    ],
+    [
+     0.0,
+     -0.25
+    ]
+   ],
+   "ammo_types": [
+    "556_rifle_ammo",
+    "hv_556_rifle_ammo",
+    "incendiary_556_rifle_ammo",
+    "explosive_556_rifle_ammo"
+   ],
+   "scene": "res://assets/weapons/lr300.gltf",
+   "vm_name": "lr300",
+   "world": "res://assets/weapons/w_lr300.gltf"
+  },
+  "crossbow": {
+   "name": "Crossbow",
+   "desc": "The Crossbow is a low-tier weapon that can fire either a high-velocity or regular arrow a decent distance. It is capable of relatively high damage, and is a great option when paired with a Waterpipe Shotgun or Eoka Pistol or Nailgun.",
+   "icon": "res://assets/icons/items/crossbow.png",
+   "stack": 1,
+   "category": "Weapons",
+   "recipe": [
+    [
+     "wood",
+     200
+    ],
+    [
+     "metal_fragments",
+     75
+    ],
+    [
+     "rope",
+     2
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 1,
+   "material": "Gun",
+   "type": "weapon",
+   "swep": "rust_crossbow",
+   "viewmodel": "models/weapons/darky_m/rust/c_crossbow.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_crossbow.mdl",
+   "kind": "bow",
+   "damage": 40.0,
+   "rpm": 500.0,
+   "clip": 1.0,
+   "bullets": 1.0,
+   "cone": 0.2,
+   "ads": [
+    -6.893,
+    -1.732,
+    3.26
+   ],
+   "ads_fov": 50.0,
+   "vm_fov": 60.0,
+   "range": 512.0,
+   "shoot_sound": "weapons/rust_mp3/crossbow-attack-1.mp3",
+   "auto": true,
+   "recoil": [
+    [
+     -15.0,
+     0.8
+    ]
+   ],
+   "reload_time": 4.0,
+   "ammo_types": [
+    "arrow"
+   ],
+   "scene": "res://assets/weapons/crossbow.gltf",
+   "vm_name": "crossbow",
+   "world": "res://assets/weapons/w_crossbow.gltf"
+  },
+  "hunting_bow": {
+   "name": "Hunting Bow",
+   "desc": "An old school weapon for new school fun. Useful for short to medium range combat. Arrows shot have a chance to break when they hit, so be sure to carry more than one arrow. Can use either regular Arrows or High-Velocity Arrows which are able to go farther faster, but do less damage. Best used to hunt animals and other humans.",
+   "icon": "res://assets/icons/items/hunting_bow.png",
+   "stack": 1,
+   "category": "Weapons",
+   "recipe": [
+    [
+     "wood",
+     200
+    ],
+    [
+     "cloth",
+     50
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 0,
+   "material": "Gun",
+   "type": "weapon",
+   "swep": "rust_huntingbow",
+   "viewmodel": "models/weapons/darky_m/rust/c_bow.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_bow.mdl",
+   "kind": "bow",
+   "damage": 40.0,
+   "rpm": 60.0,
+   "clip": 1.0,
+   "cone": 1.0,
+   "vm_fov": 64.0,
+   "range": 1.0,
+   "auto": false,
+   "scene": "res://assets/weapons/bow.gltf",
+   "vm_name": "bow",
+   "world": "res://assets/weapons/w_bow.gltf"
+  },
+  "bolt_action_rifle": {
+   "name": "Bolt Action Rifle",
+   "desc": "The Bolt Action Rifle is a powerful late game rifle that offers high accuracy and high damage at the cost of speed. Having the most damage and least spread of any weapon, it is often used as a designated sniper rifle, and is commonly fitted with a scope to increase the sight range for the user. Its slow rate of fire greatly limits its use in close quarters combat, and its limited capacity forces users to take shots very carefully. Having a very fast bullet velocity, users need not lead targets or compensate for gravity as much as with other weapons firing a slower bullet.",
+   "icon": "res://assets/icons/items/bolt_rifle.png",
+   "stack": 1,
+   "category": "Weapons",
+   "recipe": [
+    [
+     "hq_metal",
+     20
+    ],
+    [
+     "rifle_body",
+     1
+    ],
+    [
+     "metal_pipe",
+     3
+    ],
+    [
+     "metal_spring",
+     1
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 45.0,
+   "tier": 3,
+   "material": "Gun",
+   "type": "weapon",
+   "swep": "rust_boltrifle",
+   "viewmodel": "models/weapons/darky_m/rust/c_boltrifle.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_boltrifle.mdl",
+   "kind": "shotgun",
+   "damage": 80.0,
+   "rpm": 30.0,
+   "clip": 4.0,
+   "bullets": 1.0,
+   "cone": 0.15,
+   "ads": [
+    -3.491,
+    0.0,
+    2.618
+   ],
+   "ads_fov": 42.5,
+   "vm_fov": 60.0,
+   "range": 4096.0,
+   "shoot_sound": "darky_rust.bolt-rifle-attack",
+   "auto": false,
+   "shell_time": 0.4,
+   "recoil": [
+    [
+     -0.1,
+     -0.08
+    ]
+   ],
+   "ammo_types": [
+    "556_rifle_ammo",
+    "hv_556_rifle_ammo",
+    "incendiary_556_rifle_ammo",
+    "explosive_556_rifle_ammo"
+   ],
+   "scene": "res://assets/weapons/boltrifle.gltf",
+   "vm_name": "boltrifle",
+   "world": "res://assets/weapons/w_boltrifle.gltf"
+  },
+  "waterpipe_shotgun": {
+   "name": "Waterpipe Shotgun",
+   "desc": "The Waterpipe Shotgun is a low-tier gun that deals a decent amount of damage from close range. Can be loaded with the 12 Gauge Slug to deal less damage but shoot further. It is an early game weapon of choice for many and is often paired with a bow.",
+   "icon": "res://assets/icons/items/waterpipe.png",
+   "stack": 1,
+   "category": "Weapons",
+   "recipe": [
+    [
+     "wood",
+     150
+    ],
+    [
+     "metal_fragments",
+     75
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 30.0,
+   "tier": 1,
+   "material": "Gun",
+   "type": "weapon",
+   "swep": "rust_waterpipe",
+   "viewmodel": "models/weapons/darky_m/rust/c_waterpipe.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_waterpipe.mdl",
+   "kind": "gun",
+   "damage": 100.0,
+   "rpm": 450.0,
+   "clip": 1.0,
+   "bullets": 10.0,
+   "cone": 0.2,
+   "ads": [
+    -5.16,
+    -2.421,
+    2.68
+   ],
+   "ads_fov": 42.5,
+   "vm_fov": 60.0,
+   "range": 4096.0,
+   "shoot_sound": "darky_rust.waterpipe-shotgun-attack",
+   "auto": true,
+   "recoil": [
+    [
+     -140.0,
+     -70.0
+    ]
+   ],
+   "ammo_types": [
+    "handmade_shell"
+   ],
+   "scene": "res://assets/weapons/waterpipe.gltf",
+   "vm_name": "waterpipe",
+   "world": "res://assets/weapons/w_waterpipe.gltf"
+  },
+  "rocket_launcher": {
+   "name": "Rocket Launcher",
+   "desc": "The Rocket Launcher is a utility weapon which is primarily used for raiding and base defense. It fires a single rocket at a time and must be reloaded between uses. When loaded with regular Rockets, it can be utilized as an end-game raiding tool, capable of damaging multiple building parts at once. If loaded with Incendiary Rockets, the Rocket Launcher may be used as an area denial tool to spread fire to an area to prevent movement through it. Regular rockets or High Velocity Rockets may also be used as an efficient, but expensive, weapon to be used against players, as its high damage usually means an instant kill.",
+   "icon": "res://assets/icons/items/rocket_launcher.png",
+   "stack": 1,
+   "category": "Weapons",
+   "recipe": [
+    [
+     "hq_metal",
+     40
+    ],
+    [
+     "metal_pipe",
+     4
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 60.0,
+   "tier": 2,
+   "material": "Gun",
+   "type": "weapon",
+   "swep": "rust_rpg",
+   "viewmodel": "models/weapons/darky_m/rust/c_rocketlauncher.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_rocketlauncher.mdl",
+   "kind": "launcher",
+   "damage": 0.0,
+   "rpm": 10.0,
+   "clip": 1.0,
+   "bullets": 1.0,
+   "cone": 0.2,
+   "ads": [
+    -3.6,
+    0.0,
+    2.3
+   ],
+   "ads_fov": 50.0,
+   "vm_fov": 60.0,
+   "range": 512.0,
+   "shoot_sound": "darky_rust.rpg_fire",
+   "auto": true,
+   "recoil": [
+    [
+     -15.0,
+     0.8
+    ]
+   ],
+   "reload_time": 6.0,
+   "ammo_types": [
+    "rocket",
+    "high_velocity_rocket"
+   ],
+   "scene": "res://assets/weapons/rocketlauncher.gltf",
+   "vm_name": "rocketlauncher",
+   "world": "res://assets/weapons/w_rocketlauncher.gltf"
+  },
+  "double_barrel_shotgun": {
+   "name": "Double Barrel Shotgun",
+   "desc": "The Double Barrel Shotgun is a lower tier, close ranged weapon capable of one-hitting enemies within its effective range. It's best used in conjunction with other, longer range guns and against only one or two enemies at a time since it can only shoot two shells before requiring a lengthy reload.",
+   "icon": "res://assets/icons/items/dbarrel.png",
+   "stack": 1,
+   "category": "Weapons",
+   "recipe": [
+    [
+     "metal_fragments",
+     175
+    ],
+    [
+     "metal_pipe",
+     2
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 40.0,
+   "tier": 1,
+   "material": "Gun",
+   "type": "weapon",
+   "swep": "rust_dbarrel",
+   "viewmodel": "models/weapons/darky_m/rust/c_doublebarrel.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_doublebarrel.mdl",
+   "kind": "gun",
+   "damage": 100.0,
+   "rpm": 450.0,
+   "clip": 2.0,
+   "bullets": 10.0,
+   "cone": 0.25,
+   "ads": [
+    -4.49,
+    0.019,
+    3.95
+   ],
+   "ads_fov": 42.5,
+   "vm_fov": 60.0,
+   "range": 4096.0,
+   "shoot_sound": "darky_rust.double-shotgun-attack",
+   "auto": false,
+   "recoil": [
+    [
+     -140.0,
+     -70.0
+    ]
+   ],
+   "ammo_types": [
+    "handmade_shell"
+   ],
+   "scene": "res://assets/weapons/doublebarrel.gltf",
+   "vm_name": "doublebarrel",
+   "world": "res://assets/weapons/w_doublebarrel.gltf"
+  },
+  "pump_shotgun": {
+   "name": "Pump Shotgun",
+   "desc": "The Pump Shotgun is a mid-tier, close ranged weapon. With a magazine size of 6 and relatively fast firing rate it is ideal for close quarters raiding and combat. Its effective range varies only slightly on the ammo that is being used, but can be increased by using Slugs instead of Buckshot or Hand Made Shells.",
+   "icon": "res://assets/icons/items/pump_shotgun.png",
+   "stack": 1,
+   "category": "Weapons",
+   "recipe": [
+    [
+     "hq_metal",
+     15
+    ],
+    [
+     "metal_pipe",
+     2
+    ],
+    [
+     "metal_spring",
+     1
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 40.0,
+   "tier": 2,
+   "material": "Gun",
+   "type": "weapon",
+   "swep": "rust_pumpshotgun",
+   "viewmodel": "models/weapons/darky_m/rust/c_sawnoffshotgun.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_sawnoffshotgun.mdl",
+   "kind": "shotgun",
+   "damage": 130.0,
+   "rpm": 55.0,
+   "clip": 6.0,
+   "bullets": 16.0,
+   "cone": 0.15,
+   "ads": [
+    -3.84,
+    -10.051,
+    3.598
+   ],
+   "ads_fov": 50.0,
+   "vm_fov": 60.0,
+   "range": 4096.0,
+   "shoot_sound": "darky_rust.sawnoff-shotgun-attack",
+   "auto": false,
+   "shell_time": 0.4,
+   "recoil": [
+    [
+     -0.1,
+     -0.08
+    ]
+   ],
+   "ammo_types": [
+    "handmade_shell"
+   ],
+   "scene": "res://assets/weapons/sawnoffshotgun.gltf",
+   "vm_name": "sawnoffshotgun",
+   "world": "res://assets/weapons/w_sawnoffshotgun.gltf"
+  },
+  "spas_12_shotgun": {
+   "name": "Spas-12 Shotgun",
+   "desc": "Semi Automatic shotgun that fires much faster than the craftable Pump shotgun, losing to it in base damage. Houses 3 attachment slots and has an internal ammo capacity of 6 shots. Able to use any kind of shotgun ammo, including handmade shells.",
+   "icon": "res://assets/icons/items/spas12.png",
+   "stack": 1,
+   "category": "Weapons",
+   "recipe": [
+    [
+     "hq_metal",
+     20
+    ],
+    [
+     "metal_pipe",
+     4
+    ],
+    [
+     "metal_spring",
+     4
+    ]
+   ],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Gun",
+   "type": "weapon",
+   "swep": "rust_spas12",
+   "viewmodel": "models/weapons/darky_m/rust/c_spas12.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_spas12.mdl",
+   "kind": "shotgun",
+   "damage": 175.0,
+   "rpm": 240.0,
+   "clip": 6.0,
+   "bullets": 16.0,
+   "cone": 0.15,
+   "ads": [
+    -4.41,
+    -1.5,
+    3.177
+   ],
+   "ads_fov": 42.5,
+   "vm_fov": 60.0,
+   "range": 4096.0,
+   "shoot_sound": "darky_rust.spas12-attack",
+   "auto": false,
+   "shell_time": 0.2,
+   "recoil": [
+    [
+     -0.1,
+     -0.08
+    ]
+   ],
+   "ammo_types": [
+    "handmade_shell"
+   ],
+   "scene": "res://assets/weapons/spas12.gltf",
+   "vm_name": "spas12",
+   "world": "res://assets/weapons/w_spas12.gltf"
+  },
+  "combat_knife": {
+   "name": "Combat Knife",
+   "desc": "The best tool for harvesting animal corpses quickly and efficiently. It's also one of the best melee weapons in the game due its fast swing rate and high damage - it can also be swung while sprinting, without slowing down the user.",
+   "icon": "res://assets/icons/items/combat_knife.png",
+   "stack": 1,
+   "category": "Weapons",
+   "recipe": [
+    [
+     "metal_fragments",
+     25
+    ],
+    [
+     "hq_metal",
+     1
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 15.0,
+   "tier": 1,
+   "material": "Gun",
+   "type": "weapon",
+   "swep": "rust_combatknife",
+   "viewmodel": "models/weapons/darky_m/rust/c_combatknife.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_combatknife.mdl",
+   "kind": "melee",
+   "damage": 30.0,
+   "vm_fov": 50.0,
+   "range": 1.5,
+   "swing_sound": "darky_rust.combat-attack",
+   "hit_sound": "darky_rust.combat-strike",
+   "attack_rate": 86.0,
+   "attack_delay": 0.2,
+   "auto": true,
+   "scene": "res://assets/weapons/combatknife.gltf",
+   "vm_name": "combatknife",
+   "world": "res://assets/weapons/w_combatknife.gltf"
+  },
+  "grenade_launcher": {
+   "name": "Multiple Grenade Launcher",
+   "desc": "A 40MM six barrel, semi automatic grenade launcher. Explosive, Shotgun and Smoke 40mm grenades can all be loaded into the launcher.",
+   "icon": "res://assets/icons/items/grenade_launcher.png",
+   "stack": 1,
+   "category": "Weapons",
+   "recipe": [
+    [
+     "hq_metal",
+     25
+    ],
+    [
+     "metal_pipe",
+     4
+    ]
+   ],
+   "craftable": false,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 0,
+   "material": "Gun",
+   "type": "weapon",
+   "swep": "rust_grenadelauncher",
+   "viewmodel": "models/weapons/darky_m/rust/c_grenadelauncher.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_grenadelauncher.mdl",
+   "kind": "launcher",
+   "damage": 140.0,
+   "rpm": 150.0,
+   "clip": 6.0,
+   "bullets": 16.0,
+   "cone": 0.2,
+   "ads": [
+    -5.1,
+    -3.89,
+    6.4
+   ],
+   "ads_fov": 60.0,
+   "vm_fov": 60.0,
+   "range": 4096.0,
+   "shoot_sound": "darky_rust.grenade-launcher-attack",
+   "auto": false,
+   "shell_time": 0.4,
+   "recoil": [
+    [
+     -0.1,
+     -0.08
+    ]
+   ],
+   "ammo_types": [
+    "40mm_he_grenade",
+    "40mm_shotgun_round"
+   ],
+   "scene": "res://assets/weapons/grenadelauncher.gltf",
+   "vm_name": "grenadelauncher",
+   "world": "res://assets/weapons/w_grenadelauncher.gltf"
+  },
+  "l96_rifle": {
+   "name": "L96 Rifle",
+   "desc": "Снайперская винтовка с продольно-скользящим затвором.",
+   "icon": "res://assets/icons/items/l96.png",
+   "stack": 1,
+   "category": "Weapons",
+   "recipe": [
+    [
+     "metal_fragments",
+     50
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 1,
+   "material": "Gun",
+   "type": "weapon",
+   "kind": "gun",
+   "viewmodel": "models/weapons/darky_m/rust/c_l96.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_l96.mdl",
+   "swep": "tfa_l96_rifle",
+   "damage": 80,
+   "rpm": 150,
+   "clip": 5,
+   "auto": false,
+   "ads": [
+    -4.699,
+    -1.5,
+    3.319
+   ],
+   "shoot_sound": "darky_rust.l96-attack",
+   "ammo_types": [
+    "556_rifle_ammo"
+   ],
+   "scene": "res://assets/weapons/l96.gltf",
+   "vm_name": "l96",
+   "world": "res://assets/weapons/w_l96.gltf"
+  },
+  "eoka_pistol": {
+   "name": "Eoka Pistol",
+   "desc": "Самодельный пистолет на один выстрел дробью.",
+   "icon": "res://assets/icons/items/eoka.png",
+   "stack": 1,
+   "category": "Weapons",
+   "recipe": [
+    [
+     "metal_fragments",
+     50
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 1,
+   "material": "Gun",
+   "type": "weapon",
+   "kind": "gun",
+   "viewmodel": "models/weapons/darky_m/rust/c_eoka.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_eoka.mdl",
+   "swep": "tfa_eoka_pistol",
+   "damage": 180,
+   "bullets": 15,
+   "rpm": 30,
+   "clip": 1,
+   "auto": false,
+   "ads": [
+    -4.511,
+    0.019,
+    3.92
+   ],
+   "shoot_sound": "darky_rust.eoka-pistol-attack",
+   "ammo_types": [
+    "handmade_shell"
+   ],
+   "scene": "res://assets/weapons/eoka.gltf",
+   "vm_name": "eoka",
+   "world": "res://assets/weapons/w_eoka.gltf"
+  },
+  "compound_bow": {
+   "name": "Compound Bow",
+   "desc": "Составной лук: мощнее охотничьего.",
+   "icon": "res://assets/icons/items/bow.compound.png",
+   "stack": 1,
+   "category": "Weapons",
+   "recipe": [
+    [
+     "metal_fragments",
+     50
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 1,
+   "material": "Gun",
+   "type": "weapon",
+   "kind": "bow",
+   "viewmodel": "models/weapons/darky_m/rust/c_compoundbow.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_compoundbow.mdl",
+   "swep": "tfa_compound_bow",
+   "damage": 50,
+   "rpm": 60,
+   "clip": 1,
+   "ammo_types": [
+    "wooden_arrow"
+   ],
+   "scene": "res://assets/weapons/compoundbow.gltf",
+   "vm_name": "compoundbow",
+   "world": "res://assets/weapons/w_compoundbow.gltf"
+  },
+  "longsword": {
+   "name": "Longsword",
+   "desc": "Длинный меч.",
+   "icon": "res://assets/icons/items/longsword.png",
+   "stack": 1,
+   "category": "Weapons",
+   "recipe": [
+    [
+     "metal_fragments",
+     50
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 1,
+   "material": "Gun",
+   "type": "weapon",
+   "kind": "melee",
+   "viewmodel": "models/weapons/darky_m/rust/c_Longsword.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_Longsword.mdl",
+   "swep": "tfa_longsword",
+   "damage": 75,
+   "attack_rate": 30,
+   "range": 1.8,
+   "scene": "res://assets/weapons/longsword.gltf",
+   "vm_name": "longsword",
+   "world": "res://assets/weapons/w_longsword.gltf"
+  },
+  "mace": {
+   "name": "Mace",
+   "desc": "Булава.",
+   "icon": "res://assets/icons/items/mace.png",
+   "stack": 1,
+   "category": "Weapons",
+   "recipe": [
+    [
+     "metal_fragments",
+     50
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 1,
+   "material": "Gun",
+   "type": "weapon",
+   "kind": "melee",
+   "viewmodel": "models/weapons/darky_m/rust/c_Mace.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_Mace.mdl",
+   "swep": "tfa_mace",
+   "damage": 50,
+   "attack_rate": 30,
+   "range": 1.6,
+   "scene": "res://assets/weapons/mace.gltf",
+   "vm_name": "mace",
+   "world": "res://assets/weapons/w_mace.gltf"
+  },
+  "machete": {
+   "name": "Machete",
+   "desc": "Мачете.",
+   "icon": "res://assets/icons/items/machete.png",
+   "stack": 1,
+   "category": "Weapons",
+   "recipe": [
+    [
+     "metal_fragments",
+     50
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 1,
+   "material": "Gun",
+   "type": "weapon",
+   "kind": "melee",
+   "viewmodel": "models/weapons/darky_m/rust/c_Machete.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_Machete.mdl",
+   "swep": "tfa_machete",
+   "damage": 35,
+   "attack_rate": 60,
+   "range": 1.6,
+   "scene": "res://assets/weapons/machete.gltf",
+   "vm_name": "machete",
+   "world": "res://assets/weapons/w_machete.gltf"
+  },
+  "pitchfork": {
+   "name": "Pitchfork",
+   "desc": "Вилы.",
+   "icon": "res://assets/icons/items/pitchfork.png",
+   "stack": 1,
+   "category": "Weapons",
+   "recipe": [
+    [
+     "metal_fragments",
+     50
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 1,
+   "material": "Gun",
+   "type": "weapon",
+   "kind": "melee",
+   "viewmodel": "models/weapons/darky_m/rust/c_pitchfork.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_pitchfork.mdl",
+   "swep": "tfa_pitchfork",
+   "damage": 40,
+   "attack_rate": 40,
+   "range": 2.0,
+   "scene": "res://assets/weapons/pitchfork.gltf",
+   "vm_name": "pitchfork",
+   "world": "res://assets/weapons/w_pitchfork.gltf"
+  },
+  "bone_knife": {
+   "name": "Bone Knife",
+   "desc": "Костяной нож.",
+   "icon": "res://assets/icons/items/knife.bone.png",
+   "stack": 1,
+   "category": "Weapons",
+   "recipe": [
+    [
+     "metal_fragments",
+     50
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 1,
+   "material": "Gun",
+   "type": "weapon",
+   "kind": "melee",
+   "viewmodel": "models/weapons/darky_m/rust/c_boneknife.mdl",
+   "worldmodel": "models/weapons/darky_m/rust/w_boneknife.mdl",
+   "swep": "tfa_bone_knife",
+   "damage": 35,
+   "attack_rate": 68,
+   "range": 1.5,
+   "scene": "res://assets/weapons/boneknife.gltf",
+   "vm_name": "boneknife",
+   "world": "res://assets/weapons/w_boneknife.gltf"
+  }
+ }
+}

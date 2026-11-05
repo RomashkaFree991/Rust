@@ -2,28 +2,30 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://laao4ee4akmp"
-path="res://.godot/imported/customsmg_smg_basic_normal.png-a3b6e788955de7cb79df3e4bbde23125.ctex"
+uid="uid://cahymkujsqvkj"
+path.s3tc="res://.godot/imported/customsmg_smg_basic_normal.png-a3b6e788955de7cb79df3e4bbde23125.s3tc.ctex"
+path.etc2="res://.godot/imported/customsmg_smg_basic_normal.png-a3b6e788955de7cb79df3e4bbde23125.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/weapons/tex/customsmg_smg_basic_normal.png"
-dest_files=["res://.godot/imported/customsmg_smg_basic_normal.png-a3b6e788955de7cb79df3e4bbde23125.ctex"]
+dest_files=["res://.godot/imported/customsmg_smg_basic_normal.png-a3b6e788955de7cb79df3e4bbde23125.s3tc.ctex", "res://.godot/imported/customsmg_smg_basic_normal.png-a3b6e788955de7cb79df3e4bbde23125.etc2.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -36,5 +38,5 @@ process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
-process/size_limit=512
-detect_3d/compress_to=1
+process/size_limit=256
+detect_3d/compress_to=0

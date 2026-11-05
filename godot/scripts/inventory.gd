@@ -24,46 +24,85 @@ func _init() -> void:
 static func _w(id: String, ammo: int) -> Dictionary:
 	return {"id": id, "amount": 1, "ammo": ammo}
 
+static func make(id: String, amount := 1) -> Dictionary:
+	var d := Items.get_def(id)
+	var it := {"id": id, "amount": amount}
+	if d.get("type") == "weapon" and d.has("clip"):
+		it["ammo"] = int(d.clip)
+	return it
+
+func _put(i: int, id: String, amount := 1) -> void:
+	if Items.DB.has(id):
+		slots[i] = make(id, amount)
+
 func setup_default() -> void:
-	slots[0] = _w("ak47u", 30)
-	slots[1] = _w("python", 6)
-	slots[2] = _w("lr300", 30)
-	slots[3] = _w("mp5", 30)
-	slots[4] = _w("rock", 0)
-	slots[5] = _w("combatknife", 0)
-	var i := MAIN_START
-	for id in ["thompson", "customsmg", "m249", "sar", "m92", "revolver"]:
-		slots[i] = _w(id, Items.get_def(id).clip)
-		i += 1
-	for a in [["ammo.rifle", 128], ["ammo.rifle", 128], ["ammo.rifle", 128], ["ammo.pistol", 128], ["ammo.pistol", 128], ["ammo.pistol", 128]]:
-		slots[i] = {"id": a[0], "amount": a[1]}
-		i += 1
-	for id in ["roadsign_jacket", "heavy_plate_jacket", "heavy_plate_legs", "heavy_plate_helmet", "metal_mask", "bandana", "tshirt_long"]:
-		slots[i] = {"id": id, "amount": 1}
-		i += 1
-	# надето
+	var belt := ["assault_rifle", "python_revolver", "pump_shotgun", "rock", "combat_knife", "f1_grenade"]
+	for i in belt.size():
+		_put(i, belt[i])
+	var main := [["556_rifle_ammo", 128], ["556_rifle_ammo", 128], ["pistol_bullet", 128], ["pistol_bullet", 128],
+		["handmade_shell", 64], ["handmade_shell", 64], ["arrow", 64], ["rocket", 3], ["40mm_he_grenade", 6],
+		["bandage", 3], ["medical_syringe", 3], ["large_medkit", 1]]
+	var k := MAIN_START
+	for m in main:
+		if Items.DB.has(m[0]):
+			_put(k, m[0], min(m[1], Items.max_stack(m[0])))
+			k += 1
 	var w := WEAR_START
 	for id in ["jacket", "pants_hide", "shoes_boots", "hat_cap", "tactical_gloves"]:
-		slots[w] = {"id": id, "amount": 1}
+		_put(w, id)
 		w += 1
-	# ящик: всё оружие и вся одежда
-	var k := LOOT_START
-	for id in Items.DB:
-		var d: Dictionary = Items.DB[id]
-		if k >= SIZE:
-			break
-		if d.type == "weapon" or d.type == "melee":
-			slots[k] = _w(id, d.get("clip", 0)); k += 1
-	for id in Items.DB:
-		if k >= SIZE:
-			break
-		if Items.DB[id].type == "attire":
-			slots[k] = {"id": id, "amount": 1}; k += 1
-	for a in ["ammo.rifle", "ammo.pistol"]:
-		if k < SIZE:
-			slots[k] = {"id": a, "amount": 128}; k += 1
 	changed.emit()
 	attire_changed.emit()
+
+## Содержимое ящиков: всё оружие, вся одежда, все патроны и предметы из реестра gRust
+static func chest_contents() -> Array:
+	var groups := {"ОГНЕСТРЕЛ": [], "БЛИЖНИЙ БОЙ И ВЗРЫВЧАТКА": [], "ОДЕЖДА": [], "ПАТРОНЫ И МЕДИЦИНА": [], "ПРЕДМЕТЫ": []}
+	for id in Items.ORDER:
+		var d: Dictionary = Items.DB[id]
+		var amount := Items.max_stack(id)
+		match d.type:
+			"weapon":
+				if d.get("kind") in ["gun", "shotgun", "bow", "launcher"]:
+					groups["ОГНЕСТРЕЛ"].append(make(id))
+				else:
+					groups["БЛИЖНИЙ БОЙ И ВЗРЫВЧАТКА"].append(make(id, amount if d.get("kind") in ["throw", "medical"] else 1))
+			"attire":
+				groups["ОДЕЖДА"].append(make(id))
+			"ammo", "medical_item", "food":
+				groups["ПАТРОНЫ И МЕДИЦИНА"].append(make(id, amount))
+			_:
+				groups["ПРЕДМЕТЫ"].append(make(id, amount))
+	var res := []
+	for g in groups:
+		var arr: Array = groups[g]
+		var n := 0
+		var part := 1
+		while n < arr.size() or n == 0:
+			var chunk := arr.slice(n, n + LOOT)
+			var title: String = g if arr.size() <= LOOT else "%s %d" % [g, part]
+			res.append({"title": title, "items": chunk})
+			n += LOOT
+			part += 1
+			if arr.is_empty():
+				break
+	return res
+
+## Открыть ящик: его содержимое попадает в ячейки LOOT_START..; при закрытии — обратно
+var open_chest: Dictionary = {}
+func load_chest(c: Dictionary) -> void:
+	open_chest = c
+	for i in LOOT:
+		slots[LOOT_START + i] = c.items[i] if i < c.items.size() else null
+	changed.emit()
+
+func save_chest() -> void:
+	if open_chest.is_empty():
+		return
+	var arr := []
+	for i in LOOT:
+		arr.append(slots[LOOT_START + i])
+	open_chest.items = arr
+	open_chest = {}
 
 static func is_loot_slot(i: int) -> bool:
 	return i >= LOOT_START
@@ -76,7 +115,7 @@ func quick_move(i: int) -> bool:
 	# сначала объединить стак
 	for k in rng:
 		var o = slots[k]
-		if o != null and o.id == slots[i].id and Items.get_def(o.id).get("type") == "ammo" and o.amount < Items.get_def(o.id).get("stack", 128):
+		if o != null and o.id == slots[i].id and Items.max_stack(o.id) > 1 and o.amount < Items.max_stack(o.id):
 			move(i, k)
 			if slots[i] == null:
 				return true
@@ -107,7 +146,11 @@ func can_place(it, i: int, from: int) -> bool:
 		if k == i or k == from:
 			continue
 		var o = slots[k]
-		if o != null and Items.get_def(o.id).slot == d.slot:
+		if o == null:
+			continue
+		var os: String = Items.get_def(o.id).slot
+		# одна вещь каждой категории; полный костюм несовместим ни с чем
+		if os == d.slot or os == "full" or d.slot == "full":
 			return false
 	return true
 
@@ -119,8 +162,8 @@ func move(from: int, to: int) -> bool:
 	var b = slots[to]
 	if a == null:
 		return false
-	if b != null and a.id == b.id and Items.get_def(a.id).get("type") == "ammo":
-		var cap: int = Items.get_def(a.id).get("stack", 128)
+	if b != null and a.id == b.id and Items.max_stack(a.id) > 1:
+		var cap: int = Items.max_stack(a.id)
 		var n: int = min(a.amount, cap - b.amount)
 		b.amount += n
 		a.amount -= n
@@ -149,7 +192,7 @@ func quick_toggle_wear(i: int) -> bool:
 	# заменить вещь той же категории или занять пустую ячейку
 	var d := Items.get_def(it.id)
 	for k in range(WEAR_START, LOOT_START):
-		if slots[k] != null and Items.get_def(slots[k].id).slot == d.slot:
+		if slots[k] != null and (Items.get_def(slots[k].id).slot == d.slot):
 			return move(i, k)
 	for k in range(WEAR_START, LOOT_START):
 		if slots[k] == null:
@@ -176,6 +219,33 @@ func count(id: String) -> int:
 		if it != null and it.id == id:
 			n += it.amount
 	return n
+
+## Добавить предмет в инвентарь (пояс/рюкзак), со складыванием в стаки. Возвращает сколько не поместилось.
+func give(id: String, amount: int) -> int:
+	var cap := Items.max_stack(id)
+	var left := amount
+	if cap > 1:
+		for k in WEAR_START:
+			var o = slots[k]
+			if o != null and o.id == id and o.amount < cap:
+				var n: int = min(cap - o.amount, left)
+				o.amount += n
+				left -= n
+				if left <= 0:
+					break
+	while left > 0:
+		var free := -1
+		for k in range(MAIN_START, WEAR_START) + range(0, HOTBAR):
+			if slots[k] == null:
+				free = k
+				break
+		if free == -1:
+			break
+		var n: int = min(cap, left)
+		slots[free] = make(id, n)
+		left -= n
+	changed.emit()
+	return left
 
 ## Забрать до amount единиц предмета (сначала из рюкзака). Возвращает сколько забрали.
 func take(id: String, amount: int) -> int:

@@ -40,6 +40,8 @@ var snd_flesh: Array = []
 var snd_pain: Array = []
 var snd_death: Array = []
 var hit_flash := 0.0
+var wounded := false
+var wounded_t := 0.0
 
 func _ready() -> void:
 	ch = Character.new()
@@ -106,7 +108,7 @@ void fragment() {
 	_update_label()
 
 func _update_label() -> void:
-	label.text = "%s   %d HP" % [bot_name, int(ceil(hp))]
+	label.text = ("%s   РАНЕН" % bot_name) if wounded else ("%s   %d HP" % [bot_name, int(ceil(hp))])
 	label.modulate = Color(1, 1, 1) if hp > 0 else Color(1, 0.4, 0.3)
 	if bar_mat:
 		bar_mat.set_shader_parameter("fill", clamp(hp / 100.0, 0.0, 1.0))
@@ -114,7 +116,7 @@ func _update_label() -> void:
 func _physics_process(delta: float) -> void:
 	if ch == null or ch.sk == null:
 		return
-	if not dead and target:
+	if not dead and not wounded and target:
 		var to := target.global_position - global_position
 		var want := atan2(to.x, to.z)
 		rotation.y = lerp_angle(rotation.y, want, clamp(delta * 2.0, 0.0, 1.0))
@@ -127,6 +129,11 @@ func _physics_process(delta: float) -> void:
 		bodies[z].global_transform = Transform3D(t.basis.orthonormalized(), t.origin)
 	if hit_flash > 0.0:
 		hit_flash -= delta
+	if wounded:
+		wounded_t -= delta
+		if wounded_t <= 0.0:
+			_die(Vector3.FORWARD)
+			_update_label()
 
 func _play3d(stream: AudioStream, pos: Vector3, vol := 0.0) -> void:
 	var p := AudioStreamPlayer3D.new()
@@ -160,6 +167,13 @@ func take_hit(zone: String, base_damage: float, pos: Vector3, dir: Vector3, mele
 		return {}
 	var mul: float = ZONES[zone][5]
 	var dmg: float = base_damage * mul * (1.0 - protection(zone))
+	if wounded:
+		# добивание раненого
+		_spawn_damage_text(pos, dmg, zone == "head")
+		_play3d(snd_flesh[randi() % snd_flesh.size()], pos, 2.0)
+		_die(dir)
+		_update_label()
+		return {"damage": dmg, "zone": zone, "killed": true, "headshot": zone == "head"}
 	hp -= dmg
 	var head := zone == "head"
 	_play3d(snd_flesh[randi() % snd_flesh.size()], pos, 2.0)
@@ -168,14 +182,17 @@ func take_hit(zone: String, base_damage: float, pos: Vector3, dir: Vector3, mele
 	# толчок от попадания
 	position += Vector3(dir.x, 0, dir.z).normalized() * 0.03
 	var died := hp <= 0.0
-	if died:
-		_die(dir)
+	if died and (head or base_damage >= 150.0):
+		_die(dir)             # в голову или взрывом — сразу насмерть
+	elif died:
+		_wound()              # как в Rust: падает раненым, можно поднять или добить
+		died = false
 	else:
 		ch.play_hit()
 	if not died and randf() < 0.35:
 		_play3d(snd_pain[randi() % snd_pain.size()], global_position + Vector3(0, 1.6, 0))
 	_update_label()
-	return {"damage": dmg, "zone": zone, "killed": died, "headshot": head}
+	return {"damage": dmg, "zone": zone, "killed": died, "headshot": head, "wounded": wounded}
 
 func _spawn_damage_text(pos: Vector3, dmg: float, head: bool) -> void:
 	var l := Label3D.new()
@@ -193,7 +210,27 @@ func _spawn_damage_text(pos: Vector3, dmg: float, head: bool) -> void:
 	t.parallel().tween_property(l, "modulate:a", 0.0, 0.9).set_delay(0.3)
 	t.tween_callback(l.queue_free)
 
+func _wound() -> void:
+	wounded = true
+	wounded_t = 30.0
+	hp = 0.0
+	ch.wounded = true
+	_play3d(snd_pain[randi() % snd_pain.size()], global_position + Vector3(0, 1.0, 0), 3.0)
+
+## Поднять раненого (кнопка «ПОДНЯТЬ» рядом с ним)
+func revive() -> void:
+	if not wounded or dead:
+		return
+	wounded = false
+	ch.wounded = false
+	hp = 35.0
+	_play2d(load("res://assets/sounds/notify.wav"), -4.0)
+	_update_label()
+
 func _die(dir: Vector3) -> void:
+	ch.dead_lying = wounded
+	wounded = false
+	ch.wounded = false
 	dead = true
 	hp = 0.0
 	ch.dead = true
@@ -211,6 +248,7 @@ func _respawn(start: Transform3D) -> void:
 	transform = start
 	dead = false
 	ch.dead = false
+	ch.dead_lying = false
 	hp = 100.0
 	for b in bodies.values():
 		b.collision_layer = 2

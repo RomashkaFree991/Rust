@@ -37,6 +37,7 @@ var drag_pos := Vector2.ZERO
 var dragging := false
 var rot_idx := -1
 var close_rect := Rect2()
+var craft_rect := Rect2()
 var overlay: Control
 var looting := false
 var loot_title := "LARGE WOOD BOX"
@@ -194,6 +195,7 @@ func layout(vs: Vector2) -> void:
 	hint.size = Vector2(max(120.0, vs.x - xr - 20), 300)
 	hint.visible = not looting
 	close_rect = Rect2(vs.x - 76, 10, 60, 60)
+	craft_rect = Rect2(vs.x - 76 - 170, 10, 160, 60)
 	info_bg.position = item_info.position - Vector2(8, 48)
 	info_bg.size = Vector2(item_info.size.x + 16, item_info.size.y + 52)
 	_redraw()
@@ -265,14 +267,24 @@ func _update_info() -> void:
 	var t: String = d.desc
 	match d.type:
 		"weapon":
-			t += "\n\nУрон: %d   Магазин: %d / %d\nТемп: %d выстр/мин   %s" % [d.damage, it.ammo, d.clip, int(d.rpm), "Автомат" if d.auto else "Полуавтомат"]
-			t += "\nПатроны: %s (%d)" % [Items.get_def(d.ammo).name, inv.count(d.ammo)]
+			match d.get("kind", ""):
+				"gun", "shotgun", "launcher":
+					t += "\n\nУрон: %d   Магазин: %d / %d\nТемп: %d выстр/мин   %s" % [d.damage, it.get("ammo", 0), d.clip, int(d.rpm), "Автомат" if d.auto else "Полуавтомат"]
+					t += "\nПатроны: %s (%d)" % [Items.get_def(d.ammo).get("name", ""), inv.count(d.ammo)]
+				"bow":
+					t += "\n\nУрон: %d   Стрелы: %d" % [d.damage, inv.count(d.ammo)]
+				"melee":
+					t += "\n\nУрон: %d   Ударов в минуту: %d" % [d.damage, int(d.rpm)]
+				"throw":
+					t += "\n\nУрон: %d   Радиус: %.1f м   Запал: %.1f с\nКоличество: %d" % [d.damage, d.radius, d.fuse, it.amount]
+				"medical":
+					t += "\n\nЛечение: %d   Количество: %d" % [d.get("heal", 0), it.amount]
 		"melee":
-			t += "\n\nУрон: %d   Ударов в минуту: %d" % [d.damage, int(d.rpm)]
+			pass
 		"attire":
 			t += "\n\nЗащита от пуль: %d%%   Ближний бой: %d%%" % [roundi(d.prot * 100), roundi(d.melee_prot * 100)]
-		"ammo":
-			t += "\n\nКоличество: %d" % it.amount
+		_:
+			t += "\n\nКоличество: %d / %d" % [it.amount, Items.max_stack(it.id)]
 	item_info.text = t
 
 func _process(delta: float) -> void:
@@ -295,6 +307,9 @@ func _draw_overlay() -> void:
 		var lp: Vector2 = slots[Inventory.LOOT_START].position
 		o.draw_string(f, Vector2(lp.x + 2, lp.y - 10), loot_title, HORIZONTAL_ALIGNMENT_LEFT, -1, 30, TEXT)
 	# панель информации
+	# вкладка крафта
+	SlotView.draw_panel(o, craft_rect, Color(250 / 255.0, 240 / 255.0, 220 / 255.0, 40 / 255.0))
+	o.draw_string(f, craft_rect.position + Vector2(0, 40), "КРАФТ", HORIZONTAL_ALIGNMENT_CENTER, craft_rect.size.x, 26, TEXT)
 	# закрыть
 	o.draw_rect(close_rect, Color(0.6, 0.2, 0.15, 0.7))
 	var c := close_rect.get_center()
@@ -322,6 +337,9 @@ func _slot_at(p: Vector2) -> int:
 func touch_down(idx: int, p: Vector2) -> bool:
 	if close_rect.has_point(p):
 		hud.toggle_inventory()
+		return true
+	if craft_rect.has_point(p):
+		hud.open_crafting()
 		return true
 	var i := _slot_at(p)
 	if i != -1:

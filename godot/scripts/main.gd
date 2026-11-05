@@ -32,24 +32,37 @@ func _ready() -> void:
 	_spawn_chest()
 
 func _spawn_chest() -> void:
-	var body := StaticBody3D.new()
-	body.add_to_group("chest")
-	var m: Node3D = load("res://assets/props/large_wooden_box.gltf").instantiate()
-	var ab := _mesh_aabb(load("res://assets/props/large_wooden_box.gltf").instantiate())
-	body.add_child(m)
-	var c := CollisionShape3D.new()
-	var b := BoxShape3D.new(); b.size = ab.size
-	c.shape = b
-	c.position = ab.get_center()
-	body.add_child(c)
-	add_child(body)
-	body.position = Vector3(2.2, 0.0, 9.0)
-	body.rotation_degrees.y = -70.0
+	var path := "res://assets/props/large_wooden_box.gltf"
+	var ab := _mesh_aabb(load(path).instantiate())
+	var list := Inventory.chest_contents()
+	for i in list.size():
+		var body := StaticBody3D.new()
+		body.add_to_group("chest")
+		body.set_meta("chest", list[i])
+		body.add_child(load(path).instantiate())
+		var c := CollisionShape3D.new()
+		var b := BoxShape3D.new(); b.size = ab.size
+		c.shape = b
+		c.position = ab.get_center()
+		body.add_child(c)
+		var l := Label3D.new()
+		l.text = list[i].title
+		l.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+		l.font_size = 28
+		l.pixel_size = 0.003
+		l.outline_size = 10
+		l.position = Vector3(0, ab.end.y + 0.35, 0)
+		body.add_child(l)
+		add_child(body)
+		# дуга ящиков вокруг точки появления
+		var a := deg_to_rad(-60.0 + i * (120.0 / max(list.size() - 1, 1)))
+		body.position = Vector3(sin(a) * 6.0, 0.0, 12.0 + cos(a) * 6.0)
+		body.rotation.y = a + PI
 
 func _spawn_bots() -> void:
 	var defs := [
-		{"name": "Бот Вася", "pos": Vector3(-3.5, 0, -7), "attire": ["heavy_plate_helmet", "roadsign_jacket", "pants_hide", "shoes_boots", "tactical_gloves"], "weapon": "ak47u"},
-		{"name": "Бот Петя", "pos": Vector3(3.5, 0, -11), "attire": ["hat_cap", "bandana", "jacket", "heavy_plate_legs", "shoes_boots"], "weapon": "python"},
+		{"name": "Бот Вася", "pos": Vector3(-3.5, 0, -7), "attire": ["heavy_plate_helmet", "roadsign_jacket", "pants_hide", "shoes_boots", "tactical_gloves"], "weapon": "assault_rifle"},
+		{"name": "Бот Петя", "pos": Vector3(3.5, 0, -11), "attire": ["hat_cap", "bandana", "jacket", "heavy_plate_legs", "shoes_boots"], "weapon": "python_revolver"},
 	]
 	for d in defs:
 		var b := Bot.new()

@@ -31,6 +31,9 @@ var hole_tex: Texture2D
 var holes: Array = []
 var body: Character               # своя модель (видна от 3-го лица, тень — всегда)
 var third_person := false
+var flying := false
+var fly_input := 0.0
+const FLY_SPEED := 12.0
 var cam_dist := 0.0
 
 func _ready() -> void:
@@ -137,6 +140,13 @@ func _physics_process(delta: float) -> void:
 	head.rotation_degrees.x = clamp(pitch + recoil.x, -89.0, 89.0)
 	head.rotation_degrees.y = recoil.y
 
+	# полёт: джойстик — по направлению взгляда, кнопки ВВЕРХ/ВНИЗ — по вертикали
+	if flying:
+		var fdir := head.global_basis * Vector3(move_input.x, 0.0, move_input.y)
+		var tv := fdir * FLY_SPEED + Vector3.UP * fly_input * FLY_SPEED * 0.7
+		velocity = velocity.move_toward(tv, 40.0 * delta)
+		move_and_slide()
+		return
 	# движение
 	if not is_on_floor():
 		velocity.y -= GRAVITY * delta
@@ -178,15 +188,37 @@ func _process(delta: float) -> void:
 	cam.position = Vector3(0.7 * k, 0.25 * k, cam_dist)
 	vm_cam.global_transform = cam.global_transform
 	body.aim_pitch = pitch
-	body.move_speed = clamp(Vector2(velocity.x, velocity.z).length() / WALK_SPEED * 0.75, 0.0, 1.0)
-	body.in_air = not is_on_floor() and velocity.y > -20.0 and abs(velocity.y) > 1.0
+	body.move_speed = clamp(Vector2(velocity.x, velocity.z).length() / WALK_SPEED * 0.75, 0.0, 1.0) if not flying else 0.0
+	body.move_local = Vector2(move_input.x, -move_input.y)
+	body.in_air = flying or (not is_on_floor() and velocity.y > -20.0 and abs(velocity.y) > 1.0)
 	var target_fov := base_fov * (0.82 if viewmodel.aiming else 1.0)
 	cam.fov = lerp(cam.fov, target_fov, clamp(delta * 10.0, 0.0, 1.0))
 	var hspeed := Vector2(velocity.x, velocity.z).length() / WALK_SPEED
 	viewmodel.process_weapon(delta, inv, hspeed if is_on_floor() else 0.2, look_frame / max(delta, 0.001) * 0.016)
 
 ## Смотрим ли на ящик (как подсказка «OPEN» в Rust)
-func looking_at_chest() -> bool:
+func looking_at_chest():
+	var h := _look_hit(2.6 + cam_dist)
+	if not h.is_empty() and h.collider is Node and (h.collider as Node).is_in_group("chest"):
+		return h.collider
+	return null
+
+func _look_hit(dist: float) -> Dictionary:
+	var from := cam.global_position
+	var dir := -cam.global_basis.z
+	var q := PhysicsRayQueryParameters3D.create(from, from + dir * dist)
+	q.exclude = [get_rid()]
+	q.collision_mask = 3
+	return get_world_3d().direct_space_state.intersect_ray(q)
+
+## Раненый бот перед нами (для кнопки «ПОДНЯТЬ»)
+func looking_at_wounded():
+	for n in get_parent().get_children():
+		if n is Bot and n.wounded and not n.dead and n.global_position.distance_to(global_position) < 3.0:
+			return n
+	return null
+
+func _old_looking_at_chest() -> bool:
 	var from := cam.global_position
 	var dir := -cam.global_basis.z
 	var q := PhysicsRayQueryParameters3D.create(from, from + dir * (2.6 + cam_dist))
@@ -223,8 +255,12 @@ func _apply_hit(hit: Dictionary, dir: Vector3, damage: float, melee: bool) -> vo
 		hud.show_hitmarker(false, false)
 
 func _on_fired(def: Dictionary) -> void:
-	if def.get("type") == "melee":
+	var k_ind: String = def.get("kind", "gun")
+	if k_ind == "melee":
 		body.play_melee()
+		return
+	if k_ind in ["throw", "medical", "tool"]:
+		body.play_use()
 		return
 	body.play_shoot()
 	if third_person:
@@ -235,22 +271,140 @@ func _on_fired(def: Dictionary) -> void:
 	recoil.x += k.x * ads_mul
 	recoil.y += randf_range(-k.y, k.y) * ads_mul
 	pitch = clamp(pitch + k.x * 0.25 * ads_mul, -88.0, 88.0)
-	# луч
-	var spread_deg: float = def.spread * (0.25 if viewmodel.aiming else 1.0)
-	spread_deg += Vector2(velocity.x, velocity.z).length() * 0.25
 	var b := cam.global_transform.basis
-	var dir := -b.z
-	var a := randf() * TAU
-	var r := deg_to_rad(spread_deg) * sqrt(randf())
-	dir = (dir + b.x * cos(a) * tan(r) + b.y * sin(a) * tan(r)).normalized()
 	var from := cam.global_position
-	var q := PhysicsRayQueryParameters3D.create(from, from + dir * 300.0)
-	q.exclude = [get_rid()]
-	q.collision_mask = 3
-	var hit := get_world_3d().direct_space_state.intersect_ray(q)
-	if hit.is_empty():
+	if k_ind == "launcher":
+		var proj := "rocket" if def.get("ammo", "") in ["rocket", "high_velocity_rocket"] else "grenade"
+		_spawn_projectile(from + (-b.z) * 0.6 + b.x * 0.15 - b.y * 0.1, -b.z, 40.0 if proj == "rocket" else 22.0,
+			0.0 if proj == "rocket" else 9.0, 300.0 if proj == "rocket" else 140.0, 4.0, 5.0)
 		return
-	_apply_hit(hit, dir, def.damage, false)
+	# лучи (у дробовика — несколько дробин, урон делится)
+	var n: int = def.get("bullets", 1)
+	var dmg: float = def.damage / max(n, 1) if n > 1 else def.damage
+	for i in n:
+		var spread_deg: float = def.spread * (0.25 if viewmodel.aiming and n == 1 else 1.0)
+		spread_deg += Vector2(velocity.x, velocity.z).length() * 0.25
+		var dir := -b.z
+		var a := randf() * TAU
+		var r := deg_to_rad(spread_deg) * sqrt(randf())
+		dir = (dir + b.x * cos(a) * tan(r) + b.y * sin(a) * tan(r)).normalized()
+		var q := PhysicsRayQueryParameters3D.create(from, from + dir * 300.0)
+		q.exclude = [get_rid()]
+		q.collision_mask = 3
+		var hit := get_world_3d().direct_space_state.intersect_ray(q)
+		if not hit.is_empty():
+			_apply_hit(hit, dir, dmg, false)
+
+# ---------- взрывчатка, ракеты, лечение ----------
+
+var explode_sounds: Array = []
+
+func throw_explosive(def: Dictionary) -> void:
+	var b := cam.global_transform.basis
+	var from := cam.global_position + (-b.z) * 0.5 - b.y * 0.1
+	var dir := ((-b.z) + Vector3.UP * 0.25).normalized()
+	_spawn_projectile(from, dir, 13.0, 9.8, def.get("damage", 80.0), def.get("radius", 4.0), def.get("fuse", 3.0), true, def.get("world", ""))
+
+func _spawn_projectile(from: Vector3, dir: Vector3, speed: float, grav: float, damage: float, radius: float, fuse: float, bounce := false, model_path := "") -> void:
+	var p := Node3D.new()
+	get_parent().add_child(p)
+	if model_path != "" and ResourceLoader.exists(model_path):
+		var m: Node3D = load(model_path).instantiate()
+		p.add_child(m)
+	else:
+		var mi := MeshInstance3D.new()
+		var cyl := CylinderMesh.new(); cyl.top_radius = 0.03; cyl.bottom_radius = 0.04; cyl.height = 0.35
+		mi.mesh = cyl
+		mi.rotation_degrees.x = 90
+		p.add_child(mi)
+		var trail := OmniLight3D.new(); trail.light_color = Color(1, 0.6, 0.2); trail.light_energy = 1.5; trail.omni_range = 3.0
+		p.add_child(trail)
+	var pr := Projectile.new()
+	pr.vel = dir * speed
+	pr.grav = grav
+	pr.fuse = fuse
+	pr.bounce = bounce
+	pr.damage = damage
+	pr.radius = radius
+	pr.owner_player = self
+	pr.exclude = [get_rid()]
+	p.replace_by(pr)
+	pr.global_position = from
+	p.free()
+
+func _explode(pos: Vector3, damage: float, radius: float) -> void:
+	if explode_sounds.is_empty():
+		for f in ["explosion.wav", "explosion.mp3"]:
+			if ResourceLoader.exists("res://assets/sounds/" + f):
+				explode_sounds.append(load("res://assets/sounds/" + f))
+	var sp := AudioStreamPlayer3D.new()
+	sp.stream = explode_sounds[randi() % explode_sounds.size()] if explode_sounds.size() > 0 else null
+	sp.unit_size = 20.0
+	sp.volume_db = 4.0
+	get_parent().add_child(sp)
+	sp.global_position = pos
+	sp.play()
+	sp.finished.connect(sp.queue_free)
+	var l := OmniLight3D.new(); l.light_color = Color(1, 0.6, 0.25); l.light_energy = 8.0; l.omni_range = radius * 2.5
+	get_parent().add_child(l); l.global_position = pos + Vector3.UP * 0.5
+	var tw := l.create_tween(); tw.tween_property(l, "light_energy", 0.0, 0.45); tw.tween_callback(l.queue_free)
+	# огненный шар (текстура вспышки) + разлёт искр
+	var fb := MeshInstance3D.new()
+	var q := QuadMesh.new(); q.size = Vector2(radius * 0.9, radius * 0.9)
+	var fm := StandardMaterial3D.new()
+	fm.albedo_texture = load("res://assets/textures/muzzleflash.png")
+	fm.blend_mode = BaseMaterial3D.BLEND_MODE_ADD
+	fm.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	fm.billboard_mode = BaseMaterial3D.BILLBOARD_ENABLED
+	fm.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	q.material = fm
+	fb.mesh = q
+	fb.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	get_parent().add_child(fb); fb.global_position = pos + Vector3.UP * 0.6
+	var ft := fb.create_tween()
+	ft.tween_property(fb, "scale", Vector3.ONE * 1.8, 0.35)
+	ft.parallel().tween_property(fm, "albedo_color", Color(0, 0, 0, 0), 0.35)
+	ft.tween_callback(fb.queue_free)
+	var fx := CPUParticles3D.new()
+	fx.one_shot = true; fx.amount = 30; fx.lifetime = 0.6; fx.explosiveness = 1.0
+	fx.direction = Vector3.UP; fx.spread = 180.0; fx.initial_velocity_min = 3.0; fx.initial_velocity_max = 9.0
+	fx.gravity = Vector3(0, -9, 0); fx.scale_amount_min = 0.5; fx.scale_amount_max = 1.0
+	fx.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	var bm := BoxMesh.new(); bm.size = Vector3(0.04, 0.04, 0.04)
+	var mat := StandardMaterial3D.new(); mat.albedo_color = Color(1.0, 0.7, 0.3); mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	bm.material = mat; fx.mesh = bm
+	get_parent().add_child(fx); fx.global_position = pos; fx.emitting = true
+	fx.finished.connect(fx.queue_free)
+	# урон ботам и толчок ящикам
+	for n in get_parent().get_children():
+		if n is Bot and not n.dead:
+			var dist: float = (n.global_position + Vector3.UP - pos).length()
+			if dist < radius:
+				var res: Dictionary = n.take_hit("chest", damage * (1.0 - dist / radius), pos, (n.global_position - pos).normalized())
+				if hud and not res.is_empty():
+					hud.show_hitmarker(false, res.killed)
+		elif n is RigidBody3D:
+			var dv: Vector3 = n.global_position - pos
+			if dv.length() < radius * 1.5:
+				n.apply_impulse(dv.normalized() * (radius * 1.5 - dv.length()) * 12.0 + Vector3.UP * 20.0)
+	if (global_position - pos).length() < radius and hud:
+		hud.health = max(1.0, hud.health - damage * 0.2 * (1.0 - (global_position - pos).length() / radius))
+
+func heal(amount: float) -> void:
+	if hud:
+		hud.health = min(100.0, hud.health + amount)
+
+## Израсходовать один предмет из активной ячейки (граната, бинт, шприц)
+func consume_active() -> void:
+	if hud == null or hud.active_slot == -1:
+		return
+	var it = inv.get_item(hud.active_slot)
+	if it == null:
+		return
+	it.amount -= 1
+	if it.amount <= 0:
+		inv.slots[hud.active_slot] = null
+	inv.changed.emit()
 
 func _spawn_impact(pos: Vector3, normal: Vector3, col: Object, wood: bool) -> void:
 	# звук

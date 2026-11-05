@@ -51,7 +51,15 @@ var kill_label: Label
 var kill_t := 0.0
 var kills := 0
 var btn_open: TouchButton
-var looking_chest := false
+var looking_chest = null
+var craft_ui: CraftingUI
+var craft_open := false
+var btn_craft: TouchButton
+var btn_fly: TouchButton
+var btn_up: TouchButton
+var btn_down: TouchButton
+var btn_revive: TouchButton
+var revive_target = null
 var calories := 412.0
 var hydration := 186.0
 var health := 100.0
@@ -72,6 +80,25 @@ func _ready() -> void:
 	btn_jump = _mk_btn(ic.call("upgrade"), "ПРЫЖОК", 46.0)
 	btn_view = _mk_btn(ic.call("rotate"), "3 ЛИЦО", 40.0)
 	btn_inv = _mk_btn(ic.call("backpack"), "", 40.0)
+	btn_craft = _mk_btn(load("res://assets/icons/cat_tools.png"), "", 40.0)
+	btn_craft.pressed.connect(func(): open_crafting())
+	btn_fly = _mk_btn(ic.call("upgrade"), "ПОЛЁТ", 40.0)
+	btn_fly.accent = Color(0.2, 0.5, 0.8)
+	btn_fly.pressed.connect(func():
+		player.flying = not player.flying
+		btn_fly.toggled = player.flying
+		btn_up.visible = player.flying and not inv_open
+		btn_down.visible = player.flying and not inv_open)
+	btn_up = _mk_btn(load("res://assets/icons/cat_add.png"), "ВВЕРХ", 42.0)
+	btn_down = _mk_btn(load("res://assets/icons/cat_subtract.png"), "ВНИЗ", 42.0)
+	btn_up.visible = false
+	btn_down.visible = false
+	btn_revive = _mk_btn(load("res://assets/icons/cat_medical.png"), "ПОДНЯТЬ", 48.0)
+	btn_revive.accent = Color(0.35, 0.6, 0.25)
+	btn_revive.visible = false
+	btn_revive.pressed.connect(func():
+		if revive_target != null and is_instance_valid(revive_target):
+			revive_target.revive())
 	btn_open = _mk_btn(ic.call("open"), "ОТКРЫТЬ", 48.0)
 	btn_open.accent = Color(0.35, 0.5, 0.2)
 	btn_open.visible = false
@@ -82,7 +109,7 @@ func _ready() -> void:
 	snd_close = load("res://assets/sounds/box_close.wav")
 	btn_aim.accent = Color(0.2, 0.5, 0.8)
 	btn_view.accent = Color(0.2, 0.5, 0.8)
-	game_buttons = [btn_fire, btn_fire_l, btn_aim, btn_reload, btn_inspect, btn_jump, btn_view, btn_open]
+	game_buttons = [btn_fire, btn_fire_l, btn_aim, btn_reload, btn_inspect, btn_jump, btn_view, btn_open, btn_craft, btn_fly, btn_up, btn_down, btn_revive]
 
 	btn_fire.pressed.connect(func(): player.viewmodel.set_trigger(true))
 	btn_fire.released.connect(func(): _fire_released())
@@ -125,6 +152,9 @@ func _ready() -> void:
 	inv_ui = InventoryUI.new()
 	inv_ui.visible = false
 	add_child(inv_ui)
+	craft_ui = CraftingUI.new()
+	craft_ui.visible = false
+	add_child(craft_ui)
 
 	get_viewport().size_changed.connect(_layout)
 
@@ -144,6 +174,7 @@ func bind(p: Player, i: Inventory) -> void:
 	inv.attire_changed.connect(func(): player.apply_attire(inv.worn()))
 	player.viewmodel.ammo_changed.connect(_refresh)
 	inv_ui.setup(inv, self)
+	craft_ui.setup(inv, self)
 	_layout()
 	_on_inv_changed()
 
@@ -183,6 +214,11 @@ func _layout() -> void:
 	ammo_label.size = Vector2(200, 46)
 	ammo_icon.position = Vector2(w - 48 - m, bars_top - 48)
 	_place(btn_open, Vector2(w * 0.5, h * 0.66))
+	_place(btn_revive, Vector2(w * 0.5, h * 0.66))
+	_place(btn_craft, Vector2(x0 - 150, y0 + SLOT * 0.5))
+	_place(btn_fly, Vector2(w - 160 - m, 60 + m))
+	_place(btn_up, Vector2(w - 85 - m, h - 540))
+	_place(btn_down, Vector2(110 + m, h - 340))
 	toast.position = Vector2(0, h * 0.62)
 	toast.size = Vector2(w, 40)
 	kill_label.position = Vector2(0, h * 0.3)
@@ -217,6 +253,10 @@ func _input(event: InputEvent) -> void:
 			KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6: _tap_hotbar(event.keycode - KEY_1)
 
 func _touch_down(idx: int, p: Vector2) -> void:
+	if craft_open:
+		craft_ui.touch_down(idx, p)
+		touches[idx] = {"type": "craft"}
+		return
 	if btn_inv.contains(p):
 		touches[idx] = {"type": "btn", "b": btn_inv}
 		btn_inv.press()
@@ -249,6 +289,8 @@ func _touch_drag(idx: int, p: Vector2, rel: Vector2) -> void:
 	if t == null:
 		return
 	match t.type:
+		"craft":
+			craft_ui.touch_drag(idx, p, rel)
 		"inv":
 			inv_ui.touch_drag(idx, p, rel)
 		"joy":
@@ -275,6 +317,8 @@ func _touch_up(idx: int, p: Vector2) -> void:
 		t.b.release()
 	elif t.type == "inv":
 		inv_ui.touch_up(idx, p)
+	elif t.type == "craft":
+		craft_ui.touch_up(idx, p)
 	elif t.type == "joy":
 		joy_idx = -1
 
@@ -290,7 +334,7 @@ func _process(delta: float) -> void:
 	var k := Vector2(Input.get_axis("ui_left", "ui_right"), Input.get_axis("ui_up", "ui_down"))
 	if k != Vector2.ZERO:
 		mv = k.normalized()
-	player.move_input = mv if not inv_open else Vector2.ZERO
+	player.move_input = mv if not (inv_open or craft_open) else Vector2.ZERO
 	btn_aim.toggled = player.viewmodel.aiming
 	btn_aim.queue_redraw()
 	if toast_t > 0.0:
@@ -304,7 +348,12 @@ func _process(delta: float) -> void:
 	calories = max(0.0, calories - delta * 0.12)
 	hydration = max(0.0, hydration - delta * 0.18)
 	looking_chest = player.looking_at_chest()
-	btn_open.visible = looking_chest and not inv_open
+	btn_open.visible = looking_chest != null and not inv_open and not craft_open
+	revive_target = player.looking_at_wounded()
+	btn_revive.visible = revive_target != null and not inv_open and not craft_open
+	if btn_revive.visible:
+		btn_open.visible = false
+	player.fly_input = (1.0 if btn_up.held else 0.0) - (1.0 if btn_down.held else 0.0)
 	queue_redraw()
 	_refresh_ammo()
 
@@ -317,7 +366,7 @@ func show_hitmarker(headshot := false, killed := false) -> void:
 		kill_t = 2.0
 
 func _draw() -> void:
-	if inv_open:
+	if inv_open or craft_open:
 		return
 	var vs := get_viewport_rect().size
 	var c := vs * 0.5
@@ -364,9 +413,43 @@ func _draw_bars(vs: Vector2) -> void:
 		draw_string(f, Vector2(bx + 10 + 1, y + BAR_H * 0.5 + 8 + 1), t, HORIZONTAL_ALIGNMENT_LEFT, -1, 22, Color(0, 0, 0, 0.4))
 		draw_string(f, Vector2(bx + 10, y + BAR_H * 0.5 + 8), t, HORIZONTAL_ALIGNMENT_LEFT, -1, 22, Color(231 / 255.0, 219 / 255.0, 210 / 255.0, 215 / 255.0))
 
-func open_loot() -> void:
+func open_crafting() -> void:
 	if inv_open:
+		toggle_inventory()
+	craft_open = true
+	craft_ui.visible = true
+	_set_game_ui(false)
+
+func close_crafting() -> void:
+	craft_open = false
+	craft_ui.visible = false
+	_set_game_ui(true)
+
+func _set_game_ui(on: bool) -> void:
+	for b in game_buttons:
+		b.visible = on
+		if b.held:
+			b.release()
+	btn_open.visible = false
+	btn_revive.visible = false
+	btn_up.visible = on and player.flying
+	btn_down.visible = on and player.flying
+	btn_inv.visible = on
+	for s in hot_slots:
+		s.visible = on
+	ammo_label.visible = on
+	ammo_icon.visible = on
+	player.viewmodel.set_trigger(false)
+	if joy_idx != -1:
+		touches.erase(joy_idx)
+		joy_idx = -1
+
+func open_loot() -> void:
+	if inv_open or looking_chest == null:
 		return
+	var c: Dictionary = looking_chest.get_meta("chest")
+	inv.load_chest(c)
+	inv_ui.loot_title = c.title
 	_play(snd_open)
 	player.body.play_use()
 	toggle_inventory(true)
@@ -381,23 +464,12 @@ func _play(st: AudioStream) -> void:
 func toggle_inventory(loot := false) -> void:
 	if inv_open and inv_ui.looting:
 		_play(snd_close)
+		inv.save_chest()
 	inv_open = not inv_open
 	inv_ui.visible = inv_open
 	inv_ui.sel = -1
 	inv_ui.set_looting(inv_open and loot)
-	btn_inv.visible = not inv_open
-	for b in game_buttons:
-		b.visible = not inv_open
-		if b.held:
-			b.release()
-	for s in hot_slots:
-		s.visible = not inv_open
-	ammo_label.visible = not inv_open
-	ammo_icon.visible = not inv_open
-	player.viewmodel.set_trigger(false)
-	if joy_idx != -1:
-		touches.erase(joy_idx)
-		joy_idx = -1
+	_set_game_ui(not inv_open)
 	move_child(btn_inv, get_child_count() - 1)
 	_layout()
 	inv_ui.sync_weapon()
@@ -457,10 +529,13 @@ func _refresh() -> void:
 
 func _refresh_ammo() -> void:
 	var vm := player.viewmodel
-	if vm.has_weapon() and not vm.is_melee() and not inv_open:
+	if vm.has_weapon() and vm.kind() in ["gun", "shotgun", "launcher", "bow"] and not inv_open and not craft_open:
 		var d := vm.def
-		ammo_label.text = "%d  /  %d" % [vm.item.ammo, inv.count(d.ammo)]
-		ammo_icon.texture = load(Items.get_def(d.ammo).icon)
+		if vm.kind() == "bow":
+			ammo_label.text = "%d" % inv.count(d.ammo)
+		else:
+			ammo_label.text = "%d  /  %d" % [vm.item.get("ammo", 0), inv.count(d.ammo)]
+		ammo_icon.texture = load(Items.get_def(d.ammo).get("icon", "res://assets/icons/items/assault_rifle.png"))
 		ammo_label.visible = true
 		ammo_icon.visible = true
 	else:

@@ -5,7 +5,9 @@ args = sys.argv[sys.argv.index('--')+1:]
 player_mdl, ual1, ual2, out = args
 bpy.ops.wm.read_factory_settings(use_empty=True)
 addon_utils.enable("SourceIO", default_set=True)
-bpy.ops.sourceio.mdl(directory=os.path.dirname(player_mdl)+'/', files=[{"name":os.path.basename(player_mdl)}], import_animations=False, import_textures=False)
+bpy.ops.sourceio.mdl(directory=os.path.dirname(player_mdl)+'/', files=[{"name":os.path.basename(player_mdl)}], import_animations=True, import_include_animations=True, import_textures=False)
+native_acts = [a for a in bpy.data.actions]
+print("NATIVE", [a.name for a in native_acts])
 for o in list(bpy.data.objects):
     if o.name not in bpy.context.scene.objects: bpy.context.scene.collection.objects.link(o)
 PA = [o for o in bpy.data.objects if o.type=='ARMATURE'][0]
@@ -88,7 +90,10 @@ def process(path, MAP, wanted):
     for b in order:
         tn = b.name[len(V):] if b.name.startswith(V) else None
         if tn is None or tn not in inv or inv[tn] not in sb: continue
-        if tn in DIRCHILD and DIRCHILD[tn] in inv:
+        if tn in ("Pelvis", "Spine", "Spine2", "Spine4", "Neck1", "Head1"):
+            # корпус в покое у обоих скелетов прямой — переносим поворот без поправки направления
+            Q[tn] = Matrix.Identity(3)
+        elif tn in DIRCHILD and DIRCHILD[tn] in inv:
             Q[tn] = tdir(tn).rotation_difference(G @ sdir(tn)).to_matrix()
         else:
             # концевая кость (голова, кончики пальцев, носок) — как у родителя / без поправки
@@ -137,6 +142,33 @@ all_res = []
 all_res += process(ual1, MAP1, {"Idle_Loop","Walk_Loop","Jog_Fwd_Loop","Sprint_Loop","Crouch_Idle_Loop","Crouch_Fwd_Loop","Jump_Start","Jump_Loop","Jump_Land","Death01","Hit_Chest","Hit_Head","Pistol_Idle_Loop","Pistol_Aim_Down","Pistol_Aim_Neutral","Pistol_Aim_Up","Pistol_Shoot","Pistol_Reload","Sword_Attack","Sword_Idle","Punch_Jab","Interact","PickUp_Table"})
 all_res += process(ual2, MAP2, {"Chest_Open", "Hit_Knockback", "Consume", "OverhandThrow", "Melee_Hook"})
 PA.animation_data_create()
+PA.animation_data.action = None
+for a in native_acts:
+    nm = a.name.lstrip('@')
+    if nm not in ("wounded", "sleep", "ragdoll"): continue
+    a.name = "Native_" + nm
+    # корневая кость нативных анимаций повернута на 90 градусов относительно остальных — доворачиваем
+    PA.animation_data.action = a
+    if hasattr(PA.animation_data, "action_slot") and len(getattr(a, "slots", [])):
+        PA.animation_data.action_slot = a.slots[0]
+    root = [b for b in PA.data.bones if b.parent is None][0]
+    pb = PA.pose.bones[root.name]
+    rest = root.matrix_local
+    Rz = Matrix.Rotation(float(os.environ.get("NATIVE_YAW", "90")) * 3.14159265 / 180.0, 4, 'Z')
+    f0, f1 = int(a.frame_range[0]), int(a.frame_range[1])
+    mats = []
+    for f in range(f0, f1 + 1):
+        bpy.context.scene.frame_set(f)
+        mats.append(pb.matrix_basis.copy())
+    pb.rotation_mode = 'QUATERNION'
+    for i, f in enumerate(range(f0, f1 + 1)):
+        pb.matrix_basis = rest.inverted() @ Rz @ rest @ mats[i]
+        pb.keyframe_insert("location", frame=f)
+        pb.keyframe_insert("rotation_quaternion", frame=f)
+    PA.animation_data.action = None
+    tr = PA.animation_data.nla_tracks.new(); tr.name = a.name
+    st = tr.strips.new(a.name, int(a.frame_range[0]), a)
+    print("ANIM", a.name, a.frame_range[:])
 for name, f0, frames in all_res:
     act = bpy.data.actions.new(name)
     PA.animation_data.action = act

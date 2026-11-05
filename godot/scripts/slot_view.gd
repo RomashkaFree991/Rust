@@ -54,11 +54,11 @@ func _draw() -> void:
 	var f := get_theme_default_font()
 	var fs := int(max(13.0, 34.0 * k))
 	var text := ""
-	if d.type == "weapon":
+	if d.type == "weapon" and d.get("kind", "") in ["gun", "shotgun", "launcher"]:
 		text = str(item.get("ammo", 0))
 	elif item.get("amount", 1) > 1:
 		text = "x%d" % item.amount
-	if d.type == "weapon" or d.type == "melee":
+	if d.type == "weapon" and d.get("kind", "") in ["gun", "shotgun", "launcher", "bow", "melee"]:
 		# полоска состояния
 		var bw := 8.0 * k
 		draw_rect(Rect2(0, 0, bw, size.y), Color(83 / 255.0, 102 / 255.0, 51 / 255.0, 100 / 255.0))

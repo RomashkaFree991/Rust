@@ -2,20 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8n48oqj0xbpv"
-path="res://.godot/imported/revolver_colour.png-c931c4d0b23c5422f5bcf884640fa01d.ctex"
+uid="uid://beter34q2kkke"
+path.s3tc="res://.godot/imported/revolver_colour.png-c931c4d0b23c5422f5bcf884640fa01d.s3tc.ctex"
+path.etc2="res://.godot/imported/revolver_colour.png-c931c4d0b23c5422f5bcf884640fa01d.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/weapons/tex/revolver_colour.png"
-dest_files=["res://.godot/imported/revolver_colour.png-c931c4d0b23c5422f5bcf884640fa01d.ctex"]
+dest_files=["res://.godot/imported/revolver_colour.png-c931c4d0b23c5422f5bcf884640fa01d.s3tc.ctex", "res://.godot/imported/revolver_colour.png-c931c4d0b23c5422f5bcf884640fa01d.etc2.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -23,7 +25,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -36,5 +38,5 @@ process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
-process/size_limit=1024
-detect_3d/compress_to=1
+process/size_limit=512
+detect_3d/compress_to=0
