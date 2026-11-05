@@ -152,6 +152,8 @@ func equip(new_item: Dictionary) -> void:
 	for p in def.get("sounds", {}).get("shoot_sound", []):
 		shoot_streams.append(load(p))
 	shell_phase = ""
+	next_fire = 0.0
+	trigger_consumed = trigger
 	model = _load_scene(def.scene).instantiate()
 	pivot = INSPECT_PIVOT
 	inspect_node.position = pivot
@@ -193,6 +195,9 @@ func holster() -> void:
 	pump_pending = -1.0
 	shell_phase = ""
 	bow_state = ""
+	reload_pending = 0
+	autoreload_pending = -1.0
+	prev_trigger = false
 	if model:
 		model.queue_free()
 	model = null
@@ -571,7 +576,7 @@ func _bow_step(delta: float, inv: Inventory) -> void:
 			ammo_changed.emit()
 		var dep := _act("ACT_VM_DEPLOY")
 		_play_seq(dep, 0.05)
-		bow_draw_len = max(_seq_len(dep), 0.5)
+		bow_draw_len = clamp(_seq_len(dep), 0.5, 1.5)
 		bow_state = "drawing"
 		bow_t = 0.0
 		state = "fire"
