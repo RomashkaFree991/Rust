@@ -41,6 +41,9 @@ var snd_pain: Array = []
 var snd_death: Array = []
 var hit_flash := 0.0
 var wounded := false
+var burn_t := 0.0
+var burn_dps := 0.0
+var burn_fx: Node3D
 var wounded_t := 0.0
 
 func _ready() -> void:
@@ -129,6 +132,7 @@ func _physics_process(delta: float) -> void:
 		bodies[z].global_transform = Transform3D(t.basis.orthonormalized(), t.origin)
 	if hit_flash > 0.0:
 		hit_flash -= delta
+	_burn_step(delta)
 	if wounded:
 		wounded_t -= delta
 		if wounded_t <= 0.0:
@@ -190,9 +194,36 @@ func take_hit(zone: String, base_damage: float, pos: Vector3, dir: Vector3, mele
 	else:
 		ch.play_hit()
 	if not died and randf() < 0.35:
-		_play3d(snd_pain[randi() % snd_pain.size()], global_position + Vector3(0, 1.6, 0))
+		_play3d(snd_pain[randi() % snd_pain.size()], global_position + Vector3(0, 1.6, 0), -8.0)
 	_update_label()
 	return {"damage": dmg, "zone": zone, "killed": died, "headshot": head, "wounded": wounded}
+
+## Поджог (зажигательные патроны/стрелы/ракеты): урон со временем и огонь на теле
+func ignite(dps: float, time: float) -> void:
+	if dead:
+		return
+	burn_dps = max(burn_dps, dps)
+	burn_t = max(burn_t, time)
+	if burn_fx == null:
+		burn_fx = FX.fire(self, Vector3(0, 1.0, 0), 0.6)
+
+func _burn_step(delta: float) -> void:
+	if burn_t <= 0.0:
+		if burn_fx:
+			burn_fx.queue_free()
+			burn_fx = null
+		return
+	burn_t -= delta
+	if dead:
+		burn_t = 0.0
+		return
+	var dmg := burn_dps * delta
+	if wounded:
+		return
+	hp -= dmg
+	if hp <= 0.0:
+		_wound()
+	_update_label()
 
 func _spawn_damage_text(pos: Vector3, dmg: float, head: bool) -> void:
 	var l := Label3D.new()
@@ -215,7 +246,6 @@ func _wound() -> void:
 	wounded_t = 30.0
 	hp = 0.0
 	ch.wounded = true
-	_play3d(snd_pain[randi() % snd_pain.size()], global_position + Vector3(0, 1.0, 0), 3.0)
 
 ## Поднять раненого (кнопка «ПОДНЯТЬ» рядом с ним)
 func revive() -> void:
@@ -234,7 +264,7 @@ func _die(dir: Vector3) -> void:
 	dead = true
 	hp = 0.0
 	ch.dead = true
-	_play3d(snd_death[randi() % snd_death.size()], global_position + Vector3(0, 1.6, 0), 3.0)
+	burn_t = 0.0
 	for b in bodies.values():
 		b.collision_layer = 0
 	# анимация смерти, через 4 секунды встать

@@ -91,7 +91,12 @@ def parse_sweps():
             s["AmmoTypes"] = re.findall(r'Item\s*=\s*"([^"]+)"', am.group(1))
         rt = re.search(r"SWEP\.RecoilTable\s*=\s*\{(.*?)\n\}", src, re.S)
         if rt:
-            s["RecoilTable"] = [[float(a), float(b)] for a, b in re.findall(r"Angle\(\s*(-?[\d.*]+)[^,]*,\s*(-?[\d.]+)", rt.group(1)) if "*" not in a][:40]
+            def ev(x):
+                x = x.strip()
+                if not re.fullmatch(r"[-\d.*/ +()]+", x):
+                    return 0.0
+                return float(eval(x))
+            s["RecoilTable"] = [[ev(a), ev(b)] for a, b in re.findall(r"Angle\(\s*([^,]+),\s*([^,]+),", rt.group(1))][:40]
         auto = re.search(r"SWEP\.Primary\.Automatic\s*=\s*(true|false)", src)
         if auto:
             s["Automatic"] = auto.group(1) == "true"
@@ -165,7 +170,8 @@ def main():
                                  ("ShootSound", "shoot_sound"), ("SwingSound", "swing_sound"), ("HitSound", "hit_sound"),
                                  ("AttackRate", "attack_rate"), ("AttackDelay", "attack_delay"), ("Radius", "radius"), ("Delay", "fuse"),
                                  ("HP", "heal"), ("Healing", "healing"), ("UseDelay", "use_delay"), ("Automatic", "auto"),
-                                 ("ShellInsertTime", "shell_time"), ("RecoilTable", "recoil"), ("ReloadTime", "reload_time")]:
+                                 ("ShellInsertTime", "shell_time"), ("RecoilTable", "recoil"), ("ReloadTime", "reload_time"),
+                                 ("RecoilAmount", "recoil_amount"), ("RecoilLerpTime", "recoil_lerp"), ("BulletVelocity", "bullet_velocity"), ("Stick", "stick")]:
                 if k_src in sw:
                     d[k_dst] = sw[k_src]
             if sw.get("AmmoTypes"):
@@ -217,6 +223,45 @@ def main():
         out[iid] = d
         order.append(iid)
         models.add(d["viewmodel"]); models.add(d["worldmodel"])
+    # дополнительные виды патронов (иконки Rust есть в icons/ui/items), чтобы у оружия было по 2-4 типа
+    xa = {
+        "12_gauge_buckshot": ("12 Gauge Buckshot", "Картечь 12 калибра.", "ammo.shotgun.png", 64),
+        "12_gauge_slug": ("12 Gauge Slug", "Пуля 12 калибра: одна мощная пуля.", "ammo.shotgun.slug.png", 64),
+        "12_gauge_incendiary": ("12 Gauge Incendiary Shell", "Зажигательная дробь.", "ammo.shotgun.fire.png", 64),
+        "incendiary_rocket": ("Incendiary Rocket", "Зажигательная ракета.", "ammo.rocket.fire.png", 3),
+        "smoke_rocket": ("Smoke Rocket", "Дымовая ракета.", "ammo.rocket.smoke.png", 3),
+        "40mm_smoke_grenade": ("40mm Smoke Grenade", "Дымовая граната 40 мм.", "ammo.grenadelauncher.smoke.png", 6),
+        "hv_arrow": ("High Velocity Arrow", "Скоростная стрела: летит дальше, урон меньше.", "arrow.hv.png", 64),
+        "fire_arrow": ("Fire Arrow", "Горящая стрела.", "arrow.fire.png", 64),
+        "bone_arrow": ("Bone Arrow", "Костяная стрела.", "arrow.bone.png", 64),
+    }
+    for iid, (nm, ds, ic, st) in xa.items():
+        if iid in out:
+            continue
+        src = f"{R}/icons/ui/items/{ic}"
+        os.makedirs(ICON_DIR, exist_ok=True)
+        shutil.copy(src, f"{ICON_DIR}/{ic}")
+        out[iid] = {"name": nm, "desc": ds, "icon": "res://assets/icons/items/" + ic, "stack": st, "category": "Ammo",
+                    "recipe": [["metal_fragments", 10], ["gun_powder", 10]], "craftable": True, "craft_amount": 2 if st > 6 else 1,
+                    "craft_time": 0.0, "tier": 1, "material": "Metal", "type": "ammo"}
+        order.append(iid)
+    SHELLS = ["handmade_shell", "12_gauge_buckshot", "12_gauge_slug", "12_gauge_incendiary"]
+    ARROWS = ["arrow", "hv_arrow", "fire_arrow", "bone_arrow"]
+    over = {"pump_shotgun": SHELLS, "spas_12_shotgun": SHELLS, "double_barrel_shotgun": SHELLS, "waterpipe_shotgun": SHELLS, "eoka_pistol": SHELLS,
+            "rocket_launcher": ["rocket", "high_velocity_rocket", "incendiary_rocket", "smoke_rocket"],
+            "grenade_launcher": ["40mm_he_grenade", "40mm_shotgun_round", "40mm_smoke_grenade"],
+            "hunting_bow": ARROWS, "compound_bow": ARROWS, "crossbow": ARROWS,
+            "l96_rifle": ["556_rifle_ammo", "hv_556_rifle_ammo", "incendiary_556_rifle_ammo", "explosive_556_rifle_ammo"]}
+    for k, v in over.items():
+        if k in out:
+            out[k]["ammo_types"] = v
+    # сохранить пути к сконвертированным моделям (их прописывает convert_all_weapons.py)
+    if os.path.exists(OUT):
+        old = json.load(open(OUT, encoding="utf-8")).get("items", {})
+        for k, v in out.items():
+            for f in ("scene", "world", "vm_name"):
+                if f in old.get(k, {}):
+                    v[f] = old[k][f]
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     json.dump({"order": order, "items": out}, open(OUT, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     print("items", len(out), "weapons", sum(1 for v in out.values() if v["type"] == "weapon"))

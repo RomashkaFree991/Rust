@@ -55,6 +55,12 @@ var pump_pending := -1.0
 var pump_seq := ""
 var throw_pending := -1.0
 var use_pending := -1.0
+var redraw_pending := -1.0
+var autoreload_pending := -1.0
+var bow_state := ""               # "", drawing, drawn — натяжение лука
+var bow_t := 0.0
+var bow_draw_len := 0.6
+var prev_trigger := false
 var inspect_mod: InspectModifier
 var vm_skel: Skeleton3D
 
@@ -138,7 +144,9 @@ func equip(new_item: Dictionary) -> void:
 		return
 	item = new_item
 	id = item.id
-	def = Items.get_def(id)
+	def = Items.get_def(id).duplicate()
+	if def.has("ammo"):
+		def["ammo"] = item.get("ammo_type", def.ammo)   # выбранный тип патронов (HUD и перезарядка берут def.ammo)
 	anim_info = def.get("seqs", {})
 	shoot_streams.clear()
 	for p in def.get("sounds", {}).get("shoot_sound", []):
@@ -157,6 +165,7 @@ func equip(new_item: Dictionary) -> void:
 		vm_skel.add_child(inspect_mod)
 		inspect_mod.setup(vm_skel)
 	apply_arms(worn_arms)
+	Attachments.attach_viewmodel(self, model, item, vm_skel)   # обвесы (attachments.gd)
 	anim = model.find_child("AnimationPlayer", true, false)
 	muzzle = model.find_child("muzzle", true, false)
 	if flash_mesh.get_parent() == null:
@@ -180,8 +189,10 @@ func holster() -> void:
 	melee_pending = -1.0
 	throw_pending = -1.0
 	use_pending = -1.0
+	redraw_pending = -1.0
 	pump_pending = -1.0
 	shell_phase = ""
+	bow_state = ""
 	if model:
 		model.queue_free()
 	model = null
@@ -215,7 +226,9 @@ func is_melee() -> bool:
 
 ## Нет магазина: ближний бой, взрывчатка, медицина, лук (стрелы берутся из инвентаря)
 func no_clip() -> bool:
-	return kind() in ["melee", "throw", "medical", "tool", "bow"]
+	if kind() == "bow":
+		return not def.get("crossbow", false)
+	return kind() in ["melee", "throw", "medical", "tool"]
 
 ## Первая последовательность с этой активностью (ACT_VM_*), как SendWeaponAnim в GMod
 func _act(a: String, pick_random := false) -> String:
@@ -299,7 +312,9 @@ func toggle_aim() -> void:
 func reload(inv: Inventory) -> void:
 	if not has_weapon() or no_clip() or state in ["reload", "draw"]:
 		return
-	if item.ammo >= def.clip or inv.count(def.ammo) <= 0:
+	if int(item.get("ammo", 0)) >= int(def.clip) or inv.count(def.ammo) <= 0:
+		return
+	if reload_pending:
 		return
 	_cancel_inspect()
 	aiming = false
@@ -319,6 +334,29 @@ func reload(inv: Inventory) -> void:
 	state_len = _seq_len(rseq) if rseq != "" else max(_num_def("reload_time", 2.0), 1.0)
 	reload_started.emit()
 	reload_pending = 1
+
+## Сменить тип патронов: разрядить магазин в инвентарь и перезарядить новым (как выбор AmmoType в gRust)
+func set_ammo_type(ammo_id: String) -> void:
+	if not has_weapon() or not def.has("ammo_types"):
+		return
+	if not ammo_id in def.ammo_types:
+		return
+	var inv: Inventory = player.inv if player else reload_inv
+	if ammo_id == def.ammo:
+		if inv:
+			reload(inv)
+		return
+	if inv and int(item.get("ammo", 0)) > 0:
+		inv.give(def.ammo, int(item.ammo))
+	item["ammo"] = 0
+	item["ammo_type"] = ammo_id
+	def["ammo"] = ammo_id
+	reload_pending = 0
+	shell_phase = ""
+	state = "idle"
+	ammo_changed.emit()
+	if inv:
+		reload(inv)
 
 func _num_def(k: String, d: float) -> float:
 	var v = def.get(k)
@@ -398,6 +436,8 @@ func _cancel_inspect() -> void:
 func _try_fire(now: float) -> void:
 	if not has_weapon() or now < next_fire:
 		return
+	if kind() == "bow" and not def.get("crossbow", false):
+		return
 	if state in ["draw"]:
 		return
 	if state == "reload":
@@ -427,18 +467,16 @@ func _try_fire(now: float) -> void:
 			state_len = _seq_len(t)
 			return
 		"bow":
-			if player and player.inv.take(def.ammo, 1) <= 0:
-				_play_sound("res://assets/sounds/lr300-dryfire.mp3")
-				return
-	if kind() != "bow" and item.ammo <= 0:
+			if not def.get("crossbow", false):
+				return          # лук: натяжение и выстрел — в _bow_step (по отпусканию кнопки)
+	if item.get("ammo", 0) <= 0:
 		var dry := _act("ACT_VM_DRYFIRE")
 		if dry != "":
 			_play_seq(dry)
 		_play_sound("res://assets/sounds/lr300-dryfire.mp3")
 		next_fire = now + 0.35
 		return
-	if kind() != "bow":
-		item.ammo -= 1
+	item.ammo = int(item.ammo) - 1
 	var seq := _act("ACT_VM_PRIMARYATTACK_1") if aiming and _act("ACT_VM_PRIMARYATTACK_1") != "" else _act("ACT_VM_PRIMARYATTACK", true)
 	if item.get("ammo", 1) == 0 and _act("ACT_VM_PRIMARYATTACK_EMPTY") != "":
 		seq = _act("ACT_VM_PRIMARYATTACK_EMPTY_1") if aiming and _act("ACT_VM_PRIMARYATTACK_EMPTY_1") != "" else _act("ACT_VM_PRIMARYATTACK_EMPTY")
@@ -466,6 +504,8 @@ func _try_fire(now: float) -> void:
 	flash_mesh.rotation.z = randf() * TAU
 	ammo_changed.emit()
 	fired.emit(def)
+	if def.get("crossbow", false) and player:
+		autoreload_pending = max(_seq_len(seq), 0.3)
 
 func _snd(key: String) -> void:
 	var arr: Array = def.get("sounds", {}).get(key, [])
@@ -491,11 +531,15 @@ func _melee_swing() -> void:
 
 ## Граната / заряд: выдернуть чеку и бросить (ACT_VM_PULLPIN -> ACT_VM_THROW), предмет тратится
 func _throw() -> void:
-	var pull := _act("ACT_VM_PULLPIN")
-	_play_seq(pull, 0.05)
+	# rust_explosive: ACT_VM_THROW, бросок сразу, через 1 с снова ACT_VM_DRAW; NextAttack = 1.4 с
+	var th := _act_any(["ACT_VM_THROW", "ACT_VM_PULLPIN"])
+	_play_seq(th, 0.05)
+	cur_events = []
 	state = "fire"
-	throw_pending = _seq_len(pull) if pull != "" else 0.3
-	state_len = throw_pending + 0.6
+	throw_pending = clamp(_seq_len(th) * 0.35, 0.12, 0.35)
+	state_len = 1.4
+	next_fire = clock + 1.4
+	fired.emit(def)
 
 func _use_medical() -> void:
 	var u := _act_any(["ACT_VM_PRIMARYATTACK", "ACT_VM_THROW"])
@@ -503,6 +547,70 @@ func _use_medical() -> void:
 	state = "fire"
 	state_len = _seq_len(u) if u != "" else 1.5
 	use_pending = state_len * 0.7
+
+## Лук (rust_huntingbow.lua): держим кнопку — ACT_VM_DEPLOY (натяжение, стрела из инвентаря),
+## отпускаем после натяжения — ACT_VM_PRIMARYATTACK и выстрел; отпустили раньше — ACT_VM_UNDEPLOY.
+func _bow_step(delta: float, inv: Inventory) -> void:
+	if autoreload_pending >= 0.0:
+		autoreload_pending -= delta
+		if autoreload_pending < 0.0 and int(item.get("ammo", 0)) == 0:
+			reload(inv)
+	if kind() != "bow" or def.get("crossbow", false):
+		prev_trigger = trigger
+		return
+	var pressed := trigger and not prev_trigger
+	var released := prev_trigger and not trigger
+	prev_trigger = trigger
+	if bow_state == "" and trigger and state in ["idle", "fire"] and clock >= next_fire:
+		if int(item.get("ammo", 0)) <= 0:
+			if inv.take(def.ammo, 1) <= 0:
+				if pressed:
+					_play_sound("res://assets/sounds/bow-draw-cancel.mp3")
+				return
+			item["ammo"] = 1
+			ammo_changed.emit()
+		var dep := _act("ACT_VM_DEPLOY")
+		_play_seq(dep, 0.05)
+		bow_draw_len = max(_seq_len(dep), 0.5)
+		bow_state = "drawing"
+		bow_t = 0.0
+		state = "fire"
+		state_len = 1e9
+		var compound: bool = def.get("swep", "") == "tfa_compound_bow"
+		_play_sound("res://assets/sounds/compound-bow-initial-pullback.mp3" if compound else "res://assets/sounds/bow-draw.mp3")
+		return
+	if bow_state == "":
+		return
+	bow_t += delta
+	if bow_state == "drawing" and bow_t >= bow_draw_len:
+		bow_state = "drawn"
+		var hold := _act("ACT_VM_DEPLOYED_IDLE")
+		if hold != "":
+			_play_seq(hold, 0.1)
+			_play_sound("res://assets/sounds/compound-bow-charge-up-complete.mp3")
+	elif bow_state == "drawn" and anim and not anim.is_playing() and _act("ACT_VM_DEPLOYED_IDLE") != "":
+		_play_seq(_act("ACT_VM_DEPLOYED_IDLE"), 0.0)
+	if released or not trigger:
+		if bow_state == "drawn":
+			var sh := _act("ACT_VM_PRIMARYATTACK")
+			_play_seq(sh, 0.02)
+			item["ammo"] = 0
+			if shoot_streams.size() > 0:
+				_play_sound(shoot_streams[randi() % shoot_streams.size()])
+			state = "fire"
+			state_len = max(_seq_len(sh), 0.4)
+			state_time = 0.0
+			next_fire = clock + 60.0 / max(def.get("rpm", 60.0), 1.0)
+			ammo_changed.emit()
+			fired.emit(def)
+		else:
+			var un := _act("ACT_VM_UNDEPLOY")
+			_play_seq(un, 0.05)
+			_play_sound("res://assets/sounds/bow-draw-cancel.mp3")
+			state = "fire"
+			state_len = max(_seq_len(un), 0.2)
+			state_time = 0.0
+		bow_state = ""
 
 ## Расходуемый предмет (граната, бинт): минус один из стака, если кончился — убрать из рук
 func _consume_item() -> void:
@@ -523,10 +631,35 @@ func process_weapon(delta: float, inv: Inventory, moving: float, look_delta: Vec
 			if snds.size() > 0:
 				_play_sound(snds[randi() % snds.size()], audio)
 			ev_idx += 1
+		_shell_step(delta)
+		_bow_step(delta, inv)
+		if pump_pending >= 0.0:
+			pump_pending -= delta
+			if pump_pending < 0.0:
+				_play_seq(pump_seq, 0.05)
+		if throw_pending >= 0.0:
+			throw_pending -= delta
+			if throw_pending < 0.0:
+				if player:
+					player.throw_explosive(def)
+				_consume_item()
+				redraw_pending = 0.9
+		if redraw_pending >= 0.0:
+			redraw_pending -= delta
+			if redraw_pending < 0.0 and has_weapon():
+				_play_seq(_act("ACT_VM_DRAW"), 0.1)
+				state = "draw"
+				state_len = min(_seq_len(_act("ACT_VM_DRAW")), 0.8)
+		if use_pending >= 0.0:
+			use_pending -= delta
+			if use_pending < 0.0:
+				if player:
+					player.heal(def.get("heal", 10.0))
+				_consume_item()
 		if state == "reload" and reload_pending and state_time >= state_len * 0.82:
 			reload_pending = 0
-			var need: int = def.clip - item.ammo
-			item.ammo += inv.take(def.ammo, need)
+			var need: int = max(int(def.clip) - int(item.get("ammo", 0)), 0)
+			item.ammo = int(item.get("ammo", 0)) + inv.take(def.ammo, need)
 			ammo_changed.emit()
 			reloaded.emit()
 		if melee_pending >= 0.0:

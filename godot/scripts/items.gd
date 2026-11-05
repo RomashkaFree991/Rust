@@ -99,6 +99,7 @@ static func _setup_weapon(id: String, d: Dictionary, w: Dictionary) -> void:
 		d["bullets"] = int(_num(d, "bullets", 1))
 		if id in ["waterpipe_shotgun", "double_barrel_shotgun", "eoka_pistol", "pump_shotgun", "spas_12_shotgun"]:
 			d["bullets"] = max(d.bullets, 10)
+		d["crossbow"] = id == "crossbow"
 		if d.get("auto") == null or d.bullets > 1 or kind in ["bow", "launcher"] or id == "crossbow":
 			d["auto"] = d.get("auto", false) == true and d.bullets <= 1 and kind == "gun" and id != "crossbow"
 		d["spread"] = clamp(_num(d, "cone", 0.3) * 2.0, 0.3, 4.0)
@@ -128,6 +129,35 @@ static func _setup_weapon(id: String, d: Dictionary, w: Dictionary) -> void:
 		d["radius"] = _num(d, "radius", 4.0)
 	elif kind == "medical":
 		d["heal"] = _num(d, "heal", 10.0) + _num(d, "healing", 0.0)
+
+## Свойства патронов (gRust ProjectileType: Normal / Explosive x1.5 урона / Incendiary / HighVelocity x1.5 скорости)
+## + картечь, пули, ракеты, 40 мм и стрелы.
+const AMMO_FX := {
+	"hv_556_rifle_ammo": {"speed": 1.5, "dmg": 1.1, "tracer": Color(0.6, 0.85, 1.0)},
+	"hv_pistol_ammo": {"speed": 1.5, "dmg": 1.1, "tracer": Color(0.6, 0.85, 1.0)},
+	"incendiary_556_rifle_ammo": {"fire": true, "dmg": 0.9, "tracer": Color(1.0, 0.45, 0.1)},
+	"incendiary_pistol_bullet": {"fire": true, "dmg": 0.9, "tracer": Color(1.0, 0.45, 0.1)},
+	"explosive_556_rifle_ammo": {"explode": 0.8, "dmg": 1.5, "tracer": Color(1.0, 0.8, 0.3)},
+	"handmade_shell": {"pellets": 10, "dmg": 0.8, "spread": 1.3},
+	"12_gauge_buckshot": {"pellets": 12, "dmg": 1.0},
+	"12_gauge_slug": {"pellets": 1, "dmg": 1.0, "spread": 0.12},
+	"12_gauge_incendiary": {"pellets": 8, "dmg": 0.8, "fire": true, "tracer": Color(1.0, 0.45, 0.1)},
+	"rocket": {"proj": "rocket", "damage": 300.0, "speed": 28.0, "radius": 5.0},
+	"high_velocity_rocket": {"proj": "rocket", "damage": 100.0, "speed": 38.0, "radius": 3.0},
+	"incendiary_rocket": {"proj": "rocket", "damage": 150.0, "speed": 28.0, "radius": 4.0, "fire": true},
+	"smoke_rocket": {"proj": "rocket", "damage": 20.0, "speed": 28.0, "radius": 2.0, "smoke": true},
+	"40mm_he_grenade": {"proj": "grenade", "damage": 140.0, "speed": 28.0, "radius": 2.5},
+	"40mm_shotgun_round": {"pellets": 10, "dmg": 1.0},
+	"40mm_smoke_grenade": {"proj": "grenade", "damage": 0.0, "speed": 28.0, "radius": 1.0, "smoke": true},
+	"arrow": {"proj": "arrow", "speed": 50.0},
+	"hv_arrow": {"proj": "arrow", "speed": 75.0, "dmg": 0.8},
+	"fire_arrow": {"proj": "arrow", "speed": 45.0, "dmg": 0.9, "fire": true},
+	"bone_arrow": {"proj": "arrow", "speed": 48.0, "dmg": 0.9},
+	"nailgun_nails": {"dmg": 1.0},
+}
+
+static func ammo_fx(ammo_id: String) -> Dictionary:
+	return AMMO_FX.get(ammo_id, {})
 
 static func get_def(id: String) -> Dictionary:
 	return DB.get(id, {})

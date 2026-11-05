@@ -135,7 +135,12 @@ func _physics_process(delta: float) -> void:
 	rotate_y(deg_to_rad(-l.x))
 	pitch = clamp(pitch - l.y, -88.0, 88.0)
 
-	# отдача возвращается
+	# отдача по таблице (подъём ствола) и возврат визуального толчка
+	if viewmodel.has_weapon():
+		var rt = viewmodel.def.get("recoil", [])
+		_recoil_step(delta, float(viewmodel.def.get("rpm", 300.0)), rt.size() if rt is Array else 0)
+	else:
+		_clock += delta
 	recoil = recoil.lerp(Vector2.ZERO, clamp(delta * 9.0, 0.0, 1.0))
 	head.rotation_degrees.x = clamp(pitch + recoil.x, -89.0, 89.0)
 	head.rotation_degrees.y = recoil.y
@@ -265,24 +270,55 @@ func _on_fired(def: Dictionary) -> void:
 	body.play_shoot()
 	if third_person:
 		body.muzzle_flash()
-	# отдача
-	var k: Vector2 = def.kick
-	var ads_mul := 0.6 if viewmodel.aiming else 1.0
-	recoil.x += k.x * ads_mul
-	recoil.y += randf_range(-k.y, k.y) * ads_mul
-	pitch = clamp(pitch + k.x * 0.25 * ads_mul, -88.0, 88.0)
+	_apply_recoil(def)
+	var item: Dictionary = viewmodel.item
+	var ammo_id: String = item.get("ammo_type", def.get("ammo", ""))
+	var fx: Dictionary = Items.ammo_fx(ammo_id)
 	var b := cam.global_transform.basis
 	var from := cam.global_position
-	if k_ind == "launcher":
-		var proj := "rocket" if def.get("ammo", "") in ["rocket", "high_velocity_rocket"] else "grenade"
-		_spawn_projectile(from + (-b.z) * 0.6 + b.x * 0.15 - b.y * 0.1, -b.z, 40.0 if proj == "rocket" else 22.0,
-			0.0 if proj == "rocket" else 9.0, 300.0 if proj == "rocket" else 140.0, 4.0, 5.0)
+	var muzzle_pos := from + (-b.z) * 0.6 + b.x * 0.15 - b.y * 0.1
+	if fx.get("proj", "") in ["rocket", "grenade", "arrow"]:
+		var pr := Projectile.new()
+		pr.mode = fx.proj
+		pr.ammo_id = ammo_id
+		var spd: float = fx.get("speed", 30.0)
+		var dmg_mul: float = fx.get("dmg", 1.0)
+		var dir := -b.z
+		match fx.proj:
+			"rocket":
+				pr.grav = 1.5
+				pr.damage = fx.get("damage", 300.0)
+				pr.radius = fx.get("radius", 4.0)
+				pr.impact = true
+				_add_proj_mesh(pr, "rocket")
+			"grenade":
+				pr.grav = 9.8
+				pr.damage = fx.get("damage", def.damage)
+				pr.radius = fx.get("radius", 2.5)
+				pr.impact = true
+				_add_proj_mesh(pr, "grenade")
+			"arrow":
+				pr.grav = 9.8
+				pr.damage = def.damage * dmg_mul
+				if bool(def.get("crossbow", false)):
+					spd *= 1.4
+				_add_proj_mesh(pr, "arrow")
+				dir = (dir + Vector3.UP * 0.02).normalized()
+		pr.vel = dir * spd
+		pr.owner_player = self
+		pr.exclude = [get_rid()]
+		get_parent().add_child(pr)
+		pr.global_position = muzzle_pos if fx.proj != "arrow" else from + (-b.z) * 0.4
+		pr.look_at(pr.global_position + dir, Vector3.UP)
 		return
-	# лучи (у дробовика — несколько дробин, урон делится)
-	var n: int = def.get("bullets", 1)
-	var dmg: float = def.damage / max(n, 1) if n > 1 else def.damage
+	# лучи (у дробовика — несколько дробин, урон делится); тип патрона меняет урон/разброс/эффекты
+	var n: int = int(fx.get("pellets", def.get("bullets", 1)))
+	var total: float = def.damage * fx.get("dmg", 1.0)
+	var dmg: float = total / n if n > 1 else total
+	var spread_mul: float = fx.get("spread", 1.0)
+	var tcol: Color = fx.get("tracer", Color(1.0, 0.9, 0.6))
 	for i in n:
-		var spread_deg: float = def.spread * (0.25 if viewmodel.aiming and n == 1 else 1.0)
+		var spread_deg: float = def.spread * spread_mul * (0.25 if viewmodel.aiming and n == 1 else 1.0)
 		spread_deg += Vector2(velocity.x, velocity.z).length() * 0.25
 		var dir := -b.z
 		var a := randf() * TAU
@@ -292,90 +328,176 @@ func _on_fired(def: Dictionary) -> void:
 		q.exclude = [get_rid()]
 		q.collision_mask = 3
 		var hit := get_world_3d().direct_space_state.intersect_ray(q)
-		if not hit.is_empty():
-			_apply_hit(hit, dir, dmg, false)
+		var end: Vector3 = hit.position if not hit.is_empty() else from + dir * 120.0
+		if i == 0 or randf() < 0.3:
+			FX.tracer(get_parent(), muzzle_pos, end, tcol)
+		if hit.is_empty():
+			continue
+		_apply_hit(hit, dir, dmg, false)
+		_ammo_effects(fx, hit)
 
-# ---------- взрывчатка, ракеты, лечение ----------
+## Эффекты пули при попадании: зажигательная — огонь/поджог, разрывная — маленький взрыв
+func _ammo_effects(fx: Dictionary, hit: Dictionary) -> void:
+	var col: Object = hit.collider
+	if fx.get("fire", false):
+		if col is Node and (col as Node).has_meta("bot"):
+			(col as Node).get_meta("bot").ignite(6.0, 4.0)
+		else:
+			FX.ground_fire(get_parent(), hit.position, 0.25, 2.5)
+	if fx.has("explode"):
+		var r: float = fx.explode
+		FX.explosion(get_parent(), hit.position + hit.normal * 0.05, r, "res://assets/sounds/explosive-ammo.wav", -4.0)
 
-var explode_sounds: Array = []
+# ---------- отдача по таблице gRust (rust_gun/cl_init.lua: Recoil / UpdateRecoil) ----------
 
+var recoil_index := 0
+var recoil_last := -100.0
+var recoil_ang := Vector2.ZERO     # (тангаж вверх, поворот вправо) градусы в секунду на время lerp
+var recoil_left := 0.0
+var recoil_decr_next := 0.0
+var _clock := 0.0
+
+func _apply_recoil(def: Dictionary) -> void:
+	var table: Array = def.get("recoil", []) if def.get("recoil") != null else []
+	var ads_mul := 0.6 if viewmodel.aiming else 1.0
+	if table.is_empty():
+		var k: Vector2 = def.get("kick", Vector2(1, 0.4))
+		recoil.x += k.x * ads_mul
+		recoil.y += randf_range(-k.y, k.y) * ads_mul
+		pitch = clamp(pitch + k.x * 0.25 * ads_mul, -88.0, 88.0)
+		return
+	recoil_index = (recoil_index % table.size()) + 1
+	recoil_last = _clock
+	var amt: float = float(def.get("recoil_amount", 1.0)) if def.get("recoil_amount") != null else 1.0
+	var lt: float = float(def.get("recoil_lerp", 0.1)) if def.get("recoil_lerp") != null else 0.1
+	var e: Array = table[recoil_index - 1]
+	# Source: Angle(pitch, yaw) — отрицательный pitch = вверх, положительный yaw = влево.
+	# Суммарный сдвиг за выстрел = RecoilTable[i] * RecoilAmount * RecoilLerpTime (распределён по lerpTime)
+	recoil_ang = Vector2(-float(e[0]), -float(e[1])) * amt * ads_mul
+	recoil_left = lt
+	recoil_lerp_t = lt
+	# визуальный толчок камеры
+	recoil.x += 0.6 * ads_mul
+
+var recoil_lerp_t := 0.1
+
+func _recoil_step(delta: float, rpm: float, table_size: int) -> void:
+	_clock += delta
+	if recoil_left > 0.0:
+		var dt: float = min(delta, recoil_left)
+		recoil_left -= dt
+		pitch = clamp(pitch + recoil_ang.x * dt, -88.0, 88.0)
+		rotate_y(deg_to_rad(-recoil_ang.y * dt))
+	# индекс таблицы откатывается, когда не стреляем (как NextRecoilDecrement)
+	if recoil_index > 0 and _clock > recoil_last + (60.0 / max(rpm, 1.0)) * 2.0 and _clock > recoil_decr_next:
+		recoil_index = max(recoil_index - 1, 0)
+		recoil_decr_next = _clock + 0.1
+
+func _add_proj_mesh(pr: Node3D, kind: String) -> void:
+	var mi := MeshInstance3D.new()
+	var m := StandardMaterial3D.new()
+	match kind:
+		"rocket":
+			var c := CylinderMesh.new(); c.top_radius = 0.035; c.bottom_radius = 0.045; c.height = 0.5
+			m.albedo_color = Color(0.35, 0.33, 0.28)
+			c.material = m
+			mi.mesh = c
+		"grenade":
+			var sp := CylinderMesh.new(); sp.top_radius = 0.02; sp.bottom_radius = 0.02; sp.height = 0.09
+			m.albedo_color = Color(0.5, 0.45, 0.25)
+			sp.material = m
+			mi.mesh = sp
+		"arrow":
+			var c2 := CylinderMesh.new(); c2.top_radius = 0.004; c2.bottom_radius = 0.004; c2.height = 0.7
+			m.albedo_color = Color(0.55, 0.4, 0.25)
+			c2.material = m
+			mi.mesh = c2
+			var tip := MeshInstance3D.new()
+			var cone := CylinderMesh.new(); cone.top_radius = 0.0; cone.bottom_radius = 0.012; cone.height = 0.05
+			var tm := StandardMaterial3D.new(); tm.albedo_color = Color(0.3, 0.3, 0.32)
+			cone.material = tm
+			tip.mesh = cone
+			tip.position = Vector3(0, 0.37, 0)
+			mi.add_child(tip)
+	mi.rotation_degrees.x = -90.0     # ось цилиндра (Y) -> вперёд (-Z)
+	mi.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	pr.add_child(mi)
+
+# ---------- взрывчатка, ракеты, стрелы, лечение ----------
+
+## Бросок взрывчатки (rust_explosive Throw: скорость 1000 ед/с ≈ 19 м/с, fuse = SWEP.Delay, stick = SWEP.Stick)
 func throw_explosive(def: Dictionary) -> void:
 	var b := cam.global_transform.basis
-	var from := cam.global_position + (-b.z) * 0.5 - b.y * 0.1
-	var dir := ((-b.z) + Vector3.UP * 0.25).normalized()
-	_spawn_projectile(from, dir, 13.0, 9.8, def.get("damage", 80.0), def.get("radius", 4.0), def.get("fuse", 3.0), true, def.get("world", ""))
-
-func _spawn_projectile(from: Vector3, dir: Vector3, speed: float, grav: float, damage: float, radius: float, fuse: float, bounce := false, model_path := "") -> void:
-	var p := Node3D.new()
-	get_parent().add_child(p)
-	if model_path != "" and ResourceLoader.exists(model_path):
-		var m: Node3D = load(model_path).instantiate()
-		p.add_child(m)
-	else:
-		var mi := MeshInstance3D.new()
-		var cyl := CylinderMesh.new(); cyl.top_radius = 0.03; cyl.bottom_radius = 0.04; cyl.height = 0.35
-		mi.mesh = cyl
-		mi.rotation_degrees.x = 90
-		p.add_child(mi)
-		var trail := OmniLight3D.new(); trail.light_color = Color(1, 0.6, 0.2); trail.light_energy = 1.5; trail.omni_range = 3.0
-		p.add_child(trail)
+	var from := cam.global_position + (-b.z) * 0.4 - b.y * 0.05
+	var dir := ((-b.z) + Vector3.UP * 0.12).normalized()
 	var pr := Projectile.new()
-	pr.vel = dir * speed
-	pr.grav = grav
-	pr.fuse = fuse
-	pr.bounce = bounce
-	pr.damage = damage
-	pr.radius = radius
+	pr.mode = "bomb"
+	pr.vel = dir * 19.0 + velocity * 0.5
+	pr.grav = 9.8
+	pr.fuse = float(def.get("fuse", 3.0))
+	pr.damage = float(def.get("damage", 80.0))
+	pr.radius = float(def.get("radius", 4.0))
+	pr.stick = def.get("stick", false) == true
 	pr.owner_player = self
 	pr.exclude = [get_rid()]
-	p.replace_by(pr)
+	var sid: String = def.get("swep", "")
+	match sid:
+		"rust_c4":
+			pr.beep_sound = "res://assets/sounds/c4-beep-loop.wav"
+			pr.explode_sound = "res://assets/sounds/c4-%d.wav" % (1 + randi() % 4)
+		"rust_satchel":
+			pr.explode_sound = "res://assets/sounds/satchel-charge-%d.wav" % (1 + randi() % 3)
+		"rust_f1grenade":
+			pr.explode_sound = "res://assets/sounds/f1-grenade-%d.wav" % (1 + randi() % 2)
+		_:
+			pr.explode_sound = "res://assets/sounds/beancan-grenade-%d.wav" % (1 + randi() % 2)
+	if sid in ["rust_beancan", "rust_satchel"]:
+		FX.sound(get_parent(), from, "res://assets/sounds/beancan-grenade-fuse.wav", -6.0, 6.0, pr)
+	var wp: String = def.get("world", "")
+	if wp != "" and ResourceLoader.exists(wp):
+		var m: Node3D = load(wp).instantiate()
+		pr.add_child(m)
+	else:
+		_add_proj_mesh(pr, "grenade")
+	get_parent().add_child(pr)
 	pr.global_position = from
-	p.free()
+	FX.sound(get_parent(), from, "res://assets/sounds/throw-item-small.mp3", -4.0, 6.0)
 
-func _explode(pos: Vector3, damage: float, radius: float) -> void:
-	if explode_sounds.is_empty():
-		for f in ["explosion.wav", "explosion.mp3"]:
-			if ResourceLoader.exists("res://assets/sounds/" + f):
-				explode_sounds.append(load("res://assets/sounds/" + f))
-	var sp := AudioStreamPlayer3D.new()
-	sp.stream = explode_sounds[randi() % explode_sounds.size()] if explode_sounds.size() > 0 else null
-	sp.unit_size = 20.0
-	sp.volume_db = 4.0
-	get_parent().add_child(sp)
-	sp.global_position = pos
-	sp.play()
-	sp.finished.connect(sp.queue_free)
-	var l := OmniLight3D.new(); l.light_color = Color(1, 0.6, 0.25); l.light_energy = 8.0; l.omni_range = radius * 2.5
-	get_parent().add_child(l); l.global_position = pos + Vector3.UP * 0.5
-	var tw := l.create_tween(); tw.tween_property(l, "light_energy", 0.0, 0.45); tw.tween_callback(l.queue_free)
-	# огненный шар (текстура вспышки) + разлёт искр
-	var fb := MeshInstance3D.new()
-	var q := QuadMesh.new(); q.size = Vector2(radius * 0.9, radius * 0.9)
-	var fm := StandardMaterial3D.new()
-	fm.albedo_texture = load("res://assets/textures/muzzleflash.png")
-	fm.blend_mode = BaseMaterial3D.BLEND_MODE_ADD
-	fm.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
-	fm.billboard_mode = BaseMaterial3D.BILLBOARD_ENABLED
-	fm.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-	q.material = fm
-	fb.mesh = q
-	fb.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
-	get_parent().add_child(fb); fb.global_position = pos + Vector3.UP * 0.6
-	var ft := fb.create_tween()
-	ft.tween_property(fb, "scale", Vector3.ONE * 1.8, 0.35)
-	ft.parallel().tween_property(fm, "albedo_color", Color(0, 0, 0, 0), 0.35)
-	ft.tween_callback(fb.queue_free)
-	var fx := CPUParticles3D.new()
-	fx.one_shot = true; fx.amount = 30; fx.lifetime = 0.6; fx.explosiveness = 1.0
-	fx.direction = Vector3.UP; fx.spread = 180.0; fx.initial_velocity_min = 3.0; fx.initial_velocity_max = 9.0
-	fx.gravity = Vector3(0, -9, 0); fx.scale_amount_min = 0.5; fx.scale_amount_max = 1.0
-	fx.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
-	var bm := BoxMesh.new(); bm.size = Vector3(0.04, 0.04, 0.04)
-	var mat := StandardMaterial3D.new(); mat.albedo_color = Color(1.0, 0.7, 0.3); mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
-	bm.material = mat; fx.mesh = bm
-	get_parent().add_child(fx); fx.global_position = pos; fx.emitting = true
-	fx.finished.connect(fx.queue_free)
-	# урон ботам и толчок ящикам
+## Попадание стрелы
+func projectile_hit(pr: Projectile, hit: Dictionary) -> void:
+	var dir: Vector3 = pr.vel.normalized()
+	_apply_hit(hit, dir, pr.damage, false)
+	var fx := Items.ammo_fx(pr.ammo_id)
+	_ammo_effects(fx, hit)
+
+## Взрыв снаряда
+func projectile_explode(pr: Projectile) -> void:
+	var pos := pr.global_position
+	var fx := Items.ammo_fx(pr.ammo_id)
+	if fx.get("smoke", false):
+		FX.smoke(get_parent(), pos, 12.0, 3.0)
+		FX.sound(get_parent(), pos, "res://assets/sounds/explosive-ammo.wav", -6.0, 10.0)
+		_explode(pos, pr.damage, pr.radius, "", false)
+		return
+	var snd := pr.explode_sound
+	if snd == "":
+		if pr.mode == "rocket":
+			snd = ("res://assets/sounds/rocket-hv-%d.wav" % (1 + randi() % 1)) if pr.ammo_id == "high_velocity_rocket" else "res://assets/sounds/rocket-%d.wav" % (1 + randi() % 2)
+		else:
+			snd = "res://assets/sounds/beancan-grenade-%d.wav" % (1 + randi() % 2)
+	_explode(pos, pr.damage, pr.radius, snd)
+	if fx.get("fire", false):
+		FX.ground_fire(get_parent(), pos, 0.8, 8.0)
+		for n in get_parent().get_children():
+			if n is Bot and not n.dead and (n.global_position - pos).length() < pr.radius * 1.2:
+				n.ignite(8.0, 6.0)
+
+## Урон по площади (gRust.BlastDamage) + эффекты
+func _explode(pos: Vector3, damage: float, radius: float, sound_path := "", effects := true) -> void:
+	if effects:
+		FX.explosion(get_parent(), pos, radius, sound_path, 4.0)
+	if damage <= 0.0:
+		return
 	for n in get_parent().get_children():
 		if n is Bot and not n.dead:
 			var dist: float = (n.global_position + Vector3.UP - pos).length()
@@ -387,8 +509,12 @@ func _explode(pos: Vector3, damage: float, radius: float) -> void:
 			var dv: Vector3 = n.global_position - pos
 			if dv.length() < radius * 1.5:
 				n.apply_impulse(dv.normalized() * (radius * 1.5 - dv.length()) * 12.0 + Vector3.UP * 20.0)
-	if (global_position - pos).length() < radius and hud:
-		hud.health = max(1.0, hud.health - damage * 0.2 * (1.0 - (global_position - pos).length() / radius))
+	var pd := (global_position + Vector3.UP - pos).length()
+	if pd < radius and hud:
+		hud.health = max(1.0, hud.health - damage * 0.2 * (1.0 - pd / radius))
+	# тряска камеры (util.ScreenShake)
+	var shake: float = clamp(1.0 - (global_position - pos).length() / (radius * 4.0), 0.0, 1.0)
+	recoil += Vector2(randf_range(-1, 1), randf_range(-1, 1)) * 4.0 * shake
 
 func heal(amount: float) -> void:
 	if hud:

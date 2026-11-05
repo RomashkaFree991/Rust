@@ -1,0 +1,2792 @@
+{
+ "structures": {
+  "foundation": {
+   "sockets": [
+    {
+     "pos": [
+      64.5,
+      0.0,
+      0.0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [
+      "raisedfoundation",
+      "foundation"
+     ],
+     "female": [
+      "wall",
+      "foundation"
+     ],
+     "check_free": false
+    },
+    {
+     "pos": [
+      -64.5,
+      0.0,
+      0.0
+     ],
+     "ang": [
+      0.0,
+      180.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [
+      "raisedfoundation",
+      "foundation"
+     ],
+     "female": [
+      "wall",
+      "foundation"
+     ],
+     "check_free": false
+    },
+    {
+     "pos": [
+      0.0,
+      64.5,
+      0.0
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [
+      "raisedfoundation",
+      "foundation"
+     ],
+     "female": [
+      "wall",
+      "foundation"
+     ],
+     "check_free": false
+    },
+    {
+     "pos": [
+      0.0,
+      -64.5,
+      0.0
+     ],
+     "ang": [
+      0.0,
+      -90.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [
+      "raisedfoundation",
+      "foundation"
+     ],
+     "female": [
+      "wall",
+      "foundation"
+     ],
+     "check_free": false
+    },
+    {
+     "pos": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [],
+     "female": [
+      "stairs"
+     ],
+     "check_free": false
+    },
+    {
+     "pos": [
+      64.5,
+      0.0,
+      -64.5
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [],
+     "female": [
+      "raisedfoundation"
+     ],
+     "check_free": false
+    },
+    {
+     "pos": [
+      -64.5,
+      0.0,
+      -64.5
+     ],
+     "ang": [
+      0.0,
+      180.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [],
+     "female": [
+      "raisedfoundation"
+     ],
+     "check_free": false
+    },
+    {
+     "pos": [
+      0.0,
+      64.5,
+      -64.5
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [],
+     "female": [
+      "raisedfoundation"
+     ],
+     "check_free": false
+    },
+    {
+     "pos": [
+      0.0,
+      -64.5,
+      -64.5
+     ],
+     "ang": [
+      0.0,
+      -90.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [],
+     "female": [
+      "raisedfoundation"
+     ],
+     "check_free": false
+    },
+    {
+     "pos": [
+      64.5,
+      0.0,
+      64.5
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [],
+     "female": [
+      "raisedfoundation"
+     ],
+     "check_free": false
+    },
+    {
+     "pos": [
+      -64.5,
+      0.0,
+      64.5
+     ],
+     "ang": [
+      0.0,
+      180.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [],
+     "female": [
+      "raisedfoundation"
+     ],
+     "check_free": false
+    },
+    {
+     "pos": [
+      0.0,
+      64.5,
+      64.5
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [],
+     "female": [
+      "raisedfoundation"
+     ],
+     "check_free": false
+    },
+    {
+     "pos": [
+      0.0,
+      -64.5,
+      64.5
+     ],
+     "ang": [
+      0.0,
+      -90.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [],
+     "female": [
+      "raisedfoundation"
+     ],
+     "check_free": false
+    }
+   ],
+   "cost": 50.0,
+   "rotate": 0,
+   "initial_rotation": 0,
+   "face_player": false,
+   "require_socket": false,
+   "center": [
+    0,
+    0,
+    0
+   ],
+   "sound": ""
+  },
+  "foundation_trig": {
+   "sockets": [
+    {
+     "pos": [
+      0.0,
+      32.25,
+      0.0
+     ],
+     "ang": [
+      0.0,
+      60.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [
+      "foundation"
+     ],
+     "female": [
+      "wall",
+      "foundation"
+     ],
+     "check_free": false
+    },
+    {
+     "pos": [
+      0.0,
+      -32.25,
+      0.0
+     ],
+     "ang": [
+      0.0,
+      -60.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [
+      "foundation"
+     ],
+     "female": [
+      "wall",
+      "foundation"
+     ],
+     "check_free": false
+    },
+    {
+     "pos": [
+      -55.858638544096,
+      0.0,
+      0.0
+     ],
+     "ang": [
+      0.0,
+      180.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [
+      "foundation"
+     ],
+     "female": [
+      "wall",
+      "foundation"
+     ],
+     "check_free": false
+    },
+    {
+     "pos": [
+      0.0,
+      32.25,
+      -64.5
+     ],
+     "ang": [
+      0.0,
+      60.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [
+      "foundation"
+     ],
+     "female": [
+      "foundation"
+     ],
+     "check_free": false
+    },
+    {
+     "pos": [
+      0.0,
+      -32.25,
+      -64.5
+     ],
+     "ang": [
+      0.0,
+      -60.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [
+      "foundation"
+     ],
+     "female": [
+      "foundation"
+     ],
+     "check_free": false
+    },
+    {
+     "pos": [
+      -55.858638544096,
+      0.0,
+      -64.5
+     ],
+     "ang": [
+      0.0,
+      180.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [
+      "foundation"
+     ],
+     "female": [
+      "foundation"
+     ],
+     "check_free": false
+    },
+    {
+     "pos": [
+      0.0,
+      32.25,
+      64.5
+     ],
+     "ang": [
+      0.0,
+      60.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [
+      "foundation"
+     ],
+     "female": [
+      "foundation"
+     ],
+     "check_free": false
+    },
+    {
+     "pos": [
+      0.0,
+      -32.25,
+      64.5
+     ],
+     "ang": [
+      0.0,
+      -60.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [
+      "foundation"
+     ],
+     "female": [
+      "foundation"
+     ],
+     "check_free": false
+    },
+    {
+     "pos": [
+      -55.858638544096,
+      0.0,
+      64.5
+     ],
+     "ang": [
+      0.0,
+      180.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [
+      "foundation"
+     ],
+     "female": [
+      "foundation"
+     ],
+     "check_free": false
+    }
+   ],
+   "cost": 25.0,
+   "rotate": 0,
+   "initial_rotation": 0,
+   "face_player": false,
+   "require_socket": false,
+   "center": [
+    0,
+    0,
+    0
+   ],
+   "sound": ""
+  },
+  "wall": {
+   "sockets": [
+    {
+     "pos": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      0.0
+     ],
+     "ang_offset": [
+      0.0,
+      90.0,
+      0.0
+     ],
+     "male": [
+      "wall"
+     ],
+     "female": [],
+     "check_free": false
+    },
+    {
+     "pos": [
+      0.0,
+      0.0,
+      129.0
+     ],
+     "ang": [
+      0.0,
+      270.0,
+      0.0
+     ],
+     "ang_offset": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "male": [],
+     "female": [
+      "floor",
+      "wall"
+     ],
+     "check_free": false
+    },
+    {
+     "pos": [
+      0.0,
+      0.1,
+      129.0
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      0.0
+     ],
+     "ang_offset": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "male": [],
+     "female": [
+      "floor",
+      "wall"
+     ],
+     "check_free": false
+    }
+   ],
+   "cost": 50.0,
+   "rotate": 180.0,
+   "initial_rotation": 0,
+   "face_player": true,
+   "require_socket": true,
+   "center": [
+    0.0,
+    0.0,
+    125.0
+   ],
+   "sound": ""
+  },
+  "wind": {
+   "sockets": [
+    {
+     "pos": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      0.0
+     ],
+     "ang_offset": [
+      0.0,
+      90.0,
+      0.0
+     ],
+     "male": [
+      "wall"
+     ],
+     "female": [],
+     "check_free": false
+    },
+    {
+     "pos": [
+      0.0,
+      0.0,
+      129.0
+     ],
+     "ang": [
+      0.0,
+      270.0,
+      0.0
+     ],
+     "ang_offset": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "male": [],
+     "female": [
+      "floor",
+      "wall"
+     ],
+     "check_free": false
+    },
+    {
+     "pos": [
+      0.0,
+      0.0,
+      47.5
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang_offset": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "male": [],
+     "female": [
+      "window"
+     ],
+     "check_free": true
+    },
+    {
+     "pos": [
+      0.0,
+      0.1,
+      129.0
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      0.0
+     ],
+     "ang_offset": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "male": [],
+     "female": [
+      "floor",
+      "wall"
+     ],
+     "check_free": false
+    }
+   ],
+   "cost": 35.0,
+   "rotate": 180.0,
+   "initial_rotation": 0,
+   "face_player": true,
+   "require_socket": true,
+   "center": [
+    0.0,
+    0.0,
+    125.0
+   ],
+   "sound": ""
+  },
+  "dframe": {
+   "sockets": [
+    {
+     "pos": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      0.0
+     ],
+     "ang_offset": [
+      0.0,
+      90.0,
+      0.0
+     ],
+     "male": [
+      "wall"
+     ],
+     "female": [],
+     "check_free": false
+    },
+    {
+     "pos": [
+      0.0,
+      0.1,
+      129.0
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      0.0
+     ],
+     "ang_offset": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "male": [],
+     "female": [
+      "floor",
+      "wall"
+     ],
+     "check_free": false
+    },
+    {
+     "pos": [
+      0.0,
+      0.0,
+      129.0
+     ],
+     "ang": [
+      0.0,
+      270.0,
+      0.0
+     ],
+     "ang_offset": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "male": [],
+     "female": [
+      "floor",
+      "wall"
+     ],
+     "check_free": false
+    },
+    {
+     "pos": [
+      25.1,
+      0.0,
+      50.0
+     ],
+     "ang": [
+      0.0,
+      180.0,
+      0.0
+     ],
+     "ang_offset": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "male": [],
+     "female": [
+      "door"
+     ],
+     "check_free": true
+    },
+    {
+     "pos": [
+      -25.1,
+      0.0,
+      50.0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang_offset": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "male": [],
+     "female": [
+      "door"
+     ],
+     "check_free": true
+    },
+    {
+     "pos": [
+      25.1,
+      0.0,
+      50.0
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      0.0
+     ],
+     "ang_offset": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "male": [],
+     "female": [
+      "vending_machine"
+     ],
+     "check_free": true
+    },
+    {
+     "pos": [
+      -25.1,
+      0.0,
+      50.0
+     ],
+     "ang": [
+      0.0,
+      -90.0,
+      0.0
+     ],
+     "ang_offset": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "male": [],
+     "female": [
+      "vending_machine"
+     ],
+     "check_free": true
+    }
+   ],
+   "cost": 35.0,
+   "rotate": 180.0,
+   "initial_rotation": 0,
+   "face_player": true,
+   "require_socket": true,
+   "center": [
+    0.0,
+    0.0,
+    125.0
+   ],
+   "sound": ""
+  },
+  "gframe": {
+   "sockets": [
+    {
+     "pos": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      0.0
+     ],
+     "ang_offset": [
+      0.0,
+      90.0,
+      0.0
+     ],
+     "male": [
+      "wall"
+     ],
+     "female": [],
+     "check_free": false
+    },
+    {
+     "pos": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang_offset": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "male": [],
+     "female": [
+      "doubledoor"
+     ],
+     "check_free": true
+    },
+    {
+     "pos": [
+      0.001,
+      0.0,
+      0.0
+     ],
+     "ang": [
+      0.0,
+      180.0,
+      0.0
+     ],
+     "ang_offset": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "male": [],
+     "female": [
+      "doubledoor"
+     ],
+     "check_free": true
+    },
+    {
+     "pos": [
+      0.0,
+      0.0,
+      129.0
+     ],
+     "ang": [
+      0.0,
+      270.0,
+      0.0
+     ],
+     "ang_offset": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "male": [],
+     "female": [
+      "floor",
+      "wall"
+     ],
+     "check_free": false
+    }
+   ],
+   "cost": 50.0,
+   "rotate": 180.0,
+   "initial_rotation": 0,
+   "face_player": true,
+   "require_socket": true,
+   "center": [
+    0.0,
+    0.0,
+    125.0
+   ],
+   "sound": ""
+  },
+  "hwall": {
+   "sockets": [
+    {
+     "pos": [
+      0.0,
+      0.0,
+      -2.1
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      0.0
+     ],
+     "ang_offset": [
+      0.0,
+      90.0,
+      0.0
+     ],
+     "male": [
+      "wall"
+     ],
+     "female": [],
+     "check_free": false
+    },
+    {
+     "pos": [
+      0.0,
+      0.0,
+      66.6
+     ],
+     "ang": [
+      0.0,
+      270.0,
+      0.0
+     ],
+     "ang_offset": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "male": [],
+     "female": [
+      "floor",
+      "wall"
+     ],
+     "check_free": false
+    }
+   ],
+   "cost": 25.0,
+   "rotate": 180.0,
+   "initial_rotation": 0,
+   "face_player": true,
+   "require_socket": true,
+   "center": [
+    59.5,
+    0.0,
+    32.5
+   ],
+   "sound": ""
+  },
+  "twall": {
+   "sockets": [
+    {
+     "pos": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      0.0
+     ],
+     "ang_offset": [
+      0.0,
+      90.0,
+      0.0
+     ],
+     "male": [
+      "wall"
+     ],
+     "female": [],
+     "check_free": false
+    },
+    {
+     "pos": [
+      0.0,
+      0.0,
+      43.0
+     ],
+     "ang": [
+      0.0,
+      -270.0,
+      0.0
+     ],
+     "ang_offset": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "male": [],
+     "female": [
+      "floor",
+      "wall"
+     ],
+     "check_free": false
+    }
+   ],
+   "cost": 25.0,
+   "rotate": 180.0,
+   "initial_rotation": 0,
+   "face_player": true,
+   "require_socket": true,
+   "center": [
+    59.5,
+    0.0,
+    43.0
+   ],
+   "sound": ""
+  },
+  "floor": {
+   "sockets": [
+    {
+     "pos": [
+      64.5,
+      0.0,
+      0.0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [
+      "floor"
+     ],
+     "female": [
+      "wall",
+      "floor"
+     ],
+     "check_free": false
+    },
+    {
+     "pos": [
+      -64.5,
+      0.0,
+      0.0
+     ],
+     "ang": [
+      0.0,
+      180.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [
+      "floor"
+     ],
+     "female": [
+      "wall",
+      "floor"
+     ],
+     "check_free": false
+    },
+    {
+     "pos": [
+      0.0,
+      64.5,
+      0.0
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [
+      "floor"
+     ],
+     "female": [
+      "wall",
+      "floor"
+     ],
+     "check_free": false
+    },
+    {
+     "pos": [
+      0.0,
+      -64.5,
+      0.0
+     ],
+     "ang": [
+      0.0,
+      -90.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [
+      "floor"
+     ],
+     "female": [
+      "wall",
+      "floor"
+     ],
+     "check_free": false
+    },
+    {
+     "pos": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [],
+     "female": [
+      "stairs"
+     ],
+     "check_free": false
+    }
+   ],
+   "cost": 25.0,
+   "rotate": 0,
+   "initial_rotation": 0,
+   "face_player": false,
+   "require_socket": true,
+   "center": [
+    0.0,
+    60.0,
+    0.0
+   ],
+   "sound": ""
+  },
+  "fframe": {
+   "sockets": [
+    {
+     "pos": [
+      64.5,
+      0.0,
+      0.0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [
+      "floor"
+     ],
+     "female": [
+      "wall",
+      "floor"
+     ],
+     "check_free": false
+    },
+    {
+     "pos": [
+      -64.5,
+      0.0,
+      0.0
+     ],
+     "ang": [
+      0.0,
+      180.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [
+      "floor"
+     ],
+     "female": [
+      "wall",
+      "floor"
+     ],
+     "check_free": false
+    },
+    {
+     "pos": [
+      0.0,
+      64.5,
+      0.0
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [
+      "floor"
+     ],
+     "female": [
+      "wall",
+      "floor"
+     ],
+     "check_free": false
+    },
+    {
+     "pos": [
+      0.0,
+      -64.5,
+      0.0
+     ],
+     "ang": [
+      0.0,
+      -90.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [
+      "floor"
+     ],
+     "female": [
+      "wall",
+      "floor"
+     ],
+     "check_free": false
+    }
+   ],
+   "cost": 25.0,
+   "rotate": 0,
+   "initial_rotation": 0,
+   "face_player": false,
+   "require_socket": true,
+   "center": [
+    0.0,
+    60.0,
+    0.0
+   ],
+   "sound": ""
+  },
+  "floor_trig": {
+   "sockets": [
+    {
+     "pos": [
+      0.0,
+      32.25,
+      0.0
+     ],
+     "ang": [
+      0.0,
+      60.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [],
+     "female": [
+      "wall",
+      "floor"
+     ],
+     "check_free": false
+    },
+    {
+     "pos": [
+      0.0,
+      -32.25,
+      0.0
+     ],
+     "ang": [
+      0.0,
+      -60.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [],
+     "female": [
+      "wall",
+      "floor"
+     ],
+     "check_free": false
+    },
+    {
+     "pos": [
+      -55.858638544096,
+      0.0,
+      0.0
+     ],
+     "ang": [
+      0.0,
+      180.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [
+      "floor"
+     ],
+     "female": [
+      "wall",
+      "floor"
+     ],
+     "check_free": false
+    }
+   ],
+   "cost": 12.5,
+   "rotate": 0,
+   "initial_rotation": 0,
+   "face_player": false,
+   "require_socket": true,
+   "center": [
+    0,
+    0,
+    0
+   ],
+   "sound": ""
+  },
+  "steps": {
+   "sockets": [
+    {
+     "pos": [
+      64.5,
+      0.0,
+      -64.5
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang_offset": [
+      0.0,
+      -90.0,
+      0.0
+     ],
+     "male": [
+      "foundation"
+     ],
+     "female": [],
+     "check_free": false
+    }
+   ],
+   "cost": 25.0,
+   "rotate": 0,
+   "initial_rotation": 0,
+   "face_player": false,
+   "require_socket": true,
+   "center": [
+    -45.0,
+    27.5,
+    57.5
+   ],
+   "sound": ""
+  },
+  "lst": {
+   "sockets": [
+    {
+     "pos": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [
+      "stairs"
+     ],
+     "female": [],
+     "check_free": false
+    }
+   ],
+   "cost": 50.0,
+   "rotate": 90.0,
+   "initial_rotation": 0,
+   "face_player": false,
+   "require_socket": true,
+   "center": [
+    0.0,
+    0.0,
+    64.5
+   ],
+   "sound": ""
+  },
+  "ust": {
+   "sockets": [
+    {
+     "pos": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [
+      "stairs"
+     ],
+     "female": [],
+     "check_free": false
+    }
+   ],
+   "cost": 50.0,
+   "rotate": 90.0,
+   "initial_rotation": 0,
+   "face_player": false,
+   "require_socket": true,
+   "center": [
+    0.0,
+    0.0,
+    64.5
+   ],
+   "sound": ""
+  }
+ },
+ "blocks": [
+  {
+   "piece": "floor_trig",
+   "name": "Floor Triangle"
+  },
+  {
+   "piece": "fframe",
+   "name": "Floor Frame"
+  },
+  {
+   "piece": "wall",
+   "name": "Wall"
+  },
+  {
+   "piece": "dframe",
+   "name": "Doorway"
+  },
+  {
+   "piece": "wind",
+   "name": "Window"
+  },
+  {
+   "piece": "gframe",
+   "name": "Wall Frame"
+  },
+  {
+   "piece": "hwall",
+   "name": "Half Wall"
+  },
+  {
+   "piece": "twall",
+   "name": "Low Wall"
+  },
+  {
+   "piece": "ust",
+   "name": "U Shaped Stairs"
+  },
+  {
+   "piece": "lst",
+   "name": "Stairs L Shape"
+  },
+  {
+   "piece": "foundation",
+   "name": "Foundation"
+  },
+  {
+   "piece": "foundation_trig",
+   "name": "Triangle Foundation"
+  },
+  {
+   "piece": "steps",
+   "name": "Steps"
+  },
+  {
+   "piece": "floor",
+   "name": "Floor"
+  }
+ ],
+ "upgrades": [
+  {
+   "name": "Wood",
+   "prefix": "wood",
+   "icon": "level_wood",
+   "health": 250
+  },
+  {
+   "name": "Stone",
+   "prefix": "stone",
+   "icon": "level_stone",
+   "health": 500
+  },
+  {
+   "name": "Sheet Metal",
+   "prefix": "metal",
+   "icon": "level_metal",
+   "health": 1000
+  },
+  {
+   "name": "Armored",
+   "prefix": "hq",
+   "icon": "level_top",
+   "health": 2000
+  }
+ ],
+ "deployables": {
+  "tool_cupboard": {
+   "sockets": [
+    {
+     "pos": [
+      15.0,
+      -6.0,
+      48.5
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [],
+     "female": [
+      "lock"
+     ],
+     "check_free": false
+    }
+   ],
+   "cost": 0,
+   "rotate": 90.0,
+   "initial_rotation": 180.0,
+   "face_player": false,
+   "require_socket": false,
+   "center": [
+    0,
+    0,
+    0
+   ],
+   "sound": "deploy/tool_cupboard_deploy.wav",
+   "entity": "rust_toolcupboard",
+   "base": "rust_container",
+   "model": "tool_cupboard",
+   "slots": 0
+  },
+  "wooden_door": {
+   "sockets": [
+    {
+     "pos": [
+      0.0,
+      0.0,
+      -44.0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [
+      "door"
+     ],
+     "female": [],
+     "check_free": false
+    },
+    {
+     "pos": [
+      45.0,
+      1.2,
+      37.5
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [],
+     "female": [
+      "lock"
+     ],
+     "check_free": true
+    }
+   ],
+   "cost": 0,
+   "rotate": 0.0,
+   "initial_rotation": 0.0,
+   "face_player": false,
+   "require_socket": true,
+   "center": [
+    0.0,
+    0.0,
+    46.0
+   ],
+   "sound": "deploy/wood_door_deploy.wav",
+   "entity": "rust_woodendoor",
+   "base": "rust_door",
+   "model": "wooden_door",
+   "slots": 0
+  },
+  "sheet_metal_door": {
+   "sockets": [
+    {
+     "pos": [
+      0.0,
+      0.0,
+      -44.0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [
+      "door"
+     ],
+     "female": [],
+     "check_free": false
+    },
+    {
+     "pos": [
+      45.0,
+      1.2,
+      37.5
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [],
+     "female": [
+      "lock"
+     ],
+     "check_free": true
+    }
+   ],
+   "cost": 0,
+   "rotate": 0.0,
+   "initial_rotation": 0.0,
+   "face_player": false,
+   "require_socket": true,
+   "center": [
+    0.0,
+    0.0,
+    46.0
+   ],
+   "sound": "deploy/metal_door_deploy.wav",
+   "entity": "rust_metaldoor",
+   "base": "rust_door",
+   "model": "metal_door",
+   "slots": 0
+  },
+  "armored_door": {
+   "sockets": [
+    {
+     "pos": [
+      0.0,
+      0.0,
+      -44.0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [
+      "door"
+     ],
+     "female": [],
+     "check_free": false
+    },
+    {
+     "pos": [
+      45.0,
+      1.2,
+      37.5
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [],
+     "female": [
+      "lock"
+     ],
+     "check_free": true
+    }
+   ],
+   "cost": 0,
+   "rotate": 0.0,
+   "initial_rotation": 0.0,
+   "face_player": false,
+   "require_socket": true,
+   "center": [
+    0.0,
+    0.0,
+    46.0
+   ],
+   "sound": "deploy/metal_door_deploy.wav",
+   "entity": "rust_armoreddoor",
+   "base": "rust_door",
+   "model": "armored_door",
+   "slots": 0
+  },
+  "furnace": {
+   "sockets": [],
+   "cost": 0,
+   "rotate": 90.0,
+   "initial_rotation": 180.0,
+   "face_player": false,
+   "require_socket": false,
+   "center": [
+    0,
+    0,
+    0
+   ],
+   "sound": "farming/furnace_deploy.wav",
+   "entity": "rust_furnace",
+   "base": "rust_container",
+   "model": "furnace",
+   "slots": 0
+  },
+  "key_lock": {
+   "sockets": [
+    {
+     "pos": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [
+      "lock"
+     ],
+     "female": [],
+     "check_free": false
+    }
+   ],
+   "cost": 0,
+   "rotate": 0.0,
+   "initial_rotation": 0.0,
+   "face_player": false,
+   "require_socket": true,
+   "center": [
+    0.0,
+    0.0,
+    46.0
+   ],
+   "sound": "doors/keypad_deploy.wav",
+   "entity": "rust_keylock",
+   "base": "rust_base",
+   "model": "key_lock",
+   "slots": 0
+  },
+  "code_lock": {
+   "sockets": [
+    {
+     "pos": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [
+      "lock"
+     ],
+     "female": [],
+     "check_free": false
+    }
+   ],
+   "cost": 0,
+   "rotate": 0.0,
+   "initial_rotation": 0.0,
+   "face_player": false,
+   "require_socket": true,
+   "center": [
+    0.0,
+    0.0,
+    46.0
+   ],
+   "sound": "doors/keypad_deploy.wav",
+   "entity": "rust_codelock",
+   "base": "rust_base",
+   "model": "keypad",
+   "slots": 0
+  },
+  "small_oil_refinery": {
+   "sockets": [],
+   "cost": 0,
+   "rotate": 90.0,
+   "initial_rotation": 0,
+   "face_player": false,
+   "require_socket": false,
+   "center": [
+    0,
+    0,
+    0
+   ],
+   "sound": "farming/refinery_deploy.wav",
+   "entity": "rust_smalloilrefinery",
+   "base": "rust_furnace",
+   "model": "refinery",
+   "slots": 0
+  },
+  "large_wood_box": {
+   "sockets": [
+    {
+     "pos": [
+      19.0,
+      0.0,
+      25.0
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [],
+     "female": [
+      "lock"
+     ],
+     "check_free": false
+    }
+   ],
+   "cost": 0,
+   "rotate": 90.0,
+   "initial_rotation": 180.0,
+   "face_player": false,
+   "require_socket": false,
+   "center": [
+    0,
+    0,
+    0
+   ],
+   "sound": "deploy/small_wooden_box_deploy.wav",
+   "entity": "rust_largewoodbox",
+   "base": "rust_container",
+   "model": "large_wooden_box",
+   "slots": 0
+  },
+  "wood_storage_box": {
+   "sockets": [
+    {
+     "pos": [
+      12.0,
+      0.0,
+      14.0
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [],
+     "female": [
+      "lock"
+     ],
+     "check_free": false
+    }
+   ],
+   "cost": 0,
+   "rotate": 90.0,
+   "initial_rotation": 180.0,
+   "face_player": false,
+   "require_socket": false,
+   "center": [
+    0,
+    0,
+    0
+   ],
+   "sound": "deploy/small_wooden_box_deploy.wav",
+   "entity": "rust_woodstoragebox",
+   "base": "rust_container",
+   "model": "wooden_box",
+   "slots": 0
+  },
+  "wood_double_door": {
+   "sockets": [
+    {
+     "pos": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [
+      "doubledoor"
+     ],
+     "female": [],
+     "check_free": true
+    }
+   ],
+   "cost": 0,
+   "rotate": 180.0,
+   "initial_rotation": 180.0,
+   "face_player": false,
+   "require_socket": true,
+   "center": [
+    0.0,
+    0.0,
+    46.0
+   ],
+   "sound": "deploy/wood_door_deploy.wav",
+   "entity": "rust_wooddoubledoor",
+   "base": "rust_doubledoor",
+   "model": "wood_double_door",
+   "slots": 0
+  },
+  "sheet_metal_double_door": {
+   "sockets": [
+    {
+     "pos": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [
+      "doubledoor"
+     ],
+     "female": [],
+     "check_free": false
+    }
+   ],
+   "cost": 0,
+   "rotate": 180.0,
+   "initial_rotation": 180.0,
+   "face_player": false,
+   "require_socket": true,
+   "center": [
+    0.0,
+    0.0,
+    46.0
+   ],
+   "sound": "deploy/metal_door_deploy.wav",
+   "entity": "rust_metaldoubledoor",
+   "base": "rust_doubledoor",
+   "model": "metal_double_door",
+   "slots": 0
+  },
+  "armored_double_door": {
+   "sockets": [
+    {
+     "pos": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [
+      "doubledoor"
+     ],
+     "female": [],
+     "check_free": true
+    }
+   ],
+   "cost": 0,
+   "rotate": 180.0,
+   "initial_rotation": 180.0,
+   "face_player": false,
+   "require_socket": true,
+   "center": [
+    0.0,
+    0.0,
+    46.0
+   ],
+   "sound": "deploy/metal_door_deploy.wav",
+   "entity": "rust_armoreddoubledoor",
+   "base": "rust_doubledoor",
+   "model": "armored_double_door",
+   "slots": 0
+  },
+  "stone_barricade": {
+   "sockets": [],
+   "cost": 0,
+   "rotate": 90.0,
+   "initial_rotation": 0,
+   "face_player": false,
+   "require_socket": false,
+   "center": [
+    0,
+    0,
+    0
+   ],
+   "sound": "",
+   "entity": "rust_stonebarricade",
+   "base": "rust_base",
+   "model": "stone_barricade",
+   "slots": 0
+  },
+  "wooden_barricade_cover": {
+   "sockets": [],
+   "cost": 0,
+   "rotate": 90.0,
+   "initial_rotation": 180.0,
+   "face_player": false,
+   "require_socket": false,
+   "center": [
+    0,
+    0,
+    0
+   ],
+   "sound": "",
+   "entity": "rust_woodenbarricade",
+   "base": "rust_base",
+   "model": "wooden_barricade",
+   "slots": 0
+  },
+  "repair_bench": {
+   "sockets": [],
+   "cost": 0,
+   "rotate": 90.0,
+   "initial_rotation": 180.0,
+   "face_player": false,
+   "require_socket": false,
+   "center": [
+    0,
+    0,
+    0
+   ],
+   "sound": "farming/repair_bench_deploy.wav",
+   "entity": "rust_repairbench",
+   "base": "rust_container",
+   "model": "repair_bench",
+   "slots": 0
+  },
+  "research_table": {
+   "sockets": [],
+   "cost": 0,
+   "rotate": 90.0,
+   "initial_rotation": 180.0,
+   "face_player": false,
+   "require_socket": false,
+   "center": [
+    0,
+    0,
+    0
+   ],
+   "sound": "farming/repair_bench_deploy.wav",
+   "entity": "rust_researchtable",
+   "base": "rust_container",
+   "model": "research_table",
+   "slots": 0
+  },
+  "sleeping_bag": {
+   "sockets": [],
+   "cost": 0,
+   "rotate": 90.0,
+   "initial_rotation": 180.0,
+   "face_player": false,
+   "require_socket": false,
+   "center": [
+    0,
+    0,
+    0
+   ],
+   "sound": "",
+   "entity": "rust_sleepingbag",
+   "base": "rust_base",
+   "model": "sleeping_bag",
+   "slots": 0
+  },
+  "bed": {
+   "sockets": [],
+   "cost": 0,
+   "rotate": 90.0,
+   "initial_rotation": -90.0,
+   "face_player": false,
+   "require_socket": false,
+   "center": [
+    0,
+    0,
+    0
+   ],
+   "sound": "",
+   "entity": "rust_bed",
+   "base": "rust_sleepingbag",
+   "model": "bed",
+   "slots": 0
+  },
+  "wooden_window_bars": {
+   "sockets": [
+    {
+     "pos": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [
+      "window"
+     ],
+     "female": [],
+     "check_free": true
+    }
+   ],
+   "cost": 0,
+   "rotate": 180.0,
+   "initial_rotation": 0,
+   "face_player": false,
+   "require_socket": true,
+   "center": [
+    0,
+    0,
+    0
+   ],
+   "sound": "deploy/wood_bars_deploy.wav",
+   "entity": "rust_woodenwindowbars",
+   "base": "rust_base",
+   "model": "woodenbars",
+   "slots": 0
+  },
+  "strengthened_glass_window": {
+   "sockets": [
+    {
+     "pos": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [
+      "window"
+     ],
+     "female": [],
+     "check_free": true
+    }
+   ],
+   "cost": 0,
+   "rotate": 180.0,
+   "initial_rotation": 0,
+   "face_player": false,
+   "require_socket": true,
+   "center": [
+    0,
+    0,
+    0
+   ],
+   "sound": "deploy/metal_bars_deploy.wav",
+   "entity": "rust_strengthenedwindow",
+   "base": "rust_base",
+   "model": "reinforcedwindow",
+   "slots": 0
+  },
+  "reinforced_glass_window": {
+   "sockets": [
+    {
+     "pos": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [
+      "window"
+     ],
+     "female": [],
+     "check_free": true
+    }
+   ],
+   "cost": 0,
+   "rotate": 180.0,
+   "initial_rotation": 0,
+   "face_player": false,
+   "require_socket": true,
+   "center": [
+    0,
+    0,
+    0
+   ],
+   "sound": "deploy/reinforced_window_deploy.wav",
+   "entity": "rust_reinforcedwindow",
+   "base": "rust_base",
+   "model": "hqbars",
+   "slots": 0
+  },
+  "workbench_level_1": {
+   "sockets": [],
+   "cost": 0,
+   "rotate": 90.0,
+   "initial_rotation": 180.0,
+   "face_player": false,
+   "require_socket": false,
+   "center": [
+    0,
+    0,
+    0
+   ],
+   "sound": "deploy/metal_bars_deploy.wav",
+   "entity": "rust_tier1",
+   "base": "rust_workbench",
+   "model": "workbench_tier1",
+   "slots": 0
+  },
+  "workbench_level_2": {
+   "sockets": [],
+   "cost": 0,
+   "rotate": 90.0,
+   "initial_rotation": 180.0,
+   "face_player": false,
+   "require_socket": false,
+   "center": [
+    0,
+    0,
+    0
+   ],
+   "sound": "deploy/metal_bars_deploy.wav",
+   "entity": "rust_tier2",
+   "base": "rust_workbench",
+   "model": "workbench_tier2",
+   "slots": 0
+  },
+  "workbench_level_3": {
+   "sockets": [],
+   "cost": 0,
+   "rotate": 90.0,
+   "initial_rotation": 180.0,
+   "face_player": false,
+   "require_socket": false,
+   "center": [
+    0,
+    0,
+    0
+   ],
+   "sound": "deploy/metal_bars_deploy.wav",
+   "entity": "rust_tier3",
+   "base": "rust_workbench",
+   "model": "workbench_tier3",
+   "slots": 0
+  },
+  "chair": {
+   "sockets": [],
+   "cost": 0,
+   "rotate": 90.0,
+   "initial_rotation": 180.0,
+   "face_player": false,
+   "require_socket": false,
+   "center": [
+    0,
+    0,
+    0
+   ],
+   "sound": "farming/furnace_deploy.wav",
+   "entity": "rust_chair",
+   "base": "rust_base",
+   "model": "chair",
+   "slots": 0
+  },
+  "vending_machine": {
+   "sockets": [
+    {
+     "pos": [
+      0.0,
+      -25.0,
+      -42.0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [
+      "vending_machine"
+     ],
+     "female": [],
+     "check_free": false
+    }
+   ],
+   "cost": 0,
+   "rotate": 90.0,
+   "initial_rotation": 0,
+   "face_player": false,
+   "require_socket": false,
+   "center": [
+    0,
+    0,
+    0
+   ],
+   "sound": "farming/repair_bench_deploy.wav",
+   "entity": "rust_vendingmachine",
+   "base": "rust_container",
+   "model": "vending_machine",
+   "slots": 30
+  },
+  "auto_turret": {
+   "sockets": [],
+   "cost": 0,
+   "rotate": 90.0,
+   "initial_rotation": 180.0,
+   "face_player": false,
+   "require_socket": false,
+   "center": [
+    0,
+    0,
+    0
+   ],
+   "sound": "deploy/tool_cupboard_deploy.wav",
+   "entity": "rust_turret",
+   "base": "rust_container",
+   "model": "turret_guide",
+   "slots": 0
+  },
+  "metal_horizontal_embrasure": {
+   "sockets": [
+    {
+     "pos": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [
+      "window"
+     ],
+     "female": [],
+     "check_free": true
+    }
+   ],
+   "cost": 0,
+   "rotate": 180.0,
+   "initial_rotation": 0,
+   "face_player": false,
+   "require_socket": true,
+   "center": [
+    0,
+    0,
+    0
+   ],
+   "sound": "deploy/reinforced_window_deploy.wav",
+   "entity": "rust_embrasureh",
+   "base": "rust_base",
+   "model": "horizontal_embrasure",
+   "slots": 0
+  },
+  "metal_vertical_embrasure": {
+   "sockets": [
+    {
+     "pos": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [
+      "window"
+     ],
+     "female": [],
+     "check_free": true
+    }
+   ],
+   "cost": 0,
+   "rotate": 180.0,
+   "initial_rotation": 0,
+   "face_player": false,
+   "require_socket": true,
+   "center": [
+    0,
+    0,
+    0
+   ],
+   "sound": "deploy/reinforced_window_deploy.wav",
+   "entity": "rust_embrasurev",
+   "base": "rust_base",
+   "model": "vertical_embrasure",
+   "slots": 0
+  },
+  "metal_shop_front": {
+   "sockets": [
+    {
+     "pos": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [
+      "doubledoor"
+     ],
+     "female": [],
+     "check_free": true
+    }
+   ],
+   "cost": 0,
+   "rotate": 180.0,
+   "initial_rotation": 180.0,
+   "face_player": false,
+   "require_socket": true,
+   "center": [
+    0.0,
+    0.0,
+    46.0
+   ],
+   "sound": "deploy/wood_door_deploy.wav",
+   "entity": "rust_metalshopfront",
+   "base": "rust_container",
+   "model": "shopfront",
+   "slots": 12
+  },
+  "homemade_landmine": {
+   "sockets": [],
+   "cost": 0,
+   "rotate": 90.0,
+   "initial_rotation": 0.0,
+   "face_player": false,
+   "require_socket": false,
+   "center": [
+    0,
+    0,
+    0
+   ],
+   "sound": "",
+   "entity": "rust_landmine",
+   "base": "rust_base",
+   "model": "landmine",
+   "slots": 0
+  },
+  "garage_door": {
+   "sockets": [
+    {
+     "pos": [
+      0.0,
+      5.0,
+      0.0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [
+      "doubledoor"
+     ],
+     "female": [],
+     "check_free": false
+    },
+    {
+     "pos": [
+      45.0,
+      1.2,
+      37.5
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "ang_offset": [
+      0,
+      0,
+      0
+     ],
+     "male": [],
+     "female": [
+      "lock"
+     ],
+     "check_free": true
+    }
+   ],
+   "cost": 0,
+   "rotate": 0,
+   "initial_rotation": 0,
+   "face_player": false,
+   "require_socket": true,
+   "center": [
+    0,
+    0,
+    0
+   ],
+   "sound": "",
+   "entity": "rust_garagedoor",
+   "base": "rust_base",
+   "model": "garage_door",
+   "slots": 0
+  }
+ }
+}

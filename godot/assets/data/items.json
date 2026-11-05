@@ -162,7 +162,16 @@
   "mace",
   "machete",
   "pitchfork",
-  "bone_knife"
+  "bone_knife",
+  "12_gauge_buckshot",
+  "12_gauge_slug",
+  "12_gauge_incendiary",
+  "incendiary_rocket",
+  "smoke_rocket",
+  "40mm_smoke_grenade",
+  "hv_arrow",
+  "fire_arrow",
+  "bone_arrow"
  ],
  "items": {
   "pistol_bullet": {
@@ -2013,9 +2022,10 @@
    "range": 1.0,
    "radius": 4.0,
    "fuse": 10.0,
+   "stick": true,
    "scene": "res://assets/weapons/c4.gltf",
-   "vm_name": "c4",
-   "world": "res://assets/weapons/w_c4.gltf"
+   "world": "res://assets/weapons/w_c4.gltf",
+   "vm_name": "c4"
   },
   "satchel_charge": {
    "name": "Satchel Charge",
@@ -2052,9 +2062,10 @@
    "range": 1.0,
    "radius": 4.0,
    "fuse": 8.0,
+   "stick": true,
    "scene": "res://assets/weapons/satchel.gltf",
-   "vm_name": "satchel",
-   "world": "res://assets/weapons/w_satchel.gltf"
+   "world": "res://assets/weapons/w_satchel.gltf",
+   "vm_name": "satchel"
   },
   "beancan_grenade": {
    "name": "Beancan Grenade",
@@ -2087,9 +2098,10 @@
    "range": 1.0,
    "radius": 4.5,
    "fuse": 3.75,
+   "stick": false,
    "scene": "res://assets/weapons/beancan.gltf",
-   "vm_name": "beancan",
-   "world": "res://assets/weapons/w_beancan.gltf"
+   "world": "res://assets/weapons/w_beancan.gltf",
+   "vm_name": "beancan"
   },
   "f1_grenade": {
    "name": "F1 Grenade",
@@ -2122,9 +2134,10 @@
    "range": 1.0,
    "radius": 6.0,
    "fuse": 2.5,
+   "stick": false,
    "scene": "res://assets/weapons/f1.gltf",
-   "vm_name": "f1",
-   "world": "res://assets/weapons/w_f1.gltf"
+   "world": "res://assets/weapons/w_f1.gltf",
+   "vm_name": "f1"
   },
   "bandage": {
    "name": "Bandage",
@@ -2155,8 +2168,8 @@
    "use_delay": 3.75,
    "auto": false,
    "scene": "res://assets/weapons/bandages.gltf",
-   "vm_name": "bandages",
-   "world": "res://assets/weapons/w_bandages.gltf"
+   "world": "res://assets/weapons/w_bandages.gltf",
+   "vm_name": "bandages"
   },
   "medical_syringe": {
    "name": "Medical Syringe",
@@ -2195,8 +2208,8 @@
    "use_delay": 2.75,
    "auto": false,
    "scene": "res://assets/weapons/syringe_v2.gltf",
-   "vm_name": "syringe_v2",
-   "world": "res://assets/weapons/w_syringe_v2.gltf"
+   "world": "res://assets/weapons/w_syringe_v2.gltf",
+   "vm_name": "syringe_v2"
   },
   "large_medkit": {
    "name": "Large Medkit",
@@ -2279,8 +2292,8 @@
    "vm_fov": 50.0,
    "range": 1.0,
    "scene": "res://assets/weapons/smokegrenade.gltf",
-   "vm_name": "smokegrenade",
-   "world": "res://assets/weapons/w_smokegrenade.gltf"
+   "world": "res://assets/weapons/w_smokegrenade.gltf",
+   "vm_name": "smokegrenade"
   },
   "wood": {
    "name": "Wood",
@@ -2735,8 +2748,8 @@
    "attack_delay": 0.485,
    "auto": true,
    "scene": "res://assets/weapons/rock2.gltf",
-   "vm_name": "rock2",
-   "world": "res://assets/weapons/w_rock.gltf"
+   "world": "res://assets/weapons/w_rock.gltf",
+   "vm_name": "rock2"
   },
   "stone_hatchet": {
    "name": "Stone Hatchet",
@@ -2773,8 +2786,8 @@
    "attack_delay": 0.025,
    "auto": true,
    "scene": "res://assets/weapons/stone_hatchet.gltf",
-   "vm_name": "stone_hatchet",
-   "world": "res://assets/weapons/w_stone_hatchet.gltf"
+   "world": "res://assets/weapons/w_stone_hatchet.gltf",
+   "vm_name": "stone_hatchet"
   },
   "stone_pickaxe": {
    "name": "Stone Pickaxe",
@@ -2811,8 +2824,8 @@
    "attack_delay": 0.025,
    "auto": true,
    "scene": "res://assets/weapons/stone_pickaxe.gltf",
-   "vm_name": "stone_pickaxe",
-   "world": "res://assets/weapons/w_stone_pickaxe.gltf"
+   "world": "res://assets/weapons/w_stone_pickaxe.gltf",
+   "vm_name": "stone_pickaxe"
   },
   "building_plan": {
    "name": "Building Plan",
@@ -2867,8 +2880,8 @@
    "range": 1.5,
    "attack_delay": 0.35,
    "scene": "res://assets/weapons/hammer.gltf",
-   "vm_name": "hammer",
-   "world": "res://assets/weapons/w_hammer.gltf"
+   "world": "res://assets/weapons/w_hammer.gltf",
+   "vm_name": "hammer"
   },
   "hatchet": {
    "name": "Hatchet",
@@ -2905,8 +2918,8 @@
    "attack_delay": 0.025,
    "auto": true,
    "scene": "res://assets/weapons/iron_hatchet.gltf",
-   "vm_name": "iron_hatchet",
-   "world": "res://assets/weapons/w_iron_hatchet.gltf"
+   "world": "res://assets/weapons/w_iron_hatchet.gltf",
+   "vm_name": "iron_hatchet"
   },
   "pickaxe": {
    "name": "Pickaxe",
@@ -2943,8 +2956,8 @@
    "attack_delay": 0.39,
    "auto": true,
    "scene": "res://assets/weapons/iron_pickaxe.gltf",
-   "vm_name": "iron_pickaxe",
-   "world": "res://assets/weapons/w_iron_pickaxe.gltf"
+   "world": "res://assets/weapons/w_iron_pickaxe.gltf",
+   "vm_name": "iron_pickaxe"
   },
   "wire_tool": {
    "name": "Wire Tool",
@@ -2991,8 +3004,8 @@
    "vm_fov": 50.0,
    "range": 1.0,
    "scene": "res://assets/weapons/keycard.gltf",
-   "vm_name": "keycard",
-   "world": "res://assets/weapons/access_card.gltf"
+   "world": "res://assets/weapons/access_card.gltf",
+   "vm_name": "keycard"
   },
   "blue_keycard": {
    "name": "Blue Keycard",
@@ -3014,8 +3027,8 @@
    "vm_fov": 50.0,
    "range": 1.0,
    "scene": "res://assets/weapons/keycard.gltf",
-   "vm_name": "keycard",
-   "world": "res://assets/weapons/access_card.gltf"
+   "world": "res://assets/weapons/access_card.gltf",
+   "vm_name": "keycard"
   },
   "red_keycard": {
    "name": "Red Keycard",
@@ -3037,8 +3050,8 @@
    "vm_fov": 50.0,
    "range": 1.0,
    "scene": "res://assets/weapons/keycard.gltf",
-   "vm_name": "keycard",
-   "world": "res://assets/weapons/access_card.gltf"
+   "world": "res://assets/weapons/access_card.gltf",
+   "vm_name": "keycard"
   },
   "salvaged_cleaver": {
    "name": "Salvaged Cleaver",
@@ -3075,8 +3088,8 @@
    "attack_delay": 0.5,
    "auto": true,
    "scene": "res://assets/weapons/salvaged_cleaver.gltf",
-   "vm_name": "salvaged_cleaver",
-   "world": "res://assets/weapons/w_salvaged_cleaver.gltf"
+   "world": "res://assets/weapons/w_salvaged_cleaver.gltf",
+   "vm_name": "salvaged_cleaver"
   },
   "salvaged_sword": {
    "name": "Salvaged Sword",
@@ -3113,8 +3126,8 @@
    "attack_delay": 0.2,
    "auto": true,
    "scene": "res://assets/weapons/salvaged_sword.gltf",
-   "vm_name": "salvaged_sword",
-   "world": "res://assets/weapons/w_salvaged_sword.gltf"
+   "world": "res://assets/weapons/w_salvaged_sword.gltf",
+   "vm_name": "salvaged_sword"
   },
   "bone_club": {
    "name": "Bone Club",
@@ -3147,8 +3160,8 @@
    "attack_delay": 0.25,
    "auto": true,
    "scene": "res://assets/weapons/boneclub.gltf",
-   "vm_name": "boneclub",
-   "world": "res://assets/weapons/w_boneclub.gltf"
+   "world": "res://assets/weapons/w_boneclub.gltf",
+   "vm_name": "boneclub"
   },
   "wooden_spear": {
    "name": "Wooden Spear",
@@ -3181,8 +3194,8 @@
    "attack_delay": 0.1,
    "auto": true,
    "scene": "res://assets/weapons/wooden_spear.gltf",
-   "vm_name": "wooden_spear",
-   "world": "res://assets/weapons/w_wooden_spear.gltf"
+   "world": "res://assets/weapons/w_wooden_spear.gltf",
+   "vm_name": "wooden_spear"
   },
   "stone_spear": {
    "name": "Stone Spear",
@@ -3219,8 +3232,8 @@
    "attack_delay": 0.1,
    "auto": true,
    "scene": "res://assets/weapons/stone_spear.gltf",
-   "vm_name": "stone_spear",
-   "world": "res://assets/weapons/w_stone_spear.gltf"
+   "world": "res://assets/weapons/w_stone_spear.gltf",
+   "vm_name": "stone_spear"
   },
   "assault_rifle": {
    "name": "Assault Rifle",
@@ -3397,6 +3410,9 @@
      -0.25
     ]
    ],
+   "recoil_amount": 5.5,
+   "recoil_lerp": 0.075,
+   "bullet_velocity": 10000.0,
    "ammo_types": [
     "556_rifle_ammo",
     "hv_556_rifle_ammo",
@@ -3404,8 +3420,8 @@
     "explosive_556_rifle_ammo"
    ],
    "scene": "res://assets/weapons/ak47u.gltf",
-   "vm_name": "ak47u",
-   "world": "res://assets/weapons/w_ak47u.gltf"
+   "world": "res://assets/weapons/w_ak47u.gltf",
+   "vm_name": "ak47u"
   },
   "m39_rifle": {
    "name": "M39 Rifle",
@@ -3478,6 +3494,9 @@
      0.0
     ]
    ],
+   "recoil_amount": 5.0,
+   "recoil_lerp": 0.02,
+   "bullet_velocity": 5000.0,
    "ammo_types": [
     "556_rifle_ammo",
     "hv_556_rifle_ammo",
@@ -3485,8 +3504,8 @@
     "explosive_556_rifle_ammo"
    ],
    "scene": "res://assets/weapons/m39emr.gltf",
-   "vm_name": "m39emr",
-   "world": "res://assets/weapons/w_m39.gltf"
+   "world": "res://assets/weapons/w_m39.gltf",
+   "vm_name": "m39emr"
   },
   "m92_pistol": {
    "name": "M92 Pistol",
@@ -3537,15 +3556,23 @@
    "range": 4096.0,
    "shoot_sound": "darky_rust.m92-attack",
    "auto": false,
-   "recoil": [],
+   "recoil": [
+    [
+     -10.0,
+     0.4
+    ]
+   ],
+   "recoil_amount": 5.0,
+   "recoil_lerp": 0.02,
+   "bullet_velocity": 5000.0,
    "ammo_types": [
     "pistol_bullet",
     "hv_pistol_ammo",
     "incendiary_pistol_bullet"
    ],
    "scene": "res://assets/weapons/m92.gltf",
-   "vm_name": "m92",
-   "world": "res://assets/weapons/w_m92.gltf"
+   "world": "res://assets/weapons/w_m92.gltf",
+   "vm_name": "m92"
   },
   "m249": {
    "name": "M249",
@@ -3622,6 +3649,9 @@
      0.25
     ]
    ],
+   "recoil_amount": 3.0,
+   "recoil_lerp": 0.02,
+   "bullet_velocity": 5000.0,
    "ammo_types": [
     "556_rifle_ammo",
     "hv_556_rifle_ammo",
@@ -3629,8 +3659,8 @@
     "explosive_556_rifle_ammo"
    ],
    "scene": "res://assets/weapons/m249.gltf",
-   "vm_name": "m249",
-   "world": "res://assets/weapons/w_m249.gltf"
+   "world": "res://assets/weapons/w_m249.gltf",
+   "vm_name": "m249"
   },
   "mp5a4": {
    "name": "MP5A4",
@@ -3692,7 +3722,7 @@
     ],
     [
      -2.9787234042553,
-     -0.0
+     0.0
     ],
     [
      -2.5531914893617,
@@ -3803,14 +3833,17 @@
      1.75
     ]
    ],
+   "recoil_amount": 5.0,
+   "recoil_lerp": 0.05,
+   "bullet_velocity": 5000.0,
    "ammo_types": [
     "pistol_bullet",
     "hv_pistol_ammo",
     "incendiary_pistol_bullet"
    ],
    "scene": "res://assets/weapons/mp5.gltf",
-   "vm_name": "mp5",
-   "world": "res://assets/weapons/w_mp5.gltf"
+   "world": "res://assets/weapons/w_mp5.gltf",
+   "vm_name": "mp5"
   },
   "nailgun": {
    "name": "Nailgun",
@@ -3853,13 +3886,21 @@
    "range": 4096.0,
    "shoot_sound": "darky_rust.nailgun-attack",
    "auto": false,
-   "recoil": [],
+   "recoil": [
+    [
+     -15.0,
+     0.4
+    ]
+   ],
+   "recoil_amount": 3.0,
+   "recoil_lerp": 0.02,
+   "bullet_velocity": 2500.0,
    "ammo_types": [
     "nailgun_nails"
    ],
    "scene": "res://assets/weapons/nailgun.gltf",
-   "vm_name": "nailgun",
-   "world": "res://assets/weapons/w_nailgun.gltf"
+   "world": "res://assets/weapons/w_nailgun.gltf",
+   "vm_name": "nailgun"
   },
   "python_revolver": {
    "name": "Python Revolver",
@@ -3906,15 +3947,23 @@
    "range": 4096.0,
    "shoot_sound": "darky_rust.python-attack",
    "auto": false,
-   "recoil": [],
+   "recoil": [
+    [
+     -125.0,
+     0.8
+    ]
+   ],
+   "recoil_amount": 0.5,
+   "recoil_lerp": 0.02,
+   "bullet_velocity": 5000.0,
    "ammo_types": [
     "pistol_bullet",
     "hv_pistol_ammo",
     "incendiary_pistol_bullet"
    ],
    "scene": "res://assets/weapons/python.gltf",
-   "vm_name": "python",
-   "world": "res://assets/weapons/w_python.gltf"
+   "world": "res://assets/weapons/w_python.gltf",
+   "vm_name": "python"
   },
   "revolver": {
    "name": "Revolver",
@@ -3961,15 +4010,23 @@
    "range": 4096.0,
    "shoot_sound": "darky_rust.revolver-attack",
    "auto": false,
-   "recoil": [],
+   "recoil": [
+    [
+     -25.0,
+     0.8
+    ]
+   ],
+   "recoil_amount": 1.25,
+   "recoil_lerp": 0.05,
+   "bullet_velocity": 4000.0,
    "ammo_types": [
     "pistol_bullet",
     "hv_pistol_ammo",
     "incendiary_pistol_bullet"
    ],
    "scene": "res://assets/weapons/revolver.gltf",
-   "vm_name": "revolver",
-   "world": "res://assets/weapons/w_revolver.gltf"
+   "world": "res://assets/weapons/w_revolver.gltf",
+   "vm_name": "revolver"
   },
   "semi_automatic_pistol": {
    "name": "Semi-Automatic Pistol",
@@ -4016,15 +4073,23 @@
    "range": 4096.0,
    "shoot_sound": "darky_rust.fire-alt",
    "auto": false,
-   "recoil": [],
+   "recoil": [
+    [
+     -12.5,
+     0.8
+    ]
+   ],
+   "recoil_amount": 3.0,
+   "recoil_lerp": 0.02,
+   "bullet_velocity": 5000.0,
    "ammo_types": [
     "pistol_bullet",
     "hv_pistol_ammo",
     "incendiary_pistol_bullet"
    ],
    "scene": "res://assets/weapons/semi_auto_pistol.gltf",
-   "vm_name": "semi_auto_pistol",
-   "world": "res://assets/weapons/w_sap.gltf"
+   "world": "res://assets/weapons/w_sap.gltf",
+   "vm_name": "semi_auto_pistol"
   },
   "semi_automatic_rifle": {
    "name": "Semi-Automatic Rifle",
@@ -4101,6 +4166,9 @@
      0.0
     ]
    ],
+   "recoil_amount": 3.0,
+   "recoil_lerp": 0.05,
+   "bullet_velocity": 5000.0,
    "ammo_types": [
     "556_rifle_ammo",
     "hv_556_rifle_ammo",
@@ -4108,8 +4176,8 @@
     "explosive_556_rifle_ammo"
    ],
    "scene": "res://assets/weapons/sar.gltf",
-   "vm_name": "sar",
-   "world": "res://assets/weapons/w_sar.gltf"
+   "world": "res://assets/weapons/w_sar.gltf",
+   "vm_name": "sar"
   },
   "custom_smg": {
    "name": "Custom SMG",
@@ -4254,14 +4322,17 @@
      0.5
     ]
    ],
+   "recoil_amount": 7.5,
+   "recoil_lerp": 0.075,
+   "bullet_velocity": 5000.0,
    "ammo_types": [
     "pistol_bullet",
     "hv_pistol_ammo",
     "incendiary_pistol_bullet"
    ],
    "scene": "res://assets/weapons/customsmg.gltf",
-   "vm_name": "customsmg",
-   "world": "res://assets/weapons/w_smg.gltf"
+   "world": "res://assets/weapons/w_smg.gltf",
+   "vm_name": "customsmg"
   },
   "thompson": {
    "name": "Thompson",
@@ -4394,14 +4465,17 @@
      -1.0
     ]
    ],
+   "recoil_amount": 3.5,
+   "recoil_lerp": 0.1,
+   "bullet_velocity": 5000.0,
    "ammo_types": [
     "pistol_bullet",
     "hv_pistol_ammo",
     "incendiary_pistol_bullet"
    ],
    "scene": "res://assets/weapons/thompson.gltf",
-   "vm_name": "thompson",
-   "world": "res://assets/weapons/w_thompson.gltf"
+   "world": "res://assets/weapons/w_thompson.gltf",
+   "vm_name": "thompson"
   },
   "lr300_assault_rifle": {
    "name": "LR-300 Assault Rifle",
@@ -4574,6 +4648,9 @@
      -0.25
     ]
    ],
+   "recoil_amount": 5.0,
+   "recoil_lerp": 0.1,
+   "bullet_velocity": 5000.0,
    "ammo_types": [
     "556_rifle_ammo",
     "hv_556_rifle_ammo",
@@ -4581,8 +4658,8 @@
     "explosive_556_rifle_ammo"
    ],
    "scene": "res://assets/weapons/lr300.gltf",
-   "vm_name": "lr300",
-   "world": "res://assets/weapons/w_lr300.gltf"
+   "world": "res://assets/weapons/w_lr300.gltf",
+   "vm_name": "lr300"
   },
   "crossbow": {
    "name": "Crossbow",
@@ -4636,12 +4713,18 @@
     ]
    ],
    "reload_time": 4.0,
+   "recoil_amount": 2.5,
+   "recoil_lerp": 0.1,
+   "bullet_velocity": 5000.0,
    "ammo_types": [
-    "arrow"
+    "arrow",
+    "hv_arrow",
+    "fire_arrow",
+    "bone_arrow"
    ],
    "scene": "res://assets/weapons/crossbow.gltf",
-   "vm_name": "crossbow",
-   "world": "res://assets/weapons/w_crossbow.gltf"
+   "world": "res://assets/weapons/w_crossbow.gltf",
+   "vm_name": "crossbow"
   },
   "hunting_bow": {
    "name": "Hunting Bow",
@@ -4676,9 +4759,15 @@
    "vm_fov": 64.0,
    "range": 1.0,
    "auto": false,
+   "ammo_types": [
+    "arrow",
+    "hv_arrow",
+    "fire_arrow",
+    "bone_arrow"
+   ],
    "scene": "res://assets/weapons/bow.gltf",
-   "vm_name": "bow",
-   "world": "res://assets/weapons/w_bow.gltf"
+   "world": "res://assets/weapons/w_bow.gltf",
+   "vm_name": "bow"
   },
   "bolt_action_rifle": {
    "name": "Bolt Action Rifle",
@@ -4736,6 +4825,9 @@
      -0.08
     ]
    ],
+   "recoil_amount": 500.0,
+   "recoil_lerp": 0.075,
+   "bullet_velocity": 10000.0,
    "ammo_types": [
     "556_rifle_ammo",
     "hv_556_rifle_ammo",
@@ -4743,8 +4835,8 @@
     "explosive_556_rifle_ammo"
    ],
    "scene": "res://assets/weapons/boltrifle.gltf",
-   "vm_name": "boltrifle",
-   "world": "res://assets/weapons/w_boltrifle.gltf"
+   "world": "res://assets/weapons/w_boltrifle.gltf",
+   "vm_name": "boltrifle"
   },
   "waterpipe_shotgun": {
    "name": "Waterpipe Shotgun",
@@ -4793,12 +4885,18 @@
      -70.0
     ]
    ],
+   "recoil_amount": 1.0,
+   "recoil_lerp": 0.075,
+   "bullet_velocity": 5000.0,
    "ammo_types": [
-    "handmade_shell"
+    "handmade_shell",
+    "12_gauge_buckshot",
+    "12_gauge_slug",
+    "12_gauge_incendiary"
    ],
    "scene": "res://assets/weapons/waterpipe.gltf",
-   "vm_name": "waterpipe",
-   "world": "res://assets/weapons/w_waterpipe.gltf"
+   "world": "res://assets/weapons/w_waterpipe.gltf",
+   "vm_name": "waterpipe"
   },
   "rocket_launcher": {
    "name": "Rocket Launcher",
@@ -4848,13 +4946,18 @@
     ]
    ],
    "reload_time": 6.0,
+   "recoil_amount": 2.5,
+   "recoil_lerp": 0.1,
+   "bullet_velocity": 5000.0,
    "ammo_types": [
     "rocket",
-    "high_velocity_rocket"
+    "high_velocity_rocket",
+    "incendiary_rocket",
+    "smoke_rocket"
    ],
    "scene": "res://assets/weapons/rocketlauncher.gltf",
-   "vm_name": "rocketlauncher",
-   "world": "res://assets/weapons/w_rocketlauncher.gltf"
+   "world": "res://assets/weapons/w_rocketlauncher.gltf",
+   "vm_name": "rocketlauncher"
   },
   "double_barrel_shotgun": {
    "name": "Double Barrel Shotgun",
@@ -4903,12 +5006,18 @@
      -70.0
     ]
    ],
+   "recoil_amount": 0.5,
+   "recoil_lerp": 0.075,
+   "bullet_velocity": 5000.0,
    "ammo_types": [
-    "handmade_shell"
+    "handmade_shell",
+    "12_gauge_buckshot",
+    "12_gauge_slug",
+    "12_gauge_incendiary"
    ],
    "scene": "res://assets/weapons/doublebarrel.gltf",
-   "vm_name": "doublebarrel",
-   "world": "res://assets/weapons/w_doublebarrel.gltf"
+   "world": "res://assets/weapons/w_doublebarrel.gltf",
+   "vm_name": "doublebarrel"
   },
   "pump_shotgun": {
    "name": "Pump Shotgun",
@@ -4962,12 +5071,18 @@
      -0.08
     ]
    ],
+   "recoil_amount": 500.0,
+   "recoil_lerp": 0.075,
+   "bullet_velocity": 10000.0,
    "ammo_types": [
-    "handmade_shell"
+    "handmade_shell",
+    "12_gauge_buckshot",
+    "12_gauge_slug",
+    "12_gauge_incendiary"
    ],
    "scene": "res://assets/weapons/sawnoffshotgun.gltf",
-   "vm_name": "sawnoffshotgun",
-   "world": "res://assets/weapons/w_sawnoffshotgun.gltf"
+   "world": "res://assets/weapons/w_sawnoffshotgun.gltf",
+   "vm_name": "sawnoffshotgun"
   },
   "spas_12_shotgun": {
    "name": "Spas-12 Shotgun",
@@ -5021,12 +5136,18 @@
      -0.08
     ]
    ],
+   "recoil_amount": 750.0,
+   "recoil_lerp": 0.075,
+   "bullet_velocity": 10000.0,
    "ammo_types": [
-    "handmade_shell"
+    "handmade_shell",
+    "12_gauge_buckshot",
+    "12_gauge_slug",
+    "12_gauge_incendiary"
    ],
    "scene": "res://assets/weapons/spas12.gltf",
-   "vm_name": "spas12",
-   "world": "res://assets/weapons/w_spas12.gltf"
+   "world": "res://assets/weapons/w_spas12.gltf",
+   "vm_name": "spas12"
   },
   "combat_knife": {
    "name": "Combat Knife",
@@ -5063,8 +5184,8 @@
    "attack_delay": 0.2,
    "auto": true,
    "scene": "res://assets/weapons/combatknife.gltf",
-   "vm_name": "combatknife",
-   "world": "res://assets/weapons/w_combatknife.gltf"
+   "world": "res://assets/weapons/w_combatknife.gltf",
+   "vm_name": "combatknife"
   },
   "grenade_launcher": {
    "name": "Multiple Grenade Launcher",
@@ -5114,13 +5235,17 @@
      -0.08
     ]
    ],
+   "recoil_amount": 500.0,
+   "recoil_lerp": 0.075,
+   "bullet_velocity": 10000.0,
    "ammo_types": [
     "40mm_he_grenade",
-    "40mm_shotgun_round"
+    "40mm_shotgun_round",
+    "40mm_smoke_grenade"
    ],
    "scene": "res://assets/weapons/grenadelauncher.gltf",
-   "vm_name": "grenadelauncher",
-   "world": "res://assets/weapons/w_grenadelauncher.gltf"
+   "world": "res://assets/weapons/w_grenadelauncher.gltf",
+   "vm_name": "grenadelauncher"
   },
   "l96_rifle": {
    "name": "L96 Rifle",
@@ -5155,11 +5280,14 @@
    ],
    "shoot_sound": "darky_rust.l96-attack",
    "ammo_types": [
-    "556_rifle_ammo"
+    "556_rifle_ammo",
+    "hv_556_rifle_ammo",
+    "incendiary_556_rifle_ammo",
+    "explosive_556_rifle_ammo"
    ],
    "scene": "res://assets/weapons/l96.gltf",
-   "vm_name": "l96",
-   "world": "res://assets/weapons/w_l96.gltf"
+   "world": "res://assets/weapons/w_l96.gltf",
+   "vm_name": "l96"
   },
   "eoka_pistol": {
    "name": "Eoka Pistol",
@@ -5195,11 +5323,14 @@
    ],
    "shoot_sound": "darky_rust.eoka-pistol-attack",
    "ammo_types": [
-    "handmade_shell"
+    "handmade_shell",
+    "12_gauge_buckshot",
+    "12_gauge_slug",
+    "12_gauge_incendiary"
    ],
    "scene": "res://assets/weapons/eoka.gltf",
-   "vm_name": "eoka",
-   "world": "res://assets/weapons/w_eoka.gltf"
+   "world": "res://assets/weapons/w_eoka.gltf",
+   "vm_name": "eoka"
   },
   "compound_bow": {
    "name": "Compound Bow",
@@ -5227,11 +5358,14 @@
    "rpm": 60,
    "clip": 1,
    "ammo_types": [
-    "wooden_arrow"
+    "arrow",
+    "hv_arrow",
+    "fire_arrow",
+    "bone_arrow"
    ],
    "scene": "res://assets/weapons/compoundbow.gltf",
-   "vm_name": "compoundbow",
-   "world": "res://assets/weapons/w_compoundbow.gltf"
+   "world": "res://assets/weapons/w_compoundbow.gltf",
+   "vm_name": "compoundbow"
   },
   "longsword": {
    "name": "Longsword",
@@ -5259,8 +5393,8 @@
    "attack_rate": 30,
    "range": 1.8,
    "scene": "res://assets/weapons/longsword.gltf",
-   "vm_name": "longsword",
-   "world": "res://assets/weapons/w_longsword.gltf"
+   "world": "res://assets/weapons/w_longsword.gltf",
+   "vm_name": "longsword"
   },
   "mace": {
    "name": "Mace",
@@ -5288,8 +5422,8 @@
    "attack_rate": 30,
    "range": 1.6,
    "scene": "res://assets/weapons/mace.gltf",
-   "vm_name": "mace",
-   "world": "res://assets/weapons/w_mace.gltf"
+   "world": "res://assets/weapons/w_mace.gltf",
+   "vm_name": "mace"
   },
   "machete": {
    "name": "Machete",
@@ -5317,8 +5451,8 @@
    "attack_rate": 60,
    "range": 1.6,
    "scene": "res://assets/weapons/machete.gltf",
-   "vm_name": "machete",
-   "world": "res://assets/weapons/w_machete.gltf"
+   "world": "res://assets/weapons/w_machete.gltf",
+   "vm_name": "machete"
   },
   "pitchfork": {
    "name": "Pitchfork",
@@ -5346,8 +5480,8 @@
    "attack_rate": 40,
    "range": 2.0,
    "scene": "res://assets/weapons/pitchfork.gltf",
-   "vm_name": "pitchfork",
-   "world": "res://assets/weapons/w_pitchfork.gltf"
+   "world": "res://assets/weapons/w_pitchfork.gltf",
+   "vm_name": "pitchfork"
   },
   "bone_knife": {
    "name": "Bone Knife",
@@ -5375,8 +5509,215 @@
    "attack_rate": 68,
    "range": 1.5,
    "scene": "res://assets/weapons/boneknife.gltf",
-   "vm_name": "boneknife",
-   "world": "res://assets/weapons/w_boneknife.gltf"
+   "world": "res://assets/weapons/w_boneknife.gltf",
+   "vm_name": "boneknife"
+  },
+  "12_gauge_buckshot": {
+   "name": "12 Gauge Buckshot",
+   "desc": "Картечь 12 калибра.",
+   "icon": "res://assets/icons/items/ammo.shotgun.png",
+   "stack": 64,
+   "category": "Ammo",
+   "recipe": [
+    [
+     "metal_fragments",
+     10
+    ],
+    [
+     "gun_powder",
+     10
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 2,
+   "craft_time": 0.0,
+   "tier": 1,
+   "material": "Metal",
+   "type": "ammo"
+  },
+  "12_gauge_slug": {
+   "name": "12 Gauge Slug",
+   "desc": "Пуля 12 калибра: одна мощная пуля.",
+   "icon": "res://assets/icons/items/ammo.shotgun.slug.png",
+   "stack": 64,
+   "category": "Ammo",
+   "recipe": [
+    [
+     "metal_fragments",
+     10
+    ],
+    [
+     "gun_powder",
+     10
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 2,
+   "craft_time": 0.0,
+   "tier": 1,
+   "material": "Metal",
+   "type": "ammo"
+  },
+  "12_gauge_incendiary": {
+   "name": "12 Gauge Incendiary Shell",
+   "desc": "Зажигательная дробь.",
+   "icon": "res://assets/icons/items/ammo.shotgun.fire.png",
+   "stack": 64,
+   "category": "Ammo",
+   "recipe": [
+    [
+     "metal_fragments",
+     10
+    ],
+    [
+     "gun_powder",
+     10
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 2,
+   "craft_time": 0.0,
+   "tier": 1,
+   "material": "Metal",
+   "type": "ammo"
+  },
+  "incendiary_rocket": {
+   "name": "Incendiary Rocket",
+   "desc": "Зажигательная ракета.",
+   "icon": "res://assets/icons/items/ammo.rocket.fire.png",
+   "stack": 3,
+   "category": "Ammo",
+   "recipe": [
+    [
+     "metal_fragments",
+     10
+    ],
+    [
+     "gun_powder",
+     10
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 1,
+   "material": "Metal",
+   "type": "ammo"
+  },
+  "smoke_rocket": {
+   "name": "Smoke Rocket",
+   "desc": "Дымовая ракета.",
+   "icon": "res://assets/icons/items/ammo.rocket.smoke.png",
+   "stack": 3,
+   "category": "Ammo",
+   "recipe": [
+    [
+     "metal_fragments",
+     10
+    ],
+    [
+     "gun_powder",
+     10
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 1,
+   "material": "Metal",
+   "type": "ammo"
+  },
+  "40mm_smoke_grenade": {
+   "name": "40mm Smoke Grenade",
+   "desc": "Дымовая граната 40 мм.",
+   "icon": "res://assets/icons/items/ammo.grenadelauncher.smoke.png",
+   "stack": 6,
+   "category": "Ammo",
+   "recipe": [
+    [
+     "metal_fragments",
+     10
+    ],
+    [
+     "gun_powder",
+     10
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 1,
+   "craft_time": 0.0,
+   "tier": 1,
+   "material": "Metal",
+   "type": "ammo"
+  },
+  "hv_arrow": {
+   "name": "High Velocity Arrow",
+   "desc": "Скоростная стрела: летит дальше, урон меньше.",
+   "icon": "res://assets/icons/items/arrow.hv.png",
+   "stack": 64,
+   "category": "Ammo",
+   "recipe": [
+    [
+     "metal_fragments",
+     10
+    ],
+    [
+     "gun_powder",
+     10
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 2,
+   "craft_time": 0.0,
+   "tier": 1,
+   "material": "Metal",
+   "type": "ammo"
+  },
+  "fire_arrow": {
+   "name": "Fire Arrow",
+   "desc": "Горящая стрела.",
+   "icon": "res://assets/icons/items/arrow.fire.png",
+   "stack": 64,
+   "category": "Ammo",
+   "recipe": [
+    [
+     "metal_fragments",
+     10
+    ],
+    [
+     "gun_powder",
+     10
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 2,
+   "craft_time": 0.0,
+   "tier": 1,
+   "material": "Metal",
+   "type": "ammo"
+  },
+  "bone_arrow": {
+   "name": "Bone Arrow",
+   "desc": "Костяная стрела.",
+   "icon": "res://assets/icons/items/arrow.bone.png",
+   "stack": 64,
+   "category": "Ammo",
+   "recipe": [
+    [
+     "metal_fragments",
+     10
+    ],
+    [
+     "gun_powder",
+     10
+    ]
+   ],
+   "craftable": true,
+   "craft_amount": 2,
+   "craft_time": 0.0,
+   "tier": 1,
+   "material": "Metal",
+   "type": "ammo"
   }
  }
 }

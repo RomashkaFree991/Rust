@@ -5,6 +5,9 @@ class_name InventoryUI
 ## по центру — информация о предмете, рюкзак 6×4 и пояс 6 ячеек.
 ## Управление: перетащить предмет пальцем; или тап по предмету, затем тап по ячейке;
 ## двойной тап по одежде — надеть/снять.
+## Обвесы (как gRust ItemInfo: инвентарь предмета-оружия из SetSlots + SWEP.Attachments): у выбранного оружия
+## под описанием — ячейки обвесов и кнопки типа патронов. Обвес: перетащить на ячейку, или тап по обвесу
+## и тап по ячейке, или двойной тап по обвесу; тап по занятой ячейке — снять обвес в инвентарь.
 
 const S := 58.0           # ячейка рюкзака/пояса/ящика
 const AS := 52.0          # ячейка одежды
@@ -42,6 +45,11 @@ var overlay: Control
 var looting := false
 var loot_title := "LARGE WOOD BOX"
 var snd_move: Dictionary = {}
+var mod_weapon_idx := -1         # оружие, чьи обвесы показаны
+var mod_rects: Array = []        # [Rect2, "mod"|"ammo", индекс/id]
+var mod_panel := Rect2()
+var mod_touch: Array = []
+const MOD_H := 128.0
 
 func setup(p_inv: Inventory, p_hud) -> void:
 	inv = p_inv
@@ -185,7 +193,9 @@ func layout(vs: Vector2) -> void:
 	item_title.position = Vector2(xm, 10)
 	item_title.size = Vector2(mid_w, 40)
 	item_info.position = Vector2(xm, 54)
-	item_info.size = Vector2(mid_w, gy - 54 - 44)
+	item_info.size = Vector2(mid_w, gy - 54 - 44 - MOD_H)
+	item_info.clip_contents = true
+	mod_panel = Rect2(xm, gy - 44 - MOD_H + 4, mid_w, MOD_H - 8)
 	preview_rect = Rect2(x0, 10, left_w, ay - 34)
 	preview_container.position = preview_rect.position
 	preview_container.size = preview_rect.size
@@ -208,9 +218,9 @@ func set_looting(on: bool) -> void:
 
 func _play_move(i: int) -> void:
 	var it = inv.get_item(i)
-	if it == null:
-		return
-	var t: String = Items.get_def(it.id).get("type", "")
+	var t: String = "metal"
+	if it != null:
+		t = Items.get_def(it.id).get("type", "")
 	var k := "cloth" if t == "attire" else ("gun" if t == "weapon" else ("stone" if t == "melee" else "metal"))
 	var p := AudioStreamPlayer.new()
 	p.stream = snd_move[k]
@@ -236,6 +246,7 @@ func _on_attire() -> void:
 	var worn := inv.worn()
 	preview_char.set_attire(worn)
 	var it = inv.get_item(hud.active_slot) if hud and hud.active_slot != -1 else null
+	preview_char.set_meta("weapon_item", it if it != null else {})
 	preview_char.set_weapon(it.id if it != null else "")
 	var p := inv.protection()
 	var vals := {"bullet": p, "stab": 0.0, "bite": 0.0, "radiation": 0.0, "freezing": 0.0, "explosion": 0.0}
@@ -258,6 +269,13 @@ func _update_info() -> void:
 	if idx == -1 and hud and hud.active_slot != -1:
 		idx = hud.active_slot
 	var it = inv.get_item(idx) if idx != -1 else null
+	if it != null and _moddable(it):
+		mod_weapon_idx = idx
+	elif it != null and (Attachments.is_attachment(it.id) or Items.get_def(it.id).get("type") == "ammo"):
+		if not _moddable(inv.get_item(mod_weapon_idx)):
+			mod_weapon_idx = -1
+	else:
+		mod_weapon_idx = -1
 	if it == null:
 		item_title.text = ""
 		item_info.text = ""
@@ -287,6 +305,165 @@ func _update_info() -> void:
 			t += "\n\nКоличество: %d / %d" % [it.amount, Items.max_stack(it.id)]
 	item_info.text = t
 
+# ---------- обвесы и патроны ----------
+
+func _moddable(it) -> bool:
+	if it == null or not it is Dictionary:
+		return false
+	var d := Items.get_def(it.id)
+	if d.get("type") != "weapon":
+		return false
+	return not Attachments.weapon_info(it.id).is_empty() or d.get("ammo_types", []).size() > 1
+
+func _mod_weapon():
+	var it = inv.get_item(mod_weapon_idx)
+	return it if _moddable(it) else null
+
+func _layout_mods() -> void:
+	mod_rects.clear()
+	var it = _mod_weapon()
+	if it == null:
+		return
+	var d := Items.get_def(it.id)
+	var ms := 50.0
+	var y := mod_panel.position.y + 22
+	var n := Attachments.slot_count(it.id)
+	for i in n:
+		mod_rects.append([Rect2(mod_panel.position.x + i * (ms + 5), y, ms, ms), "mod", i])
+	var at: Array = d.get("ammo_types", [])
+	if at.size() > 1 or (at.size() == 1 and n == 0):
+		var ax: float = mod_panel.position.x + (n * (ms + 5) + 16 if n > 0 else 0.0)
+		var aw: float = min(50.0, (mod_panel.end.x - ax) / max(at.size(), 1) - 4)
+		for i in at.size():
+			mod_rects.append([Rect2(ax + i * (aw + 4), y, aw, ms), "ammo", at[i]])
+
+func _icon_tex(id: String) -> Texture2D:
+	var p: String = Items.get_def(id).get("icon", "")
+	return load(p) if p != "" and ResourceLoader.exists(p) else null
+
+func _draw_mods(o: Control, f: Font) -> void:
+	_layout_mods()
+	var it = _mod_weapon()
+	if it == null:
+		return
+	var mods := Attachments.mods_of(it)
+	var w := Attachments.weapon_info(it.id)
+	var d := Items.get_def(it.id)
+	var cur_ammo: String = it.get("ammo_type", d.get("ammo", ""))
+	if Attachments.slot_count(it.id) > 0:
+		o.draw_string(f, mod_panel.position + Vector2(2, 16), "ОБВЕСЫ: " + String(d.get("name", "")).to_upper(), HORIZONTAL_ALIGNMENT_LEFT, mod_panel.size.x * 0.6, 15, Color(TEXT, 0.7))
+	var has_ammo := false
+	for r in mod_rects:
+		var rect: Rect2 = r[0]
+		if r[1] == "mod":
+			var i: int = r[2]
+			SlotView.draw_panel(o, rect, SlotView.PANEL_TINT)
+			if i < mods.size():
+				var t := _icon_tex(mods[i])
+				if t:
+					o.draw_texture_rect(t, rect.grow(-4), false, SlotView.ICON_COL)
+			else:
+				o.draw_rect(rect.grow(-1), Color(1, 1, 1, 0.06), false, 1.0)
+				o.draw_string(f, rect.position + Vector2(0, rect.size.y * 0.5 + 6), "+", HORIZONTAL_ALIGNMENT_CENTER, rect.size.x, 22, Color(1, 1, 1, 0.18))
+		else:
+			has_ammo = true
+			var aid: String = r[2]
+			var selc := aid == cur_ammo
+			SlotView.draw_panel(o, rect, SlotView.SECONDARY if selc else SlotView.PANEL_TINT)
+			var t := _icon_tex(aid)
+			if t:
+				o.draw_texture_rect(t, rect.grow(-5), false, SlotView.ICON_COL if inv.count(aid) > 0 or selc else Color(1, 1, 1, 0.25))
+			var cnt := str(inv.count(aid))
+			o.draw_string(f, Vector2(rect.position.x, rect.end.y - 3), cnt, HORIZONTAL_ALIGNMENT_RIGHT, rect.size.x - 3, 13, SlotView.TEXT_COL)
+	if has_ammo:
+		var ar: Rect2 = mod_rects[-1][0]
+		for r in mod_rects:
+			if r[1] == "ammo":
+				ar = r[0]
+				break
+		o.draw_string(f, Vector2(ar.position.x, mod_panel.position.y + 16), "ПАТРОНЫ", HORIZONTAL_ALIGNMENT_LEFT, -1, 15, Color(TEXT, 0.7))
+	# подсказка с эффектом
+	var st := Attachments.stats(it)
+	var fx := []
+	if st.silenced: fx.append("глушитель")
+	if st.scope != "": fx.append("прицел " + st.scope)
+	if st.laser: fx.append("ЛЦУ")
+	if st.flashlight: fx.append("фонарь")
+	if abs(st.recoil_mul - 1.0) > 0.01: fx.append("отдача ×%.2f" % st.recoil_mul)
+	if abs(st.damage_mul - 1.0) > 0.01: fx.append("урон ×%.2f" % st.damage_mul)
+	if abs(st.rof_mul - 1.0) > 0.01: fx.append("темп ×%.2f" % st.rof_mul)
+	if fx.size() > 0:
+		o.draw_string(f, Vector2(mod_panel.position.x + 2, mod_panel.end.y - 4), ", ".join(fx), HORIZONTAL_ALIGNMENT_LEFT, mod_panel.size.x, 14, Color(0.6, 0.85, 0.4, 0.9))
+	elif w.is_empty() == false and mods.is_empty():
+		o.draw_string(f, Vector2(mod_panel.position.x + 2, mod_panel.end.y - 4), "Перетащите обвес на ячейку", HORIZONTAL_ALIGNMENT_LEFT, mod_panel.size.x, 14, Color(TEXT, 0.45))
+
+func _mod_rect_at(p: Vector2) -> Array:
+	for r in mod_rects:
+		if (r[0] as Rect2).has_point(p):
+			return r
+	return []
+
+## Оружие с изменёнными обвесами — пересоздать модели в руках и на персонаже
+func _weapon_changed() -> void:
+	if hud and mod_weapon_idx != -1 and mod_weapon_idx == hud.active_slot and hud.player:
+		hud.player.equip_item(inv.get_item(mod_weapon_idx))
+	inv.changed.emit()
+	sync_weapon()
+
+## Поставить обвес из ячейки src на оружие, чьи обвесы показаны
+func _attach_from(src: int) -> bool:
+	var w = _mod_weapon()
+	var a = inv.get_item(src)
+	if w == null or a == null or not Attachments.is_attachment(a.id):
+		return false
+	if not Attachments.attach(w, a.id):
+		return false
+	a.amount = int(a.get("amount", 1)) - 1
+	if a.amount <= 0:
+		inv.slots[src] = null
+	_play_snd("res://assets/sounds/mod-attach.wav")
+	_weapon_changed()
+	return true
+
+func _play_snd(path: String) -> void:
+	if not ResourceLoader.exists(path):
+		return
+	var p := AudioStreamPlayer.new()
+	p.stream = load(path)
+	add_child(p)
+	p.play()
+	p.finished.connect(p.queue_free)
+
+func _mod_tap(r: Array) -> void:
+	var w = _mod_weapon()
+	if w == null:
+		return
+	if r[1] == "mod":
+		var mods := Attachments.mods_of(w)
+		var i: int = r[2]
+		if i < mods.size():
+			# снять обвес в инвентарь
+			if inv.give(mods[i], 1) == 0:
+				mods.remove_at(i)
+				_play_move(-1)
+				_weapon_changed()
+		elif sel != -1 and sel != mod_weapon_idx:
+			if _attach_from(sel):
+				sel = -1
+	else:
+		var aid: String = r[2]
+		var d := Items.get_def(w.id)
+		if mod_weapon_idx == hud.active_slot and hud.player and hud.player.viewmodel.has_method("set_ammo_type"):
+			hud.player.viewmodel.set_ammo_type(aid)
+		elif aid != w.get("ammo_type", d.get("ammo", "")):
+			var cur: String = w.get("ammo_type", d.get("ammo", ""))
+			if int(w.get("ammo", 0)) > 0:
+				inv.give(cur, int(w.ammo))
+			w["ammo"] = 0
+			w["ammo_type"] = aid
+		inv.changed.emit()
+	refresh()
+
 func _process(delta: float) -> void:
 	if not visible:
 		return
@@ -306,7 +483,8 @@ func _draw_overlay() -> void:
 	if looting:
 		var lp: Vector2 = slots[Inventory.LOOT_START].position
 		o.draw_string(f, Vector2(lp.x + 2, lp.y - 10), loot_title, HORIZONTAL_ALIGNMENT_LEFT, -1, 30, TEXT)
-	# панель информации
+	# панель информации: обвесы и патроны выбранного оружия
+	_draw_mods(o, f)
 	# вкладка крафта
 	SlotView.draw_panel(o, craft_rect, Color(250 / 255.0, 240 / 255.0, 220 / 255.0, 40 / 255.0))
 	o.draw_string(f, craft_rect.position + Vector2(0, 40), "КРАФТ", HORIZONTAL_ALIGNMENT_CENTER, craft_rect.size.x, 26, TEXT)
@@ -341,6 +519,10 @@ func touch_down(idx: int, p: Vector2) -> bool:
 	if craft_rect.has_point(p):
 		hud.open_crafting()
 		return true
+	var mr := _mod_rect_at(p)
+	if not mr.is_empty():
+		mod_touch = mr
+		return true
 	var i := _slot_at(p)
 	if i != -1:
 		drag_idx = idx
@@ -370,6 +552,12 @@ func touch_up(idx: int, p: Vector2) -> void:
 	if idx == rot_idx:
 		rot_idx = -1
 		return
+	if not mod_touch.is_empty() and idx != drag_idx:
+		var r := _mod_rect_at(p)
+		if not r.is_empty() and r[1] == mod_touch[1] and r[2] == mod_touch[2]:
+			_mod_tap(r)
+		mod_touch = []
+		return
 	if idx != drag_idx:
 		return
 	drag_idx = -1
@@ -378,6 +566,11 @@ func touch_up(idx: int, p: Vector2) -> void:
 	if dragging:
 		dragging = false
 		var to := _slot_at(p)
+		var it_d = inv.get_item(from)
+		if (mod_panel.has_point(p) or not _mod_rect_at(p).is_empty()) and it_d != null and Attachments.is_attachment(it_d.id):
+			_attach_from(from)
+			refresh()
+			return
 		if to != -1:
 			inv.move(from, to)
 		elif preview_rect.has_point(p) and not Inventory.is_wear_slot(from):
@@ -390,6 +583,10 @@ func touch_up(idx: int, p: Vector2) -> void:
 		last_tap_slot = -1
 		sel = -1
 		_play_move(from)
+		var dt = inv.get_item(from)
+		if dt != null and Attachments.is_attachment(dt.id) and _mod_weapon() != null and _attach_from(from):
+			refresh()
+			return
 		if looting:
 			inv.quick_move(from)
 		elif not inv.quick_toggle_wear(from) and from < Inventory.HOTBAR:

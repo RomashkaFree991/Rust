@@ -1,0 +1,2729 @@
+{
+ "weapons": {
+  "assault_rifle": {
+   "slots": 4,
+   "attachments": {
+    "simple_handmade_sight": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_ms_holosight.mdl",
+     "bone": "main",
+     "pos": [
+      -0.05,
+      -2.8,
+      0.2
+     ],
+     "ang": [
+      180.0,
+      -90.0,
+      -90.0
+     ],
+     "scale": 1.15,
+     "ads": [
+      -6.1,
+      -4.6,
+      2.44
+     ],
+     "ads_ang": [
+      -0.02,
+      0.012,
+      0.0
+     ],
+     "reticle_pos": [
+      0.519,
+      0.0,
+      0.0
+     ],
+     "reticle_ang": [
+      -90.0,
+      0.0,
+      90.0
+     ],
+     "reticle_scale": 0.01,
+     "reticle_color": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "holosight": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_holo.mdl",
+     "bone": "main",
+     "pos": [
+      -0.15,
+      -2.5,
+      -0.2
+     ],
+     "ang": [
+      180.0,
+      -90.0,
+      0.0
+     ],
+     "scale": 1.0,
+     "ads": [
+      -6.073,
+      -2.6,
+      2.785
+     ],
+     "ads_ang": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "reticle_pos": [
+      0.47,
+      -0.123,
+      0.3
+     ],
+     "reticle_ang": [
+      0.0,
+      -90.0,
+      0.0
+     ],
+     "reticle_scale": 0.01,
+     "reticle_color": [
+      1.0,
+      0.0,
+      0.0
+     ]
+    },
+    "silencer": {
+     "type": "barrel",
+     "model": "models/weapons/darky_m/rust/mod_silencer.mdl",
+     "bone": "main",
+     "pos": [
+      0.0,
+      0.5,
+      29.0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      180.0
+     ],
+     "scale": 1.0
+    },
+    "weapon_flashlight": {
+     "type": "underbarrel",
+     "model": "models/weapons/darky_m/rust/mod_flash.mdl",
+     "bone": "main",
+     "pos": [
+      -0.08,
+      2.03,
+      18.5
+     ],
+     "ang": [
+      0.0,
+      -90.0,
+      180.0
+     ],
+     "scale": 1.1
+    },
+    "8x_zoom_scope": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_reddot.mdl",
+     "bone": "main",
+     "pos": [
+      0.148,
+      -3.13,
+      1.281
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      -90.0
+     ],
+     "scale": 1.0
+    },
+    "16x_zoom_scope": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_8xScope.mdl",
+     "bone": "main",
+     "pos": [
+      -0.06,
+      -1.354,
+      3.079
+     ],
+     "ang": [
+      180.0,
+      0.0,
+      -90.0
+     ],
+     "scale": 1.0
+    },
+    "weapon_lasersight": {
+     "type": "underbarrel",
+     "model": "models/weapons/darky_m/rust/w_mod_laser.mdl",
+     "bone": "main",
+     "pos": [
+      0.0,
+      1.568,
+      15.238
+     ],
+     "ang": [
+      0.0,
+      -90.0,
+      180.0
+     ],
+     "scale": 1.1
+    },
+    "muzzle_brake": {
+     "type": "barrel",
+     "model": "models/weapons/darky_m/rust/mod_muzzlebrake.mdl",
+     "bone": "main",
+     "pos": [
+      0.0,
+      0.6,
+      26.0
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      -90.0
+     ],
+     "scale": 2.5
+    },
+    "muzzle_boost": {
+     "type": "barrel",
+     "model": "models/weapons/darky_m/rust/mod_muzzleboost.mdl",
+     "bone": "main",
+     "pos": [
+      0.0,
+      0.6,
+      26.0
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      -90.0
+     ],
+     "scale": 2.5
+    }
+   },
+   "silenced_sound": "",
+   "silenced_files": [
+    "res://assets/sounds/ak74u-attack-silenced.mp3"
+   ]
+  },
+  "bolt_action_rifle": {
+   "slots": 4,
+   "attachments": {
+    "simple_handmade_sight": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_ms_holosight.mdl",
+     "bone": "main",
+     "pos": [
+      0.01,
+      -4.5,
+      10.0
+     ],
+     "ang": [
+      180.0,
+      -90.0,
+      -90.0
+     ],
+     "scale": 1.15,
+     "ads": [
+      -3.41,
+      0.0,
+      1.33
+     ],
+     "ads_ang": [
+      -0.85,
+      1.15,
+      0.0
+     ],
+     "reticle_pos": [
+      0.519,
+      0.0,
+      0.0
+     ],
+     "reticle_ang": [
+      -90.0,
+      0.0,
+      90.0
+     ],
+     "reticle_scale": 0.01,
+     "reticle_color": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "holosight": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_holo.mdl",
+     "bone": "main",
+     "pos": [
+      -0.125,
+      -4.0,
+      10.0
+     ],
+     "ang": [
+      180.0,
+      -90.0,
+      0.0
+     ],
+     "scale": 1.0,
+     "ads": [
+      -3.405,
+      0.0,
+      2.118
+     ],
+     "ads_ang": [
+      -1.458,
+      1.197,
+      0.0
+     ],
+     "reticle_pos": [
+      0.47,
+      -0.123,
+      0.3
+     ],
+     "reticle_ang": [
+      0.0,
+      -90.0,
+      0.0
+     ],
+     "reticle_scale": 0.01,
+     "reticle_color": [
+      1.0,
+      0.0,
+      0.0
+     ]
+    },
+    "silencer": {
+     "type": "barrel",
+     "model": "models/weapons/darky_m/rust/mod_silencer.mdl",
+     "bone": "main",
+     "pos": [
+      -0.05,
+      -2.32,
+      41.0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      180.0
+     ],
+     "scale": 0.85
+    },
+    "weapon_flashlight": {
+     "type": "underbarrel",
+     "model": "models/weapons/darky_m/rust/mod_flash.mdl",
+     "bone": "main",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "ang": [
+      0.0,
+      -90.0,
+      180.0
+     ],
+     "scale": 1.1
+    },
+    "8x_zoom_scope": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_reddot.mdl",
+     "bone": "main",
+     "pos": [
+      0.25,
+      -4.8,
+      8.8
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      -90.0
+     ],
+     "scale": 1.0
+    },
+    "16x_zoom_scope": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_8xScope.mdl",
+     "bone": "main",
+     "pos": [
+      0.0,
+      -3.0,
+      11.7
+     ],
+     "ang": [
+      180.0,
+      0.0,
+      -90.0
+     ],
+     "scale": 1.0
+    },
+    "weapon_lasersight": {
+     "type": "underbarrel",
+     "model": "models/weapons/darky_m/rust/w_mod_laser.mdl",
+     "bone": "main",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "ang": [
+      0.0,
+      -90.0,
+      180.0
+     ],
+     "scale": 1.1
+    },
+    "muzzle_brake": {
+     "type": "barrel",
+     "model": "models/weapons/darky_m/rust/mod_muzzlebrake.mdl",
+     "bone": "main",
+     "pos": [
+      0.0,
+      -2.4,
+      38.2
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      -90.0
+     ],
+     "scale": 2.0
+    },
+    "muzzle_boost": {
+     "type": "barrel",
+     "model": "models/weapons/darky_m/rust/mod_muzzleboost.mdl",
+     "bone": "main",
+     "pos": [
+      0.0,
+      -2.4,
+      38.2
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      -90.0
+     ],
+     "scale": 2.0
+    }
+   },
+   "silenced_sound": "darky_rust.bolt-rifle-attack-silenced",
+   "silenced_files": [
+    "res://assets/sounds/bolt-rifle-attack-silenced.mp3"
+   ]
+  },
+  "double_barrel_shotgun": {
+   "slots": 3,
+   "attachments": {
+    "simple_handmade_sight": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_ms_holosight.mdl",
+     "bone": "barrel",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "ang": [
+      180.0,
+      0.0,
+      -90.0
+     ],
+     "scale": 0.9,
+     "ads": [
+      -4.487,
+      0.0,
+      2.97
+     ],
+     "ads_ang": [
+      0.209,
+      0.0,
+      0.0
+     ],
+     "reticle_pos": [
+      0.519,
+      0.0,
+      0.0
+     ],
+     "reticle_ang": [
+      -90.0,
+      0.0,
+      90.0
+     ],
+     "reticle_scale": 0.01,
+     "reticle_color": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "holosight": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_holo.mdl",
+     "bone": "barrel",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "ang": [
+      180.0,
+      0.0,
+      0.0
+     ],
+     "scale": 0.8,
+     "ads": [
+      -4.494,
+      0.0,
+      2.96
+     ],
+     "ads_ang": [
+      0.209,
+      0.0,
+      0.0
+     ],
+     "reticle_pos": [
+      0.47,
+      -0.083,
+      0.3
+     ],
+     "reticle_ang": [
+      0.0,
+      -90.0,
+      0.0
+     ],
+     "reticle_scale": 0.01,
+     "reticle_color": [
+      1.0,
+      0.0,
+      0.0
+     ]
+    },
+    "weapon_flashlight": {
+     "type": "underbarrel",
+     "model": "models/weapons/darky_m/rust/mod_flash.mdl",
+     "bone": "barrel",
+     "pos": [
+      2.0,
+      0.1,
+      11.0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      180.0
+     ],
+     "scale": 0.8
+    },
+    "8x_zoom_scope": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_reddot.mdl",
+     "bone": "barrel",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      -90.0
+     ],
+     "scale": 1.0
+    },
+    "16x_zoom_scope": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_8xScope.mdl",
+     "bone": "barrel",
+     "pos": [
+      -2.01,
+      0.1,
+      1.0
+     ],
+     "ang": [
+      180.0,
+      90.0,
+      -90.0
+     ],
+     "scale": 1.0
+    },
+    "weapon_lasersight": {
+     "type": "underbarrel",
+     "model": "models/weapons/darky_m/rust/w_mod_laser.mdl",
+     "bone": "barrel",
+     "pos": [
+      2.0,
+      0.1,
+      11.0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      180.0
+     ],
+     "scale": 0.8
+    }
+   },
+   "silenced_sound": "darky_rust.double-shotgun-attack",
+   "silenced_files": []
+  },
+  "lr300_assault_rifle": {
+   "slots": 4,
+   "attachments": {
+    "simple_handmade_sight": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_ms_holosight.mdl",
+     "bone": "main",
+     "pos": [
+      0.03,
+      -4.4,
+      0.2
+     ],
+     "ang": [
+      180.0,
+      -90.0,
+      -90.0
+     ],
+     "scale": 1.15,
+     "ads": [
+      -4.415,
+      0.0,
+      1.12
+     ],
+     "ads_ang": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "reticle_pos": [
+      0.519,
+      0.0,
+      0.0
+     ],
+     "reticle_ang": [
+      -90.0,
+      0.0,
+      90.0
+     ],
+     "reticle_scale": 0.01,
+     "reticle_color": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "holosight": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_holo.mdl",
+     "bone": "main",
+     "pos": [
+      -0.05,
+      -4.0,
+      0.2
+     ],
+     "ang": [
+      180.0,
+      -90.0,
+      0.0
+     ],
+     "scale": 0.9,
+     "ads": [
+      -4.372,
+      0.0,
+      1.572
+     ],
+     "ads_ang": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "reticle_pos": [
+      0.47,
+      -0.123,
+      0.3
+     ],
+     "reticle_ang": [
+      0.0,
+      -90.0,
+      0.0
+     ],
+     "reticle_scale": 0.01,
+     "reticle_color": [
+      1.0,
+      0.0,
+      0.0
+     ]
+    },
+    "silencer": {
+     "type": "barrel",
+     "model": "models/weapons/darky_m/rust/mod_silencer.mdl",
+     "bone": "main",
+     "pos": [
+      0.0,
+      -1.55,
+      26.2
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      180.0
+     ],
+     "scale": 1.0
+    },
+    "weapon_flashlight": {
+     "type": "underbarrel",
+     "model": "models/weapons/darky_m/rust/mod_flash.mdl",
+     "bone": "main",
+     "pos": [
+      0.0,
+      0.9,
+      15.0
+     ],
+     "ang": [
+      0.0,
+      -90.0,
+      180.0
+     ],
+     "scale": 1.1
+    },
+    "8x_zoom_scope": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_reddot.mdl",
+     "bone": "main",
+     "pos": [
+      0.3,
+      -4.95,
+      0.0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      -90.0
+     ],
+     "scale": 1.0
+    },
+    "16x_zoom_scope": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_8xScope.mdl",
+     "bone": "main",
+     "pos": [
+      0.04,
+      -3.0,
+      2.3
+     ],
+     "ang": [
+      180.0,
+      0.0,
+      -90.0
+     ],
+     "scale": 1.0
+    },
+    "weapon_lasersight": {
+     "type": "underbarrel",
+     "model": "models/weapons/darky_m/rust/w_mod_laser.mdl",
+     "bone": "main",
+     "pos": [
+      0.5,
+      0.0,
+      0.0
+     ],
+     "ang": [
+      -90.0,
+      0.0,
+      0.0
+     ],
+     "scale": 1.0
+    },
+    "muzzle_brake": {
+     "type": "barrel",
+     "model": "models/weapons/darky_m/rust/mod_muzzlebrake.mdl",
+     "bone": "main",
+     "pos": [
+      0.0,
+      -1.55,
+      22.2
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      -90.0
+     ],
+     "scale": 2.5
+    },
+    "muzzle_boost": {
+     "type": "barrel",
+     "model": "models/weapons/darky_m/rust/mod_muzzleboost.mdl",
+     "bone": "main",
+     "pos": [
+      0.0,
+      -1.55,
+      22.2
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      -90.0
+     ],
+     "scale": 2.5
+    }
+   },
+   "silenced_sound": "darky_rust.lr300-attack-silenced",
+   "silenced_files": [
+    "res://assets/sounds/lr300-attack-silenced.mp3"
+   ]
+  },
+  "m249": {
+   "slots": 4,
+   "attachments": {
+    "simple_handmade_sight": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_ms_holosight.mdl",
+     "bone": "cover",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "ang": [
+      180.0,
+      180.0,
+      -90.0
+     ],
+     "scale": 1.15,
+     "ads": [
+      -3.68,
+      0.0,
+      2.359
+     ],
+     "ads_ang": [
+      -0.25,
+      -0.02,
+      0.0
+     ],
+     "reticle_pos": [
+      0.519,
+      0.0,
+      0.0
+     ],
+     "reticle_ang": [
+      -90.0,
+      0.0,
+      90.0
+     ],
+     "reticle_scale": 0.01,
+     "reticle_color": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "holosight": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_holo.mdl",
+     "bone": "cover",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "ang": [
+      180.0,
+      180.0,
+      0.0
+     ],
+     "scale": 0.9,
+     "ads": [
+      -3.605,
+      0.0,
+      2.4
+     ],
+     "ads_ang": [
+      -0.25,
+      -0.02,
+      0.0
+     ],
+     "reticle_pos": [
+      0.47,
+      -0.123,
+      0.3
+     ],
+     "reticle_ang": [
+      0.0,
+      -90.0,
+      0.0
+     ],
+     "reticle_scale": 0.01,
+     "reticle_color": [
+      1.0,
+      0.0,
+      0.0
+     ]
+    },
+    "silencer": {
+     "type": "barrel",
+     "model": "models/weapons/darky_m/rust/mod_silencer.mdl",
+     "bone": "main",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      180.0
+     ],
+     "scale": 0.8
+    },
+    "weapon_flashlight": {
+     "type": "underbarrel",
+     "model": "models/weapons/darky_m/rust/mod_flash.mdl",
+     "bone": "main",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "ang": [
+      0.0,
+      -90.0,
+      180.0
+     ],
+     "scale": 1.0
+    },
+    "8x_zoom_scope": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_reddot.mdl",
+     "bone": "cover",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "ang": [
+      0.0,
+      -90.0,
+      -90.0
+     ],
+     "scale": 1.0
+    },
+    "16x_zoom_scope": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_8xScope.mdl",
+     "bone": "cover",
+     "pos": [
+      0.1,
+      -1.01,
+      -5.0
+     ],
+     "ang": [
+      180.0,
+      -90.0,
+      -90.0
+     ],
+     "scale": 1.0
+    },
+    "weapon_lasersight": {
+     "type": "underbarrel",
+     "model": "models/weapons/darky_m/rust/w_mod_laser.mdl",
+     "bone": "main",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "ang": [
+      0.0,
+      -90.0,
+      180.0
+     ],
+     "scale": 1.0
+    },
+    "muzzle_brake": {
+     "type": "barrel",
+     "model": "models/weapons/darky_m/rust/mod_muzzlebrake.mdl",
+     "bone": "main",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      -90.0
+     ],
+     "scale": 1.8
+    },
+    "muzzle_boost": {
+     "type": "barrel",
+     "model": "models/weapons/darky_m/rust/mod_muzzleboost.mdl",
+     "bone": "main",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      -90.0
+     ],
+     "scale": 1.8
+    }
+   },
+   "silenced_sound": "darky_rust.m249-attack-silenced",
+   "silenced_files": [
+    "res://assets/sounds/m249-attack-silenced.mp3"
+   ]
+  },
+  "m39_rifle": {
+   "slots": 4,
+   "attachments": {
+    "simple_handmade_sight": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_ms_holosight.mdl",
+     "bone": "main",
+     "pos": [
+      0.02,
+      -3.6,
+      4.6
+     ],
+     "ang": [
+      180.0,
+      -90.0,
+      -90.0
+     ],
+     "scale": 1.15,
+     "ads_ang": [
+      0.4,
+      0.835,
+      0.0
+     ],
+     "reticle_pos": [
+      0.519,
+      0.0,
+      0.0
+     ],
+     "reticle_ang": [
+      -90.0,
+      0.0,
+      90.0
+     ],
+     "reticle_scale": 0.01,
+     "reticle_color": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "holosight": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_holo.mdl",
+     "bone": "main",
+     "pos": [
+      -0.07,
+      -3.12,
+      4.62
+     ],
+     "ang": [
+      180.0,
+      -90.0,
+      0.0
+     ],
+     "scale": 0.9,
+     "ads_ang": [
+      0.4,
+      1.25,
+      0.0
+     ],
+     "reticle_pos": [
+      0.47,
+      -0.08,
+      0.3
+     ],
+     "reticle_ang": [
+      0.0,
+      -90.0,
+      0.0
+     ],
+     "reticle_scale": 0.01,
+     "reticle_color": [
+      1.0,
+      0.0,
+      0.0
+     ]
+    },
+    "silencer": {
+     "type": "barrel",
+     "model": "models/weapons/darky_m/rust/mod_silencer.mdl",
+     "bone": "main",
+     "pos": [
+      0.0,
+      -0.9,
+      42.2
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      180.0
+     ],
+     "scale": 1.0
+    },
+    "weapon_flashlight": {
+     "type": "underbarrel",
+     "model": "models/weapons/darky_m/rust/mod_flash.mdl",
+     "bone": "main",
+     "pos": [
+      2.25,
+      -0.45,
+      22.0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      180.0
+     ],
+     "scale": 1.1
+    },
+    "8x_zoom_scope": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_reddot.mdl",
+     "bone": "main",
+     "pos": [
+      0.24,
+      -4.0,
+      5.0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      -90.0
+     ],
+     "scale": 1.0
+    },
+    "16x_zoom_scope": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_8xScope.mdl",
+     "bone": "main",
+     "pos": [
+      -0.05,
+      -2.2,
+      6.2
+     ],
+     "ang": [
+      180.0,
+      0.0,
+      -90.0
+     ],
+     "scale": 1.0
+    },
+    "weapon_lasersight": {
+     "type": "underbarrel",
+     "model": "models/weapons/darky_m/rust/w_mod_laser.mdl",
+     "bone": "main",
+     "pos": [
+      1.7,
+      -0.2,
+      23.0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      180.0
+     ],
+     "scale": 1.0
+    },
+    "muzzle_brake": {
+     "type": "barrel",
+     "model": "models/weapons/darky_m/rust/mod_muzzlebrake.mdl",
+     "bone": "main",
+     "pos": [
+      0.0,
+      -0.8,
+      39.2
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      -90.0
+     ],
+     "scale": 2.5
+    },
+    "muzzle_boost": {
+     "type": "barrel",
+     "model": "models/weapons/darky_m/rust/mod_muzzleboost.mdl",
+     "bone": "main",
+     "pos": [
+      0.0,
+      -0.8,
+      39.2
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      -90.0
+     ],
+     "scale": 2.5
+    }
+   },
+   "silenced_sound": "darky_rust.m39-attack-silenced",
+   "silenced_files": [
+    "res://assets/sounds/m39-attack-silenced.mp3"
+   ]
+  },
+  "m92_pistol": {
+   "slots": 4,
+   "attachments": {
+    "simple_handmade_sight": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_ms_holosight.mdl",
+     "bone": "slide",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "ang": [
+      180.0,
+      -90.0,
+      -90.0
+     ],
+     "scale": 0.9,
+     "ads": [
+      -3.705,
+      0.0,
+      0.69
+     ],
+     "ads_ang": [
+      0.209,
+      0.0,
+      0.0
+     ],
+     "reticle_pos": [
+      0.519,
+      0.0,
+      0.0
+     ],
+     "reticle_ang": [
+      -90.0,
+      0.0,
+      90.0
+     ],
+     "reticle_scale": 0.01,
+     "reticle_color": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "holosight": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_holo.mdl",
+     "bone": "slide",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "ang": [
+      180.0,
+      -90.0,
+      0.0
+     ],
+     "scale": 0.8,
+     "ads": [
+      -3.695,
+      -2.5,
+      0.945
+     ],
+     "ads_ang": [
+      0.209,
+      0.0,
+      0.0
+     ],
+     "reticle_pos": [
+      0.47,
+      -0.123,
+      0.3
+     ],
+     "reticle_ang": [
+      0.0,
+      -90.0,
+      0.0
+     ],
+     "reticle_scale": 0.01,
+     "reticle_color": [
+      1.0,
+      0.0,
+      0.0
+     ]
+    },
+    "silencer": {
+     "type": "barrel",
+     "model": "models/weapons/darky_m/rust/mod_silencer.mdl",
+     "bone": "main",
+     "pos": [
+      0.0,
+      -1.7,
+      13.5
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      180.0
+     ],
+     "scale": 0.8
+    },
+    "weapon_flashlight": {
+     "type": "underbarrel",
+     "model": "models/weapons/darky_m/rust/mod_flash.mdl",
+     "bone": "main",
+     "pos": [
+      0.0,
+      0.1,
+      5.9
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      180.0
+     ],
+     "scale": 1.0
+    },
+    "8x_zoom_scope": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_reddot.mdl",
+     "bone": "slide",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      -90.0
+     ],
+     "scale": 0.8
+    },
+    "16x_zoom_scope": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_8xScope.mdl",
+     "bone": "cover",
+     "pos": [
+      -0.01,
+      -0.5,
+      3.0
+     ],
+     "ang": [
+      180.0,
+      0.0,
+      -90.0
+     ],
+     "scale": 0.8
+    },
+    "weapon_lasersight": {
+     "type": "underbarrel",
+     "model": "models/weapons/darky_m/rust/w_mod_laser.mdl",
+     "bone": "main",
+     "pos": [
+      0.0,
+      0.1,
+      6.0
+     ],
+     "ang": [
+      0.0,
+      -90.0,
+      180.0
+     ],
+     "scale": 0.8
+    },
+    "muzzle_brake": {
+     "type": "barrel",
+     "model": "models/weapons/darky_m/rust/mod_muzzlebrake.mdl",
+     "bone": "main",
+     "pos": [
+      0.0,
+      -1.7,
+      10.5
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      -90.0
+     ],
+     "scale": 1.8
+    },
+    "muzzle_boost": {
+     "type": "barrel",
+     "model": "models/weapons/darky_m/rust/mod_muzzleboost.mdl",
+     "bone": "main",
+     "pos": [
+      0.0,
+      -1.7,
+      10.7
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      -90.0
+     ],
+     "scale": 1.8
+    }
+   },
+   "silenced_sound": "darky_rust.m92-attack-silenced",
+   "silenced_files": [
+    "res://assets/sounds/m92-attack-silenced.mp3"
+   ]
+  },
+  "mp5a4": {
+   "slots": 4,
+   "attachments": {
+    "simple_handmade_sight": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_ms_holosight.mdl",
+     "bone": "main",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "ang": [
+      180.0,
+      -90.0,
+      -90.0
+     ],
+     "scale": 1.15,
+     "ads": [
+      -6.45,
+      0.0,
+      2.125
+     ],
+     "ads_ang": [
+      -0.18,
+      -1.36,
+      0.0
+     ],
+     "reticle_pos": [
+      0.519,
+      0.0,
+      0.0
+     ],
+     "reticle_ang": [
+      -90.0,
+      0.0,
+      90.0
+     ],
+     "reticle_scale": 0.01,
+     "reticle_color": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "holosight": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_holo.mdl",
+     "bone": "main",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "ang": [
+      180.0,
+      -90.0,
+      0.0
+     ],
+     "scale": 0.9,
+     "ads": [
+      -6.43,
+      0.0,
+      3.0
+     ],
+     "ads_ang": [
+      -1.18,
+      -1.38,
+      0.0
+     ],
+     "reticle_pos": [
+      0.47,
+      -0.123,
+      0.3
+     ],
+     "reticle_ang": [
+      0.0,
+      -90.0,
+      0.0
+     ],
+     "reticle_scale": 0.01,
+     "reticle_color": [
+      1.0,
+      0.0,
+      0.0
+     ]
+    },
+    "silencer": {
+     "type": "barrel",
+     "model": "models/weapons/darky_m/rust/mod_silencer.mdl",
+     "bone": "main",
+     "pos": [
+      0.0,
+      -1.4,
+      21.0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      180.0
+     ],
+     "scale": 0.8
+    },
+    "weapon_flashlight": {
+     "type": "underbarrel",
+     "model": "models/weapons/darky_m/rust/mod_flash.mdl",
+     "bone": "main",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "ang": [
+      0.0,
+      -90.0,
+      180.0
+     ],
+     "scale": 1.0
+    },
+    "8x_zoom_scope": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_reddot.mdl",
+     "bone": "main",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      -90.0
+     ],
+     "scale": 1.0
+    },
+    "16x_zoom_scope": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_8xScope.mdl",
+     "bone": "main",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "ang": [
+      180.0,
+      0.0,
+      -90.0
+     ],
+     "scale": 1.0
+    },
+    "weapon_lasersight": {
+     "type": "underbarrel",
+     "model": "models/weapons/darky_m/rust/w_mod_laser.mdl",
+     "bone": "main",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "ang": [
+      0.0,
+      -90.0,
+      180.0
+     ],
+     "scale": 1.0
+    },
+    "muzzle_brake": {
+     "type": "barrel",
+     "model": "models/weapons/darky_m/rust/mod_muzzlebrake.mdl",
+     "bone": "main",
+     "pos": [
+      0.0,
+      -1.35,
+      18.0
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      -90.0
+     ],
+     "scale": 1.8
+    },
+    "muzzle_boost": {
+     "type": "barrel",
+     "model": "models/weapons/darky_m/rust/mod_muzzleboost.mdl",
+     "bone": "main",
+     "pos": [
+      0.0,
+      -1.35,
+      18.0
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      -90.0
+     ],
+     "scale": 1.8
+    }
+   },
+   "silenced_sound": "darky_rust.mp5-attack-silenced",
+   "silenced_files": [
+    "res://assets/sounds/mp5-attack-silenced.mp3"
+   ]
+  },
+  "pump_shotgun": {
+   "slots": 3,
+   "attachments": {
+    "simple_handmade_sight": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_ms_holosight.mdl",
+     "bone": "main",
+     "pos": [
+      -0.04,
+      -3.5,
+      4.0
+     ],
+     "ang": [
+      180.0,
+      -90.0,
+      -90.0
+     ],
+     "scale": 1.15,
+     "ads": [
+      -3.895,
+      -4.2,
+      1.82
+     ],
+     "ads_ang": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "reticle_pos": [
+      0.519,
+      0.0,
+      0.0
+     ],
+     "reticle_ang": [
+      -90.0,
+      0.0,
+      90.0
+     ],
+     "reticle_scale": 0.01,
+     "reticle_color": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "holosight": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_holo.mdl",
+     "bone": "main",
+     "pos": [
+      -0.125,
+      -3.0,
+      4.0
+     ],
+     "ang": [
+      180.0,
+      -90.0,
+      0.0
+     ],
+     "scale": 1.0,
+     "ads": [
+      -3.855,
+      -4.2,
+      2.375
+     ],
+     "ads_ang": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "reticle_pos": [
+      0.47,
+      -0.123,
+      0.3
+     ],
+     "reticle_ang": [
+      0.0,
+      -90.0,
+      0.0
+     ],
+     "reticle_scale": 0.01,
+     "reticle_color": [
+      1.0,
+      0.0,
+      0.0
+     ]
+    },
+    "silencer": {
+     "type": "barrel",
+     "model": "models/weapons/darky_m/rust/mod_silencer.mdl",
+     "bone": "main",
+     "pos": [
+      -0.05,
+      -1.45,
+      24.5
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      180.0
+     ],
+     "scale": 0.85
+    },
+    "8x_zoom_scope": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_reddot.mdl",
+     "bone": "main",
+     "pos": [
+      0.25,
+      -3.8,
+      4.0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      -90.0
+     ],
+     "scale": 1.0
+    },
+    "16x_zoom_scope": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_8xScope.mdl",
+     "bone": "main",
+     "pos": [
+      0.0,
+      -2.0,
+      6.7
+     ],
+     "ang": [
+      180.0,
+      0.0,
+      -90.0
+     ],
+     "scale": 1.0
+    },
+    "muzzle_brake": {
+     "type": "barrel",
+     "model": "models/weapons/darky_m/rust/mod_muzzlebrake.mdl",
+     "bone": "main",
+     "pos": [
+      0.0,
+      -1.45,
+      21.7
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      -90.0
+     ],
+     "scale": 2.0
+    },
+    "muzzle_boost": {
+     "type": "barrel",
+     "model": "models/weapons/darky_m/rust/mod_muzzleboost.mdl",
+     "bone": "main",
+     "pos": [
+      0.0,
+      -1.45,
+      21.7
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      -90.0
+     ],
+     "scale": 2.0
+    }
+   },
+   "silenced_sound": "darky_rust.sawnoff-shotgun-attack-silenced",
+   "silenced_files": [
+    "res://assets/sounds/sawnoff-shotgun-attack-silenced.mp3"
+   ]
+  },
+  "python_revolver": {
+   "slots": 4,
+   "attachments": {
+    "simple_handmade_sight": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_ms_holosight.mdl",
+     "bone": "main",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "ang": [
+      180.0,
+      -90.0,
+      -90.0
+     ],
+     "scale": 0.9,
+     "ads": [
+      -4.405,
+      -5.453,
+      1.042
+     ],
+     "ads_ang": [
+      0.1,
+      0.07,
+      0.0
+     ],
+     "reticle_pos": [
+      0.519,
+      0.0,
+      0.0
+     ],
+     "reticle_ang": [
+      -90.0,
+      0.0,
+      90.0
+     ],
+     "reticle_scale": 0.01,
+     "reticle_color": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "holosight": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_holo.mdl",
+     "bone": "main",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "ang": [
+      180.0,
+      -90.0,
+      0.0
+     ],
+     "scale": 0.8,
+     "ads": [
+      -4.341,
+      -5.5,
+      1.492
+     ],
+     "ads_ang": [
+      0.3,
+      0.2,
+      0.0
+     ],
+     "reticle_pos": [
+      0.4,
+      -0.08,
+      0.3
+     ],
+     "reticle_ang": [
+      0.0,
+      -90.0,
+      0.0
+     ],
+     "reticle_scale": 0.01,
+     "reticle_color": [
+      1.0,
+      0.0,
+      0.0
+     ]
+    },
+    "weapon_flashlight": {
+     "type": "underbarrel",
+     "model": "models/weapons/darky_m/rust/mod_flash.mdl",
+     "bone": "main",
+     "pos": [
+      0.0,
+      0.2,
+      7.4
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      180.0
+     ],
+     "scale": 1.0
+    },
+    "8x_zoom_scope": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_reddot.mdl",
+     "bone": "main",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      -90.0
+     ],
+     "scale": 1.0
+    },
+    "16x_zoom_scope": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_8xScope.mdl",
+     "bone": "main",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "ang": [
+      180.0,
+      0.0,
+      -90.0
+     ],
+     "scale": 1.0
+    },
+    "weapon_lasersight": {
+     "type": "underbarrel",
+     "model": "models/weapons/darky_m/rust/w_mod_laser.mdl",
+     "bone": "main",
+     "pos": [
+      0.0,
+      -0.2,
+      7.4
+     ],
+     "ang": [
+      0.0,
+      -90.0,
+      180.0
+     ],
+     "scale": 0.9
+    }
+   },
+   "silenced_sound": "darky_rust.python-attack-silenced",
+   "silenced_files": [
+    "res://assets/sounds/revolver-attack-silenced.mp3"
+   ]
+  },
+  "semi_automatic_pistol": {
+   "slots": 4,
+   "attachments": {
+    "simple_handmade_sight": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_ms_holosight.mdl",
+     "bone": "slide",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "ang": [
+      180.0,
+      -90.0,
+      -90.0
+     ],
+     "scale": 0.9,
+     "ads": [
+      -3.087,
+      -6.0,
+      1.38
+     ],
+     "ads_ang": [
+      0.029,
+      0.039,
+      0.0
+     ],
+     "reticle_pos": [
+      0.519,
+      0.0,
+      0.0
+     ],
+     "reticle_ang": [
+      -90.0,
+      0.0,
+      90.0
+     ],
+     "reticle_scale": 0.01,
+     "reticle_color": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "holosight": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_holo.mdl",
+     "bone": "slide",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "ang": [
+      180.0,
+      -90.0,
+      0.0
+     ],
+     "scale": 0.8,
+     "ads": [
+      -3.032,
+      -3.0,
+      1.431
+     ],
+     "ads_ang": [
+      0.029,
+      0.039,
+      0.0
+     ],
+     "reticle_pos": [
+      0.47,
+      -0.123,
+      0.3
+     ],
+     "reticle_ang": [
+      0.0,
+      -90.0,
+      0.0
+     ],
+     "reticle_scale": 0.01,
+     "reticle_color": [
+      1.0,
+      0.0,
+      0.0
+     ]
+    },
+    "silencer": {
+     "type": "barrel",
+     "model": "models/weapons/darky_m/rust/mod_silencer.mdl",
+     "bone": "main",
+     "pos": [
+      0.0,
+      -1.31,
+      12.7
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      180.0
+     ],
+     "scale": 0.7
+    },
+    "weapon_flashlight": {
+     "type": "underbarrel",
+     "model": "models/weapons/darky_m/rust/mod_flash.mdl",
+     "bone": "main",
+     "pos": [
+      0.0,
+      0.15,
+      5.25
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      180.0
+     ],
+     "scale": 0.9
+    },
+    "8x_zoom_scope": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_reddot.mdl",
+     "bone": "slide",
+     "pos": [
+      0.18,
+      -2.0,
+      -0.5
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      -90.0
+     ],
+     "scale": 0.8
+    },
+    "16x_zoom_scope": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_8xScope.mdl",
+     "bone": "cover",
+     "pos": [
+      -0.01,
+      -0.5,
+      2.0
+     ],
+     "ang": [
+      180.0,
+      0.0,
+      -90.0
+     ],
+     "scale": 0.8
+    },
+    "weapon_lasersight": {
+     "type": "underbarrel",
+     "model": "models/weapons/darky_m/rust/w_mod_laser.mdl",
+     "bone": "main",
+     "pos": [
+      0.0,
+      0.1,
+      5.35
+     ],
+     "ang": [
+      0.0,
+      -90.0,
+      180.0
+     ],
+     "scale": 1.0
+    },
+    "muzzle_brake": {
+     "type": "barrel",
+     "model": "models/weapons/darky_m/rust/mod_muzzlebrake.mdl",
+     "bone": "main",
+     "pos": [
+      0.0,
+      -1.3,
+      10.0
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      -90.0
+     ],
+     "scale": 1.8
+    },
+    "muzzle_boost": {
+     "type": "barrel",
+     "model": "models/weapons/darky_m/rust/mod_muzzleboost.mdl",
+     "bone": "main",
+     "pos": [
+      0.0,
+      -1.3,
+      10.0
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      -90.0
+     ],
+     "scale": 1.8
+    }
+   },
+   "silenced_sound": "darky_rust.semi-pistol-attack-silenced",
+   "silenced_files": [
+    "res://assets/sounds/semi-pistol-attack-silenced.mp3"
+   ]
+  },
+  "semi_automatic_rifle": {
+   "slots": 4,
+   "attachments": {
+    "simple_handmade_sight": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_ms_holosight.mdl",
+     "bone": "main",
+     "pos": [
+      0.02,
+      -3.5,
+      4.2
+     ],
+     "ang": [
+      180.0,
+      -90.0,
+      -90.0
+     ],
+     "scale": 1.0,
+     "ads": [
+      -5.146,
+      -10.516,
+      1.4
+     ],
+     "ads_ang": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "reticle_pos": [
+      0.519,
+      0.0,
+      0.0
+     ],
+     "reticle_ang": [
+      -90.0,
+      0.0,
+      90.0
+     ],
+     "reticle_scale": 0.01,
+     "reticle_color": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "holosight": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_holo.mdl",
+     "bone": "main",
+     "pos": [
+      -0.07,
+      -3.4,
+      4.3
+     ],
+     "ang": [
+      180.0,
+      -90.0,
+      0.0
+     ],
+     "scale": 1.0,
+     "ads": [
+      -5.114,
+      -10.516,
+      1.548
+     ],
+     "ads_ang": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "reticle_pos": [
+      0.47,
+      -0.123,
+      0.3
+     ],
+     "reticle_ang": [
+      0.0,
+      -90.0,
+      0.0
+     ],
+     "reticle_scale": 0.01,
+     "reticle_color": [
+      1.0,
+      0.0,
+      0.0
+     ]
+    },
+    "silencer": {
+     "type": "barrel",
+     "model": "models/weapons/darky_m/rust/mod_silencer.mdl",
+     "bone": "main",
+     "pos": [
+      0.0,
+      -1.4,
+      31.5
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      180.0
+     ],
+     "scale": 1.0
+    },
+    "weapon_flashlight": {
+     "type": "underbarrel",
+     "model": "models/weapons/darky_m/rust/mod_flash.mdl",
+     "bone": "main",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "ang": [
+      0.0,
+      -90.0,
+      180.0
+     ],
+     "scale": 1.0
+    },
+    "8x_zoom_scope": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_reddot.mdl",
+     "bone": "main",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      -90.0
+     ],
+     "scale": 1.0
+    },
+    "16x_zoom_scope": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_8xScope.mdl",
+     "bone": "main",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "ang": [
+      180.0,
+      0.0,
+      -90.0
+     ],
+     "scale": 1.0
+    },
+    "weapon_lasersight": {
+     "type": "underbarrel",
+     "model": "models/weapons/darky_m/rust/w_mod_laser.mdl",
+     "bone": "main",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "ang": [
+      0.0,
+      -90.0,
+      180.0
+     ],
+     "scale": 1.0
+    },
+    "muzzle_brake": {
+     "type": "barrel",
+     "model": "models/weapons/darky_m/rust/mod_muzzlebrake.mdl",
+     "bone": "main",
+     "pos": [
+      0.0,
+      -1.4,
+      27.5
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      -90.0
+     ],
+     "scale": 2.5
+    },
+    "muzzle_boost": {
+     "type": "barrel",
+     "model": "models/weapons/darky_m/rust/mod_muzzleboost.mdl",
+     "bone": "main",
+     "pos": [
+      0.0,
+      -1.4,
+      27.5
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      -90.0
+     ],
+     "scale": 2.5
+    }
+   },
+   "silenced_sound": "darky_rust.sar-attack-silenced",
+   "silenced_files": [
+    "res://assets/sounds/sar_attack-silenced.mp3"
+   ]
+  },
+  "custom_smg": {
+   "slots": 4,
+   "attachments": {},
+   "silenced_sound": "darky_rust.smg-attack-silenced",
+   "silenced_files": [
+    "res://assets/sounds/smg-attack-silenced.mp3"
+   ]
+  },
+  "spas_12_shotgun": {
+   "slots": 3,
+   "attachments": {
+    "simple_handmade_sight": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_ms_holosight.mdl",
+     "bone": "main",
+     "pos": [
+      0.05,
+      -4.0,
+      4.0
+     ],
+     "ang": [
+      180.0,
+      -90.0,
+      -90.0
+     ],
+     "scale": 1.15,
+     "ads": [
+      -4.395,
+      -1.5,
+      2.02
+     ],
+     "ads_ang": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "reticle_pos": [
+      0.519,
+      0.0,
+      0.0
+     ],
+     "reticle_ang": [
+      -90.0,
+      0.0,
+      90.0
+     ],
+     "reticle_scale": 0.01,
+     "reticle_color": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "holosight": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_holo.mdl",
+     "bone": "main",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "ang": [
+      180.0,
+      -90.0,
+      0.0
+     ],
+     "scale": 0.9,
+     "ads": [
+      -4.393,
+      -1.5,
+      2.58
+     ],
+     "ads_ang": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "reticle_pos": [
+      0.47,
+      -0.123,
+      0.3
+     ],
+     "reticle_ang": [
+      0.0,
+      -90.0,
+      0.0
+     ],
+     "reticle_scale": 0.01,
+     "reticle_color": [
+      1.0,
+      0.0,
+      0.0
+     ]
+    },
+    "silencer": {
+     "type": "barrel",
+     "model": "models/weapons/darky_m/rust/mod_silencer.mdl",
+     "bone": "main",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      180.0
+     ],
+     "scale": 0.85
+    },
+    "8x_zoom_scope": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_reddot.mdl",
+     "bone": "main",
+     "pos": [
+      0.3,
+      -4.3,
+      4.0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      -90.0
+     ],
+     "scale": 1.0
+    },
+    "16x_zoom_scope": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_8xScope.mdl",
+     "bone": "main",
+     "pos": [
+      0.05,
+      -2.4,
+      6.7
+     ],
+     "ang": [
+      180.0,
+      0.0,
+      -90.0
+     ],
+     "scale": 1.0
+    },
+    "muzzle_brake": {
+     "type": "barrel",
+     "model": "models/weapons/darky_m/rust/mod_muzzlebrake.mdl",
+     "bone": "main",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      -90.0
+     ],
+     "scale": 2.0
+    },
+    "muzzle_boost": {
+     "type": "barrel",
+     "model": "models/weapons/darky_m/rust/mod_muzzleboost.mdl",
+     "bone": "main",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      -90.0
+     ],
+     "scale": 2.0
+    }
+   },
+   "silenced_sound": "darky_rust.spas12-attack-silenced",
+   "silenced_files": [
+    "res://assets/sounds/spas12-attack-silenced.mp3"
+   ]
+  },
+  "thompson": {
+   "slots": 4,
+   "attachments": {
+    "simple_handmade_sight": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_ms_holosight.mdl",
+     "bone": "main",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "ang": [
+      180.0,
+      -90.0,
+      -90.0
+     ],
+     "scale": 1.15,
+     "ads": [
+      -5.016,
+      -6.0,
+      1.63
+     ],
+     "ads_ang": [
+      -0.071,
+      0.46,
+      0.0
+     ],
+     "reticle_pos": [
+      0.519,
+      0.0,
+      0.0
+     ],
+     "reticle_ang": [
+      -90.0,
+      0.0,
+      90.0
+     ],
+     "reticle_scale": 0.01,
+     "reticle_color": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "holosight": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_holo.mdl",
+     "bone": "main",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "ang": [
+      180.0,
+      -90.0,
+      0.0
+     ],
+     "scale": 0.9,
+     "ads": [
+      -4.963,
+      -6.0,
+      2.078
+     ],
+     "ads_ang": [
+      -0.15,
+      0.375,
+      0.0
+     ],
+     "reticle_pos": [
+      0.47,
+      -0.095,
+      0.3
+     ],
+     "reticle_ang": [
+      0.0,
+      -90.0,
+      0.0
+     ],
+     "reticle_scale": 0.01,
+     "reticle_color": [
+      1.0,
+      0.0,
+      0.0
+     ]
+    },
+    "silencer": {
+     "type": "barrel",
+     "model": "models/weapons/darky_m/rust/mod_silencer.mdl",
+     "bone": "main",
+     "pos": [
+      0.0,
+      -0.8,
+      23.0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      180.0
+     ],
+     "scale": 0.8
+    },
+    "weapon_flashlight": {
+     "type": "underbarrel",
+     "model": "models/weapons/darky_m/rust/mod_flash.mdl",
+     "bone": "main",
+     "pos": [
+      0.8,
+      0.2,
+      14.0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      180.0
+     ],
+     "scale": 1.0
+    },
+    "8x_zoom_scope": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_reddot.mdl",
+     "bone": "main",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      -90.0
+     ],
+     "scale": 1.0
+    },
+    "16x_zoom_scope": {
+     "type": "sight",
+     "model": "models/weapons/darky_m/rust/mod_8xScope.mdl",
+     "bone": "main",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "ang": [
+      180.0,
+      0.0,
+      -90.0
+     ],
+     "scale": 1.0
+    },
+    "weapon_lasersight": {
+     "type": "underbarrel",
+     "model": "models/weapons/darky_m/rust/w_mod_laser.mdl",
+     "bone": "main",
+     "pos": [
+      0.5,
+      0.3,
+      14.0
+     ],
+     "ang": [
+      0.0,
+      0.0,
+      180.0
+     ],
+     "scale": 1.0
+    },
+    "muzzle_brake": {
+     "type": "barrel",
+     "model": "models/weapons/darky_m/rust/mod_muzzlebrake.mdl",
+     "bone": "main",
+     "pos": [
+      0.0,
+      -0.8,
+      20.0
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      -90.0
+     ],
+     "scale": 0.8
+    },
+    "muzzle_boost": {
+     "type": "barrel",
+     "model": "models/weapons/darky_m/rust/mod_muzzleboost.mdl",
+     "bone": "main",
+     "pos": [
+      0.0,
+      -0.8,
+      20.0
+     ],
+     "ang": [
+      0.0,
+      90.0,
+      -90.0
+     ],
+     "scale": 1.8
+    }
+   },
+   "silenced_sound": "darky_rust.thompson-attack-silenced",
+   "silenced_files": [
+    "res://assets/sounds/thompson-attack-silenced.mp3"
+   ]
+  },
+  "waterpipe_shotgun": {
+   "slots": 4,
+   "attachments": {},
+   "silenced_sound": "darky_rust.sawnoff-shotgun-attack-silenced",
+   "silenced_files": [
+    "res://assets/sounds/sawnoff-shotgun-attack-silenced.mp3"
+   ]
+  }
+ },
+ "models": [
+  "models/weapons/darky_m/rust/mod_8xScope.mdl",
+  "models/weapons/darky_m/rust/mod_flash.mdl",
+  "models/weapons/darky_m/rust/mod_holo.mdl",
+  "models/weapons/darky_m/rust/mod_ms_holosight.mdl",
+  "models/weapons/darky_m/rust/mod_muzzleboost.mdl",
+  "models/weapons/darky_m/rust/mod_muzzlebrake.mdl",
+  "models/weapons/darky_m/rust/mod_reddot.mdl",
+  "models/weapons/darky_m/rust/mod_silencer.mdl",
+  "models/weapons/darky_m/rust/w_mod_laser.mdl"
+ ]
+}
