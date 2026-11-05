@@ -281,28 +281,37 @@ func _update_info() -> void:
 		item_info.text = ""
 		return
 	var d := Items.get_def(it.id)
+	if d.get("type") == "weapon" and not Attachments.weapon_info(it.id).is_empty():
+		d = Attachments.modded_def(d, it)
+	if d.get("type") == "weapon" and it.has("ammo_type"):
+		d = d.duplicate()
+		d["ammo"] = it.ammo_type
 	item_title.text = d.name.to_upper()
-	var t: String = d.desc
+	var t := ""
 	match d.type:
 		"weapon":
 			match d.get("kind", ""):
 				"gun", "shotgun", "launcher":
-					t += "\n\nУрон: %d   Магазин: %d / %d\nТемп: %d выстр/мин   %s" % [d.damage, it.get("ammo", 0), d.clip, int(d.rpm), "Автомат" if d.auto else "Полуавтомат"]
+					t += "Урон: %d   Магазин: %d / %d\nТемп: %d выстр/мин   %s" % [d.damage, it.get("ammo", 0), d.clip, int(d.rpm), "Автомат" if d.auto else "Полуавтомат"]
 					t += "\nПатроны: %s (%d)" % [Items.get_def(d.ammo).get("name", ""), inv.count(d.ammo)]
 				"bow":
-					t += "\n\nУрон: %d   Стрелы: %d" % [d.damage, inv.count(d.ammo)]
+					t += "Урон: %d   Стрелы: %d" % [d.damage, inv.count(d.ammo)]
 				"melee":
-					t += "\n\nУрон: %d   Ударов в минуту: %d" % [d.damage, int(d.rpm)]
+					t += "Урон: %d   Ударов в минуту: %d" % [d.damage, int(d.rpm)]
 				"throw":
-					t += "\n\nУрон: %d   Радиус: %.1f м   Запал: %.1f с\nКоличество: %d" % [d.damage, d.radius, d.fuse, it.amount]
+					t += "Урон: %d   Радиус: %.1f м   Запал: %.1f с\nКоличество: %d" % [d.damage, d.radius, d.fuse, it.amount]
 				"medical":
-					t += "\n\nЛечение: %d   Количество: %d" % [d.get("heal", 0), it.amount]
+					t += "Лечение: %d   Количество: %d" % [d.get("heal", 0), it.amount]
 		"melee":
 			pass
 		"attire":
-			t += "\n\nЗащита от пуль: %d%%   Ближний бой: %d%%" % [roundi(d.prot * 100), roundi(d.melee_prot * 100)]
+			t += "Защита от пуль: %d%%   Ближний бой: %d%%" % [roundi(d.prot * 100), roundi(d.melee_prot * 100)]
 		_:
-			t += "\n\nКоличество: %d / %d" % [it.amount, Items.max_stack(it.id)]
+			t += "Количество: %d / %d" % [it.amount, Items.max_stack(it.id)]
+	# сначала характеристики, затем описание; текст не налезает на панель обвесов
+	t = (t + "\n\n" + String(d.desc)) if t != "" else String(d.desc)
+	var lh: float = item_info.get_theme_font("font").get_height(19) + 2.0
+	item_info.max_lines_visible = max(1, int(item_info.size.y / lh))
 	item_info.text = t
 
 # ---------- обвесы и патроны ----------

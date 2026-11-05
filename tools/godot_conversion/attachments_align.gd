@@ -1,4 +1,5 @@
 extends SceneTree
+## Запуск: скопировать в godot/scripts/ и выполнить godot --headless --path godot -s res://scripts/<имя>.gd
 ## Вычисляет для каждого оружия с обвесами преобразование «кость main вьюмодели c_ -> модель w_» (подгонка облаков точек).
 const ARM := ["hand_mesh", "Hoodie_vm", "TacticalGloves_vm", "BurlapGloves_vm", "RoadsignGloves_vm"]
 

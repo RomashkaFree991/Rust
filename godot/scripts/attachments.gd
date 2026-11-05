@@ -143,11 +143,7 @@ static func _v(a) -> Vector3:
 
 ## Положение обвеса относительно кости (как в ViewModelDrawn: pos + Forward*x + Right*y + Up*z,
 ## затем RotateAroundAxis(Up, yaw), (Right, pitch), (Forward, roll)); в координатах кости Source (метры).
-static var dbg_mode := 0
 static func gmod_offset(pos: Vector3, ang: Vector3) -> Transform3D:
-	if dbg_mode == 1: ang.y = -ang.y
-	elif dbg_mode == 2: ang = -ang
-	elif dbg_mode == 3: ang.x = -ang.x
 	var r := Basis()
 	r = r * Basis(Vector3(0, 0, 1), deg_to_rad(ang.y))
 	r = r * Basis(Vector3(0, -1, 0), deg_to_rad(ang.x))
